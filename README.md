@@ -3,7 +3,7 @@ Main Repository => https://github.com/Lunastellia/Challenger-Among-Us
 
 ## LICENSE :
 
-- This File (ChallengerOS.dll) Use Custom Owner license.
+- This File (ChallengerOS.dll) Use Custom Owner license. (https://github.com/Lunastellia/AmongUs-Challenger-Challenger/blob/main/LICENSE)
 
 ## ModPolicy
 
