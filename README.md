@@ -5,7 +5,7 @@ Main Repository => https://github.com/Lunastellia/Challenger-Among-Us
 
 This File (Challenger.dll) Use :
 - GPL-3.0 License
-- Custom Owner license (LICENSE-CLAUSE). https://github.com/Lunastellia/AmongUs-Challenger-Challenger/blob/main/LICENSE-CLAUSE
+- Custom Owner license (LICENSE-CLAUSE). https://github.com/Lunastellia/Challenger-Among-Us/blob/main/LICENSE
 
 ## ModPolicy
 
