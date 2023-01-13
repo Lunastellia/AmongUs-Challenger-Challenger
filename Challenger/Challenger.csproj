@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Version>5.1.4</Version>
+		<GameVersion>v2022.6.21s</GameVersion>
+		<EssentialsVersion>Essentials</EssentialsVersion>
+
+		<Description>Challenger by Lunastellia</Description>
+		<Authors>Lunastellia</Authors>
+		<Configurations>Debug;Release;Beta</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Deobfuscate Include="$(AmongUs)\BepInEx\plugins\Reactor.dll" />
+	</ItemGroup>
+
+
+	<PropertyGroup>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="DiscordRPC">
+		  <HintPath>..\..\Among Us\BepInEx\core\DiscordRPC.dll</HintPath>
+		</Reference>
+		<Reference Include="Reactor">
+			<HintPath>..\..\Among Us\BepInEx\plugins\Reactor.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="GLMod">
+			<HintPath>..\..\Among Us\BepInEx\plugins\GLMod.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="ChallengerOS">
+			<HintPath>..\..\Among Us\BepInEx\plugins\ChallengerOS.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="..\..\Among Us\BepInEx\core\0Harmony.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\BepInEx.Core.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\BepInEx.IL2CPP.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\BepInEx.Preloader.Core.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Cpp2IL.Core.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Gee.External.Capstone.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Iced.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Il2Cpp.TlsAdapter.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Il2CppDumper.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\IndexRange.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\LibAssemblyUnhollower.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\LibCpp2IL.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Mono.Cecil.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Mono.Cecil.Mdb.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Mono.Cecil.Pdb.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\Mono.Cecil.Rocks.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\MonoMod.RuntimeDetour.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\MonoMod.Utils.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\SemanticVersioning.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\UnhollowerBaseLib.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\UnhollowerRuntimeLib.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\core\WasmDisassembler.dll" />
+		<Reference Include="..\..\Among Us\BepInEx\unhollowed\*.dll" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Items\**" />
+		<EmbeddedResource Remove="Items\**" />
+		<None Remove="Items\**" />
+	</ItemGroup>
+
+	<Target Name="Copy" AfterTargets="Reobfuscate">
+		<Copy SourceFiles="$(OutputPath)reobfuscated/$(AssemblyName).dll" DestinationFolder="..\..\Among Us\BepInEx\plugins\" Condition="'$(Configuration)' == 'Beta'" />
+	</Target>
+</Project>
