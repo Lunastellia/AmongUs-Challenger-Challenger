@@ -1924,8 +1924,11 @@ namespace ChallengerMod
                 {
                     Informant.TaskEND = true;
                 }
-                else { }
-                
+                else if (tasksLeft <= ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.getFloat())
+                {
+                    Informant.TaskEND = true;
+                }
+
 
                 if (tasksFinish == 0)
                 {

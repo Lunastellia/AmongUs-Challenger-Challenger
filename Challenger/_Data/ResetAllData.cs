@@ -99,6 +99,7 @@ namespace ChallengerMod
             Challenger._Crewmates = new List<PlayerControl>();
             Challenger._Impostors = new List<PlayerControl>();
             Challenger._Alls = new List<PlayerControl>();
+            ChallengerOS.Objects.Balise.clear();
         }
         public static void ResetRolePick()
         {
@@ -254,6 +255,8 @@ namespace ChallengerMod
             //BAIT
             Bait.active = new Dictionary<ChallengerOS.Utils.Helpers.DeadPlayer, float>();
             Bait.bait = new List<PlayerControl>();
+            Bait.BaliseUsed = false;
+            Bait.BaliseEnable = false;
 
 
             //MENTALIST

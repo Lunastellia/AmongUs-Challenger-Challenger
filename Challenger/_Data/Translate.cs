@@ -173,6 +173,7 @@ namespace ChallengerMod.Set
 
         public static int SetCost = 1;
         public static int SetCost0 = 0;
+        public static int SetInformantTaskRemaining = 0;
 
         public static int TotalPlayerCount = 15;
         public static int TotalPlayerDie = 0;
@@ -828,6 +829,8 @@ namespace ChallengerMod.Set
 
         public static float SentinelAbilityButtonMaxTimer = 5f;
         public static float SentinelAbilityButtonEffectDuration = 5f;
+
+        public static float BaitButtonMaxTimer = 5f;
 
         //HYBRID
         public static float MercenaryKillButtonMaxTimer = 5f;
@@ -1902,19 +1905,22 @@ namespace ChallengerMod.Set
                                 MainSetFR += "\nChallenge Polus Nucléaire Compte à rebour = <color=#FFFF00>" + NuclearTime1.getFloat() + " ~ " + (NuclearTime1.getFloat() + NuclearTimeRND.getFloat()) + "</color>, Durée de l'alerte = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
                             }
 
-                            if (NuclearHide.getBool() == true)
+                            if (NuclearHide.getSelection() == 0)
                             {
-                                MainSet += " Timer Hide: <color=#00ff00>Yes</color>.";
-                                MainSetFR += "Compteur caché : <color=#00ff00>Oui</color>.";
+                                MainSet += " Timer visibility : <color=#ff0000>No</color>.";
+                                MainSetFR += "Compteur visible : <color=#ff0000>Non</color>.";
                             }
-                            else
+                            if (NuclearHide.getSelection() == 1)
                             {
-                                MainSet += " Timer Hide: <color=#FF0000>No</color>.";
-                                MainSetFR += "Compteur caché : <color=#FF0000>Non</color>.";
+                                MainSet += " Timer visibility : <color=#00ff00>Yes</color>.";
+                                MainSetFR += "Compteur visible : <color=#00ff00>Yes</color>.";
                             }
-                                
-
-
+                            if (NuclearHide.getSelection() == 2)
+                            {
+                                MainSet += " Timer visibility : <color=#ff00ff>Only impostors</color>.";
+                                MainSetFR += "Compteur visible : <color=#ff00ff>Uniquement les imposteurs</color>.";
+                            }
+                            
                             ChallengerMod.Challenger.STRMap = "Polus Challenger Nuclear";
                         }
                         if (BetterMapPL.getSelection() == 2 && NuclearTimerMod.getBool() == false)
@@ -3397,6 +3403,28 @@ namespace ChallengerMod.Set
                             Informant += "Analyse Ability Mode : <color=#ff00ff>Cooldown</color>, Cooldown for Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
                             InformantFR += "Peut analyser : <color=#ff00ff>Plusieurs fois</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
                         }
+                        
+                        if (InforRemainingTask.getFloat() == TotalTask)
+                        {
+
+                            Informant += "\nEnable : <color=#ff00ff>From the game start</color>,";
+                            InformantFR += "\nDisponible : <color=#ff00ff>Dés le début de la partie</color>,";
+                        }
+                        else
+                        {
+                            if (InforRemainingTask.getFloat() == 0)
+                            {
+                                Informant += "\nEnable : <color=#ff00ff>When all task are complete</color>,";
+                                InformantFR += "\nDisponible : <color=#00ff00>quand Toute les tâches sont terminées</color>,";
+                            }
+                            else
+                            {
+                                Informant += "\nEnable :If <color=#ff00ff>" + (TotalTask - InforRemainingTask.getFloat()) + "/" + TotalTask + " task are completed</color>,";
+                                InformantFR += "\nDisponible :Si <color=#ff00ff>" + (TotalTask - InforRemainingTask.getFloat()) + "/" + TotalTask + " Tâches sont terminées.</color>,";
+                            }
+                        }
+
+
                         if (InforAnalyseTeam.getBool() == true)
                         {
                             Informant += " can see Special role Team : <color=#00ff00>Yes</color>.";
@@ -3407,6 +3435,7 @@ namespace ChallengerMod.Set
                             Informant += " can see Special role Team : <color=#ff0000>No</color>.";
                             InformantFR += " Peut voir l'équipe des Rôles spéciaux : <color=#ff0000>Non</color>.";
                         }
+
 
                     }
                     if (InforSpawnChance.getFloat() > 0 && InforAdd.getBool() == true)
@@ -3443,7 +3472,19 @@ namespace ChallengerMod.Set
                             BaitFR += "Délai avant que le Signalement s'active : <color=#00ffff>" + BaitReporttime.getFloat() + "s</color>,";
                         }
 
-                            if (BaitCanVent.getBool() == true)
+                        if (BaitBalise.getBool() == true)
+                        {
+                            Bait += " Balise : <color=#00ff00>Yes</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
+                            BaitFR += " Balise : <color=#00ff00>Oui</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
+                        }
+                        else
+                        {
+                            Bait += " Balise : <color=#ff0000>No</color>,";
+                            BaitFR += " Balise : <color=#ff0000>Non</color>,";
+                        }
+
+
+                        if (BaitCanVent.getBool() == true)
                         {
                             Bait += " Can Use Vent : <color=#00FF00>yes</color>.";
                             BaitFR += " peut utiliser les Vents : <color=#00FF00>Oui</color>.";
@@ -5206,6 +5247,9 @@ namespace ChallengerMod.Set
                     SentinelAbilityButtonMaxTimer = ScanCooldown.getFloat();
                     SentinelAbilityButtonEffectDuration = ScanDuration.getFloat();
 
+                    BaitButtonMaxTimer = BaitBaliseTime.getFloat();
+
+
                     //HYBRID
                     MercenaryKillButtonMaxTimer = MercenaryKillCooldown.getFloat();
 
@@ -5262,6 +5306,13 @@ namespace ChallengerMod.Set
                     SorcererFindAbilityButtonMaxTimer = WarCooldown.getFloat();
                     SorcererStuffAbilityButtonMaxTimer = 0f;
 
+                    TotalTask = PlayerControl.GameOptions.NumCommonTasks + PlayerControl.GameOptions.NumLongTasks + PlayerControl.GameOptions.NumShortTasks;
+
+                    if (TotalTask == 0)
+                    {
+                        PlayerControl.GameOptions.NumShortTasks = 1;
+                    }
+
                     ChallengerMod.Roles.Bait.reportDelayMin = BaitReporttime.getFloat();
                     ChallengerMod.Roles.Bait.reportDelayMax = (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat());
 
@@ -5289,7 +5340,7 @@ namespace ChallengerMod.Set
                     if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 7) { ChallengerMod.Roles.Cursed.SpeedModifieur = -1; }
 
 
-
+                    SetInformantTaskRemaining = (int)Math.Round(TotalTask);
                     SetCost = (int)Math.Round(ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat() -1);
                     SetCost0 = (int)Math.Round(ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat());
 
@@ -5312,6 +5363,11 @@ namespace ChallengerMod.Set
                         ChallengerMod.Roles.Basilisk.CanPetrify = false;
                     }
                   
+                    if (ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.getFloat() > TotalTask)
+                    {
+                        ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.updateSelection(SetInformantTaskRemaining);
+                    }
+
 
                     if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
                     {
@@ -5442,7 +5498,7 @@ namespace ChallengerMod.Set
 
 
 
-                    TotalTask = PlayerControl.GameOptions.NumCommonTasks + PlayerControl.GameOptions.NumLongTasks + PlayerControl.GameOptions.NumShortTasks;
+                    
 
                     
                     PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
@@ -5653,7 +5709,14 @@ namespace ChallengerMod.Set
                     }
 
 
-
+                    if ((PlayerControl.GameOptions.NumImpostors == 1 && FakeAdd.getBool() == true) || ImpostorsKnowEachother.getSelection() == 1 && FakeAdd.getBool() == true)
+                    {
+                        FakeAdd.updateSelection(0);
+                    }
+                    if (PlayerControl.GameOptions.NumImpostors == 1 && ImpostorsKnowEachother.getSelection() == 1)
+                    {
+                        ImpostorsKnowEachother.updateSelection(0);
+                    }
 
 
                     if (SherifAdd.getBool() == true)

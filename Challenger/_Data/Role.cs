@@ -96,6 +96,7 @@ namespace ChallengerMod
             public static PlayerControl Role { get; set; }
             public static PlayerControl currentTarget;
             public static bool SuicideShield = false;
+            public static bool TargetBaitArea;
 
         }
         public static class Impostor2
@@ -103,6 +104,7 @@ namespace ChallengerMod
             public static PlayerControl Role { get; set; }
             public static PlayerControl currentTarget;
             public static bool SuicideShield = false;
+            public static bool TargetBaitArea;
 
 
         }
@@ -111,6 +113,7 @@ namespace ChallengerMod
             public static PlayerControl Role { get; set; }
             public static PlayerControl currentTarget;
             public static bool SuicideShield = false;
+            public static bool TargetBaitArea;
 
 
         }
@@ -121,7 +124,7 @@ namespace ChallengerMod
             public static PlayerControl currentTarget;
             public static bool CanKill = false;
             public static bool Suicide = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Sheriff2
         {
@@ -129,7 +132,7 @@ namespace ChallengerMod
             public static PlayerControl currentTarget;
             public static bool CanKill = false;
             public static bool Suicide = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Sheriff3
         {
@@ -137,7 +140,7 @@ namespace ChallengerMod
             public static PlayerControl currentTarget;
             public static bool CanKill = false;
             public static bool Suicide = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Guardian
         {
@@ -251,6 +254,8 @@ namespace ChallengerMod
             public static Dictionary<ChallengerOS.Utils.Helpers.DeadPlayer, float> active = new Dictionary<ChallengerOS.Utils.Helpers.DeadPlayer, float>();
             public static float reportDelayMin = 1f;
             public static float reportDelayMax = 1f;
+            public static bool BaliseUsed = false;
+            public static bool BaliseEnable = false;
 
         }
         public static class Mentalist
@@ -352,7 +357,7 @@ namespace ChallengerMod
             public static bool isImpostor = false;
             public static bool Temp = false;
             public static float Timer = 1.5f;
-
+            public static bool TargetBaitArea;
 
         }
         public static class CopyCat
@@ -380,7 +385,7 @@ namespace ChallengerMod
             public static float Timer = 1.5f;
             public static bool HMActive = false;
             public static int ScanPlayerDie = 0;
-
+            public static bool TargetBaitArea;
 
         }
         public static class Survivor
@@ -460,7 +465,7 @@ namespace ChallengerMod
             public static bool SuicideShield = false;
             public static bool canKill = false;
             public static bool Win = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Jester
         {
@@ -565,8 +570,8 @@ namespace ChallengerMod
             public static bool BSentinel = false;
             public static bool BLawkeeper = false;
             public static bool BImpo = false;
-             
-            
+            public static bool TargetBaitArea;
+
 
 
         }
@@ -580,7 +585,7 @@ namespace ChallengerMod
             public static bool CanVent = false;
             public static bool Reset = false;
             public static bool KillBait = false;
-
+            public static bool TargetBaitArea;
 
 
         }
@@ -596,7 +601,7 @@ namespace ChallengerMod
             public static bool StopMorphed = true;
 
             public static bool CanVent = false;
-
+            public static bool TargetBaitArea;
 
         }
         public static class Scrambler
@@ -606,7 +611,7 @@ namespace ChallengerMod
             public static bool SuicideShield = false;
             public static bool Camo = false;
             public static bool CanVent = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Barghest
         {
@@ -617,7 +622,7 @@ namespace ChallengerMod
             public static bool Shadow = false;
             public static bool VentUpdate = false;
             public static bool VentUse = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Ghost
         {
@@ -626,7 +631,7 @@ namespace ChallengerMod
             public static bool SuicideShield = false;
             public static bool Hide = false;
             public static bool CanVent = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Sorcerer
         {
@@ -662,8 +667,8 @@ namespace ChallengerMod
             public static bool CanUse2 = false;
             public static bool CanUse3 = false;
             public static bool CanUse4 = false;
+            public static bool TargetBaitArea;
 
-            
 
 
         }
@@ -675,6 +680,7 @@ namespace ChallengerMod
             public static bool SuicideShield = false;
             public static bool CanVent = false;
             public static bool hasMultipleShotsPerMeeting { get; set; }
+            public static bool TargetBaitArea;
         }
         public static class Mesmer
         {
@@ -686,7 +692,7 @@ namespace ChallengerMod
             public static bool SuicideShield = false;
             public static bool MindControl = false;
             public static bool CanVent = false;
-
+            public static bool TargetBaitArea;
         }
         public static class Basilisk
         {
@@ -708,7 +714,7 @@ namespace ChallengerMod
             public static bool CanPetrifyAndShield = false; 
             public static bool NullTarget = false;
             public static bool SinglePetrify = false;
-
+            public static bool TargetBaitArea;
 
 
         }
@@ -719,6 +725,7 @@ namespace ChallengerMod
             public static PlayerControl currentTarget;
             public static bool SuicideShield = false;
             public static bool CanVent = false;
+            public static bool TargetBaitArea;
 
         }
         public static class Saboteur
@@ -729,6 +736,7 @@ namespace ChallengerMod
             public static bool CanVent = false;
             public static bool Roll = false;
             public static float RollInt = 0f;
+            public static bool TargetBaitArea;
 
         }
 
