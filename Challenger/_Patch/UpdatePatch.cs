@@ -3192,14 +3192,72 @@ namespace ChallengerMod
 
                 if (GLMod.GLMod.hasDlc(2171400)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Eater = true; }
                 if (GLMod.GLMod.hasDlc(2240160)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Prime = true; }
-                
 
 
 
 
-               
+                if (debugMod >= 6)
+                {
 
-                
+                    ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Lily = true;
+
+                }
+
+                if (debugMod < 6)
+                {
+                    if (Input.GetKeyDown(KeyCode.Keypad0))
+                    {
+
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad1))
+                    {
+
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad2))
+                    {
+                        if (debugMod == 2) { debugMod += 1; }
+                        else { debugMod = 0; }
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad3))
+                    {
+                        if (debugMod == 3) { debugMod += 1; }
+                        else { debugMod = 0; }
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad4))
+                    {
+
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad5))
+                    {
+
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad6))
+                    {
+                        if (debugMod == 4) { debugMod += 1; }
+                        else { debugMod = 0; }
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad7))
+                    {
+
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad8))
+                    {
+                        if (debugMod < 2) { debugMod += 1; }
+                        else { debugMod = 0; }
+                    }
+                    if (Input.GetKeyDown(KeyCode.Keypad9))
+                    {
+                        if (debugMod == 5)
+                        {
+                            debugMod += 1;
+                            SoundManager.Instance.PlaySound(ShieldBuff, false, 100f);
+                        }
+                        else { debugMod = 0; }
+                    }
+                }
+
+
+
 
 
                 //UNLOCK CHECK
@@ -5443,6 +5501,41 @@ namespace ChallengerMod
                     SA4.transform.localScale = new Vector3(4.72f, 5.6164f, 2);
                 }*/
 
+                if (GameObject.Find("BaitArea"))
+                {
+                    var BaitAreaTransform = GameObject.Find("BaitArea");
+                    if (BaitAreaTransform != null)
+                    {
+                        SpriteRenderer BaitAreaTransformSprite = BaitAreaTransform.GetComponent<SpriteRenderer>();
+
+                        if (Bait.BaliseEnable)
+                        {
+
+                            if (BaitAreaTransformSprite.sprite != BaitBaliseArea)
+                            {
+                                BaitAreaTransformSprite.sprite = BaitBaliseArea;
+                            }
+                        }
+                        else
+                        {
+                            if ((Bait.Role != null && PlayerControl.LocalPlayer == Bait.Role)
+                                || (CopyCat.Role != null && PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.copyRole == 13 && CopyCat.CopyStart == true)
+                                || (PlayerControl.LocalPlayer.Data.IsDead)
+                                )
+                            {
+                                if (BaitAreaTransformSprite.sprite != BaitBaliseArea0)
+                                {
+                                    BaitAreaTransformSprite.sprite = BaitBaliseArea0;
+                                }
+
+                            }
+                            
+                        }
+                    }
+                    
+                }
+
+
                 if (GameObject.Find("Cristal 1"))
                 {
                     var C1SaveLocation = GameObject.Find("Cristal 1");
@@ -6190,6 +6283,8 @@ namespace ChallengerMod
                         STR_Ts3 = "]";
                         STR_P1 = "(";
                         STR_P2 = ")";
+
+                        if (BaitBalise.getBool() == false) { Bait.BaliseUsed = true; }
                     }
                     BaitCount = true;
 
@@ -7575,7 +7670,10 @@ namespace ChallengerMod
                                 }
                             }
                         }
-
+                        if (CopyCat.copyRole == 13 && CopyCat.CopyStart)
+                        {
+                            if (BaitBalise.getBool() == false) { Bait.BaliseUsed = true; }
+                        }
 
                         if (Mayor.Role != null)
                         {

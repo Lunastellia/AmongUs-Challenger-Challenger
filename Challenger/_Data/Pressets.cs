@@ -199,8 +199,8 @@ namespace ChallengerMod.Pressets
                         PlayerControl.GameOptions.NumShortTasks = 5;
                         PlayerControl.GameOptions.NumLongTasks = 3;
 
-                        QTCrew.updateSelection(5);
-                        QTImp.updateSelection(1);
+                        QTCrew.updateSelection(8);
+                        QTImp.updateSelection(2);
                         QTSpe.updateSelection(0);
                         QTDuo.updateSelection(0);
 
@@ -719,7 +719,7 @@ namespace ChallengerMod.Pressets
 
                         QTCrew.updateSelection(8);
                         QTImp.updateSelection(2);
-                        QTSpe.updateSelection(0);
+                        QTSpe.updateSelection(1);
                         QTDuo.updateSelection(0);
 
                         SherifAdd.updateSelection(1);
@@ -911,7 +911,7 @@ namespace ChallengerMod.Pressets
 
                         QTCrew.updateSelection(9);
                         QTImp.updateSelection(2);
-                        QTSpe.updateSelection(0);
+                        QTSpe.updateSelection(1);
                         QTDuo.updateSelection(0);
 
                         SherifAdd.updateSelection(1);
@@ -1012,6 +1012,8 @@ namespace ChallengerMod.Pressets
                         BaitSpawnChance.updateSelection(20);
                         BaitReporttime.updateSelection(0);
                         BaitReporttimeRnd.updateSelection(2);
+                        BaitBalise.updateSelection(1);
+                        BaitBaliseTime.updateSelection(8);
                         BaitCanVent.updateSelection(0);
 
                         DictatorSpawnChance.updateSelection(20);
@@ -1370,6 +1372,8 @@ namespace ChallengerMod.Pressets
                         BaitSpawnChance.updateSelection(20);
                         BaitReporttime.updateSelection(1);
                         BaitReporttimeRnd.updateSelection(2);
+                        BaitBalise.updateSelection(1);
+                        BaitBaliseTime.updateSelection(8);
                         BaitCanVent.updateSelection(0);
 
                         SentinelSpawnChance.updateSelection(20);

@@ -14,6 +14,7 @@ using ChallengerMod.Item;
 using Reactor.Extensions;
 using ChallengerOS.Object;
 using ChallengerMod.Rnd;
+using ChallengerOS.Objects;
 
 namespace ChallengerMod.RPC
 {
@@ -344,6 +345,9 @@ namespace ChallengerMod.RPC
         //Mesmer
         MindControlOn,
         MindControl,
+
+        BaitBalise,
+        BaitBaliseEnable,
     }
     public static class RPCProcedure
     {
@@ -3453,7 +3457,36 @@ namespace ChallengerMod.RPC
 
             return;
         }
-
+        public static void baitbalise(byte[] buff)
+        {
+            Vector3 position = Vector3.zero;
+            position.x = BitConverter.ToSingle(buff, 0 * sizeof(float));
+            position.y = BitConverter.ToSingle(buff, 1 * sizeof(float));
+            new Balise(position);
+            Bait.BaliseUsed = true;
+            if (Bait.Role != null && !Bait.Role.Data.IsDead)
+            {
+                GLMod.GLMod.currentGame.addAction(Bait.Role.Data.PlayerName, "", "create_bait_area");
+                Bait.BaliseUsed = true;
+            }
+            else
+            {
+                if (CopyCat.Role != null)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "create_bait_area");
+                    Bait.BaliseUsed = true;
+                }
+            }
+            
+            
+        }
+        public static void baitBaliseEnable()
+        {
+            Bait.BaliseEnable = true;
+            GLMod.GLMod.currentGame.addAction("", "", "bait_area");
+            ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+            SoundManager.Instance.PlaySound(BaitAlerte, false, 100f);
+        }
 
 
     }
@@ -4170,7 +4203,14 @@ namespace ChallengerMod.RPC
                         Mesmer.ControlledPlayer.MyPhysics.body.velocity = newVel;
                     }
                     break;
-
+                case (byte)CustomRPC.BaitBalise:
+                    RPCProcedure.baitbalise(reader.ReadBytesAndSize());
+                    break;
+                case (byte)CustomRPC.BaitBaliseEnable:
+                    {
+                        RPCProcedure.baitBaliseEnable();
+                        break;
+                    }
             }
         }
     }

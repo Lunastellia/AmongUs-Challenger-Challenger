@@ -49,8 +49,9 @@ namespace ChallengerMod.CustomButton
         private static CustomButton SentinelAbilityButton;
         private static CustomButton SentinelVentButton;
         private static CustomButton SentinelBodyButton;
+        private static CustomButton BaitButton;
 
-       
+
 
         //SPECIALS
         private static CustomButton CupidAbilityButton;
@@ -161,6 +162,8 @@ namespace ChallengerMod.CustomButton
             ChallengerMod.CustomButton.HudManagerStartPatch.SentinelAbilityButton.showButtonText = true;
 
             ChallengerMod.CustomButton.HudManagerStartPatch.DictatorAbilityButton.showButtonText = true;
+            ChallengerMod.CustomButton.HudManagerStartPatch.BaitButton.showButtonText = true;
+
 
 
             ChallengerMod.CustomButton.HudManagerStartPatch.JesterAbilityButton.showButtonText = true;
@@ -406,7 +409,9 @@ namespace ChallengerMod.CustomButton
 
             DictatorAbilityButton.MaxTimer = DictatorAbilityButtonMaxTimer;
             DictatorAbilityButton.StartTimer = 5f;
-            
+
+            BaitButton.MaxTimer = 20f;
+            BaitButton.StartTimer = 10f;
 
 
             SentinelAbilityButton.MaxTimer = SentinelAbilityButtonMaxTimer;
@@ -552,17 +557,29 @@ namespace ChallengerMod.CustomButton
                 () => { return PlayerControl.GameOptions.MapId == 2 && BetterMapPL.getSelection() == 2 && !StartNuclear; },
                 () => {
                     
-                    if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && NuclearHide.getBool() == false && !PlayerControl.LocalPlayer.Data.IsDead)
+                    if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && NuclearHide.getSelection() == 1 && !PlayerControl.LocalPlayer.Data.IsDead)
                     {
                         NuclearTimerText.text = "" + timerN;
                         NuclearTimerText.color = YellowColor;
                         NuclearTimerButton.Sprite = NuclearButtonSprite;
                     }
-                    else if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && NuclearHide.getBool() == true && !PlayerControl.LocalPlayer.Data.IsDead)
+                    else if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && NuclearHide.getSelection() == 0 && !PlayerControl.LocalPlayer.Data.IsDead)
                     {
                         NuclearTimerText.text = "-";
                         NuclearTimerText.color = nocolor;
                         NuclearTimerButton.Sprite = empty;
+                    }
+                    else if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && NuclearHide.getSelection() == 2 && !PlayerControl.LocalPlayer.Data.Role.IsImpostor && !PlayerControl.LocalPlayer.Data.IsDead)
+                    {
+                        NuclearTimerText.text = "-";
+                        NuclearTimerText.color = nocolor;
+                        NuclearTimerButton.Sprite = empty;
+                    }
+                    else if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && NuclearHide.getSelection() == 2 && PlayerControl.LocalPlayer.Data.Role.IsImpostor && !PlayerControl.LocalPlayer.Data.IsDead)
+                    {
+                        NuclearTimerText.text = "" + timerN;
+                        NuclearTimerText.color = YellowColor;
+                        NuclearTimerButton.Sprite = NuclearButtonSprite;
                     }
                     else if (NuclearTimerText != null && NuclearMap == true && NuclearTimer > 0 && PlayerControl.LocalPlayer.Data.IsDead)
                     {
@@ -1073,6 +1090,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff1kill(targetId);
                             Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff1.currentTarget = null;
+                            if (Sheriff1.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         
@@ -1107,6 +1132,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff1kill(targetId);
                             Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff1.currentTarget = null;
+                            if (Sheriff1.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else if ((Sheriff1.currentTarget.Data.Role.IsImpostor) ||
@@ -1131,6 +1164,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff1kill(targetId);
                             Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff1.currentTarget = null;
+                            if (Sheriff1.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else
@@ -1143,6 +1184,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff1kill(targetId);
                             Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff1.currentTarget = null;
+                            if (Sheriff1.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -1211,6 +1260,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff2kill(targetId);
                             Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff2.currentTarget = null;
+                            if (Sheriff2.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -1245,6 +1302,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff2kill(targetId);
                             Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff2.currentTarget = null;
+                            if (Sheriff2.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else if((Sheriff2.currentTarget.Data.Role.IsImpostor) ||
@@ -1269,6 +1334,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff2kill(targetId);
                             Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff2.currentTarget = null;
+                            if (Sheriff2.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else
@@ -1281,6 +1354,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff2kill(targetId);
                             Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff2.currentTarget = null;
+                            if (Sheriff2.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -1349,6 +1430,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff3kill(targetId);
                             Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff3.currentTarget = null;
+                            if (Sheriff3.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -1383,6 +1472,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff3kill(targetId);
                             Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff3.currentTarget = null;
+                            if (Sheriff3.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else if ((Sheriff3.currentTarget.Data.Role.IsImpostor) ||
@@ -1407,6 +1504,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff3kill(targetId);
                             Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff3.currentTarget = null;
+                            if (Sheriff3.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else
@@ -1419,6 +1524,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.sheriff3kill(targetId);
                             Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
                             Sheriff3.currentTarget = null;
+                            if (Sheriff3.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -1486,6 +1599,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.copyCatKill(targetId);
                             CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
                             CopyCat.currentTarget = null;
+                            if (CopyCat.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -1520,6 +1641,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.copyCatKill(targetId);
                             CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
                             CopyCat.currentTarget = null;
+                            if (CopyCat.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else if ((CopyCat.currentTarget.Data.Role.IsImpostor) ||
@@ -1543,6 +1672,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.copyCatKill(targetId);
                             CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
                             CopyCat.currentTarget = null;
+                            if (CopyCat.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                         else
@@ -1555,6 +1692,15 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.copyCatKill(targetId);
                             CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
                             CopyCat.currentTarget = null;
+                            if (CopyCat.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
+                            return;
                             return;
                         }
 
@@ -2028,24 +2174,25 @@ namespace ChallengerMod.CustomButton
                     MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MayorBuzz, Hazel.SendOption.Reliable, -1);
                     AmongUsClient.Instance.FinishRpcImmediately(writer);
                     RPCProcedure.mayorBuzz();
+                    Mayor.BuzzUsed = true;
                     MayorAbilityButton.Sprite = empty;
                     MayorAbilityButton.actionButton.OverrideText(BTT_EMPTY);
                 },
-                () => { return (Mayor.Role != null && Mayor.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled)
+                () => { return (Mayor.Role != null && Mayor.Buzz && Mayor.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled)
                 || (CopyCat.Role != null && CopyCat.copyRole == 8 && CopyCat.CopyStart && CopyCat.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled);
                 },
 
                 () => {
-                    if (!Mayor.BuzzUsed)
+                    if (!Mayor.Buzz || (Mayor.BuzzUsed && Mayor.Buzz))
+                    {
+                        MayorAbilityButton.Sprite = empty;
+                        MayorAbilityButton.actionButton.OverrideText(BTT_EMPTY);
+                    }
+                    else
                     {
                         MayorAbilityButton.Sprite = MayorIco;
                         MayorAbilityButton.actionButton.OverrideText(BTT_Role_Mayor);
                         MayorAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.MayorColor);
-                    }
-                    else
-                    {
-                        MayorAbilityButton.Sprite = empty;
-                        MayorAbilityButton.actionButton.OverrideText(BTT_EMPTY);
                     }
                     return !Mayor.BuzzUsed && Mayor.Buzz && PlayerControl.LocalPlayer.CanMove;
                 },
@@ -2718,7 +2865,55 @@ namespace ChallengerMod.CustomButton
             );
 
 
+            // Bait 
+            BaitButton = new CustomButton(
+                () => {
 
+
+                    BaitButton.Timer = BaitButtonMaxTimer;
+                    var pos = PlayerControl.LocalPlayer.transform.position;
+                    byte[] buff = new byte[sizeof(float) * 2];
+                    Buffer.BlockCopy(BitConverter.GetBytes(pos.x), 0, buff, 0 * sizeof(float), sizeof(float));
+                    Buffer.BlockCopy(BitConverter.GetBytes(pos.y), 0, buff, 1 * sizeof(float), sizeof(float));
+
+                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBalise, Hazel.SendOption.Reliable);
+                    writer.WriteBytesAndSize(buff);
+                    writer.EndMessage();
+                    RPCProcedure.baitbalise(buff);
+                    SoundManager.Instance.PlaySound(Used, false, 100f);
+
+
+                },
+                () => {
+                    return (Bait.Role != null && !Bait.BaliseUsed && Bait.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled)
+                || (CopyCat.Role != null && CopyCat.copyRole == 13 && !Bait.BaliseUsed && CopyCat.CopyStart && CopyCat.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled);
+                },
+
+                () => {
+                    if (!Bait.BaliseUsed)
+                    {
+                        BaitButton.Sprite = BaitIco;
+                        BaitButton.actionButton.OverrideText("BALISE");
+                        BaitButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.RedColor);
+                    }
+                    else
+                    {
+                        BaitButton.Sprite = empty;
+                        BaitButton.actionButton.OverrideText(BTT_EMPTY);
+                    }
+
+
+                    return !Bait.BaliseUsed && PlayerControl.LocalPlayer.CanMove;
+                },
+                () => {
+                    
+                        BaitButton.Timer = BaitButtonMaxTimer;
+                },
+                BaitIco,
+                new Vector3(-1.9f, 0f, 0),
+                __instance,
+                KeyCode.F
+            );
 
 
 
@@ -3184,6 +3379,15 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.mercenaryKill(targetId);
                             MercenaryKillButton.Timer = MercenaryKillButtonMaxTimer;
                             Mercenary.currentTarget = null;
+                            if (Mercenary.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
+                            return;
                             return;
                         }
 
@@ -3237,6 +3441,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.mercenaryKill(targetId);
                             MercenaryKillButton.Timer = MercenaryKillButtonMaxTimer;
                             Mercenary.currentTarget = null;
+                            if (Mercenary.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
                     }
@@ -3672,6 +3884,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.outlawKill(targetId);
                             OutlawKillButton.Timer = OutlawKillButtonMaxTimer;
                             Outlaw.currentTarget = null;
+                            if (Outlaw.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -3694,15 +3914,24 @@ namespace ChallengerMod.CustomButton
                     if ((murderAttemptResult == MurderAttemptResult.PerformKill))
                     {
                         byte targetId = 0;
-                            
+
                         //KILL
-                            targetId = Outlaw.currentTarget.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.OutlawKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.outlawKill(targetId);
-                            OutlawKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                            Outlaw.currentTarget = null;
+                        targetId = Outlaw.currentTarget.PlayerId;
+                        MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.OutlawKill, Hazel.SendOption.Reliable, -1);
+                        messageWriter.Write(targetId);
+                        AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                        RPCProcedure.outlawKill(targetId);
+                        OutlawKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                        Outlaw.currentTarget = null;
+                        if (Outlaw.TargetBaitArea)
+                        {
+                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                            AmongUsClient.Instance.FinishRpcImmediately(writer);
+                            RPCProcedure.baitBaliseEnable();
+                            Bait.BaliseEnable = true;
+                            ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                        }
+                        return;
                     }
 
 
@@ -3935,6 +4164,14 @@ namespace ChallengerMod.CustomButton
                                 RPCProcedure.setInfectePlayer(Vector.currentTarget.PlayerId);
                                 Vector.infect = true;
                                 VectorKillButton.Timer = VectorKillButtonMaxTimer;
+                                if (Assassin.TargetBaitArea)
+                                {
+                                    MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                    AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                                    RPCProcedure.baitBaliseEnable();
+                                    Bait.BaliseEnable = true;
+                                    ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                                }
                                 return;
                             }
                             else
@@ -3946,6 +4183,14 @@ namespace ChallengerMod.CustomButton
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
                                 RPCProcedure.vectorKill(Vector.currentTarget.PlayerId);
                                 VectorKillButton.Timer = VectorKillButtonMaxTimer;
+                                if (Assassin.TargetBaitArea)
+                                {
+                                    MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                    AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                                    RPCProcedure.baitBaliseEnable();
+                                    Bait.BaliseEnable = true;
+                                    ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                                }
                                 return;
 
                                
@@ -4666,6 +4911,14 @@ namespace ChallengerMod.CustomButton
                     Sorcerer4AbilityButton.Timer = 0.5f;
                     ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 0f / 255f, 0f / 255f), 0.5f);
                     SoundManager.Instance.PlaySound(Used, false, 100f);
+                    if (Sorcerer.TargetBaitArea)
+                    {
+                        MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                        RPCProcedure.baitBaliseEnable();
+                        Bait.BaliseEnable = true;
+                        ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                    }
 
                 },
                 () => {
@@ -4878,6 +5131,14 @@ namespace ChallengerMod.CustomButton
                          RPCProcedure.assassinKill(targetId);
                          AssassinKillButton.Timer = AssassinKillButtonMaxTimer;
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
 
@@ -4922,6 +5183,14 @@ namespace ChallengerMod.CustomButton
                          RPCProcedure.assassinKill(targetId);
                          AssassinKillButton.Timer = AssassinKillButtonMaxTimer;
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -4936,6 +5205,14 @@ namespace ChallengerMod.CustomButton
                          AssassinKillButton.Timer = 0f;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 0 / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -4950,6 +5227,14 @@ namespace ChallengerMod.CustomButton
                          AssassinKillButton.Timer = 0f;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 0 / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -4964,6 +5249,14 @@ namespace ChallengerMod.CustomButton
                          AssassinKillButton.Timer = 0f;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 0 / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -4978,6 +5271,14 @@ namespace ChallengerMod.CustomButton
                          AssassinKillButton.Timer = 0f;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 0 / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -4993,6 +5294,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealShield = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5008,6 +5317,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealShield = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5023,6 +5340,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVent = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(140f / 255f, 80f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5038,6 +5363,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVent = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(140f / 255f, 80f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Timelord.Role != null && Timelord.Role == Assassin.currentTarget && Assassin.BTimelord == true && !AbilityDisabled)
@@ -5053,6 +5386,14 @@ namespace ChallengerMod.CustomButton
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 125f / 255f, 255f / 255f), 0.5f);
                          AssassinTimelordAbilityButton.Timer = TimelordAbilityButtonMaxTimer;
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5069,7 +5410,15 @@ namespace ChallengerMod.CustomButton
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 125f / 255f, 255f / 255f), 0.5f);
                          AssassinTimelordAbilityButton.Timer = TimelordAbilityButtonMaxTimer;
                          Assassin.currentTarget = null;
-                         
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
+
                          return;
                      }
                      else if (Mystic.Role != null && Mystic.Role == Assassin.currentTarget && Assassin.BMystic == true && !AbilityDisabled)
@@ -5085,6 +5434,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealShield = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5100,6 +5457,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealShield = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Mayor.Role != null && Mayor.Role == Assassin.currentTarget && Assassin.BMayor == true && !AbilityDisabled)
@@ -5114,6 +5479,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVoteColor = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5129,6 +5502,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVoteColor = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Detective.Role != null && Detective.Role == Assassin.currentTarget && Assassin.BDetective == true && !AbilityDisabled)
@@ -5143,6 +5524,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealFootPrint = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 255f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5158,6 +5547,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealFootPrint = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 255f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Nightwatch.Role != null && Nightwatch.Role == Assassin.currentTarget && Assassin.BNightwatcher == true && !AbilityDisabled)
@@ -5172,6 +5569,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVision = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5187,6 +5592,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVision = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Spy.Role != null && Spy.Role == Assassin.currentTarget && Assassin.BSpy == true && !AbilityDisabled)
@@ -5201,6 +5614,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVision = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5216,6 +5637,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVision = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Informant.Role != null && Informant.Role == Assassin.currentTarget && Assassin.BInfor == true && !AbilityDisabled)
@@ -5230,6 +5659,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealPlayerInfo = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5245,6 +5682,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealPlayerInfo = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Mentalist.Role != null && Mentalist.Role == Assassin.currentTarget && Assassin.BMentalist == true && !AbilityDisabled)
@@ -5259,6 +5704,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealAdminColor = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5274,6 +5727,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealAdminColor = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Builder.Role != null && Builder.Role == Assassin.currentTarget && Assassin.BBuilder == true && !AbilityDisabled)
@@ -5288,6 +5749,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVent = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(140f / 255f, 80f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5303,6 +5772,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVent = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(140f / 255f, 80f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
                      else if (Sentinel.Role != null && Sentinel.Role == Assassin.currentTarget && Assassin.BSentinel == true && !AbilityDisabled)
@@ -5317,6 +5794,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVision = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5332,6 +5817,14 @@ namespace ChallengerMod.CustomButton
                          Assassin.StealVision = true;
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 255f / 255f, 255f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return; ;
                      }
 
@@ -5346,6 +5839,14 @@ namespace ChallengerMod.CustomButton
                          AssassinKillButton.Timer = (AssassinKillButtonMaxTimer / 2);
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5360,6 +5861,14 @@ namespace ChallengerMod.CustomButton
                          AssassinKillButton.Timer = (AssassinKillButtonMaxTimer / 2);
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
 
                      }
@@ -5373,6 +5882,14 @@ namespace ChallengerMod.CustomButton
                          RPCProcedure.assassinKill(targetId);
                          AssassinKillButton.Timer = AssassinKillButtonMaxTimer;
                          Assassin.currentTarget = null;
+                         if (Assassin.TargetBaitArea)
+                         {
+                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             AmongUsClient.Instance.FinishRpcImmediately(writer);
+                             RPCProcedure.baitBaliseEnable();
+                             Bait.BaliseEnable = true;
+                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                         }
                          return;
                      }
 
@@ -5461,6 +5978,14 @@ namespace ChallengerMod.CustomButton
                               RPCProcedure.impostor1Kill(targetId);
                               Impostor1KillButton.Timer = ImpostorsKillButtonMaxTimer;
                               Impostor1.currentTarget = null;
+                              if (Impostor1.TargetBaitArea)
+                              {
+                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                  RPCProcedure.baitBaliseEnable();
+                                  Bait.BaliseEnable = true;
+                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                              }
                               return;
                           }
 
@@ -5505,6 +6030,14 @@ namespace ChallengerMod.CustomButton
                               RPCProcedure.impostor1Kill(targetId);
                               Impostor1KillButton.Timer = ImpostorsKillButtonMaxTimer;
                               Impostor1.currentTarget = null;
+                              if (Impostor1.TargetBaitArea)
+                              {
+                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                  RPCProcedure.baitBaliseEnable();
+                                  Bait.BaliseEnable = true;
+                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                              }
                               return;
                           }
                       }
@@ -5573,6 +6106,14 @@ namespace ChallengerMod.CustomButton
                               RPCProcedure.impostor2Kill(targetId);
                               Impostor2KillButton.Timer = ImpostorsKillButtonMaxTimer;
                               Impostor2.currentTarget = null;
+                              if (Impostor2.TargetBaitArea)
+                              {
+                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                  RPCProcedure.baitBaliseEnable();
+                                  Bait.BaliseEnable = true;
+                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                              }
                               return;
                           }
 
@@ -5616,6 +6157,14 @@ namespace ChallengerMod.CustomButton
                               RPCProcedure.impostor2Kill(targetId);
                               Impostor2KillButton.Timer = ImpostorsKillButtonMaxTimer;
                               Impostor2.currentTarget = null;
+                              if (Impostor2.TargetBaitArea)
+                              {
+                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                  RPCProcedure.baitBaliseEnable();
+                                  Bait.BaliseEnable = true;
+                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                              }
                               return;
                           }
 
@@ -5687,6 +6236,14 @@ namespace ChallengerMod.CustomButton
                               RPCProcedure.impostor3Kill(targetId);
                               Impostor3KillButton.Timer = ImpostorsKillButtonMaxTimer;
                               Impostor3.currentTarget = null;
+                              if (Impostor3.TargetBaitArea)
+                              {
+                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                  RPCProcedure.baitBaliseEnable();
+                                  Bait.BaliseEnable = true;
+                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                              }
                               return;
                           }
 
@@ -5730,6 +6287,14 @@ namespace ChallengerMod.CustomButton
                               RPCProcedure.impostor3Kill(targetId);
                               Impostor3KillButton.Timer = ImpostorsKillButtonMaxTimer;
                               Impostor3.currentTarget = null;
+                              if (Impostor3.TargetBaitArea)
+                              {
+                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                  RPCProcedure.baitBaliseEnable();
+                                  Bait.BaliseEnable = true;
+                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                              }
                               return;
                           }
 
@@ -5802,6 +6367,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.morphlingKill(targetId);
                              MorphlingKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Morphling.currentTarget = null;
+                             if (Morphling.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -5845,6 +6418,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.morphlingKill(targetId);
                              MorphlingKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Morphling.currentTarget = null;
+                             if (Morphling.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -5913,6 +6494,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.scramblerKill(targetId);
                              ScramblerKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Scrambler.currentTarget = null;
+                             if (Scrambler.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -5957,6 +6546,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.scramblerKill(targetId);
                              ScramblerKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Scrambler.currentTarget = null;
+                             if (Scrambler.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -6025,6 +6622,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.barghestKill(targetId);
                              BarghestKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Barghest.currentTarget = null;
+                             if (Barghest.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -6068,6 +6673,17 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.barghestKill(targetId);
                              BarghestKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Barghest.currentTarget = null;
+
+
+                             if (Barghest.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
+
                              return;
                          }
 
@@ -6136,6 +6752,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.ghostKill(targetId);
                              GhostKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Ghost.currentTarget = null;
+                             if (Ghost.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -6179,6 +6803,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.ghostKill(targetId);
                              GhostKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Ghost.currentTarget = null;
+                             if (Ghost.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -6247,6 +6879,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.sorcererKill(targetId);
                              SorcererKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Sorcerer.currentTarget = null;
+                             if (Sorcerer.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -6290,6 +6930,14 @@ namespace ChallengerMod.CustomButton
                              RPCProcedure.sorcererKill(targetId);
                              SorcererKillButton.Timer = ImpostorsKillButtonMaxTimer;
                              Sorcerer.currentTarget = null;
+                             if (Sorcerer.TargetBaitArea)
+                             {
+                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                 RPCProcedure.baitBaliseEnable();
+                                 Bait.BaliseEnable = true;
+                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                             }
                              return;
                          }
 
@@ -6359,6 +7007,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.guesserKill(targetId);
                             GuesserKillButton.Timer = ImpostorsKillButtonMaxTimer;
                             Guesser.currentTarget = null;
+                            if (Guesser.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -6401,6 +7057,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.guesserKill(targetId);
                             GuesserKillButton.Timer = ImpostorsKillButtonMaxTimer;
                             Guesser.currentTarget = null;
+                            if (Guesser.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -6469,6 +7133,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.basiliskKill(targetId);
                             BasiliskKillButton.Timer = ImpostorsKillButtonMaxTimer;
                             Basilisk.currentTarget = null;
+                            if (Basilisk.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -6511,6 +7183,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.basiliskKill(targetId);
                             BasiliskKillButton.Timer = ImpostorsKillButtonMaxTimer;
                             Basilisk.currentTarget = null;
+                            if (Basilisk.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -6580,6 +7260,14 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.copyCatKill(targetId);
                             CopyCatKillButton.Timer = ImpostorsKillButtonMaxTimer;
                             CopyCat.currentTarget = null;
+                            if (CopyCat.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 
@@ -6622,6 +7310,15 @@ namespace ChallengerMod.CustomButton
                             RPCProcedure.copyCatKill(targetId);
                             CopyCatKillButton.Timer = ImpostorsKillButtonMaxTimer;
                             CopyCat.currentTarget = null;
+                            
+                            if (CopyCat.TargetBaitArea)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.baitBaliseEnable();
+                                Bait.BaliseEnable = true;
+                                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                            }
                             return;
                         }
 

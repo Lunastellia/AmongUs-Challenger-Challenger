@@ -308,6 +308,7 @@ namespace ChallengerMod
         public static AudioClip Eated;
         
         public static AudioClip SoulTake;
+        public static AudioClip BaitAlerte;
 
 
         public static Sprite BarghestKillIco;
@@ -737,10 +738,12 @@ namespace ChallengerMod
         public static Sprite TargetVenger;
 
         private static Sprite animatedVentSealedSpritebar;
+        public static Sprite BaitBaliseArea;
+        public static Sprite BaitBaliseArea0;
+        public static Sprite BaitIco;
 
-       
 
-       
+
 
 
 

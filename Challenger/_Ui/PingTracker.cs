@@ -30,8 +30,8 @@ namespace ChallengerMod
                     __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Partie Normal</color><color=#252525> - </color>" + RT_ACTIF + "\n\n</size>";
                     
                 }
+
                 
-                 //__instance.text.text += "=> " + debugg03 + debugg02 + " !";
 
 
 

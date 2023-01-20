@@ -962,6 +962,7 @@ namespace ChallengerMod
             Eated = bundle_Sound.LoadAsset<AudioClip>("Eated.wav").DontUnload();
             Explode = bundle_Sound.LoadAsset<AudioClip>("Explode.wav").DontUnload();
             SoulTake = bundle_Sound.LoadAsset<AudioClip>("Soundout.wav").DontUnload();
+            BaitAlerte = bundle_Sound.LoadAsset<AudioClip>("Bait.mp3").DontUnload();
 
             // --------------- Level
             Affich = bundle_Level.LoadAsset<Sprite>("oneY2.png").DontUnload(); //Event 4.0.2
@@ -1344,6 +1345,11 @@ namespace ChallengerMod
             SenDBon = bundle_Sprite.LoadAsset<Sprite>("SenDBon.png").DontUnload();
             SenDBoff = bundle_Sprite.LoadAsset<Sprite>("SenDBoff.png").DontUnload();
             SenIco = bundle_Sprite.LoadAsset<Sprite>("SenIco.png").DontUnload();
+
+            BaitBaliseArea = bundle_Sprite.LoadAsset<Sprite>("BaitArea.png").DontUnload();
+            BaitBaliseArea0 = bundle_Sprite.LoadAsset<Sprite>("BaitArea0.png").DontUnload();
+
+            BaitIco = bundle_Sprite.LoadAsset<Sprite>("BaitIco.png").DontUnload();
 
             TargetSheriff = bundle_Sprite.LoadAsset<Sprite>("Tshe.png").DontUnload();
             TargetGuardian = bundle_Sprite.LoadAsset<Sprite>("Tgua.png").DontUnload();
