@@ -15,6 +15,8 @@ using Reactor.Extensions;
 using ChallengerOS.Object;
 using ChallengerMod.Rnd;
 using ChallengerOS.Objects;
+using UnityEngine.Networking.Types;
+using static UnityEngine.GraphicsBuffer;
 
 namespace ChallengerMod.RPC
 {
@@ -134,7 +136,9 @@ namespace ChallengerMod.RPC
     {
         // Main Controls
         
-        ShareAllRoles = 70,
+        ShareAllRoles = 71,
+        ShareNewPLayerSlot,
+        ShareNewMapID,
         SyncTimer,
         SyncMap,
         SyncDie,
@@ -142,6 +146,7 @@ namespace ChallengerMod.RPC
         RemoveAllBodies,
         SetLocalPlayers,
         SetRole,
+        SetVisorColor,
 
         //winner
         SetWinLove,
@@ -216,6 +221,10 @@ namespace ChallengerMod.RPC
         //Informant
         SetInfoPlayer,
 
+        //Bait
+        BaitBalise,
+        BaitBaliseEnable,
+
         //Mentalist
         MentalistColorOn,
         MentalistColorOff,
@@ -230,6 +239,12 @@ namespace ChallengerMod.RPC
         //Dictator
         DictatorNoSkipVote,
 
+        //Leader
+        AssignTarget1,
+        AssignTarget2,
+        AssignCopyTarget1,
+        AssignCopyTarget2,
+
         //Jester
         JesterFakeKill,
         JesterWin,
@@ -238,8 +253,6 @@ namespace ChallengerMod.RPC
         CleanBody,
 
         //Cupid
-        SetLover1,
-        SetLover2,
         LoversExiled,
         KillLover1,
         KillLover2,
@@ -346,8 +359,7 @@ namespace ChallengerMod.RPC
         MindControlOn,
         MindControl,
 
-        BaitBalise,
-        BaitBaliseEnable,
+       
     }
     public static class RPCProcedure
     {
@@ -564,9 +576,114 @@ namespace ChallengerMod.RPC
                 }
         }
         // Main Controls
+        public static void setVisorColor(byte PlayerColor, int ColorID)
+        {
+            int _ColorID = 0;
+            _ColorID = ColorID;
+            PlayerControl _Player = Helpers.playerById(PlayerColor);
+            
+            int _Player_ColorID = _Player.Data.DefaultOutfit.ColorId;
 
+            if (_Player_ColorID == 18)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Bloody.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 19)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Earth.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 21)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Chedard.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 22)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Sun.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 23)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Leef.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 24)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Radian.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 25)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Swamp.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 26)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Ice.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 27)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Lagoon.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 28)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Ocean.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 29)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Night.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 30)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Dawn.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 31)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Candy.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 32)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Galaxy.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 33)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Snow.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 33)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Cender.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 34)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Dark.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+            if (_Player_ColorID == 35)
+            {
+                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Rainbow.updateSelection(_ColorID);
+                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+            }
+        }
 
-       
+        public static void shareNewPLayerSlot(int Value)
+        {
+            PlayerControl.GameOptions.MaxPlayers = Value;
+        }
+        public static void shareNewMapID(byte ID)
+        {
+            PlayerControl.GameOptions.MapId = ID;
+        }
         public static void syncTimer(float TimerSyncro)
         {
             Challenger.NuclearTimer = TimerSyncro + 2f;
@@ -604,46 +721,10 @@ namespace ChallengerMod.RPC
         {
             RoleAssigned = true;
             Challenger._Alls = PlayerControl.AllPlayerControls.ToArray().ToList().OrderBy(x => Guid.NewGuid()).ToList();
-
-
-
-
             return;
         }
-        public static void genListOfPLayers()
-        {
-            RoleAssigned = true;
-
-            //GEN LIST FOR LEADER
-            Challenger._Alls = PlayerControl.AllPlayerControls.ToArray().ToList().OrderBy(x => Guid.NewGuid()).ToList();
-            Challenger._Crewmates = PlayerControl.AllPlayerControls.ToArray().ToList().OrderBy(x => Guid.NewGuid()).ToList();
-            Challenger._Impostors = PlayerControl.AllPlayerControls.ToArray().ToList().OrderBy(x => Guid.NewGuid()).ToList();
-
-            _Crewmates.RemoveAll(x => x.Data.Role.IsImpostor);
-            _Impostors.RemoveAll(x => !x.Data.Role.IsImpostor);
-
-            if (Jester.Role != null) { _Specials.Add(Jester.Role); }
-            if (Eater.Role != null) { _Specials.Add(Eater.Role); }
-            if (Arsonist.Role != null) { _Specials.Add(Arsonist.Role); }
-            if (Outlaw.Role != null) { _Specials.Add(Outlaw.Role); }
-            if (Cupid.Role != null) { _Specials.Add(Cupid.Role); }
-            if (Cultist.Role != null) { _Specials.Add(Cultist.Role); }
-            if (Cursed.Role != null) { _Cultes.Add(Cursed.Role); }
-
-            if (Jester.Role != null) { }
-
-            _Crewmates.Shuffle();
-            _Impostors.Shuffle();
-            _Specials.Shuffle();
-            _Alls.Shuffle();
-
-            var randomized_Crewmates = _Crewmates.OrderBy(item => rnd.Next());
-            var randomized_Impostors = _Impostors.OrderBy(item => rnd.Next());
-            var randomized_Alls = _Alls.OrderBy(item => rnd.Next());
 
 
-            return;
-        }
         //WINNER
         public static void setWinLove()
         {
@@ -2311,6 +2392,56 @@ namespace ChallengerMod.RPC
             
                 Sentinel.Scan = false;
         }
+        //LEADER
+        public static void assignTarget1(byte target1Id)
+        {
+            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            {
+                if (player.PlayerId == target1Id)
+                {
+                    Leader.Target = player;
+                    GLMod.GLMod.currentGame.addAction(Leader.Role.Data.PlayerName, player.Data.PlayerName, "leader_target");
+                }
+            }
+        }
+        public static void assignTarget2(byte target1Id)
+        {
+            Leader.Used2 = true;
+            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            {
+                if (player.PlayerId == target1Id)
+                {
+                   Leader.Target2 = player;
+                   GLMod.GLMod.currentGame.addAction(Leader.Role.Data.PlayerName, player.Data.PlayerName, "leader_target2");
+                   GLMod.GLMod.currentGame.addAction("", "", "leader_start");
+                }
+            }
+        }
+        public static void assignCopyTarget1(byte target1Id)
+        {
+            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            {
+                if (player.PlayerId == target1Id)
+                {
+                    CopyCat.Target = player;
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "leader_target");
+                }
+            }
+        }
+        public static void assignCopyTarget2(byte target1Id)
+        {
+            CopyCat.Used2 = true;
+            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            {
+                if (player.PlayerId == target1Id)
+                {
+                    CopyCat.Target2 = player;
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "leader_target2");
+                    GLMod.GLMod.currentGame.addAction("", "", "leader_start");
+                }
+            }
+        }
+
         //JESTER
         public static void jesterFakeKill()
         {
@@ -2367,38 +2498,7 @@ namespace ChallengerMod.RPC
             }
         }
 
-        //CUPID
-        public static void setLover1(byte loved1Id)
-        {
-            Cupid.Love1Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
-            {
-                if (player.PlayerId == loved1Id)
-                {
-                    Cupid.Lover1 = player;
-                    GLMod.GLMod.currentGame.addAction(Cupid.Role.Data.PlayerName, player.Data.PlayerName, "make_love");
-                }
-            }
-                
-            Cupid.Love1Used = true;
-        }
-        public static void setLover2(byte loved2Id)
-        {
-            Cupid.Love2Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
-            {
-                if (player.PlayerId == loved2Id)
-                {
-                    Cupid.Lover2 = player;
-                    GLMod.GLMod.currentGame.addAction(Cupid.Role.Data.PlayerName, player.Data.PlayerName, "make_love");
-
-                }
-
-            }
-                
-            Cupid.Love1Used = true;
-            Cupid.LoveUsed = true;
-        }
+       //CUPID
 
         public static void loversExiled()
         {
@@ -2941,12 +3041,12 @@ namespace ChallengerMod.RPC
             {
                 if (Scrambler.Role != null && Scrambler.Camo)
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 7, "", "", "", "");
+                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
                     Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
                 }
                 else
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 6, "", "", "", "");
+                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
                     Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
                 }
             }
@@ -2954,7 +3054,7 @@ namespace ChallengerMod.RPC
             {
                 if (Scrambler.Role != null && Scrambler.Camo)
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 7, "", "", "", "");
+                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
                     Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
                 }
                 else
@@ -2972,12 +3072,12 @@ namespace ChallengerMod.RPC
             {
                 if (Scrambler.Role != null && Scrambler.Camo)
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 7, "", "", "", "");
+                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
                     Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
                 }
                 else
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 6, "", "", "", "");
+                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
                     Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
                 }
             }
@@ -2985,7 +3085,7 @@ namespace ChallengerMod.RPC
             {
                 if (Scrambler.Role != null && Scrambler.Camo)
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 7, "", "", "", "");
+                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
                     Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
                 }
                 else
@@ -3008,7 +3108,7 @@ namespace ChallengerMod.RPC
                 if (!PlayerControl.LocalPlayer.Data.IsDead)
                 {
                     players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 7, "", "", "", "");
+                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
                 }
             }
         }
@@ -3021,7 +3121,7 @@ namespace ChallengerMod.RPC
                 if (ComSab && CommsSabotageAnonymous.getSelection() == 1)
                 {
                     players.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
-                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 6, "", "", "", "");
+                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
                 }
                 else
                 {
@@ -3463,20 +3563,18 @@ namespace ChallengerMod.RPC
             position.x = BitConverter.ToSingle(buff, 0 * sizeof(float));
             position.y = BitConverter.ToSingle(buff, 1 * sizeof(float));
             new Balise(position);
-            Bait.BaliseUsed = true;
             if (Bait.Role != null && !Bait.Role.Data.IsDead)
             {
                 GLMod.GLMod.currentGame.addAction(Bait.Role.Data.PlayerName, "", "create_bait_area");
-                Bait.BaliseUsed = true;
             }
             else
             {
                 if (CopyCat.Role != null)
                 {
                     GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "create_bait_area");
-                    Bait.BaliseUsed = true;
                 }
             }
+            Bait.BaliseData = true;
             
             
         }
@@ -3486,6 +3584,7 @@ namespace ChallengerMod.RPC
             GLMod.GLMod.currentGame.addAction("", "", "bait_area");
             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
             SoundManager.Instance.PlaySound(BaitAlerte, false, 100f);
+            Bait.BaliseData = true;
         }
 
 
@@ -3502,11 +3601,30 @@ namespace ChallengerMod.RPC
 
                 // Main Controls
                 
+        
                 
-               
+                case (byte)CustomRPC.SetVisorColor:
+                    {
+                        byte PlayerID = reader.ReadByte();
+                        int ColorID = reader.ReadPackedInt32();
+                        RPCProcedure.setVisorColor(PlayerID, ColorID);
+                        break;
+                    }
                 case (byte)CustomRPC.ShareAllRoles:
                     {
                         RPCProcedure.shareAllRoles();
+                        break;
+                    }
+                case (byte)CustomRPC.ShareNewPLayerSlot:
+                    {
+                        int Value = reader.ReadPackedInt32();
+                        RPCProcedure.shareNewPLayerSlot(Value);
+                        break;
+                    }
+                case (byte)CustomRPC.ShareNewMapID:
+                    {
+                        byte ID = reader.ReadByte();
+                        RPCProcedure.shareNewMapID(ID);
                         break;
                     }
                 //NUCLEAR
@@ -3561,6 +3679,7 @@ namespace ChallengerMod.RPC
                     RPCProcedure.setRole(roleId, playerId);
                     break;
 
+                   
                 //WINNER
                 case (byte)CustomRPC.SetWinLove:
                     {
@@ -3834,6 +3953,28 @@ namespace ChallengerMod.RPC
                         RPCProcedure.sentinelScanOff();
                         break;
                     }
+                //LEADER
+                case (byte)CustomRPC.AssignTarget1:
+                    {
+                        RPCProcedure.assignTarget1(reader.ReadByte());
+                        break;
+                    }
+                case (byte)CustomRPC.AssignTarget2:
+                    {
+                        RPCProcedure.assignTarget2(reader.ReadByte());
+                        break;
+                    }
+                case (byte)CustomRPC.AssignCopyTarget1:
+                    {
+                        RPCProcedure.assignCopyTarget1(reader.ReadByte());
+                        break;
+                    }
+                case (byte)CustomRPC.AssignCopyTarget2:
+                    {
+                        RPCProcedure.assignCopyTarget2(reader.ReadByte());
+                        break;
+                    }
+
                 //JESTER
                 case (byte)CustomRPC.JesterFakeKill:
                     {
@@ -3853,16 +3994,7 @@ namespace ChallengerMod.RPC
                         break;
                     }
                 //CUPID
-                case (byte)CustomRPC.SetLover1:
-                    {
-                        RPCProcedure.setLover1(reader.ReadByte());
-                        break;
-                    }
-                case (byte)CustomRPC.SetLover2:
-                    {
-                        RPCProcedure.setLover2(reader.ReadByte());
-                        break;
-                    }
+               
                 case (byte)CustomRPC.LoversExiled:
                     {
                         RPCProcedure.loversExiled();

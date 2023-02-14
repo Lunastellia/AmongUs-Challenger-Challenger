@@ -6,6 +6,7 @@ using static ChallengerMod.Set.Data;
 using static ChallengerMod.Roles;
 using ChallengerMod.RPC;
 using Hazel;
+using Reactor.Extensions;
 
 namespace ChallengerMod.SetEndGame
 {
@@ -79,14 +80,32 @@ namespace ChallengerMod.SetEndGame
             // Reset Settings
         }
     }
+    /*[HarmonyPatch(typeof(EndGameNavigation))]
+    public class EndGameManagerPatch2
+    {
+        public static void Postfix(EndGameNavigation __instance)
+        {
+            GameObject Button = __instance.ContinueButton;
 
-    [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
+            PassiveButton Bttn = Button.GetComponent<PassiveButton>();
+            Bttn.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+
+            void onClick()
+            {
+                var OnDestroy = GameObject.Find("WinText_TMP(Clone)");
+                OnDestroy.Destroy();
+            }
+        }
+    }*/
+
+
+            [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
     public class EndGameManagerSetUpPatch
     {
         public static void Postfix(EndGameManager __instance)
         {
             
-
+            
             // Additional code
             __instance.BackgroundBar.material.color = ChallengerMod.ColorTable.blackColor;
             __instance.WinText.text = "";
@@ -801,6 +820,32 @@ namespace ChallengerMod.SetEndGame
                         }
                     }
                 }
+                if (LeaderCount == true)
+                {
+                    if (LeaderWin == true)
+                    {
+
+
+                        if (textRenderer.text.Contains("[" + Leader.Role.Data.PlayerName + "]")) { }
+                        else
+                        {
+                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Leader.Role.Data.PlayerName + "]</color> <color=#5A7DA5>(" + Role_Leader + ")</color> - <color=#00FFFF>[" + LeaderTask + "/" + TotalTask + "]</color> - <color=#00ff00>" + Str_Win + "</color>";
+                        }
+                    }
+                    if (LeaderWin == false)
+                    {
+                        if (textRenderer.text.Contains("[" + Leader.Role.Data.PlayerName + " ♥]"))
+                        {
+                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Leader.Role.Data.PlayerName + "]</color> <color=#5A7DA5>(" + Role_Leader + ")</color> - <color=#00FFFF>[" + LeaderTask + "/" + TotalTask + "]</color> - <color=#00ff00>" + Str_Win + "</color>";
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+
+                //
                 if (Crewmate1Count == true)
                 {
                     if (Crewmate1Win == true)
@@ -2049,7 +2094,7 @@ namespace ChallengerMod.SetEndGame
                         }
                     }
                 }
-                if (FakeCount == true)
+                if (FakeCount == true) 
                 {
                     if (FakeWin == false)
                     {
@@ -2057,6 +2102,17 @@ namespace ChallengerMod.SetEndGame
                         else
                         {
                             textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Fake.Role.Data.PlayerName + "]</color> <color=#FF7A7A>(" + Role_Fake + ")</color> - <color=#00FFFF>[" + FakeTask + "/" + TotalTask + "]</color> - <color=#ff0000>" + Str_Loose + "</color>";
+                        }
+                    }
+                }
+                if (LeaderCount == true) 
+                {
+                    if (LeaderWin == false)
+                    {
+                        if (textRenderer.text.Contains("[" + Leader.Role.Data.PlayerName + "]")) { }
+                        else
+                        {
+                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Leader.Role.Data.PlayerName + "]</color> <color=#5A7DA5>(" + Role_Leader + ")</color> - <color=#00FFFF>[" + LeaderTask + "/" + TotalTask + "]</color> - <color=#ff0000>" + Str_Loose + "</color>";
                         }
                     }
                 }

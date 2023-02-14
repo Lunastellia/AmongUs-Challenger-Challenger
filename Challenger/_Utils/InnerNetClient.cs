@@ -44,6 +44,7 @@ namespace ChallengerMod
                 GLMod.GLMod.getRank();
                 GLMod.GLMod.reloadItems();
             }
+            GLMod.GLMod.step = 0;
         }
 
     }
@@ -61,6 +62,7 @@ namespace ChallengerMod
                 GLMod.GLMod.getRank();
                 GLMod.GLMod.reloadItems();
             }
+            GLMod.GLMod.step = 0;
         }
 
     }
@@ -78,6 +80,7 @@ namespace ChallengerMod
                 GLMod.GLMod.getRank();
                 GLMod.GLMod.reloadItems();
             }
+            GLMod.GLMod.step = 0;
         }
 
     }

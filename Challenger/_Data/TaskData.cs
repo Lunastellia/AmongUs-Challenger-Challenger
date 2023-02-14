@@ -2707,6 +2707,13 @@ namespace ChallengerMod
             {
                 var TaskData = __instance.Data.Tasks.ToArray();
                 var tasksFinish = TaskData.Count(x => x.Complete);
+                var tasksLeft = TaskData.Count(x => !x.Complete);
+
+                if (tasksLeft == 0)
+                {
+                    Leader.TaskEND = true;
+                }
+                else { }
                 if (tasksFinish == 0)
                 {
                     LeaderTask = 0f;

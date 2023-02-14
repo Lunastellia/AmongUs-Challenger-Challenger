@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using TMPro;
 using UnityEngine;
 
 
@@ -7,19 +8,16 @@ namespace ChallengerMod.Cosmetics
 {
     class CustomVisors
     {
+        private static bool _VStellia = false;
+
 
         private static bool _Gun = false;
         private static bool _Knife = false;
         private static bool _Katana = false;
         private static bool _Vampire_Tooth = false;
         private static bool _Spiral = false;
-        private static bool _Bloody = false;
-        private static bool _Scythe = false;
         private static bool _Chain = false;
         private static bool _Coffee = false;
-        private static bool _Inlove = false;
-        private static bool _Baloon = false;
-        private static bool _Dual = false;
 
         private static bool _Cred = false;
         private static bool _Cpurple = false;
@@ -29,11 +27,29 @@ namespace ChallengerMod.Cosmetics
         private static bool _Cleef = false;
         private static bool _Cyellow = false;
 
+        //DLC EATER
+        private static bool _Bloody = false;
+        private static bool _Scythe = false;
+
+        //DLC CUPID
+        private static bool _Inlove = false;
+        private static bool _Baloon = false;
+        private static bool _Dual = false;
+
+        //DLC CULTE
+        private static bool _Book = false;
+
         private static bool _H1 = false;
         private static bool _H2 = false;
         private static bool _H3 = false;
         private static bool _H4 = false;
         private static bool _H5 = false;
+
+        private static bool _SW1 = false;
+        private static bool _SW2 = false;
+        private static bool _SW3 = false;
+        private static bool _SW4 = false;
+        private static bool _SW5 = false;
 
         private static bool _CV1 = false;
 
@@ -48,6 +64,13 @@ namespace ChallengerMod.Cosmetics
             {
                 var allVisors = __instance.allVisors;
 
+
+                if (!_VStellia)
+                {
+                    VisorID = 100;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_CC00, "Lunastellia - [For Stellia]", "Lunastellia", "CC-00", null, false));
+                    _VStellia = true;
+                }
 
                 //ACHIEVEMENT
 
@@ -141,7 +164,7 @@ namespace ChallengerMod.Cosmetics
                     _Coffee = true;
                 }
 
-                //SHOP
+                //DLS Eater
                 if (!_Bloody)
                 {
                     VisorID = 501;
@@ -154,6 +177,8 @@ namespace ChallengerMod.Cosmetics
                     allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Scythe, "[DLC] Scythe", "Lunastellia", "SH-EAT", null, false));
                     _Scythe = true;
                 }
+
+                //DLC CUPID
                 if (!_Baloon)
                 {
                     VisorID = 503;
@@ -171,6 +196,14 @@ namespace ChallengerMod.Cosmetics
                     VisorID = 505;
                     allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_LV2, "[DLC] You and Me", "Lunastellia", "SH-CUP", ChallengerMod.Unity._Visor_LV1, false));
                     _Dual = true;
+                }
+
+                //DLC CULTE
+                if (!_Book)
+                {
+                    VisorID = 506;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_DBook, "[DLC] Dark Book", "Lunastellia", "SH-CUP", null, false));
+                    _Book = true;
                 }
 
 
@@ -205,9 +238,41 @@ namespace ChallengerMod.Cosmetics
                     allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB3, "[PRIME] Magic Wand 3", "Lunastellia", "PRIME", null, false));
                     _H5 = true;
                 }
-                if (!_CV1)
+
+                if (!_SW1)
                 {
                     VisorID = 706;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber1, "[PRIME] Blue LightSaber", "Lunastellia", "PRIME", null, false));
+                    _SW1 = true;
+                }
+                if (!_SW2)
+                {
+                    VisorID = 707;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber2, "[PRIME] Green LightSaber", "Lunastellia", "PRIME", null, false));
+                    _SW2 = true;
+                }
+                if (!_SW3)
+                {
+                    VisorID = 708;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber3, "[PRIME] Purple LightSaber", "Lunastellia", "PRIME", null, false));
+                    _SW3 = true;
+                }
+                if (!_SW4)
+                {
+                    VisorID = 709;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber4, "[PRIME] Gold LightSaber", "Lunastellia", "PRIME", null, false));
+                    _SW4 = true;
+                }
+                if (!_SW5)
+                {
+                    VisorID = 710;
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber5, "[PRIME] Red LightSaber", "Lunastellia", "PRIME", null, false));
+                    _SW5 = true;
+                }
+
+                if (!_CV1)
+                {
+                    VisorID = 711;
                     allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_C3D, "[PRIME] 3D", "Lunastellia", "PRIME", null , false));
                     _CV1 = true;
                 }
@@ -235,6 +300,8 @@ namespace ChallengerMod.Cosmetics
 
                 return newVisor;
             }
+           
+
         }
     }
 }

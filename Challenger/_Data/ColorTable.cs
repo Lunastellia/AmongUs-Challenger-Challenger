@@ -9,9 +9,9 @@ namespace ChallengerMod
     [HarmonyPatch]
     public static class ColorTable
     {
+        public static readonly int VisorColor = Shader.PropertyToID("_VisorColor");
 
-       
-            public static Color nocolor = new Color(0f / 255f, 0f / 255f, 0f / 255f, 0);//no color
+        public static Color nocolor = new Color(0f / 255f, 0f / 255f, 0f / 255f, 0);//no color
             public static Color testcolor = new Color(255f / 255f, 0f / 255f, 0f / 255f, 150f);//testcolor
 
 
@@ -51,25 +51,28 @@ namespace ChallengerMod
             public static Color TeammateColor = new Color(180f / 255f, 251f / 255f, 251f / 255f, 1);//B4FAFA
             public static Color LawkeeperColor = new Color(255 / 255f, 155f / 255f, 155f / 255f, 1);//FF9B9B
             public static Color FakeColor = new Color(255f / 255f, 150f / 255f, 150f / 255f, 1);//FF7A7A
-            public static Color TravelerColor = new Color(109f / 255f, 138f / 255f, 255f / 255f, 1);//6D8AFF
-            public static Color LeaderColor = new Color(209f / 255f, 237f / 255f, 255f / 255f, 1);//DE1DFF
+            
+            
+            public static Color LeaderColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);//5A7DA5
+            public static Color AngelColor = new Color(25f / 255f, 255f / 255f, 186f / 255f, 1);//19FFBA
             public static Color DoctorColor = new Color(25f / 255f, 255f / 255f, 186f / 255f, 1);//19FFBA
-            public static Color SlaveColor = new Color(209f / 255f, 237f / 255f, 255f / 255f, 1);//DE1DFF
+            public static Color TravelerColor = new Color(175f / 255f, 100f / 255f, 175f / 255f, 1);//AF64AF
+
 
             public static Color CupidColor = new Color(255f / 255f, 175f / 255f, 255f / 255f, 1);//FFAFFF
             public static Color CulteColor = new Color(131f / 255f, 0f / 255f, 255f / 255f, 1);//8300FF
             public static Color OutlawColor = new Color(0f / 255f, 51f / 255f, 255f / 255f, 1);//0033FF
             public static Color ArsonistColor = new Color(255f / 255f, 200f / 255f, 0f / 255f, 1);//FFC800
             public static Color ArsonistTColor = new Color(165f / 255f, 165f / 255f, 165f / 255f, 1);//A5A5A5
-
             public static Color JesterColor = new Color(255f / 255f, 10f / 255f, 110f / 255f, 1);//FF0A88
             public static Color EaterColor = new Color(255f / 255f, 110f / 255f, 0f / 255f, 1);//FF6E00
-            public static Color SurvivorColor = new Color(127f / 255f, 94f / 255f, 76f / 255f, 1);//7F5E4C
             public static Color CursedColor = new Color(63f / 255f, 104f / 255f, 59f / 255f, 1);//3F683B
 
             public static Color MercenaryColor = new Color(255f / 255f, 73f / 255f, 230f / 255f, 1);//FF49E6
             public static Color CopyCatColor = new Color(100f / 255f, 230f / 255f, 180f / 255f, 1);//64E6B4
             public static Color RevengerColor = new Color(217f / 255f, 194f / 255f, 126f / 255f, 1);//D9C27E
+            public static Color SurvivorColor = new Color(127f / 255f, 94f / 255f, 76f / 255f, 1);//7F5E4C
+            public static Color SlaveColor = new Color(121f / 255f, 151f / 255f, 151f / 255f, 1);//799797
 
             public static Color ImpostorColor = new Color(255f / 255f, 0f / 255f, 0f / 255f, 1);//FF0000
 

@@ -22,9 +22,17 @@ namespace ChallengerMod.Cosmetics
         private static bool _R12 = false;
         private static bool _R13 = false;
         private static bool _R14 = false;
+
+        private static bool _Sub1 = false;
+        private static bool _Sub2 = false;
+        private static bool _Sub3 = false;
+
         private static bool _Eater = false;
         private static bool _Cupid = false;
         private static bool _Arsonist = false;
+        
+        private static bool _SW1 = false;
+        private static bool _SW2 = false;
 
         private static bool _NC1 = false;
         private static bool _NC2 = false;
@@ -129,6 +137,27 @@ namespace ChallengerMod.Cosmetics
                     _R14 = true;
                 }
 
+                //FREE
+                if (!_Sub1)
+                {
+                    NamePlateID = 201;
+                    allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_SUB1, "Submerged 1", "Submerged Team", "SUBMERGED", true));
+                    _Sub1 = true;
+                }
+                if (!_Sub2)
+                {
+                    NamePlateID = 202;
+                    allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_SUB2, "Submerged 2", "Submerged Team", "SUBMERGED", true));
+                    _Sub2 = true;
+                }
+                if (!_Sub3)
+                {
+                    NamePlateID = 203;
+                    allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_SUB3, "Submerged 3", "Submerged Team", "SUBMERGED", true));
+                    _Sub3 = true;
+                }
+
+
                 //SHOP
                 if (!_Eater)
                 {
@@ -149,23 +178,38 @@ namespace ChallengerMod.Cosmetics
                     _Arsonist = true;
                 }
 
+
+                if (!_SW1)
+                {
+                    NamePlateID = 508;
+                    allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_SW1, "[PRIME] SpaceWar 1", "Lunastellia", "PRIME", false));
+                    _SW1 = true;
+                }
+                if (!_SW2)
+                {
+                    NamePlateID = 509;
+                    allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_SW2, "[PRIME] SpaceWar 2", "Lunastellia", "PRIME", false));
+                    _SW2 = true;
+                }
+
+
                 if (!_NC1)
                 {
-                    NamePlateID = 503;
+                    NamePlateID = 510;
                     allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_CBand, "[PRIME] CineBand", "Lunastellia", "PRIME", false));
                     _NC1 = true;
                 }
 
                 if (!_NC2)
                 {
-                    NamePlateID = 504;
+                    NamePlateID = 511;
                     allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_CClap, "[PRIME] CineClap", "Lunastellia", "PRIME", false));
                     _NC2 = true;
                 }
 
                 if (!_NC3)
                 {
-                    NamePlateID = 505;
+                    NamePlateID = 512;
                     allPlates.Add(CreateNamePlate(ChallengerMod.Unity._Plate_CBG, "[PRIME] CineGreen", "Lunastellia", "PRIME", false));
                     _NC3 = true;
                 }

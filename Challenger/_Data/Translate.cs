@@ -14,6 +14,7 @@ using ChallengerOS.Utils.Option;
 using static ChallengerOS.Utils.Option.CustomOptionHolder;
 using System.Drawing;
 using InnerNet;
+using static Il2CppSystem.Linq.Expressions.Interpreter.CastInstruction.CastInstructionNoT;
 
 namespace ChallengerMod.Set
 {
@@ -34,140 +35,140 @@ namespace ChallengerMod.Set
 
         public static string g_role_Sheriff = "";
 
-       
+
         public static string g_role_Guardian = "";
 
-        
+
         public static string g_role_Engineer = "";
 
-        
+
         public static string g_role_Timelord = "";
 
-        
+
         public static string g_role_Hunter = "";
 
-        
+
         public static string g_role_Mystic = "";
 
-        
+
         public static string g_role_Spirit = "";
 
-       
+
         public static string g_role_Mayor = "";
 
-       
+
         public static string g_role_Detective = "";
 
-       
+
         public static string g_role_Nightwatch = "";
 
-       
+
         public static string g_role_Spy = "";
 
-        
+
         public static string g_role_Informant = "";
 
-       
+
         public static string g_role_Bait = "";
 
-        
+
         public static string g_role_Mentalist = "";
 
-       
+
         public static string g_role_Builder = "";
 
-        
+
         public static string g_role_Dictator = "";
 
-        
+
         public static string g_role_Sentinel = "";
 
-        
+
         public static string g_role_Teammate = "";
 
-        
+
         public static string g_role_Lawkeeper = "";
 
-        
+
         public static string g_role_Fake = "";
 
-        
+
         public static string g_role_Traveler = "";
 
-        
+
         public static string g_role_Leader = "";
 
-       
+
         public static string g_role_Doctor = "";
 
-        
+
         public static string g_role_Slave = "";
 
-               
+
         public static string g_role_Cupid = "";
 
-        
+
         public static string g_role_Cultist = "";
 
-      
+
         public static string g_role_Outlaw = "";
 
-        
+
         public static string g_role_Jester = "";
 
-       
+
         public static string g_role_Eater = "";
 
-        
+
         public static string g_role_Arsonist = "";
         public static string g_role_Cursed = "";
 
 
         public static string g_role_Mercenary = "";
 
-       
+
         public static string g_role_CopyCat = "";
 
-        
+
         public static string g_role_Survivor = "";
 
-     
+
         public static string g_role_Revenger = "";
 
-             
+
         public static string g_role_Assassin = "";
 
-       
+
         public static string g_role_Vector = "";
 
-       
+
         public static string g_role_Morphling = "";
 
-        
+
         public static string g_role_Scrambler = "";
 
-        
+
         public static string g_role_Barghest = "";
 
-        
+
         public static string g_role_Ghost = "";
 
-       
+
         public static string g_role_Sorcerer = "";
 
-        
+
         public static string g_role_Guesser = "";
 
-       
+
         public static string g_role_Mesmer = "";
 
-       
+
         public static string g_role_Basilisk = "";
 
-        
+
         public static string g_role_Reaper = "";
 
-       
+
         public static string g_role_Saboteur = "";
 
 
@@ -212,7 +213,6 @@ namespace ChallengerMod.Set
 
 
         public static float CopyCatMin { get; set; }
-        public static float CopyCatMax { get; set; }
 
         public static int BuzzForAllValue { get; set; }
 
@@ -227,74 +227,47 @@ namespace ChallengerMod.Set
 
 
         //Settings lobby
+        public static float Sheriff1Max { get; set; }
+        public static float Sheriff2Max { get; set; }
+        public static float Sheriff3Max { get; set; }
         public static float Team1Min { get; set; }
-        public static float Team1Max { get; set; }
         public static float Team2Min { get; set; }
-        public static float Team2Max { get; set; }
 
         public static float LawkeeperMin { get; set; }
-        public static float LawkeeperMax { get; set; }
         public static float GuardianMin { get; set; }
-        public static float GuardianMax { get; set; }
         public static float SherifMin { get; set; }
-        public static float SherifMax { get; set; }
         public static float Sherif2Min { get; set; }
-        public static float Sherif2Max { get; set; }
         public static float Sherif3Min { get; set; }
-        public static float Sherif3Max { get; set; }
         public static float EngineerMin { get; set; }
-        public static float EngineerMax { get; set; }
         public static float TimelordMin { get; set; }
-        public static float TimelordMax { get; set; }
         public static float HunterMin { get; set; }
-        public static float HunterMax { get; set; }
         public static float MysticMin { get; set; }
-        public static float MysticMax { get; set; }
         public static float SpiritMin { get; set; }
-        public static float SpiritMax { get; set; }
         public static float BuilderMin { get; set; }
-        public static float BuilderMax { get; set; }
+        public static float FakeMin { get; set; }
         public static float MayorMin { get; set; }
-        public static float MayorMax { get; set; }
         public static float DetectiveMin { get; set; }
-        public static float DetectiveMax { get; set; }
         public static float NightwatcherMin { get; set; }
-        public static float NightwatcherMax { get; set; }
         public static float SpyMin { get; set; }
-        public static float SpyMax { get; set; }
         public static float InforMin { get; set; }
-        public static float InforMax { get; set; }
         public static float BaitMin { get; set; }
-        public static float BaitMax { get; set; }
         public static float MentalistMin { get; set; }
-        public static float MentalistMax { get; set; }
         public static float DictatorMin { get; set; }
-        public static float DictatorMax { get; set; }
         public static float SentinelMin { get; set; }
-        public static float SentinelMax { get; set; }
+        public static float LeaderMin { get; set; }
 
         public static float JesterMin { get; set; }
-        public static float JesterMax { get; set; }
 
         public static float OutlawMin { get; set; }
-        public static float OutlawMax { get; set; }
         public static float ArsonistMin { get; set; }
-        public static float ArsonistMax { get; set; }
 
         public static float CursedMin { get; set; }
-        public static float CursedMax { get; set; }
         public static float MercenaryMin { get; set; }
-        public static float MercenaryMax { get; set; }
         public static float RevengerMin { get; set; }
-        public static float RevengerMax { get; set; }
         public static float SorcererMin { get; set; }
-        public static float SorcererMax { get; set; }
         public static float CupidMin { get; set; }
-        public static float CupidMax { get; set; }
         public static float CultisteMin { get; set; }
-        public static float CultisteMax { get; set; }
         public static float EaterMin { get; set; }
-        public static float EaterMax { get; set; }
         public static float Eatervaluewin { get; set; }
 
 
@@ -306,48 +279,18 @@ namespace ChallengerMod.Set
 
 
         public static float AssassinMin { get; set; }
-        public static float AssassinMax { get; set; }
         public static float VectorMin { get; set; }
-        public static float VectorMax { get; set; }
         public static float MorphMin { get; set; }
-        public static float MorphMax { get; set; }
 
         public static float MesmerMin { get; set; }
-        public static float MesmerMax { get; set; }
         public static float BasiliskMin { get; set; }
-        public static float BasiliskMax { get; set; }
         public static float CamoMin { get; set; }
-        public static float CamoMax { get; set; }
         public static float BarghestMin { get; set; }
-        public static float BarghestMax { get; set; }
         public static float GhostMin { get; set; }
-        public static float GhostMax { get; set; }
         public static float Impo4Min { get; set; }
-        public static float Impo4Max { get; set; }
         public static float GuesserMin { get; set; }
-        public static float GuesserMax { get; set; }
 
-        //COLOR PATCH
-        public static string C999982 = "Bloody";
-        public static string C999983 = "Earth";
-        public static string C999984 = "Chedard";
-        public static string C999985 = "Sun";
-        public static string C999986 = "Leef";
-        public static string C999987 = "Radian";
-
-        public static string C999988 = "Swamp";
-        public static string C999989 = "Ice";
-        public static string C999990 = "Lagoon";
-        public static string C999991 = "Ocean";
-        public static string C999992 = "Night";
-        public static string C999993 = "Dawn";
-
-        public static string C999994 = "Candy";
-        public static string C999995 = "Galaxy";
-        public static string C999996 = "Snow";
-        public static string C999997 = "Cender";
-        public static string C999998 = "Dark";
-        public static string C999999 = "Rainbow";
+       
 
         //UPDATE_ELEMENT
         public static string CC = "</color>";
@@ -397,7 +340,7 @@ namespace ChallengerMod.Set
         public static string R_LawkeeperColor = "<color=#FF9B9B>";
         public static string R_FakeColor = "<color=#FF7A7A>";
         public static string R_TravelerColor = "<color=#6D8AFF>";
-        public static string R_LeaderColor = "<color=#DE1DFF>";
+        public static string R_LeaderColor = "<color=#5A7DA5>";
         public static string R_DoctorColor = "<color=#19FFBA>";
         public static string R_SlaveColor = "<color=#DE1DFF>";
 
@@ -473,6 +416,10 @@ namespace ChallengerMod.Set
         public static string B_Petrified = "<size=1.4><color=#ff00ff> ○</color></size>";
         public static string B_Petrified2 = "<size=1.4><color=#ff0000> ○</color></size>";
         public static string B_Morphed = "<color=#FF0000>\n[" + "" + "]</color>";
+        public static string B_LeaderMark = "<size=1.4><color=#ffff00> ✿</color></size>";
+        public static string B_LocalLeaderMark = "<size=1.4><color=#ACACAC> ✿</color></size>";
+        public static string B_LeaderMarkCopy = "<size=1.4><color=#ffff00> ✿</color></size>";
+        public static string B_LeaderMarkCopyIfExist = "<size=1.4><color=#64E6B4> ✿</color></size>";
 
 
 
@@ -850,7 +797,7 @@ namespace ChallengerMod.Set
         public static float CursedAbilityButtonMaxTimer = 5f;
         public static float CursedAbilityButtonEffectDuration = 5f;
         public static float CursedTime = 5f;
-        
+
 
         public static float EaterDraggAbilityButtonMaxTimer = 0f;
         public static float EaterBarAbilityButtonMaxTimer = 0f;
@@ -1484,7 +1431,7 @@ namespace ChallengerMod.Set
         public static string Task_ArsonistFR = "<color=#FFC800>Enduis d'huile les autres joueurs vivants et brûle les pour gagner !</color>";
         public static string Task_ArsonistEN = "<color=#FFC800>Oil other living players and burn them all !</color>";
         public static string Task_Role_Arsonist = "<color=#FFC800>Oil other living players and burn them all !</color>";
-        
+
         public static string Task_CursedFR = "<color=#3F683B>Reste seule pour gagner la partie !</color>";
         public static string Task_CursedEN = "<color=#3F683B>Stay Alone to win the game !</color>";
         public static string Task_Role_Cursed = "<color=#3F683B>Stay Alone to win the game !</color>";
@@ -1622,6 +1569,10 @@ namespace ChallengerMod.Set
         public static string BTT_SpyEN = "SPY";
         public static string BTT_Role_Spy = "SPY";
 
+        public static string BTT_BaitFR = "ZONE ALERTE";
+        public static string BTT_BaitEN = "WARN AREA";
+        public static string BTT_Role_Bait = "WARN AREA";
+
         public static string BTT_InformantFR = "VOIR";
         public static string BTT_InformantEN = "CHECK";
         public static string BTT_Role_Informant = "CHECK";
@@ -1641,6 +1592,10 @@ namespace ChallengerMod.Set
         public static string BTT_SentinelFR = "SCANNER";
         public static string BTT_SentinelEN = "SCAN";
         public static string BTT_Role_Sentinel = "SCAN";
+
+        public static string BTT_LeaderFR = "MARQUER";
+        public static string BTT_LeaderEN = "MARK";
+        public static string BTT_Role_Leader = "MARK";
 
         public static string BTT_TravelerFR = "TELEPORTE";
         public static string BTT_TravelerEN = "TELEPORT";
@@ -1836,2856 +1791,2935 @@ namespace ChallengerMod.Set
 
         public static void Postfix(HudManager __instance)
         {
-
-            if (__instance.GameSettings != null && !__instance.GameSettings.text.Contains("CHALLENGER") && (AmongUsClient.Instance.GameState != InnerNetClient.GameStates.Started))
+            if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
             {
-                
-                __instance.GameSettings.text = "<size=3.2><color=#EC7C18>CHALLENGER</color></size><size=1>\n\n<color=#FF1100>(Scroll for see more settings!)</color></size> ";
+                if (__instance.GameSettings != null) { __instance.GameSettings.text = " "; }
+            }
+            else {
 
-
+                if (__instance.GameSettings != null && !__instance.GameSettings.text.Contains("CHALLENGER"))
                 {
 
-                    //LIST MAIN
-                    string MainSet = "<color=#EC7C18>\n\n<size=1.2>[Game Settings]</size>\n</color><size=0.75>";
-                    string MainSetFR = "<color=#EC7C18>\n\n<size=1.2>[Options General]</size>\n</color><size=0.75>";
+                    __instance.GameSettings.text = "<size=3.2><color=#EC7C18>CHALLENGER</color></size><size=1>\n\n<color=#FF1100>(Scroll for see more settings!)</color></size> ";
 
 
-
-                    ChallengerMod.Challenger.STRGamecode = "" + GameStartManager.Instance.GameRoomNameCode.text.Substring(6);
-
-
-
-                    if (PlayerControl.GameOptions.MapId == 0)
                     {
 
+                        //LIST MAIN
+                        string MainSet = "<color=#EC7C18>\n\n<size=1.2>[Game Settings]</size>\n</color><size=0.75>";
+                        string MainSetFR = "<color=#EC7C18>\n\n<size=1.2>[Options General]</size>\n</color><size=0.75>";
 
-                        if (BetterMapSK.getSelection() == 1)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>The Skeld (Challenger Skeld - By Lunastellia)</color>";
-                            MainSetFR += "\nCarte = <color=#FF00FF>The Skeld (Challenger Skeld - Par Lunastellia)</color>";
-                            ChallengerMod.Challenger.STRMap = "The Skeld Better";
-                        }
-                        if (BetterMapSK.getSelection() == 0)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>The Skeld (Normal)</color>";
-                            MainSetFR += "\nCarte = <color=#FF00FF>The Skeld (Normal)</color>";
-                            ChallengerMod.Challenger.STRMap = "The Skeld Normal";
-                        }
-                    }
-                    else if (PlayerControl.GameOptions.MapId == 1)
-                    {
-                        if (BetterMapHQ.getSelection() == 1)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>MiraHQ (Challenger Mira - By Lunastellia)</color>";
-                            MainSetFR += "\nCarte = <color=#FF00FF>MiraHQ (Challenger Mira - Par Lunastellia)</color>";
-                            ChallengerMod.Challenger.STRMap = "Mira Challenger";
-                        }
-                        if (BetterMapHQ.getSelection() == 0)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>MiraHQ (Normal)</color>";
-                            MainSetFR += "\nCarteap = <color=#FF00FF>MiraHQ (Normal)</color>";
-                            ChallengerMod.Challenger.STRMap = "Mira Normal";
-                        }
-                    }
-                    else if (PlayerControl.GameOptions.MapId == 2)
-                    {
-                        if (BetterMapPL.getSelection() == 2 && NuclearTimerMod.getBool() == true)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>Polus (Challenger Polus +Nuclear  - By Lunastellia)</color>, Nuclear Spawn chance: <color=#FF00FF>" + NuclearRND.getFloat() + "%</color>.";
-                            MainSetFR += "\nCarte = <color=#FF00FF>Polus (Challenger Polus +Nucléaire  - Par Lunastellia)</color> Chance d'apparition (Nuclear) : <color=#FF00FF>" + NuclearRND.getFloat() + "%</color>.";
 
-                            if (NuclearTimeRND.getFloat() == 0f)
+
+                        ChallengerMod.Challenger.STRGamecode = "" + GameStartManager.Instance.GameRoomNameCode.text.Substring(6);
+
+
+
+                        if (PlayerControl.GameOptions.MapId == 0)
+                        {
+
+
+                            if (BetterMapSK.getSelection() == 1)
                             {
-                                MainSet += "\nChallenge Polus Nuclear timer = <color=#FFFF00>" + NuclearTime1.getFloat() + "s</color>, Alerte Duration = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
-                                MainSetFR += "\nChallenge Polus Nucléaire Compte à rebour = <color=#FFFF00>" + NuclearTime1.getFloat() + "s</color>, Durée de l'alerte = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
+                                MainSet += "\nMap = <color=#FF00FF>The Skeld (Challenger Skeld - By Lunastellia)</color>";
+                                MainSetFR += "\nCarte = <color=#FF00FF>The Skeld (Challenger Skeld - Par Lunastellia)</color>";
+                                ChallengerMod.Challenger.STRMap = "The Skeld Better";
                             }
-                            else
+                            if (BetterMapSK.getSelection() == 0)
                             {
-                                MainSet += "\nChallenge Polus Nuclear timer = <color=#FFFF00>" + NuclearTime1.getFloat() + " ~ " + (NuclearTime1.getFloat() + NuclearTimeRND.getFloat()) + "</color>, Alerte Duration = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
-                                MainSetFR += "\nChallenge Polus Nucléaire Compte à rebour = <color=#FFFF00>" + NuclearTime1.getFloat() + " ~ " + (NuclearTime1.getFloat() + NuclearTimeRND.getFloat()) + "</color>, Durée de l'alerte = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
-                            }
-
-                            if (NuclearHide.getSelection() == 0)
-                            {
-                                MainSet += " Timer visibility : <color=#ff0000>No</color>.";
-                                MainSetFR += "Compteur visible : <color=#ff0000>Non</color>.";
-                            }
-                            if (NuclearHide.getSelection() == 1)
-                            {
-                                MainSet += " Timer visibility : <color=#00ff00>Yes</color>.";
-                                MainSetFR += "Compteur visible : <color=#00ff00>Yes</color>.";
-                            }
-                            if (NuclearHide.getSelection() == 2)
-                            {
-                                MainSet += " Timer visibility : <color=#ff00ff>Only impostors</color>.";
-                                MainSetFR += "Compteur visible : <color=#ff00ff>Uniquement les imposteurs</color>.";
-                            }
-                            
-                            ChallengerMod.Challenger.STRMap = "Polus Challenger Nuclear";
-                        }
-                        if (BetterMapPL.getSelection() == 2 && NuclearTimerMod.getBool() == false)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>Polus (Challenger Polus  - By Lunastellia)</color>";
-                            MainSetFR += "\nCarte = <color=#FF00FF>Polus (Challenger Polus  - Par Lunastellia)</color>";
-                            ChallengerMod.Challenger.STRMap = "Polus Challenger";
-                        }
-                        if (BetterMapPL.getSelection() == 1)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>Polus (BetterPolus - By BryBry)</color>";
-                            MainSetFR += "\nCarte = <color=#FF00FF>Polus (BetterPolus - Par BryBry)</color>";
-                            ChallengerMod.Challenger.STRMap = "Polus Better";
-                        }
-                        if (BetterMapPL.getSelection() == 0)
-                        {
-                            MainSet += "\nMap = <color=#FF00FF>Polus (Normal)</color>";
-                            MainSetFR += "\nCarte = <color=#FF00FF>Polus (Normal)</color>";
-                            ChallengerMod.Challenger.STRMap = "Polus Normal";
-                        }
-                    }
-                    else if (PlayerControl.GameOptions.MapId == 3)
-                    {
-                        MainSet += "\nMap = <color=#FF00FF>Skeld 1 Avril</color>";
-                        MainSetFR += "\nCarte = <color=#FF00FF>Skeld 1 Avril</color>";
-                        ChallengerMod.Challenger.STRMap = "dlekS ehT";
-                    }
-
-                    else if (PlayerControl.GameOptions.MapId == 4)
-
-                    {
-                        MainSet += "\nMap = <color=#FF00FF>Airship</color>";
-                        MainSetFR += "\nCarte = <color=#FF00FF>Airship</color>";
-                        ChallengerMod.Challenger.STRMap = "Airship Normal";
-                    }
-                    else
-                    {
-
-                        MainSet += "\nMap = <color=#FF00FF>Submerged (Team PolusGG - By 5up)</color>";
-                        MainSetFR += "\nCarte = <color=#FF00FF>Submerged (Equipe PolusGG - Par 5up)</color>";
-                        ChallengerMod.Challenger.STRMap = "Submerged";
-                    }
-
-
-
-                    if (PlayerControl.GameOptions.NumImpostors == 1)
-
-                    {
-                        if (AmongUsClient.Instance.allClients.Count <= 3)
-                        {
-                            MainSet += "\nPlayers = (No enough players)";
-                            MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
-                            RealImpostor = 0f;
-                        }
-                        else
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color>, Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color>, Coéquipier ou rôle Special/hybride : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                    }
-
-                    if (PlayerControl.GameOptions.NumImpostors == 2)
-
-                    {
-                        if (AmongUsClient.Instance.allClients.Count <= 3)
-                        {
-                            MainSet += "\nPlayers = (No enough players)";
-                            MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
-                            RealImpostor = 0f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 4)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 7 or more players to put 2 Impostors), Crewmates or Special/Hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 7 joueurs minimum pour jouer avec 2 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 5)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 7 or more players to put 2 Impostors), Crewmates or Special/Hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 7 joueurs minimum pour jouer avec 2 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 6)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 7 or more players to put 2 Impostors), Crewmates or Special role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 7 joueurs minimum pour jouer avec 2 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count >= 7)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color>, Crewmates or Special/Hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color>, Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            RealImpostor = 2f;
-                        }
-
-
-                    }
-                    if (PlayerControl.GameOptions.NumImpostors == 3)
-
-                    {
-
-                        if (AmongUsClient.Instance.allClients.Count <= 3)
-                        {
-                            MainSet += "\nPlayers = (No enough players)";
-                            MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
-                            RealImpostor = 0f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 4)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 5)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 6)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 7)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 8)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 9)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count >= 10)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>3</color>, Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>3</color> , Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-
-                            RealImpostor = 3f;
-                        }
-
-                    }
-                    if (PlayerControl.GameOptions.NumImpostors == 4)
-
-                    {
-
-                        if (AmongUsClient.Instance.allClients.Count <= 3)
-                        {
-                            MainSet += "\nPlayers = (No enough players)";
-                            MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
-                            RealImpostor = 0f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 4)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 5)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
-
-                            RealImpostor = 1f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 6)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 7)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 8)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 9)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
-
-                            RealImpostor = 2f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 10)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-
-                            RealImpostor = 3f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 11)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-
-                            RealImpostor = 3f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count == 12)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
-
-                            RealImpostor = 3f;
-                        }
-                        if (AmongUsClient.Instance.allClients.Count >= 13)
-                        {
-                            MainSet += "\nPlayers = Impostors : <color=#FF0000>4</color>, Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 4) + "</color>";
-                            MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>4</color> , Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 4) + "</color>";
-
-                            RealImpostor = 4f;
-                        }
-
-                    }
-
-
-                    MainSet += "\nPlayers Settings = Speed : <color=#FF00FF>" + (PlayerControl.GameOptions.PlayerSpeedMod * 100) + "%</color>, Crewmates vision : <color=#00FFFF>" + (PlayerControl.GameOptions.CrewLightMod * 100) + "%</color>, Impostors vision : <color=#FF0000>" + (PlayerControl.GameOptions.ImpostorLightMod * 100) + "%</color>.";
-                    MainSetFR += "\nParamètres des Joueurs = Vitesse : <color=#FF00FF>" + (PlayerControl.GameOptions.PlayerSpeedMod * 100) + "%</color>, Vision des Coéquipiers : <color=#00FFFF>" + (PlayerControl.GameOptions.CrewLightMod * 100) + "%</color>, Vision des Imposteurs : <color=#FF0000>" + (PlayerControl.GameOptions.ImpostorLightMod * 100) + "%</color>.";
-
-                    if (PlayerControl.GameOptions.AnonymousVotes == true)
-                    {
-                        if (PlayerControl.GameOptions.ConfirmImpostor == true)
-                        {
-                            if (BuzzCommon.getSelection() == 1)
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-                            else
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur Player)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-
-
-                        }
-                        else
-                        {
-                            if (BuzzCommon.getSelection() == 1)
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-                            else
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-
-
-
-                        }
-
-                    }
-                    else
-                    {
-                        if (PlayerControl.GameOptions.ConfirmImpostor == true)
-                        {
-                            if (BuzzCommon.getSelection() == 1)
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                            }
-                            else
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-
-
-                        }
-                        else
-                        {
-                            if (BuzzCommon.getSelection() == 1)
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-                            else
-                            {
-                                MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
-                                MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur)</color>.";
-
-                                MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-                                MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
-
-                            }
-
-                        }
-                    }
-
-
-
-                    if (PlayerControl.GameOptions.VisualTasks == true)
-                    {
-                        MainSet += "\nPlayers Task = Visual task : <color=#00FF00>Enable</color>, TaskBar Update : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
-
-                        MainSetFR += "\nTâches = Tâches Visuelles : <color=#00FF00>Activé</color>, Mise à jour de la barre des Tâches : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
-                    }
-                    else
-                    {
-                        MainSet += "\nPlayers Task = Visual task : <color=#FF0000>Disabled</color>, TaskBar Update : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
-
-                        MainSetFR += "\nTâches = Tâches Visuelles : <color=#FF0000>Désactivé</color>, Mise à jour de la barre des Tâches : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
-                    }
-
-                    MainSet += "\nNumber Task = Common task : <color=#FF00FF>" + PlayerControl.GameOptions.NumCommonTasks + "</color>, Long task : <color=#FF00FF>" + PlayerControl.GameOptions.NumLongTasks + "</color>, short task : <color=#FF00FF>" + PlayerControl.GameOptions.NumShortTasks + "</color>. Better Task :";
-                    MainSetFR += "\nNombres de Tâches = Tâches Communes : <color=#FF00FF>" + PlayerControl.GameOptions.NumCommonTasks + "</color>, Tâches Longues : <color=#FF00FF>" + PlayerControl.GameOptions.NumLongTasks + "</color>, Tâches Courtes : <color=#FF00FF>" + PlayerControl.GameOptions.NumShortTasks + "</color>. Tâches améliorées :";
-
-
-                    if (BetterTaskWeapon.getBool() == false && BetterTaskWire.getBool() == false)
-                    {
-                        MainSet += " <color=#ff0000>No</color>";
-                        MainSetFR += " <color=#ff0000>Non</color>";
-
-                    }
-                    if (BetterTaskWire.getBool() == true)
-                    {
-                        MainSet += " - Wire";
-                        MainSetFR += " - Fils Electrique";
-
-                    }
-                    if (BetterTaskWeapon.getBool() == true)
-                    {
-                        MainSet += " - Weapon";
-                        MainSetFR += " - Astéroïdes";
-
-                    }
-                    MainSet += ".";
-                    MainSetFR += ".";
-
-
-
-
-
-
-
-                    if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                    {
-                        __instance.GameSettings.text += MainSetFR;
-                    }
-                    else
-                    {
-                        __instance.GameSettings.text += MainSet;
-                    }
-
-
-                    //UNKNOWIMPOSTORS
-                    string UIP = "\n<size=0.75>Impostors = ";
-                    string UIPFR = "\n<size=0.75>Imposteurs = ";
-
-
-                    if (ImpostorsKnowEachother.getBool() == true)
-                    {
-                        UIP += "Unknow : <color=#00FF00>Enable</color>, Can kill Each Other : <color=#00FF00>Enable</color>. Kill Cooldown : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, to <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> Yard.";
-
-                        UIPFR += "Ne se connaissent pas : <color=#00FF00>Activé</color>, Peuvent s'entretuer : <color=#00FF00>Oui</color>. Délai Pour Tuer : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, à une distance de <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> mètres.";
-                    }
-                    if (ImpostorsKnowEachother.getBool() == false)
-                    {
-                        if (ImpostorCanKillFake.getBool() == true && (FakeAdd.getBool() == true) && (FakeSpawnChance.getFloat() > 0))
-                        {
-                            UIP += "  Unknow : <color=#FF0000>Disable</color>, Can kill Each Other : <color=#00FF00>Yes (If The Fake Spawn)</color>. Kill Cooldown : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, to <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> Yard.";
-
-                            UIPFR += "  Ne se connaissent pas : <color=#FF0000>Désactivé</color>, Peuvent s'entretuer : <color=#00FF00>Oui (Si l'intru est présent)</color>. Délai Pour Tuer : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, à une distance de <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> mètres.";
-                        }
-                        else
-                        {
-                            UIP += "  Unknow : <color=#FF0000>Disable</color>, Can kill Each Other : <color=#FF0000>No</color>. Kill Cooldown : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, to <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> Yard.";
-
-                            UIPFR += "  Ne se connaissent pas : <color=#FF0000>Désactivé</color>, Peuvent s'entretuer : <color=#FF0000>Non</color>. Délai Pour Tuer : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, à une distance de <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> mètres.";
-                        }
-                    }
-
-                    if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                    {
-                        __instance.GameSettings.text += UIPFR;
-                    }
-                    else
-                    {
-                        __instance.GameSettings.text += UIP;
-                    }
-
-                    //LIST LOBBY
-                    string LobbySets = "<color=#EC7C18>\n\n<size=1.2>[Lobby Settings]</size>\n</color>";
-                    string LobbySetsFR = "<color=#EC7C18>\n\n<size=1.2>[Option de Jeu]</size>\n</color>";
-                    if ((DisabledVitales.getSelection() != 0
-                        || DisabledCamera.getSelection() != 0
-                        || DisabledAdmin.getSelection() != 0
-                        || NoOxySabotage.getSelection() != 0
-                        || ReactorSabotageShaking.getSelection() != 0
-                        || CommsSabotageAnonymous.getSelection() != 0
-                        || AdminTimeOn.getSelection() != 0
-                        || CamTimeOn.getSelection() != 0
-                        || VitalTimeOn.getSelection() != 0
-                        ))
-                    {
-
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += LobbySetsFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += LobbySets;
-                        }
-                    }
-
-
-
-                    
-
-
-
-                    //SABOTAGES - COM
-                    string SabModcom = "<size=0.75><color=#EC7C18>\nSabotages - Coms Unknow Players :</color>";
-                    string SabModcomFR = "<size=0.75><color=#EC7C18>\nSabotages - Com : Joueurs anonyme :</color>";
-
-
-
-                    if (CommsSabotageAnonymous.getSelection() == 0)
-                    {
-
-                        SabModcom += " <color=#FF0000>Disable</color>";
-                        SabModcomFR += " <color=#FF0000>Désactivé</color>";
-                    }
-                    if (CommsSabotageAnonymous.getSelection() == 1)
-                    {
-
-                        SabModcom += " <color=#00FF00>Enable</color>";
-                        SabModcomFR += " <color=#00FF00>Activé</color>";
-                    }
-
-                    if ((NoOxySabotage.getSelection() != 0 || ReactorSabotageShaking.getSelection() != 0 || CommsSabotageAnonymous.getSelection() != 0))
-                    {
-
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SabModcomFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += SabModcom;
-                        }
-                    }
-
-                    /*
-                    //SABOTAGES - Reactor
-                    string SabModrea = "<color=#EC7C18>\nSabotages - Reactor Shacking Mode :</color>";
-                    string SabModreaFR = "<color=#EC7C18>\nSabotages - Reacteur : Fait trembler d'écran :</color>";
-
-
-                    if (ReactorSabotageShaking.getSelection() == 0)
-                    {
-
-                        SabModrea += " <color=#FF0000>Disable</color>";
-                        SabModreaFR += " <color=#FF0000>Désactivé</color>";
-
-                    }
-                    if (ReactorSabotageShaking.getSelection() == 1)
-                    {
-
-                        SabModrea += " <color=#00FF00>Enable</color> to <color=#FF00FF>Rising Mod</color>";
-                        SabModreaFR += " <color=#00FF00>Activé</color> en <color=#FF00FF>Mode Progressif</color>";
-
-                    }
-                    if (ReactorSabotageShaking.getSelection() == 2)
-                    {
-
-                        SabModrea += " <color=#00FF00>Enable</color> to <color=#FF00FF>Fix Mod</color>";
-                        SabModreaFR += " <color=#00FF00>Activé</color> en <color=#FF00FF>Mode Stable</color>";
-
-                    }
-
-                    if ((NoOxySabotage.getSelection() != 0 || ReactorSabotageShaking.getSelection() != 0 || CommsSabotageAnonymous.getSelection() != 0))
-                    {
-
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SabModreaFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += SabModrea;
-                        }
-                    }
-
-                    //SABOTAGES - OXY
-                    string SabModoxy = "<size=0.75><color=#EC7C18>\nSabotages - Oxygen fainting Effect :</color>";
-                    string SabModoxyFR = "<size=0.75><color=#EC7C18>\nSabotages - Oxygen : Perte de connaissance :</color>";
-
-
-                    if (NoOxySabotage.getSelection() == 0)
-                    {
-
-                        SabModoxy += " <color=#FF0000>Disable</color>";
-                        SabModoxyFR += " <color=#FF0000>Désactivé</color>";
-                    }
-                    if (NoOxySabotage.getSelection() == 1)
-                    {
-
-                        SabModoxy += " <color=#00FF00>Enable</color>";
-                        SabModoxyFR += " <color=#00FF00>Activé</color>";
-
-                    }
-
-                    if ((NoOxySabotage.getSelection() != 0 || ReactorSabotageShaking.getSelection() != 0 || CommsSabotageAnonymous.getSelection() != 0))
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SabModoxyFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += SabModoxy;
-                        }
-                    }
-                    */
-
-
-                    //TRYHARD - Admin
-                    string TryHardAdmin = "<size=0.75><color=#EC7C18>\nUtility - Admin : </color>";
-                    string TryHardAdminFR = "<size=0.75><color=#EC7C18>\nSurveillance - Admin : </color>";
-
-
-                    if (DisabledAdmin.getSelection() == 0)
-                    {
-                        TryHardAdmin += "  <color=#00FF00>Enable</color> for <color=#FF00FF>Everyone</color>";
-                        TryHardAdminFR += "  <color=#00FF00>Activé</color> pour <color=#FF00FF>tout le monde</color>";
-
-
-                    }
-                    if (DisabledAdmin.getSelection() == 1)
-                    {
-                        TryHardAdmin += " <color=#FF0000>Disable</color> for <color=#FF00FF>Everyone</color>";
-                        TryHardAdminFR += " <color=#FF0000>Désactivé</color> pour <color=#FF00FF>tout le monde</color>";
-
-
-                    }
-                    if (DisabledAdmin.getSelection() == 2)
-                    {
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> for <color=#FF0000>Impostors</color>";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> pour <color=#FF0000>les Imposteurs</color>";
-
-
-                    }
-                    if (DisabledAdmin.getSelection() == 3)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x1</color> player";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x1</color> joueur";
-
-
-                    }
-                    if (DisabledAdmin.getSelection() == 4)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x2</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x2</color> joueurs";
-
-
-                    }
-                    if (DisabledAdmin.getSelection() == 5)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x3</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x3</color> joueurs";
-
-
-                    }
-                    if (DisabledAdmin.getSelection() == 6)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x4</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x4</color> joueurs";
-
-                    }
-                    if (DisabledAdmin.getSelection() == 7)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x5</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x5</color> joueurs";
-
-                    }
-                    if (DisabledAdmin.getSelection() == 8)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x6</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x6</color> joueurs";
-
-                    }
-                    if (DisabledAdmin.getSelection() == 9)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x7</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x7</color> joueurs";
-
-                    }
-                    if (DisabledAdmin.getSelection() == 10)
-                    {
-
-                        TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x8</color> players";
-                        TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x8</color> joueurs";
-
-                    }
-                    if (AdminTimeOn.getSelection() == 1)
-                    {
-                        TryHardAdmin += " - Limited time to use : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Reset : <color=#ff0000>Never</color>.";
-                        TryHardAdminFR += " - Temps d'utilisation : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Se réinitialise : <color=#ff0000>Jamais</color>.";
-
-                    }
-                    if (AdminTimeOn.getSelection() == 2)
-                    {
-                        TryHardAdmin += " - Limited time to use : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Reset : <color=#ff00ff>Each Round</color>.";
-                        TryHardAdminFR += " - Temps d'utilisation : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Se réinitialise : <color=#ff00ff>Après chaque réunion</color>.";
-
-                    }
-
-                    if ((DisabledAdmin.getSelection() != 0
-                        || DisabledCamera.getSelection() != 0
-                        || DisabledVitales.getSelection() != 0
-                        || AdminTimeOn.getSelection() != 0
-                        || CamTimeOn.getSelection() != 0
-                        || VitalTimeOn.getSelection() != 0
-                        //|| BuzzForAll.getBool() == true
-                        ))
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += TryHardAdminFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += TryHardAdmin;
-                        }
-                    }
-
-                    //TRYHARD - VITALES
-                    string TryHardVitales = "<size=0.75><color=#EC7C18>\nUtility - Vitale : </color>";
-                    string TryHardVitalesFR = "<size=0.75><color=#EC7C18>\nSurveillance - Vitales : </color>";
-
-                    if (DisabledVitales.getSelection() == 0)
-                    {
-                        TryHardVitales += "  <color=#00FF00>Enable</color> for <color=#FF00FF>Everyone</color>";
-
-                        TryHardVitalesFR += "  <color=#00FF00>Activé</color> pour <color=#FF00FF>tout le monde</color>";
-                    }
-                    if (DisabledVitales.getSelection() == 1)
-                    {
-                        TryHardVitales += " <color=#FF0000>Disable</color> for <color=#FF00FF>Everyone</color>";
-
-                        TryHardVitalesFR += " <color=#FF0000>Désactivé</color> pour <color=#FF00FF>tout le monde</color>";
-                    }
-                    if (DisabledVitales.getSelection() == 2)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> for <color=#FF0000>Impostors</color>";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> pour <color=#FF0000>Les Imposteurs</color>";
-                    }
-                    if (DisabledVitales.getSelection() == 3)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x1</color> player";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x1</color> joueur";
-
-                    }
-                    if (DisabledVitales.getSelection() == 4)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x2</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x2</color> joueurs";
-
-                    }
-                    if (DisabledVitales.getSelection() == 5)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x3</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x3</color> joueurs";
-
-                    }
-                    if (DisabledVitales.getSelection() == 6)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x4</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x4</color> joueurs";
-
-                    }
-                    if (DisabledVitales.getSelection() == 7)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x5</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x5</color> joueurs";
-
-                    }
-                    if (DisabledVitales.getSelection() == 8)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x6</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x6</color> joueurs";
-
-                    }
-                    if (DisabledVitales.getSelection() == 9)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x7</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x7</color> joueurs";
-
-                    }
-                    if (DisabledVitales.getSelection() == 10)
-                    {
-                        TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x8</color> players";
-
-                        TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x8</color> joueurs";
-
-                    }
-                    if (VitalTimeOn.getSelection() == 1)
-                    {
-                        TryHardVitales += " - Limited time to use : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Reset : <color=#ff0000>Never</color>.";
-
-                        TryHardVitalesFR += " - Temps d'utilisation : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Se réinitialise : <color=#ff0000>Jamais</color>.";
-                    }
-                    if (VitalTimeOn.getSelection() == 2)
-                    {
-                        TryHardVitales += " - Limited time to use : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Reset : <color=#ff00ff>Each Round</color>.";
-
-                        TryHardVitalesFR += " - Temps d'utilisation : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Se réinitialise : <color=#ff00ff>Après chaque réunion</color>.";
-                    }
-
-
-                    if ((DisabledAdmin.getSelection() != 0
-                                            || DisabledCamera.getSelection() != 0
-                                            || DisabledVitales.getSelection() != 0
-                                            || AdminTimeOn.getSelection() != 0
-                                            || CamTimeOn.getSelection() != 0
-                                            || VitalTimeOn.getSelection() != 0
-                                            // || BuzzForAll.getBool() == true
-                                            ))
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += TryHardVitalesFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += TryHardVitales;
-                        }
-                    }
-
-
-                    //TRYHARD - Camera
-                    string TryHardCamera = "<size=0.75><color=#EC7C18>\nUtility - Camera : </color>";
-                    string TryHardCameraFR = "<size=0.75><color=#EC7C18>\nSurveillance - Camera : </color>";
-
-
-                    if (DisabledCamera.getSelection() == 0)
-                    {
-                        TryHardCamera += "  <color=#00FF00>Enable</color> for <color=#FF00FF>Everyone</color>";
-
-                        TryHardCameraFR += "  <color=#00FF00>Activé</color> pour <color=#FF00FF>tout le monde</color>";
-                    }
-                    if (DisabledCamera.getSelection() == 1)
-                    {
-                        TryHardCamera += " <color=#FF0000>Disable</color> for <color=#FF00FF>Everyone</color>";
-                        TryHardCameraFR += " <color=#FF0000>Désactivé</color> pour <color=#FF00FF>tout le monde</color>";
-                    }
-                    if (DisabledCamera.getSelection() == 2)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> for <color=#FF0000>Impostors</color>";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> pour <color=#FF0000>Les Imposteurs</color>";
-                    }
-                    if (DisabledCamera.getSelection() == 3)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x1</color> player";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x1</color> joueur";
-
-                    }
-                    if (DisabledCamera.getSelection() == 4)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x2</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x2</color> joueurs";
-
-                    }
-                    if (DisabledCamera.getSelection() == 5)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x3</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x3</color> joueurs";
-
-                    }
-                    if (DisabledCamera.getSelection() == 6)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x4</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x4</color> joueurs";
-
-                    }
-                    if (DisabledCamera.getSelection() == 7)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x5</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x5</color> joueurs";
-
-                    }
-                    if (DisabledCamera.getSelection() == 8)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x6</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x6</color> joueurs";
-
-                    }
-                    if (DisabledCamera.getSelection() == 9)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x7</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x7</color> joueurs";
-
-                    }
-                    if (DisabledCamera.getSelection() == 10)
-                    {
-                        TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x8</color> players";
-
-                        TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x8</color> joueurs";
-
-                    }
-                    if (CamTimeOn.getSelection() == 1)
-                    {
-                        TryHardCamera += " - Limited time to use : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Reset : <color=#ff0000>Never</color>.";
-
-                        TryHardCameraFR += " - Temps d'utilisation : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Se réinitialise : <color=#ff0000>Jamais</color>.";
-                    }
-                    if (CamTimeOn.getSelection() == 2)
-                    {
-                        TryHardCamera += " - Limited time to use : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Reset : <color=#ff00ff>Each Round</color>.";
-
-                        TryHardCameraFR += " - Temps d'utilisation : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Se réinitialise : <color=#ff00ff>Après chaque réunion</color>.";
-                    }
-
-
-                    if ((DisabledAdmin.getSelection() != 0
-                                            || DisabledCamera.getSelection() != 0
-                                            || DisabledVitales.getSelection() != 0
-                                            || AdminTimeOn.getSelection() != 0
-                                            || CamTimeOn.getSelection() != 0
-                                            || VitalTimeOn.getSelection() != 0
-                                            //|| BuzzForAll.getBool() == true
-                                            ))
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += TryHardCameraFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += TryHardCamera;
-                        }
-                    }
-
-
-
-
-
-
-                    
-
-
-                    //ROLESSETTINGS
-                    string RolesSets2 = "<color=#EC7C18>\n\n<size=1.2>[Rôles Settings]</size>\n</color>";
-                    string RolesSets2FR = "<color=#EC7C18>\n\n<size=1.2>[Paramètres]</size>\n</color>";
-
-                    if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                    {
-                        __instance.GameSettings.text += RolesSets2FR;
-                    }
-                    else
-                    {
-                        __instance.GameSettings.text += RolesSets2;
-                    }
-
-                    //SPACER---
-                    string Spacercrew = "\n";
-                    __instance.GameSettings.text += Spacercrew;
-
-
-                    //SHERIF
-                    string Sherifs = "<size=0.75><color=#FFFF00>\n> Sheriff : </color>";
-                    string SherifsFR = "<size=0.75><color=#FFFF00>\n> Shérif : </color>";
-
-
-                    if (SherifSpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif2SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif3SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || HIDE_Sheriff.getBool() == true)
-
-                    {
-                        if (SherifKillRange.getSelection() == 0)
-                        {
-
-                            Sherifs += "Sheriff count : <color=#ff00ff>" + (0 + SherifMax + Sherif2Max + Sherif3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Kill Cooldown : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Normal (100%)</color>";
-                            SherifsFR += "Nombre de Shérif : <color=#ff00ff>" + (0 + SherifMax + Sherif2Max + Sherif3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Délai pour Tuer : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Normal (100%)</color>";
-                        }
-                        if (SherifKillRange.getSelection() == 1)
-                        {
-                            Sherifs += "Sheriff count : <color=#ff00ff>" + (0 + SherifMax + Sherif2Max + Sherif3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Kill Cooldown : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Upgraded (120%)</color>";
-                            SherifsFR += "Nombre de Shérif : <color=#ff00ff>" + (0 + SherifMax + Sherif2Max + Sherif3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Délai pour Tuer : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Amélioré (120%)</color>";
-
-                        }
-                        if (SherifKillCulteMember.getBool() == true)
-                        {
-                            Sherifs += ",\nCan Kill Culte Member : <color=#00ff00>Yes</color>,";
-                            SherifsFR += ",\nPeut tuer les membres du Culte : <color=#00ff00>Oui</color>,";
-
-                        }
-                        if (SherifKillCulteMember.getBool() == false)
-                        {
-                            Sherifs += ",\nCan Kill Culte Member : <color=#ff0000>No</color>,";
-                            SherifsFR += ",\nPeut tuer les membres du Culte : <color=#ff0000>Non</color>,";
-
-                        }
-                        if (SherifKillSettings.getSelection() == 0)
-                        {
-                            Sherifs += " Ability Setting : <color=#00ff00>Enable</color>.";
-                            SherifsFR += " Paramètres de la capacité : <color=#00ff00>Activé</color>.";
-                        }
-                        if (SherifKillSettings.getSelection() == 1)
-                        {
-                            Sherifs += " Ability Setting : <color=#ff00ff>Disabled at first turn</color>.";
-                            SherifsFR += " Paramètres de la capacité : <color=#ff00ff>Désactivé au premier tour</color>.";
-                        }
-                        if (SherifKillSettings.getSelection() == 2)
-                        {
-                            Sherifs += " Ability Setting : <color=#ff00ff>He will have to find his weapon before kill</color>.";
-                            SherifsFR += " Paramètres de la capacité : <color=#00ff00>Il devras trouver sont arme pour tuer</color>.";
-                        }
-
-
-                    }
-                    if (SherifSpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif2SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif3SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || HIDE_Sheriff.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SherifsFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Sherifs;
-                        }
-                    }
-
-
-                    //GUARDIAN
-                    string Guardian = "<size=0.75><color=#00FFFF>\n> Guardian : </color>";
-                    string GuardianFR = "<size=0.75><color=#00FFFF>\n> Guardien : </color>";
-                    if (GuardianSpawnChance.getFloat() > 0)
-
-                    {
-
-                        if (ShieldSettings.getSelection() == 1)
-                        {
-                            if (GuardianShieldVisibility.getBool() == true)
-                            {
-                                Guardian += "Shield Settings Mode : <color=#ff00ff>Reflect</color>, player protected see the shield : <color=#00ff00>Yes</color>";
-                                GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Renvoie</color>, le joueur protégé voit le Bouclier : <color=#00ff00>Oui</color>";
-
-                            }
-                            else
-                            {
-                                Guardian += "Shield Settings Mode : <color=#ff00ff>Reflect</color>, player protected see the shield : <color=#ff0000>No</color>";
-                                GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Renvoie</color>, le joueur protégé voit le Bouclier : <color=#ff0000>Non</color>";
-
-                            }
-
-                        }
-                        if (ShieldSettings.getSelection() == 0)
-                        {
-                            if (GuardianShieldVisibility.getBool() == true)
-                            {
-                                Guardian += "Shield Settings Mode : <color=#ff00ff>Protected</color>, player protected see the shield : <color=#00ff00>Yes</color>";
-                                GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Protection</color>, le joueur protégé voit le Bouclier : <color=#00ff00>Oui</color>";
-                            }
-                            else
-                            {
-                                Guardian += "Shield Settings Mode : <color=#ff00ff>Protected</color>, player protected see the shield : <color=#ff0000>No</color>";
-                                GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Protection</color>, le joueur protégé voit le Bouclier : <color=#ff0000>Non</color>";
-
-                            }
-
-                        }
-                        if (GuardianShieldVisibilitytry.getSelection() == 0)
-                        {
-                            if (GuardianShieldSound.getBool() == true)
-                            {
-                                Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> can see shield and hear the noise shield.";
-                                GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> peut voir le Shield et entendras le son.";
-
-                            }
-                            else
-                            {
-                                Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> can see shield.";
-                                GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> peut voir le Bouclier.";
-
-                            }
-
-                        }
-                        if (GuardianShieldVisibilitytry.getSelection() == 1 && GuardianShieldVisibility.getBool() == false)
-                        {
-                            if (GuardianShieldSound.getBool() == true)
-                            {
-                                Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Shielded Player</color> can see shield and <color=#ff00ff>Everyone</color> hear the noise shield.";
-                                GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>le joueur protégé</color> peut voir le Bouclier, et <color=#ff00ff>tout le monde</color> entends le son.";
-
-                            }
-                            else
-                            {
-                                Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Shielded Player</color> can see shield.";
-                                GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>le joueur protégé</color> peut voir le Bouclier.";
-
+                                MainSet += "\nMap = <color=#FF00FF>The Skeld (Normal)</color>";
+                                MainSetFR += "\nCarte = <color=#FF00FF>The Skeld (Normal)</color>";
+                                ChallengerMod.Challenger.STRMap = "The Skeld Normal";
                             }
                         }
-                        if (GuardianShieldVisibilitytry.getSelection() == 1 && GuardianShieldVisibility.getBool() == true)
+                        else if (PlayerControl.GameOptions.MapId == 1)
                         {
-                            if (GuardianShieldSound.getBool() == true)
+                            if (BetterMapHQ.getSelection() == 1)
                             {
-                                Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> hear the noise shield.";
-                                GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> entendras le son.";
-
+                                MainSet += "\nMap = <color=#FF00FF>MiraHQ (Challenger Mira - By Lunastellia)</color>";
+                                MainSetFR += "\nCarte = <color=#FF00FF>MiraHQ (Challenger Mira - Par Lunastellia)</color>";
+                                ChallengerMod.Challenger.STRMap = "Mira Challenger";
                             }
-                            else
+                            if (BetterMapHQ.getSelection() == 0)
                             {
-                                Guardian += ".";
-                                GuardianFR += ".";
-
-                            }
-                        }
-
-                        if (GuardianShieldVisibilitytry.getSelection() == 2)
-                        {
-                            if (GuardianShieldSound.getBool() == true)
-                            {
-                                Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> hear the noise shield.";
-                                GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> entendras le son.";
-
-                            }
-                            else
-                            {
-                                Guardian += ".";
-                                GuardianFR += ".";
-
+                                MainSet += "\nMap = <color=#FF00FF>MiraHQ (Normal)</color>";
+                                MainSetFR += "\nCarteap = <color=#FF00FF>MiraHQ (Normal)</color>";
+                                ChallengerMod.Challenger.STRMap = "Mira Normal";
                             }
                         }
-
-
-
-                    }
-                    if (GuardianSpawnChance.getFloat() > 0 && GuardianAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                        else if (PlayerControl.GameOptions.MapId == 2)
                         {
-                            __instance.GameSettings.text += GuardianFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Guardian;
-                        }
-                    }
-
-
-
-                    //ENGINEER
-                    string Engineer = "<size=0.75><color=#FFA100>\n> Engineer : </color>";
-                    string EngineerFR = "<size=0.75><color=#FFA100>\n> Ingénieur : </color>";
-                    if (engineerSpawnChance.getFloat() > 0)
-
-                    {
-
-                        if (RepairSettings.getSelection() == 0)
-                        {
-                            if (EngineerCanVent.getBool() == true)
+                            if (BetterMapPL.getSelection() == 2 && NuclearTimerMod.getBool() == true)
                             {
-                                Engineer += "Repair Mode : <color=#ff00ff>Single</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#00ff00>Yes</color>.";
-                                EngineerFR += "Mode de réparation : <color=#ff00ff>Unique</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#00ff00>Oui</color>.";
+                                MainSet += "\nMap = <color=#FF00FF>Polus (Challenger Polus +Nuclear  - By Lunastellia)</color>, Nuclear Spawn chance: <color=#FF00FF>" + NuclearRND.getFloat() + "%</color>.";
+                                MainSetFR += "\nCarte = <color=#FF00FF>Polus (Challenger Polus +Nucléaire  - Par Lunastellia)</color> Chance d'apparition (Nuclear) : <color=#FF00FF>" + NuclearRND.getFloat() + "%</color>.";
 
-                            }
-                            if (EngineerCanVent.getBool() == false)
-                            {
-                                Engineer += "Repair Mode : <color=#ff00ff>Single</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#FF0000>No</color>.";
-                                EngineerFR += "Mode de réparation : <color=#ff00ff>Unique</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>.";
-
-                            }
-
-                        }
-                        if (RepairSettings.getSelection() == 1)
-                        {
-                            if (EngineerCanVent.getBool() == true)
-                            {
-                                Engineer += "Repair Mode : <color=#ff00ff>Round</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#00ff00>Yes</color>.";
-                                EngineerFR += "Mode de réparation : <color=#ff00ff>1x Par Tour</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#00ff00>Oui</color>.";
-
-                            }
-                            if (EngineerCanVent.getBool() == false)
-                            {
-                                Engineer += "Repair Mode : <color=#ff00ff>Round</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#FF0000>No</color>.";
-                                EngineerFR += "Mode de réparation : <color=#ff00ff>1x Par Tour</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>.";
-
-                            }
-
-                        }
-
-
-                    }
-                    if (engineerSpawnChance.getFloat() > 0 && engineerAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += EngineerFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Engineer;
-                        }
-                    }
-
-
-
-                    //TIMELORD
-                    string Timelord = "<size=0.75><color=#007FFF>\n> Timelord : </color>";
-                    string TimelordFR = "<size=0.75><color=#007FFF>\n> Temporel : </color>";
-
-                    if (TimeLordSpawnChance.getFloat() > 0)
-
-                    {
-                        Timelord += "Break Time : <color=#00ffff>" + TimeLordStopCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + TimeLordStopDuration.getFloat() + "s</color> duration.</color>";
-
-                        TimelordFR += "Délai pour Arrêter le temps : <color=#00ffff>" + TimeLordStopCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + TimeLordStopDuration.getFloat() + "s</color>.</color>";
-                    }
-                    if (TimeLordSpawnChance.getFloat() > 0 && TimeLordAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += TimelordFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Timelord;
-                        }
-                    }
-
-                    //HUNTER
-                    string Hunter = "<size=0.75><color=#00ff00>\n> Hunter : </color>";
-                    string HunterFR = "<size=0.75><color=#00ff00>\n> Chasseur : </color>";
-
-
-                    if (HunterSpawnChance.getFloat() > 0)
-
-                    {
-                        if (ResetTrack.getBool() == false)
-                        {
-                            if (Followtrack.getBool() == false)
-                            {
-                                Hunter += "Can reuse Track if Tracked player die : <color=#ff0000>No</color>, Hunter can Follow Tracked player : <color=#ff0000>No</color>.";
-                                HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#ff0000>Non</color>, Le Pisteur affiche un marqueur en jeu : <color=#ff0000>Non</color>.";
-
-                            }
-                            if (Followtrack.getBool() == true)
-                            {
-                                Hunter += "Can reuse Track if Tracked player die : <color=#ff0000>No</color>, Hunter can Follow Tracked player : <color=#00FF00>Yes</color>.";
-                                HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#ff0000>Non</color>, Le Pisteur affiche un marqueur en jeu : <color=#00FF00>Oui</color>.";
-
-                            }
-                        }
-                        if (ResetTrack.getBool() == true)
-                        {
-                            if (Followtrack.getBool() == false)
-                            {
-                                Hunter += "Can reuse Track if Tracked player die : <color=#00FF00>Yes</color>, Hunter can Follow Tracked player : <color=#ff0000>No</color>.";
-                                HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#00FF00>Oui</color>, Le Pisteur affiche un marqueur en jeu : <color=#ff0000>Non</color>.";
-
-                            }
-                            if (Followtrack.getBool() == true)
-                            {
-                                Hunter += "Can reuse Track if Tracked player die : <color=#00FF00>Yes</color>, Hunter can Follow Tracked player : <color=#00FF00>Yes</color>.";
-                                HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#00FF00>Oui</color>, Le Pisteur affiche un marqueur en jeu : <color=#00FF00>Oui</color>.";
-
-                            }
-                        }
-                    }
-                    if (HunterSpawnChance.getFloat() > 0 && HunterAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += HunterFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Hunter;
-                        }
-                    }
-
-
-                    //MYSTIC
-                    string Mystic = "<size=0.75><color=#F9FFB2>\n> Mystic : </color>";
-                    string MysticFR = "<size=0.75><color=#F9FFB2>\n> Mystic : </color>";
-
-
-                    if (MysticSpawnChance.getFloat() > 0)
-
-                    {
-                        Mystic += "Personal-Shield : <color=#00ffff>" + MysticSetCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + MysticSetDuration.getFloat() + "s</color> duration.</color>";
-
-                        MysticFR += "Délai du Bouclier personnel : <color=#00ffff>" + MysticSetCooldown.getFloat() + "s</color> pour une durée de <color=#00ffff>" + MysticSetDuration.getFloat() + "s</color>.";
-                    }
-                    if (MysticSpawnChance.getFloat() > 0 && MysticAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += MysticFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Mystic;
-                        }
-                    }
-
-                    //SPIRIT
-                    string Spirit = "<size=0.75><color=#A1FF00>\n> Spirit : </color>";
-                    string SpiritFR = "<size=0.75><color=#A1FF00>\n> Esprit : </color>";
-
-
-                    if (SpiritSpawnChance.getFloat() > 0)
-                    {
-
-                        if (SpiritSab.getBool() == false)
-                        {
-                            Spirit += "Spirit can use Sabotage when he die (Door only) : <color=#ff0000>Disabled.</color>.";
-                            SpiritFR += "L'esprit peut utiliser les sabotages si il est mort (Porte uniquement) : <color=#ff0000>Désactivé.</color>.";
-
-                        }
-                        if (SpiritSab.getBool() == true)
-                        {
-                            Spirit += "Spirit can use Sabotage when he die (Door only) : <color=#00FF00>Enable</color>.";
-                            SpiritFR += "L'esprit peut utiliser les sabotages si il est mort (Porte uniquement) : <color=#00FF00>Activé</color>.";
-
-                        }
-
-                    }
-                    if (SpiritSpawnChance.getFloat() > 0 && SpiritAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SpiritFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Spirit;
-                        }
-                    }
-
-
-
-                    //MAYOR
-                    string Mayor = "<size=0.75><color=#AF8269>\n> Mayor : </color>";
-                    string MayorFR = "<size=0.75><color=#AF8269>\n> Maire : </color>";
-
-
-                    if (MayorSpawnChance.getFloat() > 0)
-
-                    {
-                        if (BonusBuzz.getSelection() == 0)
-                        {
-                            Mayor += "Bonus Buzz Mode : <color=#ff0000>Disabled.</color>";
-                            MayorFR += "Réunion d'urgence bonus : <color=#ff0000>Désactivé.</color>";
-
-                        }
-                        if (BonusBuzz.getSelection() == 1)
-                        {
-                            Mayor += "Bonus Buzz Mode : <color=#ff00ff>After First Meeting</color>, Cooldown : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
-                            MayorFR += "Réunion d'urgence bonus : <color=#ff00ff>Activé - Après la première réunion</color>, Délai : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
-
-                        }
-                        if (BonusBuzz.getSelection() == 2)
-                        {
-                            Mayor += "Bonus Buzz Mode : <color=#ff00ff>only if finished tasks</color>, Cooldown : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
-                            MayorFR += "Réunion d'urgence bonus : <color=#ff00ff>Acitvé - Lorsque le Maire termine ces Tâches</color>, Délai : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
-
-                        }
-
-                    }
-                    if (MayorSpawnChance.getFloat() > 0 && MayorAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += MayorFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Mayor;
-                        }
-                    }
-
-
-
-                    //DETECTIVE
-                    string Detective = "<size=0.75><color=#BCFFBA>\n> Detective : </color>";
-                    string DetectiveFR = "<size=0.75><color=#BCFFBA>\n> Detective : </color>";
-
-
-                    if (DetectiveSpawnChance.getFloat() > 0)
-
-                    {
-                        if (detectiveFootprintanonymous.getBool() == true)
-                        {
-                            Detective += "<color=#ff00ff>Anonym</color> Footprint : <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> duration and <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color> visible.</color>";
-
-                            DetectiveFR += "Traces <color=#ff00ff>Anonyme</color> Délai d'activation: <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> l'effet persiste pendant <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> Les traces restent visibles <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color>.</color>";
-                        }
-                        if (detectiveFootprintanonymous.getBool() == false)
-                        {
-                            Detective += "<color=#ff00ff>Colored</color> Foorprint : <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> duration and <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color> visible.</color>";
-
-                            DetectiveFR += "Traces <color=#ff00ff>De la couleur des joueurs</color> Délai d'activation: <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> l'effet persiste pendant <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> Les traces restent visibles <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color>.</color>";
-                        }
-
-
-                    }
-                    if (DetectiveSpawnChance.getFloat() > 0 && DetectiveAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += DetectiveFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Detective;
-                        }
-                    }
-
-
-
-                    //NIGHTWATCH
-                    string Nightwatch = "<size=0.75><color=#9EB3FF>\n> Nightwatch : </color>";
-                    string NightwatchFR = "<size=0.75><color=#9EB3FF>\n> Veilleur : </color>";
-
-                    if (NightwatcherSpawnChance.getFloat() > 0)
-
-                    {
-                        Nightwatch += "Light Vision : <color=#00ffff>" + NightwatcherSetCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + NightwatcherSetDuration.getFloat() + "s</color> duration.";
-
-                        NightwatchFR += "Délai de la Vision Améliorée : <color=#00ffff>" + NightwatcherSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + NightwatcherSetDuration.getFloat() + "s</color>.";
-                    }
-                    if (NightwatcherSpawnChance.getFloat() > 0 && NightwatcherAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += NightwatchFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Nightwatch;
-                        }
-                    }
-
-
-                    //SPY
-                    string Spy = "<size=0.75><color=#9EE1FF>\n> Spy : </color>";
-                    string SpyFR = "<size=0.75><color=#9EE1FF>\n> Espion : </color>";
-
-
-                    if (SpySpawnChance.getFloat() > 0)
-
-                    {
-                        Spy += "Spy Ability Duration : <color=#00ffff>" + SpyDuration.getFloat() + "s</color>,";
-                        SpyFR += "La Capacité de l'espion dure : <color=#00ffff>" + SpyDuration.getFloat() + "s</color>,";
-                        if (SpyRange.getSelection() == 0)
-                        {
-                            Spy += " ability view Range : <color=#FF00FF>100%</color>.";
-                            SpyFR += " porté de la vision : <color=#00FF00>100%</color>.";
-                        }
-                        if (SpyRange.getSelection() == 1)
-                        {
-                            Spy += " ability view Range : <color=#FF00FF>125%</color>.";
-                            SpyFR += " porté de la vision : <color=#00FF00>125%</color>.";
-                        }
-                        if (SpyRange.getSelection() == 2)
-                        {
-                            Spy += " ability view Range : <color=#FF00FF>150%</color>.";
-                            SpyFR += " porté de la vision : <color=#00FF00>150%</color>.";
-                        }
-                    }
-                    if (SpySpawnChance.getFloat() > 0 && SpyAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SpyFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Spy;
-                        }
-                    }
-
-
-
-                    //INFORMANT
-                    string Informant = "<size=0.75><color=#ADFFEA>\n> Informant : </color>";
-                    string InformantFR = "<size=0.75><color=#ADFFEA>\n> Voyante : </color>";
-
-
-                    if (InforSpawnChance.getFloat() > 0)
-
-                    {
-                        if (InforAnalyseMod.getSelection() == 0)
-                        {
-                            Informant += "Analyse Ability Mode : <color=#ff00ff>Single</color>, Cooldown Before Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
-                            InformantFR += "Peut analyser : <color=#ff00ff>1 Joueur</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
-                        }
-                        if (InforAnalyseMod.getSelection() == 1)
-                        {
-                            Informant += "Analyse Ability Mode : <color=#ff00ff>Round</color>, Cooldown Before Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
-                            InformantFR += "Peut analyser : <color=#ff00ff>1x Par Tour</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
-                        }
-                        if (InforAnalyseMod.getSelection() == 2)
-                        {
-                            Informant += "Analyse Ability Mode : <color=#ff00ff>Cooldown</color>, Cooldown for Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
-                            InformantFR += "Peut analyser : <color=#ff00ff>Plusieurs fois</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
-                        }
-                        
-                        if (InforRemainingTask.getFloat() == TotalTask)
-                        {
-
-                            Informant += "\nEnable : <color=#ff00ff>From the game start</color>,";
-                            InformantFR += "\nDisponible : <color=#ff00ff>Dés le début de la partie</color>,";
-                        }
-                        else
-                        {
-                            if (InforRemainingTask.getFloat() == 0)
-                            {
-                                Informant += "\nEnable : <color=#ff00ff>When all task are complete</color>,";
-                                InformantFR += "\nDisponible : <color=#00ff00>quand Toute les tâches sont terminées</color>,";
-                            }
-                            else
-                            {
-                                Informant += "\nEnable :If <color=#ff00ff>" + (TotalTask - InforRemainingTask.getFloat()) + "/" + TotalTask + " task are completed</color>,";
-                                InformantFR += "\nDisponible :Si <color=#ff00ff>" + (TotalTask - InforRemainingTask.getFloat()) + "/" + TotalTask + " Tâches sont terminées.</color>,";
-                            }
-                        }
-
-
-                        if (InforAnalyseTeam.getBool() == true)
-                        {
-                            Informant += " can see Special role Team : <color=#00ff00>Yes</color>.";
-                            InformantFR += " Peut voir l'équipe des Rôles spéciaux : <color=#00ff00>Oui</color>.";
-                        }
-                        if (InforAnalyseTeam.getBool() == false)
-                        {
-                            Informant += " can see Special role Team : <color=#ff0000>No</color>.";
-                            InformantFR += " Peut voir l'équipe des Rôles spéciaux : <color=#ff0000>Non</color>.";
-                        }
-
-
-                    }
-                    if (InforSpawnChance.getFloat() > 0 && InforAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += InformantFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Informant;
-                        }
-                    }
-
-                    //BAIT
-                    string Bait = "<size=0.75><color=#808080>\n> Bait : </color>";
-                    string BaitFR = "<size=0.75><color=#808080>\n> Appat : </color>";
-
-
-                    if (BaitSpawnChance.getFloat() > 0)
-
-                    {
-
-                        
-
-                        if (BaitReporttimeRnd.getFloat() != 0)
-                        {
-                            Bait += "Bait Reporting time : <color=#00ffff>" + BaitReporttime.getFloat() + "s ~ " + (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat()) + "s</color>,";
-                            BaitFR += "Délai avant que le Signalement s'active : <color=#00ffff>" + BaitReporttime.getFloat() + "s ~ " + (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat()) + "s</color>,";
-                        }
-                        else
-                        {
-                            Bait += "Bait Reporting time : <color=#00ffff>" + BaitReporttime.getFloat() + "s</color>,";
-                            BaitFR += "Délai avant que le Signalement s'active : <color=#00ffff>" + BaitReporttime.getFloat() + "s</color>,";
-                        }
-
-                        if (BaitBalise.getBool() == true)
-                        {
-                            Bait += " Balise : <color=#00ff00>Yes</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
-                            BaitFR += " Balise : <color=#00ff00>Oui</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
-                        }
-                        else
-                        {
-                            Bait += " Balise : <color=#ff0000>No</color>,";
-                            BaitFR += " Balise : <color=#ff0000>Non</color>,";
-                        }
-
-
-                        if (BaitCanVent.getBool() == true)
-                        {
-                            Bait += " Can Use Vent : <color=#00FF00>yes</color>.";
-                            BaitFR += " peut utiliser les Vents : <color=#00FF00>Oui</color>.";
-
-                        }
-                        if (BaitCanVent.getBool() == false)
-                        {
-                            Bait += " Can Use Vent : <color=#FF0000>No</color>.";
-                            BaitFR += " peut utiliser les Vents : <color=#FF0000>Non</color>.";
-
-                        }
-
-
-                    }
-                    if (BaitSpawnChance.getFloat() > 0 && BaitAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += BaitFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Bait;
-                        }
-                    }
-
-
-                    //Mentalist
-                    string Mentalist = "<size=0.75><color=#A991FF>\n> Mentalist : </color>";
-                    string MentalistFR = "<size=0.75><color=#A991FF>\n> Mentaliste : </color>";
-
-
-                    if (MentalistSpawnChance.getFloat() > 0)
-
-                    {
-                        if (MentalistAbility.getSelection() != 1)
-                        {
-                            if (AdminSetting.getSelection() == 0)
-                            {
-                                Mentalist += "Mentalist can See players color with admin (<color=#ff00ff>once use per Game</color>) : <color=#00FF00>Yes</color>, for :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
-
-                                MentalistFR += "Peut voir les couleurs sur la table d'admin (<color=#ff00ff>1 seule fois par partie</color>) : <color=#00FF00>Oui</color>, Pendant :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
-                            }
-                            else
-                            {
-                                Mentalist += "Mentalist can See players color with admin (<color=#ff00ff>once use per Round</color>) : <color=#00FF00>Yes</color>, for :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
-
-                                MentalistFR += "Peut voir les couleurs sur la table d'admin (<color=#ff00ff>1x Par Tour</color>) : <color=#00FF00>Yes</color>, Pendant :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
-                            }
-
-                        }
-                        else 
-                        {
-                            Mentalist += "Mentalist can See players color with admin : <color=#FF0000>No</color>,";
-
-                            MentalistFR += "Peut voir les couleurs sur la table d'admin : <color=#FF0000>Non</color>,";
-                        }
-
-
-                        if (MentalistAbility.getSelection() != 0)
-                        {
-                            Mentalist += " Can See color votes : <color=#00FF00>Yes</color>.";
-
-                            MentalistFR += " Peut voir les couleurs des votes : <color=#00FF00>Oui</color>.";
-
-                        }
-                        else
-                        {
-                            Mentalist += " Can See color votes : <color=#FF0000>No</color>.";
-
-                            MentalistFR += " Peut voir les couleurs des votes : <color=#FF0000>Non</color>.";
-
-                        }
-
-
-                    }
-                    if (MentalistSpawnChance.getFloat() > 0 && MentalistAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += MentalistFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Mentalist;
-                        }
-                    }
-
-                    //Mentalist
-                    string Builder = "<size=0.75><color=#FFC291>\n> Builder : </color>";
-                    string BuilderFR = "<size=0.75><color=#FFC291>\n> Constructeur : </color>";
-
-
-                    if (BuilderSpawnChance.getFloat() > 0)
-
-                    {
-                        if (MaxBuild.getSelection() == 0)
-                        {
-                            if (BuildRound.getBool() == true)
-                            {
-                                Builder += "Max Vent Block :<color=#ff00ff>1</color>, Only one use per round : <color=#00ff00>Yes</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-                                BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>1</color>, Une seul utilisation par tour : <color=#00ff00>Oui</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-
-                            }
-                            if (BuildRound.getBool() == false)
-                            {
-                                Builder += "Max Vent Block :<color=#ff00ff>1</color>, Only one use per round : <color=#ff0000>No</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-
-                                BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>1</color>, Une seul utilisation par tour : <color=#ff0000>Non</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-                            }
-                        }
-                        if (MaxBuild.getSelection() == 1)
-                        {
-                            if (BuildRound.getBool() == true)
-                            {
-                                Builder += "Max Vent Block :<color=#ff00ff>2</color>, Only one use per round : <color=#00ff00>Yes</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-                                BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>2</color>, Une seul utilisation par tour : <color=#00ff00>Oui</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-
-                            }
-                            if (BuildRound.getBool() == false)
-                            {
-                                Builder += "Max Vent Block :<color=#ff00ff>2</color>, Only one use per round : <color=#ff0000>No</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-
-                                BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>2</color>, Une seul utilisation par tour : <color=#ff0000>Non</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-                            }
-                        }
-                        if (MaxBuild.getSelection() == 2)
-                        {
-                            if (BuildRound.getBool() == true)
-                            {
-                                Builder += "Max Vent Block :<color=#ff00ff>3</color>, Only one use per round : <color=#00ff00>Yes</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-                                BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>3</color>, Une seul utilisation par tour : <color=#00ff00>Oui</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-
-                            }
-                            if (BuildRound.getBool() == false)
-                            {
-                                Builder += "Max Vent Block :<color=#ff00ff>3</color>, Only one use per round : <color=#ff0000>No</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-
-                                BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>3</color>, Une seul utilisation par tour : <color=#ff0000>Non</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
-                            }
-                        }
-
-
-                    }
-                    if (BuilderSpawnChance.getFloat() > 0 && BuilderAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += BuilderFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Builder;
-                        }
-                    }
-                    //Dictator
-                    string Dictator = "<size=0.75><color=#FF7A7A>\n> Dictator : </color>";
-                    string DictatorFR = "<size=0.75><color=#FF7A7A>\n> Dictateur : </color>";
-
-
-                    if (DictatorSpawnChance.getFloat() > 0)
-
-                    {
-
-                        if (DictatorFirstTurn.getBool() == false)
-                        {
-                            if (DictatorMeeting.getSelection() == 0)
-                            {
-                                Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Passive</color> - As long as the dictator is alive the ability is activated.";
-                                DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Passif</color> - Tant que le dictateur est en vie.";
-
-                            }
-                            if (DictatorMeeting.getSelection() == 1)
-                            {
-                                Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Round</color> - The dictator chooses when he wants to use his Ability.";
-                                DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Selection</color> - Le dictateur choisie quand il active sont pouvoir.";
-
-                            }
-                            if (DictatorMeeting.getSelection() == 2)
-                            {
-                                Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Single</color> - The dictator chooses when he wants to use his Ability, Only one use per Game.";
-                                DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Usage Unique</color> - Le dictateur choisie quand il active sont pouvoir.";
-
-                            }
-
-                        }
-                        if (DictatorFirstTurn.getBool() == true)
-                        {
-                            if (DictatorMeeting.getSelection() == 0)
-                            {
-                                Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Passive</color> - As long as the dictator is alive the ability is activated.";
-                                DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Passif</color> - Tant que le dictateur est en vie.";
-
-                            }
-                            if (DictatorMeeting.getSelection() == 1)
-                            {
-                                Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Round</color> - The dictator chooses when he wants to use his Ability.";
-                                DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Selection</color> - Le dictateur choisie quand il active sont pouvoir.";
-
-                            }
-                            if (DictatorMeeting.getSelection() == 2)
-                            {
-                                Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Single</color> - The dictator chooses when he wants to use his Ability, Only one use per Game.";
-                                DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Usage Unique</color> - Le dictateur choisie quand il active sont pouvoir..";
-
-                            }
-
-                        }
-
-                    }
-                    if (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += DictatorFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Dictator;
-                        }
-                    }
-
-
-                    //SENTINEL
-                    string Sentinel = "<size=0.75><color=#06AD17>\n> Sentinel : </color>";
-                    string SentinelFR = "<size=0.75><color=#06AD17>\n> Sentinelle : </color>";
-
-
-                    if (SentinelSpawnChance.getFloat() > 0)
-
-                    {
-
-                        Sentinel += "Scan : <color=#00ffff>" + ScanCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + ScanDuration.getFloat() + "s</color> duration,";
-                        SentinelFR += "Délai du Scan : <color=#00ffff>" + ScanCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + ScanDuration.getFloat() + "s</color>,";
-
-                        if (ScanAbility.getSelection() == 0)
-                        {
-                            Sentinel += " Enable dead Players : <color=#FF0000>No</color>, In Vent Player : <color=#00ff00>Yes</color>.";
-                            SentinelFR += " Détecte les joueurs - Mort : <color=#FF0000>Non</color>, - Dans une Vent : <color=#00ff00>Oui</color>.";
-                        }
-                        if (ScanAbility.getSelection() == 1)
-                        {
-                            Sentinel += " Enable dead Players : <color=#00FF00>Yes</color>, In Vent Player : <color=#ff0000>No</color>.";
-                            SentinelFR += " Détecte les joueurs - Mort : <color=#00FF00>Oui</color>, - Dans une Vent : <color=#ff0000>Non</color>.";
-                        }
-                        if (ScanAbility.getSelection() == 2)
-                        {
-                            Sentinel += " Enable dead Players : <color=#00FF00>Yes</color>, In Vent Player : <color=#00ff00>Yes</color>.";
-                            SentinelFR += " Détecte les joueurs - Mort : <color=#00FF00>Oui</color>, - Dans une Vent : <color=#00ff00>Oui</color>.";
-                        }
-                    }
-                    if (SentinelSpawnChance.getFloat() > 0 && SentinelAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += SentinelFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Sentinel;
-                        }
-                    }
-
-                    //LAWKEEPR
-                    string Lawkeeper = "<size=0.75><color=#FF9b9b>\n> Lawkeeper : </color>";
-                    string LawkeeperFR = "<size=0.75><color=#FF9b9b>\n> Justicier : </color>";
-
-
-                    if (LawkeeperSpawnChance.getFloat() > 0)
-
-                    {
-
-                        Lawkeeper += "if Lawkeeper Report deadbody :";
-                        LawkeeperFR += "Si il Signale un Corps :";
-
-                        if (LKTimer.getBool() == true)
-                        {
-                            Lawkeeper += " The kill delay is revealed : <color=#00ff00>Yes</color>.";
-                            LawkeeperFR += " Il Obtient le délai de la Mort : <color=#00ff00>Oui</color>.";
-                        }
-                        else
-                        {
-                            Lawkeeper += " The kill delay is revealed : <color=#FF0000>No</color>.";
-                            LawkeeperFR += " Il Obtient le délai de la Mort : <color=#FF0000>Non</color>.";
-                        }
-
-                        if (LKInfo.getBool() == true)
-                        {
-                            Lawkeeper += " Information about Kill revealed : <color=#00ff00>Yes</color>.";
-                            LawkeeperFR += " Des informations sur la Mort : <color=#00ff00>Oui</color>.";
-                        }
-                        else
-                        {
-                            Lawkeeper += " Information about Kill revealed : <color=#FF0000>No</color>.";
-                            LawkeeperFR += " Des informations sur la Mort : <color=#FF0000>Non</color>.";
-                        }
-
-
-
-
-                        if (TimeRName.getFloat() == 0)
-                        {
-                            if (TimeRList.getFloat() == 0)
-                            {
-                                Lawkeeper += "";
-                                LawkeeperFR += "";
-
-
-                            }
-                            else
-                            {
-                                Lawkeeper += "\nIf the kill has less than<color=#00ffff> " + TimeRList.getFloat() + "s</color> Suspect List reveal.";
-                                LawkeeperFR += "\nSi le meurtre à eu lieux avant <color=#00ffff> " + TimeRList.getFloat() + "s</color> Il obtient une liste de suspect.";
-
-                            }
-                        }
-                        else
-                        {
-                            if (TimeRList.getFloat() == 0)
-                            {
-                                Lawkeeper += "\nIf the kill has less than<color=#00ffff> " + TimeRName.getFloat() + "s</color> Killer Name reveal.";
-                                LawkeeperFR += "\nSi le meurtre à eu lieux avant <color=#00ffff> " + TimeRName.getFloat() + "s</color> Il obtient le nom du tueur.";
-
-                            }
-                            else
-                            {
-                                Lawkeeper += "\nIf the kill has less than<color=#00ffff> " + TimeRName.getFloat() + "s</color> Killer Name reveal, \nIf the kill has less than<color=#00ffff> " + TimeRList.getFloat() + "s</color> Suspect List reveal.";
-                                LawkeeperFR += "\nSi le meurtre à eu lieux avant <color=#00ffff> " + TimeRName.getFloat() + "s</color> Il obtient le nom du tueur, \nSi le meurtre à eu lieux avant<color=#00ffff> " + TimeRList.getFloat() + "s</color> Il obtient une liste de suspect.";
-
-                            }
-                        }
-
-
-
-
-                    }
-                    if (LawkeeperSpawnChance.getFloat() > 0 && LawkeeperAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += LawkeeperFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Lawkeeper;
-                        }
-                    }
-
-                    //FAKE
-                    string Fake = "<size=0.75><color=#FF7A7A>\n> Fake : </color>";
-                    string FakeFR = "<size=0.75><color=#FF7A7A>\n> Fake : </color>";
-
-
-                    if (FakeSpawnChance.getFloat() > 0)
-
-                    {
-                        if (ImpostorCanKillFake.getBool() == true)
-                        {
-                            Fake += "All Impostors can kill the Fake and Other Impostors : <color=#00FF00>Yes</color>,";
-                            FakeFR += "Les Imposteurs peuvent tuer l'intru et les autres imposteurs : <color=#00FF00>Oui</color>,";
-
-                        }
-                        if (ImpostorCanKillFake.getBool() == false)
-                        {
-                            Fake += "All Impostors can kill the Fake and Other Impostors : <color=#FF0000>No</color>,";
-                            FakeFR += "Les Imposteurs peuvent tuer l'intru et les autres imposteurs : <color=#FF0000>Non</color>,";
-
-                        }
-
-                        if (FakeCanVent.getBool() == true)
-                        {
-                            Fake += " Can Use Vent : <color=#00FF00>Yes</color>.";
-                            FakeFR += " Peut utiliser les vents : <color=#00FF00>Oui</color>,";
-
-                        }
-                        if (FakeCanVent.getBool() == false)
-                        {
-                            Fake += " Can Use Vent : <color=#FF0000>No</color>.";
-                            FakeFR += " Peut utiliser les vents : <color=#FF0000>Non</color>.";
-
-                        }
-
-
-
-                    }
-                    if (FakeSpawnChance.getFloat() > 0 && FakeAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += FakeFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Fake;
-                        }
-                    }
-
-
-                    //SPACER ---
-                    string SpacerSpe = "\n";
-                    __instance.GameSettings.text += SpacerSpe;
-
-
-                    //JESTER
-                    string Jester = "<size=0.75><color=#FF0A88>\n> Jester : </color>";
-                    string JesterFR = "<size=0.75><color=#FF0A88>\n> Bouffon : </color>";
-
-
-                    if (JesterSpawnChance.getFloat() > 0)
-
-                    {
-
-
-                        if (JesterSingle.getSelection() == 0)
-                        {
-                            Jester += "Fake Kill Cooldown : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>, Only use one time.";
-                            JesterFR += "Délai du Faux Meurtre : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>, Usage unique.";
-
-                        }
-                        if (JesterSingle.getSelection() == 1)
-                        {
-                            Jester += "Fake Kill Cooldown : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>.";
-                            JesterFR += "Délai du Faux Meurtre : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>.";
-
-
-                        }
-                        if (JesterSingle.getSelection() == 2)
-                        {
-                            Jester += "Fake Kill :<color=#ff0000> Disable</color>.";
-                            JesterFR += "Faux Meurtre :<color=#ff0000> Désactivé</color>.";
-
-
-                        }
-
-
-
-                    }
-                    if (JesterSpawnChance.getFloat() > 0 && JesterAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += JesterFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Jester;
-                        }
-                    }
-
-
-
-                    //CUPID
-                    string Cupid = "<size=0.75><color=#FFAFFF>\n> Cupid : </color>";
-                    string CupidFR = "<size=0.75><color=#FFAFFF>\n> Cupidon : </color>";
-
-
-                    if (CupidSpawnChance.getFloat() > 0)
-
-                    {
-                        if (Loverdie.getBool() == true)
-                        {
-                            Cupid += "Both Lovers die : <color=#00FF00>Yes</color>.";
-                            CupidFR += "Les Amoureux meurent ensemble : <color=#00FF00>Oui</color>.";
-
-                        }
-                        if (Loverdie.getBool() == false)
-                        {
-                            Cupid += "Both Lovers die : <color=#FF0000>No</color>.";
-                            CupidFR += "Les Amoureux meurent ensemble : <color=#FF0000>Non</color>.";
-
-                        }
-
-
-                    }
-                    if (CupidSpawnChance.getFloat() > 0 && CupidAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += CupidFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Cupid;
-                        }
-                    }
-
-
-
-
-
-
-                    //EATER
-                    string Eater = "<size=0.75><color=#FF6E00>\n> Eater : </color>";
-                    string EaterFR = "<size=0.75><color=#FF6E00>\n> Dévoreur : </color>";
-
-
-                    if (EaterSpawnChance.getFloat() > 0)
-
-                    {
-                        if (EaterCanVent.getBool() == true)
-                        {
-
-                            if (EaterCanDrag.getBool() == true)
-                            {
-
-                                if (BodyRemove.getBool() == true)
+                                if (NuclearTimeRND.getFloat() == 0f)
                                 {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+                                    MainSet += "\nChallenge Polus Nuclear timer = <color=#FFFF00>" + NuclearTime1.getFloat() + "s</color>, Alerte Duration = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
+                                    MainSetFR += "\nChallenge Polus Nucléaire Compte à rebour = <color=#FFFF00>" + NuclearTime1.getFloat() + "s</color>, Durée de l'alerte = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
+                                }
+                                else
+                                {
+                                    MainSet += "\nChallenge Polus Nuclear timer = <color=#FFFF00>" + NuclearTime1.getFloat() + " ~ " + (NuclearTime1.getFloat() + NuclearTimeRND.getFloat()) + "</color>, Alerte Duration = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
+                                    MainSetFR += "\nChallenge Polus Nucléaire Compte à rebour = <color=#FFFF00>" + NuclearTime1.getFloat() + " ~ " + (NuclearTime1.getFloat() + NuclearTimeRND.getFloat()) + "</color>, Durée de l'alerte = <color=#FF0000>" + NuclearTime2.getFloat() + "s</color>,";
+                                }
+
+                                if (NuclearHide.getSelection() == 0)
+                                {
+                                    MainSet += " Timer visibility : <color=#ff0000>No</color>.";
+                                    MainSetFR += "Compteur visible : <color=#ff0000>Non</color>.";
+                                }
+                                if (NuclearHide.getSelection() == 1)
+                                {
+                                    MainSet += " Timer visibility : <color=#00ff00>Yes</color>.";
+                                    MainSetFR += "Compteur visible : <color=#00ff00>Yes</color>.";
+                                }
+                                if (NuclearHide.getSelection() == 2)
+                                {
+                                    MainSet += " Timer visibility : <color=#ff00ff>Only impostors</color>.";
+                                    MainSetFR += "Compteur visible : <color=#ff00ff>Uniquement les imposteurs</color>.";
+                                }
+
+                                ChallengerMod.Challenger.STRMap = "Polus Challenger Nuclear";
+                            }
+                            if (BetterMapPL.getSelection() == 2 && NuclearTimerMod.getBool() == false)
+                            {
+                                MainSet += "\nMap = <color=#FF00FF>Polus (Challenger Polus  - By Lunastellia)</color>";
+                                MainSetFR += "\nCarte = <color=#FF00FF>Polus (Challenger Polus  - Par Lunastellia)</color>";
+                                ChallengerMod.Challenger.STRMap = "Polus Challenger";
+                            }
+                            if (BetterMapPL.getSelection() == 1)
+                            {
+                                MainSet += "\nMap = <color=#FF00FF>Polus (BetterPolus - By BryBry)</color>";
+                                MainSetFR += "\nCarte = <color=#FF00FF>Polus (BetterPolus - Par BryBry)</color>";
+                                ChallengerMod.Challenger.STRMap = "Polus Better";
+                            }
+                            if (BetterMapPL.getSelection() == 0)
+                            {
+                                MainSet += "\nMap = <color=#FF00FF>Polus (Normal)</color>";
+                                MainSetFR += "\nCarte = <color=#FF00FF>Polus (Normal)</color>";
+                                ChallengerMod.Challenger.STRMap = "Polus Normal";
+                            }
+                        }
+                        else if (PlayerControl.GameOptions.MapId == 3)
+                        {
+                            MainSet += "\nMap = <color=#FF00FF>Skeld 1 Avril</color>";
+                            MainSetFR += "\nCarte = <color=#FF00FF>Skeld 1 Avril</color>";
+                            ChallengerMod.Challenger.STRMap = "dlekS ehT";
+                        }
+
+                        else if (PlayerControl.GameOptions.MapId == 4)
+
+                        {
+                            MainSet += "\nMap = <color=#FF00FF>Airship</color>";
+                            MainSetFR += "\nCarte = <color=#FF00FF>Airship</color>";
+                            ChallengerMod.Challenger.STRMap = "Airship Normal";
+                        }
+                        else
+                        {
+
+                            MainSet += "\nMap = <color=#FF00FF>Submerged (Team PolusGG - By 5up)</color>";
+                            MainSetFR += "\nCarte = <color=#FF00FF>Submerged (Equipe PolusGG - Par 5up)</color>";
+                            ChallengerMod.Challenger.STRMap = "Submerged";
+                        }
+
+
+
+                        if (PlayerControl.GameOptions.NumImpostors == 1)
+
+                        {
+                            if (AmongUsClient.Instance.allClients.Count <= 3)
+                            {
+                                MainSet += "\nPlayers = (No enough players)";
+                                MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
+                                RealImpostor = 0f;
+                            }
+                            else
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color>, Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color>, Coéquipier ou rôle Special/hybride : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                        }
+
+                        if (PlayerControl.GameOptions.NumImpostors == 2)
+
+                        {
+                            if (AmongUsClient.Instance.allClients.Count <= 3)
+                            {
+                                MainSet += "\nPlayers = (No enough players)";
+                                MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
+                                RealImpostor = 0f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 4)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 7 or more players to put 2 Impostors), Crewmates or Special/Hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 7 joueurs minimum pour jouer avec 2 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 5)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 7 or more players to put 2 Impostors), Crewmates or Special/Hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 7 joueurs minimum pour jouer avec 2 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 6)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 7 or more players to put 2 Impostors), Crewmates or Special role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 7 joueurs minimum pour jouer avec 2 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count >= 7)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color>, Crewmates or Special/Hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color>, Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                RealImpostor = 2f;
+                            }
+
+
+                        }
+                        if (PlayerControl.GameOptions.NumImpostors == 3)
+
+                        {
+
+                            if (AmongUsClient.Instance.allClients.Count <= 3)
+                            {
+                                MainSet += "\nPlayers = (No enough players)";
+                                MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
+                                RealImpostor = 0f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 4)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 5)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 6)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 7)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 8)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 9)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 10 or more players to put 3 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 10 joueurs minimum pour jouer avec 3 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count >= 10)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>3</color>, Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>3</color> , Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+
+                                RealImpostor = 3f;
+                            }
+
+                        }
+                        if (PlayerControl.GameOptions.NumImpostors == 4)
+
+                        {
+
+                            if (AmongUsClient.Instance.allClients.Count <= 3)
+                            {
+                                MainSet += "\nPlayers = (No enough players)";
+                                MainSetFR += "\nJoueurs = (Pas assés de joueurs)";
+                                RealImpostor = 0f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 4)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 5)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>1</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 1) + "</color>";
+
+                                RealImpostor = 1f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 6)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>1</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 7)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 8)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 9)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 2) + "</color>";
+
+                                RealImpostor = 2f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 10)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+
+                                RealImpostor = 3f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 11)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+
+                                RealImpostor = 3f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count == 12)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>2</color> (You must be 13 or more players to put 4 Impostors), Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>2</color> (Vous devez être 13 joueurs minimum pour jouer avec 4 imposteurs), Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 3) + "</color>";
+
+                                RealImpostor = 3f;
+                            }
+                            if (AmongUsClient.Instance.allClients.Count >= 13)
+                            {
+                                MainSet += "\nPlayers = Impostors : <color=#FF0000>4</color>, Crewmates or Special/hybrid role : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 4) + "</color>";
+                                MainSetFR += "\nJoueurs = Imposteurs : <color=#FF0000>4</color> , Coéquipier ou rôle Special/Hybrid : <color=#00FFFF>" + (AmongUsClient.Instance.allClients.Count - 4) + "</color>";
+
+                                RealImpostor = 4f;
+                            }
+
+                        }
+
+
+                        MainSet += "\nPlayers Settings = Speed : <color=#FF00FF>" + (PlayerControl.GameOptions.PlayerSpeedMod * 100) + "%</color>, Crewmates vision : <color=#00FFFF>" + (PlayerControl.GameOptions.CrewLightMod * 100) + "%</color>, Impostors vision : <color=#FF0000>" + (PlayerControl.GameOptions.ImpostorLightMod * 100) + "%</color>.";
+                        MainSetFR += "\nParamètres des Joueurs = Vitesse : <color=#FF00FF>" + (PlayerControl.GameOptions.PlayerSpeedMod * 100) + "%</color>, Vision des Coéquipiers : <color=#00FFFF>" + (PlayerControl.GameOptions.CrewLightMod * 100) + "%</color>, Vision des Imposteurs : <color=#FF0000>" + (PlayerControl.GameOptions.ImpostorLightMod * 100) + "%</color>.";
+
+                        if (PlayerControl.GameOptions.AnonymousVotes == true)
+                        {
+                            if (PlayerControl.GameOptions.ConfirmImpostor == true)
+                            {
+                                if (BuzzCommon.getSelection() == 1)
+                                {
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
+
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
 
                                 }
-                                if (BodyRemove.getBool() == false)
+                                else
                                 {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur Player)</color>.";
+
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
 
                                 }
 
+
                             }
-                            if (EaterCanDrag.getBool() == false)
+                            else
                             {
-                                if (BodyRemove.getBool() == true)
+                                if (BuzzCommon.getSelection() == 1)
                                 {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
+
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
 
                                 }
-                                if (BodyRemove.getBool() == false)
+                                else
                                 {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#00FF00>Yes</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#00FF00>Oui</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur)</color>.";
+
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
 
                                 }
 
 
 
                             }
+
                         }
-                        if (EaterCanVent.getBool() == false)
+                        else
                         {
-                            if (EaterCanDrag.getBool() == true)
+                            if (PlayerControl.GameOptions.ConfirmImpostor == true)
                             {
-
-                                if (BodyRemove.getBool() == true)
+                                if (BuzzCommon.getSelection() == 1)
                                 {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
 
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
                                 }
-                                if (BodyRemove.getBool() == false)
+                                else
                                 {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#00FF00>Yes</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#00FF00>Oui</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur)</color>.";
 
-                                }
-
-                            }
-                            if (EaterCanDrag.getBool() == false)
-                            {
-
-                                if (BodyRemove.getBool() == true)
-                                {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
-
-                                }
-                                if (BodyRemove.getBool() == false)
-                                {
-                                    Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
-                                    EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote  : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
 
                                 }
 
+
                             }
-                        }
-                    }
-                    if (EaterSpawnChance.getFloat() > 0 && EaterAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += EaterFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Eater;
-                        }
-                    }
-
-                    //CULTE
-                    string Culte = "<size=0.75><color=#8300FF>\n> Cultist : </color>";
-                    string CulteFR = "<size=0.75><color=#8300FF>\n> Cultiste : </color>";
-
-
-                    if (CultisteSpawnChance.getFloat() > 0)
-
-                    {
-                        if (Cultistdie.getSelection() == 0)
-                        {
-                            Culte += "Max Member of Culte : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Cooldowns : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Don't die if he fails his conversion</color>.";
-
-                            CulteFR += "Nombre de Conversion Possible : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Délai : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Ne meurt pas en cas d'echec de conversion</color>.";
-                        }
-                        if (Cultistdie.getSelection() == 1)
-                        {
-                            Culte += "Max Member of Culte : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Cooldowns : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Dies immediately if conversion fails</color>.";
-
-                            CulteFR += "Nombre de Conversion Possible : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Délai : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Meurt immédiatement en cas d'echec de conversion</color>.";
-                        }
-                        if (Cultistdie.getSelection() == 2)
-                        {
-                            Culte += "Max Member of Culte : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Cooldowns : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Dies at the start of the next meeting if the conversion fails</color>.";
-
-                            CulteFR += "Nombre de Conversion Possible : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Délai : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Meurt au début du prochain meeting en cas d'echec de conversion</color>.";
-                        }
-
-
-
-                    }
-                    if (CultisteSpawnChance.getFloat() > 0 && CultisteAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += CulteFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Culte;
-                        }
-                    }
-
-
-                    //OUTLAW
-                    string Outlaw = "<size=0.75><color=#0033ff>\n> Outlaw : </color>";
-                    string OutlawFR = "<size=0.75><color=#0033ff>\n> Criminel : </color>";
-
-
-                    if (OutlawSpawnChance.getFloat() > 0)
-
-                    {
-                        if (OutlawKillRange.getSelection() == 0)
-                        {
-                            Outlaw += "Kill Cooldown : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Normal (100%)</color>";
-                            OutlawFR += "Délai pour Tuer : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Normal (100%)</color>";
-
-                        }
-                        if (OutlawKillRange.getSelection() == 1)
-                        {
-                            Outlaw += "Kill Cooldown : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Upgraded (120%)</color>";
-                            OutlawFR += "Délai pour Tuer : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Amélioré (120%)</color>";
-
-                        }
-                        
-
-
-
-                    }
-                    if (OutlawSpawnChance.getFloat() > 0 && OutlawAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += OutlawFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Outlaw;
-                        }
-                    }
-
-                    //ARSONIST
-                    string Arsonist = "<size=0.75><color=#ffc800>\n> Arsonist : </color>";
-                    string ArsonistFR = "<size=0.75><color=#ffc800>\n> Pyromane : </color>";
-
-
-                    if (ArsonistSpawnChance.getFloat() > 0)
-
-                    {
-                        Arsonist += "Oil Cooldown : <color=#00ffff>" + ArsonistCooldown.getFloat() + "s</color>,";
-                        ArsonistFR += "Délai pour Huiler : <color=#00ffff>" + ArsonistCooldown.getFloat() + "s</color>,";
-
-                        if (ArsonistDuration.getFloat() == 0)
-                        {
-                            Arsonist += " Cast Time : <color=#ff0000>No</color>, ";
-                            ArsonistFR += " Temps d'action : <color=#ff0000>Non</color>, ";
-                        }
-                        else
-                        {
-                            Arsonist += " Cast Time : <color=#00ffff>" + ArsonistDuration.getFloat() + "s</color>, if ability failed : <color=#00ffff>+" + ArsonistFailDuration.getFloat() + "s</color>,\n";
-                            ArsonistFR += " Temps d'action : <color=#00ffff>" + ArsonistDuration.getFloat() + "s</color>, Délai en cas d'échec : <color=#00ffff>+" + ArsonistFailDuration.getFloat() + "s</color>,\n";
-                        }
-
-                        if (ArsonistFuelQT.getFloat() == 0)
-                        {
-                            Arsonist += "Oil Quantity for Use : <color=#ff0000>Disabled</color>";
-                            ArsonistFR += "Quantité d'huile requis : <color=#ff0000>Désactivé</color>";
-                        }
-                        else
-                        {
-                            Arsonist += " Oil Quantity for Use : <color=#00ffff>" + ArsonistFuelQT.getFloat() + "%</color>";
-                            ArsonistFR += " Quantité d'huile requis : <color=#00ffff>" + ArsonistFuelQT.getFloat() + "%</color>";
-                        }
-
-
-                        if (AutoRefuel.getBool() == true && ArsonistFuelQT.getFloat() != 0)
-                        {
-                            Arsonist += ", Meeting Auto Refuel : <color=#00ffff>+" + ArsonistFuelQT.getFloat() + "%</color>.";
-                            ArsonistFR += ", Rechage d'huile en meeting : <color=#00ffff>+" + ArsonistFuelQT.getFloat() + "%</color>.";
-
-                        }
-                        if (AutoRefuel.getBool() == true && ArsonistFuelQT.getFloat() == 0)
-                        {
-                            Arsonist += ".";
-                            ArsonistFR += ".";
-                            
-                        }
-                        if (AutoRefuel.getBool() == false)
-                        {
-                            Arsonist += ", Meeting Auto Refuel : <color=#ff0000>Disable</color>.";
-                            ArsonistFR += ", Rechage d'huile en meeting : <color=#ff0000>Désactivé</color>.";
-                        }
-
-                    }
-                    if (ArsonistSpawnChance.getFloat() > 0 && ArsonistAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += ArsonistFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Arsonist;
-                        }
-                    }
-
-
-                    //CURSED
-                    string Cursed = "<size=0.75><color=#3F683B>\n> Cursed : </color>";
-                    string CursedFR = "<size=0.75><color=#3F683B>\n> Maudit : </color>";
-
-
-                    if (CursedSpawnChance.getFloat() > 0)
-
-                    {
-                       
-                        if (CursedSpeedModifieur.getSelection() == 0)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>100%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 1)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>110%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>110%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 2)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>120%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 3)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>130%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 4)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>140%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 5)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>150%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 6)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>80%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-                        if (CursedSpeedModifieur.getSelection() == 7)
-                        {
-                            Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>90%</color>";
-                            CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
-                        }
-
-
-                        if (CursedAbility.getBool() == false)
-                        {
-
-                            Cursed += ", Shelter Ability available : <color =#ff0000>No</color>.";
-                            CursedFR += ", Capacité Abri disponible : <color =#ff0000>Non</color>.";
-                        }
-                        else
-                        {
-                            Cursed += "\n Shelter Ability cooldown : <color=#00ffff>" + CursedCooldown.getFloat() + "</color>s, duration : <color=#00ffff>" + CursedDuration.getFloat() + "s</color>.";
-                            CursedFR += "\n Temps de recharge de la capacité Abri : <color=#00ffff>" + CursedCooldown.getFloat() + "</color>s, Durée de l'effet : <color=#00ffff>" + CursedDuration.getFloat() + "s</color>.";
-                        }
-
-
-                       
-
-
-
-
-
-
-
-                    }
-                    if (CursedSpawnChance.getFloat() > 0 && CursedAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += CursedFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Cursed;
-                        }
-                    }
-
-
-
-
-
-                    //SPACER ---
-                    string SpacerDuo = "\n";
-                    __instance.GameSettings.text += SpacerDuo;
-
-                    //MERCENARY
-                    string Mercenary = "<size=0.75><color=#FF49E6>\n> Mercenary : </color>";
-                    string MercenaryFR = "<size=0.75><color=#FF49E6>\n> Mercenaire : </color>";
-
-
-                    if (MercenarySpawnChance.getFloat() > 0)
-
-                    {
-                        if (MercenaryCanVent.getBool() == true)
-                        {
-                            Mercenary += "Kill Cooldown : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Can Use Vent : <color=#00FF00>Yes</color>.";
-                            MercenaryFR += "Délai pour Tuer : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Peut utiliser les vents : <color=#00FF00>Oui</color>.";
-                        }
-                        else
-                        {
-                            Mercenary += "Kill Cooldown : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Can Use Vent : <color=#FF0000>No</color>.";
-                            MercenaryFR += "Délai pour Tuer : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Peut utiliser les vents : <color=#FF0000>Non</color>.";
-                        }
-                    }
-                    if (MercenarySpawnChance.getFloat() > 0 && MercenaryAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += MercenaryFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Mercenary;
-                        }
-                    }
-
-
-
-                    //COPYCAT
-                    string CopyCat = "<size=0.75><color=#64E6B4>\n> CopyCat : </color>";
-                    string CopyCatFR = "<size=0.75><color=#64E6B4>\n> CopyCat : </color>";
-
-
-                    if (CopyCatSpawnChance.getFloat() > 0)
-
-                    {
-                        if (CopyImp.getSelection() == 0)
-                        {
-                            CopyCat += "If CopyCat try to Copy Impostors Rôle :<color=#ff00ff> CopyCat die</color>,";
-                            CopyCatFR += "Si il tente de copier un Imposteur :<color=#ff00ff> L'imitateur Meurt</color>,";
-
-                        }
-                        if (CopyImp.getSelection() == 1)
-                        {
-                            CopyCat += "If CopyCat try to Copy Impostors Rôle : Changed to <color=#FF0000>Impostor</color>,";
-                            CopyCatFR += "Si il tente de copier un Imposteur : Il devient un <color=#FF0000>Impostor</color>,";
-
-                        }
-                        if (CopyImp.getSelection() == 2)
-                        {
-                            CopyCat += "If CopyCat try to Copy Impostors Rôle : Changed to <color=#FFFF00>Sheriff</color>,";
-                            CopyCatFR += "Si il tente de copier un Imposteur : Il devient un <color=#FFFF00>Shérif</color>,";
-
-                        }
-                        if (CopyImp.getSelection() == 3)
-                        {
-                            CopyCat += "If CopyCat try to Copy Impostors Rôle : Changed to <color=#B4FAFA>Crewmate</color>,";
-                            CopyCatFR += "Si il tente de copier un Imposteur : Il devient un <color=#B4FAFA>Coéquipier</color>,";
-
-                        }
-                        if (CopySpe.getSelection() == 0)
-                        {
-                            CopyCat += " If CopyCat try to Copy Special Rôle :<color=#ff00ff> CopyCat die</color>.";
-                            CopyCatFR += " Si il tente de copier un Rôle Spécial :<color=#ff00ff> L'imitateur Meurt</color>.";
-
-                        }
-
-                        if (CopySpe.getSelection() == 1)
-                        {
-                            CopyCat += " If CopyCat try to Copy Special Rôle : Changed to <color=#FFFF00>Sheriff</color>.";
-                            CopyCatFR += " Si il tente de copier un Rôle Spécial : Il devient un <color=#FFFF00>Shérif</color>.";
-
-                        }
-                        if (CopySpe.getSelection() == 2)
-                        {
-                            CopyCat += " If CopyCat try to Copy Special Rôle : Changed to <color=#B4FAFA>Crewmate</color>.";
-                            CopyCatFR += " Si il tente de copier un Rôle Spécial : Il devient un <color=#B4FAFA>Coéquipier</color>.";
-
-                        }
-                    }
-
-
-
-                    if (CopyCatSpawnChance.getFloat() > 0 && CopyCatAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += CopyCatFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += CopyCat;
-                        }
-                    }
-
-                    //REVENGER
-                    string Revenger = "<size=0.75><color=#D9C27E>\n> Revenger : </color>";
-                    string RevengerFR = "<size=0.75><color=#D9C27E>\n> Vengeur : </color>";
-
-
-                    if (RevengerSpawnChance.getFloat() > 0)
-
-                    {
-                        if ((VengerKill.getBool() == true) && (VengerExil.getBool() == true))
-                        {
-                            Revenger += "If the revenge is killed in game, <color=#ff00ff>All</color> imposters lose their powers ! If the revenge is voted Out, <color=#ff00ff>All</color> Crewmates lose their powers ";
-
-                            RevengerFR += "Si il est tué en jeu, <color=#ff00ff>Tous</color> les imposteurs perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, <color=#ff00ff>Tous</color> les Rôles Coéquipiers Perdent leurs capacités octroyées par les rôles ";
-                        }
-                        if ((VengerKill.getBool() == false) && (VengerExil.getBool() == false))
-                        {
-                            Revenger += "If the revenge is : - killed in game, <color=#ff00ff>Selected</color> imposters lose their powers - Voted Out : <color=#ff00ff>Selected</color> Crewmates lose their powers ";
-                            RevengerFR += "Si il est tué en jeu, Les imposteurs <color=#ff00ff>Selectionner</color> perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, les Rôles de Coéquipiers <color=#ff00ff>Sélectionner</color> Perdent leurs capacités octroyées par les rôles ";
-
-                            Revenger += "\nEMP Cooldown : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Max Player Target by EMP : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
-                            RevengerFR += "\nDélai de la capacité EMP : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Nombre de joueurs Sélectionnables : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
-
-                        }
-                        if ((VengerKill.getBool() == true) && (VengerExil.getBool() == false))
-                        {
-                            Revenger += "If the revenge is : - killed in game, <color=#ff00ff>All</color> imposters lose their powers - Voted Out : <color=#ff00ff>Selected</color> Crewmates lose their powers ";
-                            RevengerFR += "Si il est tué en jeu, <color=#ff00ff>Tous</color> Les imposteurs perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, les Rôles Coéquipier <color=#ff00ff>Sélectionner</color> Perdent leurs capacités octroyées par les rôles ";
-
-                            Revenger += "\nEMP Cooldown : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Max Player Target by EMP : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
-                            RevengerFR += "\nDélai de la capacité EMP : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Nombre de joueurs Sélectionnables : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
-
-                        }
-                        if ((VengerKill.getBool() == false) && (VengerExil.getBool() == true))
-                        {
-                            Revenger += "If the revenge is : - killed in game, <color=#ff00ff>Selected</color> imposters lose their powers - Voted Out : <color=#ff00ff>All</color> Crewmates lose their powers ";
-                            RevengerFR += "Si il est tué en jeu, Les imposteurs <color=#ff00ff>Selectionner</color> perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, <color=#ff00ff>Tous</color> les Rôles Coéquipier Perdent leurs capacités octroyées par les rôles ";
-                            Revenger += "\nEMP Cooldown : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Max Player Target by EMP : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
-                            RevengerFR += "\nDélai de la capacité EMP : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Nombre de joueurs Sélectionnables : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
-
-                        }
-
-
-                    }
-                    if (RevengerSpawnChance.getFloat() > 0 && RevengerAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += RevengerFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Revenger;
-                        }
-                    }
-
-
-
-
-
-
-                    //SPACER ---
-                    string SpacerImp = "\n";
-                    __instance.GameSettings.text += SpacerImp;
-
-
-
-
-                    //ASSASSIN
-                    string Assassin = "<size=0.75><color=#005106>\n> Assassin : </color>";
-                    string AssassinFR = "<size=0.75><color=#005106>\n> Assassin : </color>";
-
-
-                    if (AssassinSpawnChance.getFloat() > 0)
-
-                    {
-                        if (AssassinCanKillShield.getBool() == true)
-                        {
-                            Assassin += "Kill Cooldown : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Assassin can Kill Shielded Player : <color=#00FF00>yes</color>. \n<color=#ff0000>List of activated roles and their bonuses when the assassin kills them :</color>";
-
-                            AssassinFR += "Délai pour Tuer : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Peut tuer les joueurs Protégés par un Bouclier : <color=#00FF00>Oui</color>. \n<color=#ff0000>Liste des bonus actif lorsque l'assassin tue un joueur :</color>";
-                        }
-                        if (AssassinCanKillShield.getBool() == false)
-                        {
-                            Assassin += "Kill Cooldown : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Assassin can Kill Shielded Player : <color=#FF0000>No</color>. \n<color=#ff0000>List of activated roles and their bonuses when the assassin kills them :</color>";
-
-                            AssassinFR += "Délai pour Tuer : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Peut tuer les joueurs Protégés par un Bouclier : <color=#FF0000>Non</color>. \n<color=#ff0000>Liste des bonus actif lorsque l'assassin tue un joueur :</color>";
-                        }
-                        if (BSheriff.getBool() == true && ((SherifSpawnChance.getFloat() > 0) || (Sherif2SpawnChance.getFloat() > 0) || (Sherif3SpawnChance.getFloat() > 0)))
-                        {
-                            Assassin += "<color=#FFFF00>\n--- Sheriff</color> (Instantly reset kill cooldown)";
-
-                            AssassinFR += "<color=#FFFF00>\n--- Shérif</color> (Délai pour tuer réinitialisé)";
-                        }
-                        if (BGuardian.getBool() == true && (GuardianSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#00FFFF>\n--- Guardian</color> (Ability : Self Shield)";
-                            AssassinFR += "<color=#00FFFF>\n--- Guardien</color> (Pouvoir : Bouclier personnel permanent)";
-                        }
-                        if (BEngineer.getBool() == true && (engineerSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#FFA100>\n--- Engineer</color> (Passif : Assassin Can use Vent)";
-
-                            AssassinFR += "<color=#FFA100>\n--- Ingénieur</color> (Passif : Peut Utiliser les Vents)";
-                        }
-                        if (BTimelord.getBool() == true && (TimeLordSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#007FFF>\n--- TimeLord</color> (Ability : BreakTime Enabled)";
-
-                            AssassinFR += "<color=#007FFF>\n--- Temporel</color> (Pouvoir : Peut arrêter le temps)";
-                        }
-                        if (BMystic.getBool() == true && (MysticSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#F9FFB2>\n--- Mystic</color> (Ability : Self Shield)";
-
-                            AssassinFR += "<color=#F9FFB2>\n--- Mystique</color> (Pouvoir : Bouclier personnel permanent)";
-                        }
-                        if (BMayor.getBool() == true && (MayorSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#AF8269>\n--- Mayor</color> (Passif : Can see the colors of the votes)";
-
-                            AssassinFR += "<color=#AF8269>\n--- Maire</color> (Passif : peut voir les couleurs des votes)";
-                        }
-                        if (BDetective.getBool() == true && (DetectiveSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#BCFFBA>\n--- Detective</color> (Passif : Can see Player Footprint)";
-
-                            AssassinFR += "<color=#BCFFBA>\n--- Detective</color> (Passif : Peut voir les traces des joueurs)";
-                        }
-                        if (BNightwatcher.getBool() == true && (NightwatcherSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#9EB3FF>\n--- Nightwatch</color> (Passif : Improved vision range)";
-
-                            AssassinFR += "<color=#9EB3FF>\n--- Veilleur</color> (Passif : Augmente la vision)";
-                        }
-                        if (BSpy.getBool() == true && (SpySpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#9EE1FF>\n--- Spy</color> (Passif : Improved vision range)";
-
-                            AssassinFR += "<color=#9EE1FF>\n--- Espion</color> (Passif : Augmente la vision)";
-                        }
-                        if (BInfor.getBool() == true && (InforSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#ADFFEA>\n--- Informant</color> (Passif : Can See Player Roles, Infos and Task)";
-
-                            AssassinFR += "<color=#ADFFEA>\n--- Voyante</color> (Passif : peut voir les rôles et infos joueurs comme les morts)";
-                        }
-                        if (BMentalist.getBool() == true && (MentalistSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#A991FF>\n--- Mentalist</color> (Passif : Can See Player color with Admin Table)";
-
-                            AssassinFR += "<color=#A991FF>\n--- Mentaliste</color> (Passif : peut voir les couleurs des joueurs sur la table d'admin)";
-                        }
-                        if (BBuilder.getBool() == true && (BuilderSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#FFC291>\n--- Builder</color> (Passif : Assassin Can use Vent)";
-
-                            AssassinFR += "<color=#FFC291>\n--- Constructeur</color> (Passif : Peut Utiliser les Vents)";
-                        }
-                        if (BDictator.getBool() == true && (DictatorSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#FF7A7A>\n--- Dictator</color> (Passif : Can see the colors of the votes)";
-
-                            AssassinFR += "<color=#FF7A7A>\n--- Dictateur</color> (Passif : peut voir les couleurs des votes)";
-                        }
-                        if (BSentinel.getBool() == true && (SentinelSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#06AD17>\n--- Sentinel</color> (Passif : Improved vision range)";
-
-                            AssassinFR += "<color=#06AD17>\n--- Sentinelle</color> (Passif : Augmente la vision)";
-                        }
-                        if (BLawkeeper.getBool() == true && (SentinelSpawnChance.getFloat() > 0))
-                        {
-                            Assassin += "<color=#FF9b9b>\n--- Lawkeeper</color> (Passif : Can see Player Footprint)";
-
-                            AssassinFR += "<color=#FF9b9b>\n--- Justicier</color> (Passif : Peut voir les traces des joueurs)";
-                        }
-                        if (BImpo.getBool() == true)
-                        {
-                            Assassin += "<color=#FF0000>\n--- Impostors</color> (Instantly reduce by 50% kill cooldown)";
-
-                            AssassinFR += "<color=#FF0000>\n--- Imposteurs</color> (Délai pour Tuer réduit de moitier)";
-                        }
-
-
-
-
-
-                    }
-                    if (AssassinSpawnChance.getFloat() > 0 && AssassinAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += AssassinFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Assassin;
-                        }
-                    }
-
-                    //Vector
-                    string Vector = "<size=0.75><color=#8C1919>\n> Vector : </color>";
-                    string VectorFR = "<size=0.75><color=#8C1919>\n> Vecteur : </color>";
-
-
-                    if (VectorSpawnChance.getFloat() > 0)
-
-                    {
-                        if (VectorBuffVisibility.getBool() == true)
-                        {
-                            if (VectorCanVent.getBool() == true)
+                            else
                             {
-                                Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff : <color=#00FF00>Yes</color>, Can Use Vent : <color=#00FF00>Yes</color>,";
+                                if (BuzzCommon.getSelection() == 1)
+                                {
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (To Share)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Partager)</color>.";
 
-                                VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>,";
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+
+                                }
+                                else
+                                {
+                                    MainSet += "\nMeeting = Anonymous votes : <color=#FF0000>No</color>, Confirm Eject : <color=#FF0000>No</color> Emergency meeting : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Per Player)</color>.";
+                                    MainSetFR += "\nRéunion = Votes Anonymes : <color=#FF0000>Non</color>, Rôles indiqués en cas d'exil : <color=#FF0000>Non</color> Réunion d'urgence : <color=#FF00FF>x" + PlayerControl.GameOptions.NumEmergencyMeetings + "</color><color=#ff00ff> (Par Joueur)</color>.";
+
+                                    MainSet += "\nMeeting Timer = Emergency coolcown : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Discution Time : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Voting Time : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+                                    MainSetFR += "\nTemps de réunion = Délai de Réunion d'urgence : <color=#FF00FF>" + PlayerControl.GameOptions.EmergencyCooldown + "s</color>, Durée de Discution  : <color=#FF00FF>" + PlayerControl.GameOptions.DiscussionTime + "s</color>, Durée de Vote : <color=#FF00FF>" + PlayerControl.GameOptions.VotingTime + "s</color>.";
+
+                                }
+
                             }
-                            if (VectorCanVent.getBool() == false)
-                            {
-                                Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff : <color=#00FF00>Yes</color>, Can Use Vent : <color=#FF0000>No</color>,";
-
-                                VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>,";
-                            }
-
                         }
-                        if (VectorBuffVisibility.getBool() == false)
-                        {
-                            if (VectorCanVent.getBool() == true)
-                            {
-                                Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff :<color=#FF0000>No</color>, Can Use Vent : <color=#00FF00>Yes</color>,";
 
-                                VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté :<color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>,";
-                            }
-                            if (VectorCanVent.getBool() == false)
-                            {
-                                Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff :<color=#FF0000>No</color>, Can Use Vent : <color=#FF0000>No</color>,";
 
-                                VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté :<color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>,";
-                            }
 
-                        }
-                        /*if (VectorSolo.getBool() == true)
+                        if (PlayerControl.GameOptions.VisualTasks == true)
                         {
-                            Vector += " Normal Kill if he is the last living impostor : <color=#00ff00>Yes</color>.";
-                        }
-                        if (VectorSolo.getBool() == false)
-                        {
-                            Vector += " Normal Kill if he is the last living impostor <color=#ff0000>No</color>.";
-                        }*/
-                    }
-                    if (VectorSpawnChance.getFloat() > 0 && VectorAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += VectorFR;
+                            MainSet += "\nPlayers Task = Visual task : <color=#00FF00>Enable</color>, TaskBar Update : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
+
+                            MainSetFR += "\nTâches = Tâches Visuelles : <color=#00FF00>Activé</color>, Mise à jour de la barre des Tâches : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
                         }
                         else
                         {
-                            __instance.GameSettings.text += Vector;
+                            MainSet += "\nPlayers Task = Visual task : <color=#FF0000>Disabled</color>, TaskBar Update : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
+
+                            MainSetFR += "\nTâches = Tâches Visuelles : <color=#FF0000>Désactivé</color>, Mise à jour de la barre des Tâches : <color=#FF00FF>" + PlayerControl.GameOptions.TaskBarMode + "</color>.";
                         }
-                    }
+
+                        MainSet += "\nNumber Task = Common task : <color=#FF00FF>" + PlayerControl.GameOptions.NumCommonTasks + "</color>, Long task : <color=#FF00FF>" + PlayerControl.GameOptions.NumLongTasks + "</color>, short task : <color=#FF00FF>" + PlayerControl.GameOptions.NumShortTasks + "</color>. Better Task :";
+                        MainSetFR += "\nNombres de Tâches = Tâches Communes : <color=#FF00FF>" + PlayerControl.GameOptions.NumCommonTasks + "</color>, Tâches Longues : <color=#FF00FF>" + PlayerControl.GameOptions.NumLongTasks + "</color>, Tâches Courtes : <color=#FF00FF>" + PlayerControl.GameOptions.NumShortTasks + "</color>. Tâches améliorées :";
+
+
+                        if (BetterTaskWeapon.getBool() == false && BetterTaskWire.getBool() == false)
+                        {
+                            MainSet += " <color=#ff0000>No</color>";
+                            MainSetFR += " <color=#ff0000>Non</color>";
+
+                        }
+                        if (BetterTaskWire.getBool() == true)
+                        {
+                            MainSet += " - Wire";
+                            MainSetFR += " - Fils Electrique";
+
+                        }
+                        if (BetterTaskWeapon.getBool() == true)
+                        {
+                            MainSet += " - Weapon";
+                            MainSetFR += " - Astéroïdes";
+
+                        }
+                        MainSet += ".";
+                        MainSetFR += ".";
 
 
 
 
-                    //Morphling
-                    string Morphling = "<size=0.75><color=#430054>\n> Morphling : </color>";
-                    string MorphlingFR = "<size=0.75><color=#430054>\n> Metamorph : </color>";
 
 
-                    if (MorphlingSpawnChance.getFloat() > 0)
 
-                    {
-                      
-                       
+                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                        {
+                            __instance.GameSettings.text += MainSetFR;
+                        }
+                        else
+                        {
+                            __instance.GameSettings.text += MainSet;
+                        }
+
+
+                        //UNKNOWIMPOSTORS
+                        string UIP = "\n<size=0.75>Impostors = ";
+                        string UIPFR = "\n<size=0.75>Imposteurs = ";
+
+
+                        if (ImpostorsKnowEachother.getBool() == true)
+                        {
+                            UIP += "Unknow : <color=#00FF00>Enable</color>, Can kill Each Other : <color=#00FF00>Enable</color>. Kill Cooldown : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, to <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> Yard.";
+
+                            UIPFR += "Ne se connaissent pas : <color=#00FF00>Activé</color>, Peuvent s'entretuer : <color=#00FF00>Oui</color>. Délai Pour Tuer : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, à une distance de <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> mètres.";
+                        }
+                        if (ImpostorsKnowEachother.getBool() == false)
+                        {
+                            if (ImpostorCanKillFake.getBool() == true && (FakeAdd.getBool() == true) && (FakeSpawnChance.getFloat() > 0))
+                            {
+                                UIP += "  Unknow : <color=#FF0000>Disable</color>, Can kill Each Other : <color=#00FF00>Yes (If The Fake Spawn)</color>. Kill Cooldown : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, to <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> Yard.";
+
+                                UIPFR += "  Ne se connaissent pas : <color=#FF0000>Désactivé</color>, Peuvent s'entretuer : <color=#00FF00>Oui (Si l'intru est présent)</color>. Délai Pour Tuer : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, à une distance de <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> mètres.";
+                            }
+                            else
+                            {
+                                UIP += "  Unknow : <color=#FF0000>Disable</color>, Can kill Each Other : <color=#FF0000>No</color>. Kill Cooldown : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, to <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> Yard.";
+
+                                UIPFR += "  Ne se connaissent pas : <color=#FF0000>Désactivé</color>, Peuvent s'entretuer : <color=#FF0000>Non</color>. Délai Pour Tuer : <color=#00FFFF>" + PlayerControl.GameOptions.KillCooldown + "s</color>, à une distance de <color=#FF00FF>" + (PlayerControl.GameOptions.KillDistance + 1) + "</color> mètres.";
+                            }
+                        }
+
+                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                        {
+                            __instance.GameSettings.text += UIPFR;
+                        }
+                        else
+                        {
+                            __instance.GameSettings.text += UIP;
+                        }
+
+                        //LIST LOBBY
+                        string LobbySets = "<color=#EC7C18>\n\n<size=1.2>[Lobby Settings]</size>\n</color>";
+                        string LobbySetsFR = "<color=#EC7C18>\n\n<size=1.2>[Option de Jeu]</size>\n</color>";
+                        if ((DisabledVitales.getSelection() != 0
+                            || DisabledCamera.getSelection() != 0
+                            || DisabledAdmin.getSelection() != 0
+                            || NoOxySabotage.getSelection() != 0
+                            || ReactorSabotageShaking.getSelection() != 0
+                            || CommsSabotageAnonymous.getSelection() != 0
+                            || AdminTimeOn.getSelection() != 0
+                            || CamTimeOn.getSelection() != 0
+                            || VitalTimeOn.getSelection() != 0
+                            ))
+                        {
+
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += LobbySetsFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += LobbySets;
+                            }
+                        }
+
+
+
+
+
+
+
+                        //SABOTAGES - COM
+                        string SabModcom = "<size=0.75><color=#EC7C18>\nSabotages - Coms Unknow Players :</color>";
+                        string SabModcomFR = "<size=0.75><color=#EC7C18>\nSabotages - Com : Joueurs anonyme :</color>";
+
+
+
+                        if (CommsSabotageAnonymous.getSelection() == 0)
+                        {
+
+                            SabModcom += " <color=#FF0000>Disable</color>";
+                            SabModcomFR += " <color=#FF0000>Désactivé</color>";
+                        }
+                        if (CommsSabotageAnonymous.getSelection() == 1)
+                        {
+
+                            SabModcom += " <color=#00FF00>Enable</color>";
+                            SabModcomFR += " <color=#00FF00>Activé</color>";
+                        }
+
+                        if ((NoOxySabotage.getSelection() != 0 || ReactorSabotageShaking.getSelection() != 0 || CommsSabotageAnonymous.getSelection() != 0))
+                        {
+
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SabModcomFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += SabModcom;
+                            }
+                        }
+
+                        /*
+                        //SABOTAGES - Reactor
+                        string SabModrea = "<color=#EC7C18>\nSabotages - Reactor Shacking Mode :</color>";
+                        string SabModreaFR = "<color=#EC7C18>\nSabotages - Reacteur : Fait trembler d'écran :</color>";
+
+
+                        if (ReactorSabotageShaking.getSelection() == 0)
+                        {
+
+                            SabModrea += " <color=#FF0000>Disable</color>";
+                            SabModreaFR += " <color=#FF0000>Désactivé</color>";
+
+                        }
+                        if (ReactorSabotageShaking.getSelection() == 1)
+                        {
+
+                            SabModrea += " <color=#00FF00>Enable</color> to <color=#FF00FF>Rising Mod</color>";
+                            SabModreaFR += " <color=#00FF00>Activé</color> en <color=#FF00FF>Mode Progressif</color>";
+
+                        }
+                        if (ReactorSabotageShaking.getSelection() == 2)
+                        {
+
+                            SabModrea += " <color=#00FF00>Enable</color> to <color=#FF00FF>Fix Mod</color>";
+                            SabModreaFR += " <color=#00FF00>Activé</color> en <color=#FF00FF>Mode Stable</color>";
+
+                        }
+
+                        if ((NoOxySabotage.getSelection() != 0 || ReactorSabotageShaking.getSelection() != 0 || CommsSabotageAnonymous.getSelection() != 0))
+                        {
+
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SabModreaFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += SabModrea;
+                            }
+                        }
+
+                        //SABOTAGES - OXY
+                        string SabModoxy = "<size=0.75><color=#EC7C18>\nSabotages - Oxygen fainting Effect :</color>";
+                        string SabModoxyFR = "<size=0.75><color=#EC7C18>\nSabotages - Oxygen : Perte de connaissance :</color>";
+
+
+                        if (NoOxySabotage.getSelection() == 0)
+                        {
+
+                            SabModoxy += " <color=#FF0000>Disable</color>";
+                            SabModoxyFR += " <color=#FF0000>Désactivé</color>";
+                        }
+                        if (NoOxySabotage.getSelection() == 1)
+                        {
+
+                            SabModoxy += " <color=#00FF00>Enable</color>";
+                            SabModoxyFR += " <color=#00FF00>Activé</color>";
+
+                        }
+
+                        if ((NoOxySabotage.getSelection() != 0 || ReactorSabotageShaking.getSelection() != 0 || CommsSabotageAnonymous.getSelection() != 0))
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SabModoxyFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += SabModoxy;
+                            }
+                        }
+                        */
+
+
+                        //TRYHARD - Admin
+                        string TryHardAdmin = "<size=0.75><color=#EC7C18>\nUtility - Admin : </color>";
+                        string TryHardAdminFR = "<size=0.75><color=#EC7C18>\nSurveillance - Admin : </color>";
+
+
+                        if (DisabledAdmin.getSelection() == 0)
+                        {
+                            TryHardAdmin += "  <color=#00FF00>Enable</color> for <color=#FF00FF>Everyone</color>";
+                            TryHardAdminFR += "  <color=#00FF00>Activé</color> pour <color=#FF00FF>tout le monde</color>";
+
+
+                        }
+                        if (DisabledAdmin.getSelection() == 1)
+                        {
+                            TryHardAdmin += " <color=#FF0000>Disable</color> for <color=#FF00FF>Everyone</color>";
+                            TryHardAdminFR += " <color=#FF0000>Désactivé</color> pour <color=#FF00FF>tout le monde</color>";
+
+
+                        }
+                        if (DisabledAdmin.getSelection() == 2)
+                        {
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> for <color=#FF0000>Impostors</color>";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> pour <color=#FF0000>les Imposteurs</color>";
+
+
+                        }
+                        if (DisabledAdmin.getSelection() == 3)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x1</color> player";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x1</color> joueur";
+
+
+                        }
+                        if (DisabledAdmin.getSelection() == 4)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x2</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x2</color> joueurs";
+
+
+                        }
+                        if (DisabledAdmin.getSelection() == 5)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x3</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x3</color> joueurs";
+
+
+                        }
+                        if (DisabledAdmin.getSelection() == 6)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x4</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x4</color> joueurs";
+
+                        }
+                        if (DisabledAdmin.getSelection() == 7)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x5</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x5</color> joueurs";
+
+                        }
+                        if (DisabledAdmin.getSelection() == 8)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x6</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x6</color> joueurs";
+
+                        }
+                        if (DisabledAdmin.getSelection() == 9)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x7</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x7</color> joueurs";
+
+                        }
+                        if (DisabledAdmin.getSelection() == 10)
+                        {
+
+                            TryHardAdmin += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x8</color> players";
+                            TryHardAdminFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x8</color> joueurs";
+
+                        }
+                        if (AdminTimeOn.getSelection() == 1)
+                        {
+                            TryHardAdmin += " - Limited time to use : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Reset : <color=#ff0000>Never</color>.";
+                            TryHardAdminFR += " - Temps d'utilisation : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Se réinitialise : <color=#ff0000>Jamais</color>.";
+
+                        }
+                        if (AdminTimeOn.getSelection() == 2)
+                        {
+                            TryHardAdmin += " - Limited time to use : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Reset : <color=#ff00ff>Each Round</color>.";
+                            TryHardAdminFR += " - Temps d'utilisation : <color=#00FFFF>" + AdminTime.getFloat() + "s</color>, Se réinitialise : <color=#ff00ff>Après chaque réunion</color>.";
+
+                        }
+
+                        if ((DisabledAdmin.getSelection() != 0
+                            || DisabledCamera.getSelection() != 0
+                            || DisabledVitales.getSelection() != 0
+                            || AdminTimeOn.getSelection() != 0
+                            || CamTimeOn.getSelection() != 0
+                            || VitalTimeOn.getSelection() != 0
+                            //|| BuzzForAll.getBool() == true
+                            ))
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += TryHardAdminFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += TryHardAdmin;
+                            }
+                        }
+
+                        //TRYHARD - VITALES
+                        string TryHardVitales = "<size=0.75><color=#EC7C18>\nUtility - Vitale : </color>";
+                        string TryHardVitalesFR = "<size=0.75><color=#EC7C18>\nSurveillance - Vitales : </color>";
+
+                        if (DisabledVitales.getSelection() == 0)
+                        {
+                            TryHardVitales += "  <color=#00FF00>Enable</color> for <color=#FF00FF>Everyone</color>";
+
+                            TryHardVitalesFR += "  <color=#00FF00>Activé</color> pour <color=#FF00FF>tout le monde</color>";
+                        }
+                        if (DisabledVitales.getSelection() == 1)
+                        {
+                            TryHardVitales += " <color=#FF0000>Disable</color> for <color=#FF00FF>Everyone</color>";
+
+                            TryHardVitalesFR += " <color=#FF0000>Désactivé</color> pour <color=#FF00FF>tout le monde</color>";
+                        }
+                        if (DisabledVitales.getSelection() == 2)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> for <color=#FF0000>Impostors</color>";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> pour <color=#FF0000>Les Imposteurs</color>";
+                        }
+                        if (DisabledVitales.getSelection() == 3)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x1</color> player";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x1</color> joueur";
+
+                        }
+                        if (DisabledVitales.getSelection() == 4)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x2</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x2</color> joueurs";
+
+                        }
+                        if (DisabledVitales.getSelection() == 5)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x3</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x3</color> joueurs";
+
+                        }
+                        if (DisabledVitales.getSelection() == 6)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x4</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x4</color> joueurs";
+
+                        }
+                        if (DisabledVitales.getSelection() == 7)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x5</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x5</color> joueurs";
+
+                        }
+                        if (DisabledVitales.getSelection() == 8)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x6</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x6</color> joueurs";
+
+                        }
+                        if (DisabledVitales.getSelection() == 9)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x7</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x7</color> joueurs";
+
+                        }
+                        if (DisabledVitales.getSelection() == 10)
+                        {
+                            TryHardVitales += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x8</color> players";
+
+                            TryHardVitalesFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x8</color> joueurs";
+
+                        }
+                        if (VitalTimeOn.getSelection() == 1)
+                        {
+                            TryHardVitales += " - Limited time to use : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Reset : <color=#ff0000>Never</color>.";
+
+                            TryHardVitalesFR += " - Temps d'utilisation : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Se réinitialise : <color=#ff0000>Jamais</color>.";
+                        }
+                        if (VitalTimeOn.getSelection() == 2)
+                        {
+                            TryHardVitales += " - Limited time to use : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Reset : <color=#ff00ff>Each Round</color>.";
+
+                            TryHardVitalesFR += " - Temps d'utilisation : <color=#00FFFF>" + VitalTime.getFloat() + "s</color>, Se réinitialise : <color=#ff00ff>Après chaque réunion</color>.";
+                        }
+
+
+                        if ((DisabledAdmin.getSelection() != 0
+                                                || DisabledCamera.getSelection() != 0
+                                                || DisabledVitales.getSelection() != 0
+                                                || AdminTimeOn.getSelection() != 0
+                                                || CamTimeOn.getSelection() != 0
+                                                || VitalTimeOn.getSelection() != 0
+                                                // || BuzzForAll.getBool() == true
+                                                ))
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += TryHardVitalesFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += TryHardVitales;
+                            }
+                        }
+
+
+                        //TRYHARD - Camera
+                        string TryHardCamera = "<size=0.75><color=#EC7C18>\nUtility - Camera : </color>";
+                        string TryHardCameraFR = "<size=0.75><color=#EC7C18>\nSurveillance - Camera : </color>";
+
+
+                        if (DisabledCamera.getSelection() == 0)
+                        {
+                            TryHardCamera += "  <color=#00FF00>Enable</color> for <color=#FF00FF>Everyone</color>";
+
+                            TryHardCameraFR += "  <color=#00FF00>Activé</color> pour <color=#FF00FF>tout le monde</color>";
+                        }
+                        if (DisabledCamera.getSelection() == 1)
+                        {
+                            TryHardCamera += " <color=#FF0000>Disable</color> for <color=#FF00FF>Everyone</color>";
+                            TryHardCameraFR += " <color=#FF0000>Désactivé</color> pour <color=#FF00FF>tout le monde</color>";
+                        }
+                        if (DisabledCamera.getSelection() == 2)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> for <color=#FF0000>Impostors</color>";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> pour <color=#FF0000>Les Imposteurs</color>";
+                        }
+                        if (DisabledCamera.getSelection() == 3)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x1</color> player";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x1</color> joueur";
+
+                        }
+                        if (DisabledCamera.getSelection() == 4)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x2</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x2</color> joueurs";
+
+                        }
+                        if (DisabledCamera.getSelection() == 5)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x3</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x3</color> joueurs";
+
+                        }
+                        if (DisabledCamera.getSelection() == 6)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x4</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x4</color> joueurs";
+
+                        }
+                        if (DisabledCamera.getSelection() == 7)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x5</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x5</color> joueurs";
+
+                        }
+                        if (DisabledCamera.getSelection() == 8)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x6</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x6</color> joueurs";
+
+                        }
+                        if (DisabledCamera.getSelection() == 9)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x7</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x7</color> joueurs";
+
+                        }
+                        if (DisabledCamera.getSelection() == 10)
+                        {
+                            TryHardCamera += "  <color=#FF0000>Disable</color> before the death of <color=#ff00ff>x8</color> players";
+
+                            TryHardCameraFR += "  <color=#FF0000>Désactivé</color> avant la mort de <color=#ff00ff>x8</color> joueurs";
+
+                        }
+                        if (CamTimeOn.getSelection() == 1)
+                        {
+                            TryHardCamera += " - Limited time to use : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Reset : <color=#ff0000>Never</color>.";
+
+                            TryHardCameraFR += " - Temps d'utilisation : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Se réinitialise : <color=#ff0000>Jamais</color>.";
+                        }
+                        if (CamTimeOn.getSelection() == 2)
+                        {
+                            TryHardCamera += " - Limited time to use : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Reset : <color=#ff00ff>Each Round</color>.";
+
+                            TryHardCameraFR += " - Temps d'utilisation : <color=#00FFFF>" + CamTime.getFloat() + "s</color>, Se réinitialise : <color=#ff00ff>Après chaque réunion</color>.";
+                        }
+
+
+                        if ((DisabledAdmin.getSelection() != 0
+                                                || DisabledCamera.getSelection() != 0
+                                                || DisabledVitales.getSelection() != 0
+                                                || AdminTimeOn.getSelection() != 0
+                                                || CamTimeOn.getSelection() != 0
+                                                || VitalTimeOn.getSelection() != 0
+                                                //|| BuzzForAll.getBool() == true
+                                                ))
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += TryHardCameraFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += TryHardCamera;
+                            }
+                        }
+
+
+
+
+
+
+
+
+
+                        //ROLESSETTINGS
+                        string RolesSets2 = "<color=#EC7C18>\n\n<size=1.2>[Rôles Settings]</size>\n</color>";
+                        string RolesSets2FR = "<color=#EC7C18>\n\n<size=1.2>[Paramètres]</size>\n</color>";
+
+                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                        {
+                            __instance.GameSettings.text += RolesSets2FR;
+                        }
+                        else
+                        {
+                            __instance.GameSettings.text += RolesSets2;
+                        }
+
+                        //SPACER---
+                        string Spacercrew = "\n";
+                        __instance.GameSettings.text += Spacercrew;
+
+
+                        //SHERIF
+                        string Sherifs = "<size=0.75><color=#FFFF00>\n> Sheriff : </color>";
+                        string SherifsFR = "<size=0.75><color=#FFFF00>\n> Shérif : </color>";
+
+
+                        if (SherifSpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif2SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif3SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || HIDE_Sheriff.getBool() == true)
+
+                        {
+                            if (SherifKillRange.getSelection() == 0)
+                            {
+
+                                Sherifs += "Sheriff count : <color=#ff00ff>" + (0 + Sheriff1Max + Sheriff2Max + Sheriff3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Kill Cooldown : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Normal (100%)</color>";
+                                SherifsFR += "Nombre de Shérif : <color=#ff00ff>" + (0 + Sheriff1Max + Sheriff2Max + Sheriff3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Délai pour Tuer : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Normal (100%)</color>";
+                            }
+                            if (SherifKillRange.getSelection() == 1)
+                            {
+                                Sherifs += "Sheriff count : <color=#ff00ff>" + (0 + Sheriff1Max + Sheriff2Max + Sheriff3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Kill Cooldown : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Upgraded (120%)</color>";
+                                SherifsFR += "Nombre de Shérif : <color=#ff00ff>" + (0 + Sheriff1Max + Sheriff2Max + Sheriff3Max) + "~" + (0 + SherifMin + Sherif2Min + Sherif3Min) + "</color>, Délai pour Tuer : <color=#00ffff>" + SherifKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Amélioré (120%)</color>";
+
+                            }
+                            if (SherifKillCulteMember.getBool() == true)
+                            {
+                                Sherifs += ",\nCan Kill Culte Member : <color=#00ff00>Yes</color>,";
+                                SherifsFR += ",\nPeut tuer les membres du Culte : <color=#00ff00>Oui</color>,";
+
+                            }
+                            if (SherifKillCulteMember.getBool() == false)
+                            {
+                                Sherifs += ",\nCan Kill Culte Member : <color=#ff0000>No</color>,";
+                                SherifsFR += ",\nPeut tuer les membres du Culte : <color=#ff0000>Non</color>,";
+
+                            }
+                            if (SherifKillSettings.getSelection() == 0)
+                            {
+                                Sherifs += " Ability Setting : <color=#00ff00>Enable</color>.";
+                                SherifsFR += " Paramètres de la capacité : <color=#00ff00>Activé</color>.";
+                            }
+                            if (SherifKillSettings.getSelection() == 1)
+                            {
+                                Sherifs += " Ability Setting : <color=#ff00ff>Disabled at first turn</color>.";
+                                SherifsFR += " Paramètres de la capacité : <color=#ff00ff>Désactivé au premier tour</color>.";
+                            }
+                            if (SherifKillSettings.getSelection() == 2)
+                            {
+                                Sherifs += " Ability Setting : <color=#ff00ff>He will have to find his weapon before kill</color>.";
+                                SherifsFR += " Paramètres de la capacité : <color=#00ff00>Il devras trouver sont arme pour tuer</color>.";
+                            }
+
+
+                        }
+                        if (SherifSpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif2SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || Sherif3SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true || HIDE_Sheriff.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SherifsFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Sherifs;
+                            }
+                        }
+
+
+                        //GUARDIAN
+                        string Guardian = "<size=0.75><color=#00FFFF>\n> Guardian : </color>";
+                        string GuardianFR = "<size=0.75><color=#00FFFF>\n> Guardien : </color>";
+                        if (GuardianSpawnChance.getFloat() > 0)
+
+                        {
+
+                            if (ShieldSettings.getSelection() == 1)
+                            {
+                                if (GuardianShieldVisibility.getBool() == true)
+                                {
+                                    Guardian += "Shield Settings Mode : <color=#ff00ff>Reflect</color>, player protected see the shield : <color=#00ff00>Yes</color>";
+                                    GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Renvoie</color>, le joueur protégé voit le Bouclier : <color=#00ff00>Oui</color>";
+
+                                }
+                                else
+                                {
+                                    Guardian += "Shield Settings Mode : <color=#ff00ff>Reflect</color>, player protected see the shield : <color=#ff0000>No</color>";
+                                    GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Renvoie</color>, le joueur protégé voit le Bouclier : <color=#ff0000>Non</color>";
+
+                                }
+
+                            }
+                            if (ShieldSettings.getSelection() == 0)
+                            {
+                                if (GuardianShieldVisibility.getBool() == true)
+                                {
+                                    Guardian += "Shield Settings Mode : <color=#ff00ff>Protected</color>, player protected see the shield : <color=#00ff00>Yes</color>";
+                                    GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Protection</color>, le joueur protégé voit le Bouclier : <color=#00ff00>Oui</color>";
+                                }
+                                else
+                                {
+                                    Guardian += "Shield Settings Mode : <color=#ff00ff>Protected</color>, player protected see the shield : <color=#ff0000>No</color>";
+                                    GuardianFR += "Paramètre du Bouclier : <color=#ff00ff>Protection</color>, le joueur protégé voit le Bouclier : <color=#ff0000>Non</color>";
+
+                                }
+
+                            }
+                            if (GuardianShieldVisibilitytry.getSelection() == 0)
+                            {
+                                if (GuardianShieldSound.getBool() == true)
+                                {
+                                    Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> can see shield and hear the noise shield.";
+                                    GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> peut voir le Shield et entendras le son.";
+
+                                }
+                                else
+                                {
+                                    Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> can see shield.";
+                                    GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> peut voir le Bouclier.";
+
+                                }
+
+                            }
+                            if (GuardianShieldVisibilitytry.getSelection() == 1 && GuardianShieldVisibility.getBool() == false)
+                            {
+                                if (GuardianShieldSound.getBool() == true)
+                                {
+                                    Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Shielded Player</color> can see shield and <color=#ff00ff>Everyone</color> hear the noise shield.";
+                                    GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>le joueur protégé</color> peut voir le Bouclier, et <color=#ff00ff>tout le monde</color> entends le son.";
+
+                                }
+                                else
+                                {
+                                    Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Shielded Player</color> can see shield.";
+                                    GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>le joueur protégé</color> peut voir le Bouclier.";
+
+                                }
+                            }
+                            if (GuardianShieldVisibilitytry.getSelection() == 1 && GuardianShieldVisibility.getBool() == true)
+                            {
+                                if (GuardianShieldSound.getBool() == true)
+                                {
+                                    Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> hear the noise shield.";
+                                    GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> entendras le son.";
+
+                                }
+                                else
+                                {
+                                    Guardian += ".";
+                                    GuardianFR += ".";
+
+                                }
+                            }
+
+                            if (GuardianShieldVisibilitytry.getSelection() == 2)
+                            {
+                                if (GuardianShieldSound.getBool() == true)
+                                {
+                                    Guardian += ", if Player attempt to kill Shielded player, <color=#ff00ff>Everyone</color> hear the noise shield.";
+                                    GuardianFR += ", Si un joueur tente de tuer le joueur protégé, <color=#ff00ff>tout le monde</color> entendras le son.";
+
+                                }
+                                else
+                                {
+                                    Guardian += ".";
+                                    GuardianFR += ".";
+
+                                }
+                            }
+
+
+
+                        }
+                        if (GuardianSpawnChance.getFloat() > 0 && GuardianAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += GuardianFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Guardian;
+                            }
+                        }
+
+
+
+                        //ENGINEER
+                        string Engineer = "<size=0.75><color=#FFA100>\n> Engineer : </color>";
+                        string EngineerFR = "<size=0.75><color=#FFA100>\n> Ingénieur : </color>";
+                        if (engineerSpawnChance.getFloat() > 0)
+
+                        {
+
+                            if (RepairSettings.getSelection() == 0)
+                            {
+                                if (EngineerCanVent.getBool() == true)
+                                {
+                                    Engineer += "Repair Mode : <color=#ff00ff>Single</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#00ff00>Yes</color>.";
+                                    EngineerFR += "Mode de réparation : <color=#ff00ff>Unique</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#00ff00>Oui</color>.";
+
+                                }
+                                if (EngineerCanVent.getBool() == false)
+                                {
+                                    Engineer += "Repair Mode : <color=#ff00ff>Single</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#FF0000>No</color>.";
+                                    EngineerFR += "Mode de réparation : <color=#ff00ff>Unique</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>.";
+
+                                }
+
+                            }
+                            if (RepairSettings.getSelection() == 1)
+                            {
+                                if (EngineerCanVent.getBool() == true)
+                                {
+                                    Engineer += "Repair Mode : <color=#ff00ff>Round</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#00ff00>Yes</color>.";
+                                    EngineerFR += "Mode de réparation : <color=#ff00ff>1x Par Tour</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#00ff00>Oui</color>.";
+
+                                }
+                                if (EngineerCanVent.getBool() == false)
+                                {
+                                    Engineer += "Repair Mode : <color=#ff00ff>Round</color>, Cooldown : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Can Use Vent : <color=#FF0000>No</color>.";
+                                    EngineerFR += "Mode de réparation : <color=#ff00ff>1x Par Tour</color>, Délai : <color=#00ffff>" + EngineerRepairCD.getFloat() + "s</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>.";
+
+                                }
+
+                            }
+
+
+                        }
+                        if (engineerSpawnChance.getFloat() > 0 && engineerAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += EngineerFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Engineer;
+                            }
+                        }
+
+
+
+                        //TIMELORD
+                        string Timelord = "<size=0.75><color=#007FFF>\n> Timelord : </color>";
+                        string TimelordFR = "<size=0.75><color=#007FFF>\n> Temporel : </color>";
+
+                        if (TimeLordSpawnChance.getFloat() > 0)
+
+                        {
+                            Timelord += "Break Time : <color=#00ffff>" + TimeLordStopCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + TimeLordStopDuration.getFloat() + "s</color> duration.</color>";
+
+                            TimelordFR += "Délai pour Arrêter le temps : <color=#00ffff>" + TimeLordStopCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + TimeLordStopDuration.getFloat() + "s</color>.</color>";
+                        }
+                        if (TimeLordSpawnChance.getFloat() > 0 && TimeLordAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += TimelordFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Timelord;
+                            }
+                        }
+
+                        //HUNTER
+                        string Hunter = "<size=0.75><color=#00ff00>\n> Hunter : </color>";
+                        string HunterFR = "<size=0.75><color=#00ff00>\n> Chasseur : </color>";
+
+
+                        if (HunterSpawnChance.getFloat() > 0)
+
+                        {
+                            if (ResetTrack.getBool() == false)
+                            {
+                                if (Followtrack.getBool() == false)
+                                {
+                                    Hunter += "Can reuse Track if Tracked player die : <color=#ff0000>No</color>, Hunter can Follow Tracked player : <color=#ff0000>No</color>.";
+                                    HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#ff0000>Non</color>, Le Pisteur affiche un marqueur en jeu : <color=#ff0000>Non</color>.";
+
+                                }
+                                if (Followtrack.getBool() == true)
+                                {
+                                    Hunter += "Can reuse Track if Tracked player die : <color=#ff0000>No</color>, Hunter can Follow Tracked player : <color=#00FF00>Yes</color>.";
+                                    HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#ff0000>Non</color>, Le Pisteur affiche un marqueur en jeu : <color=#00FF00>Oui</color>.";
+
+                                }
+                            }
+                            if (ResetTrack.getBool() == true)
+                            {
+                                if (Followtrack.getBool() == false)
+                                {
+                                    Hunter += "Can reuse Track if Tracked player die : <color=#00FF00>Yes</color>, Hunter can Follow Tracked player : <color=#ff0000>No</color>.";
+                                    HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#00FF00>Oui</color>, Le Pisteur affiche un marqueur en jeu : <color=#ff0000>Non</color>.";
+
+                                }
+                                if (Followtrack.getBool() == true)
+                                {
+                                    Hunter += "Can reuse Track if Tracked player die : <color=#00FF00>Yes</color>, Hunter can Follow Tracked player : <color=#00FF00>Yes</color>.";
+                                    HunterFR += "Peut réutiliser son pisteur si la cible est tuée : <color=#00FF00>Oui</color>, Le Pisteur affiche un marqueur en jeu : <color=#00FF00>Oui</color>.";
+
+                                }
+                            }
+                        }
+                        if (HunterSpawnChance.getFloat() > 0 && HunterAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += HunterFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Hunter;
+                            }
+                        }
+
+
+                        //MYSTIC
+                        string Mystic = "<size=0.75><color=#F9FFB2>\n> Mystic : </color>";
+                        string MysticFR = "<size=0.75><color=#F9FFB2>\n> Mystic : </color>";
+
+
+                        if (MysticSpawnChance.getFloat() > 0)
+
+                        {
+                            Mystic += "Personal-Shield : <color=#00ffff>" + MysticSetCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + MysticSetDuration.getFloat() + "s</color> duration.</color>";
+
+                            MysticFR += "Délai du Bouclier personnel : <color=#00ffff>" + MysticSetCooldown.getFloat() + "s</color> pour une durée de <color=#00ffff>" + MysticSetDuration.getFloat() + "s</color>.";
+                        }
+                        if (MysticSpawnChance.getFloat() > 0 && MysticAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += MysticFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Mystic;
+                            }
+                        }
+
+                        //SPIRIT
+                        string Spirit = "<size=0.75><color=#A1FF00>\n> Spirit : </color>";
+                        string SpiritFR = "<size=0.75><color=#A1FF00>\n> Esprit : </color>";
+
+
+                        if (SpiritSpawnChance.getFloat() > 0)
+                        {
+
+                            if (SpiritSab.getBool() == false)
+                            {
+                                Spirit += "Spirit can use Sabotage when he die (Door only) : <color=#ff0000>Disabled.</color>.";
+                                SpiritFR += "L'esprit peut utiliser les sabotages si il est mort (Porte uniquement) : <color=#ff0000>Désactivé.</color>.";
+
+                            }
+                            if (SpiritSab.getBool() == true)
+                            {
+                                Spirit += "Spirit can use Sabotage when he die (Door only) : <color=#00FF00>Enable</color>.";
+                                SpiritFR += "L'esprit peut utiliser les sabotages si il est mort (Porte uniquement) : <color=#00FF00>Activé</color>.";
+
+                            }
+
+                        }
+                        if (SpiritSpawnChance.getFloat() > 0 && SpiritAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SpiritFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Spirit;
+                            }
+                        }
+
+
+
+                        //MAYOR
+                        string Mayor = "<size=0.75><color=#AF8269>\n> Mayor : </color>";
+                        string MayorFR = "<size=0.75><color=#AF8269>\n> Maire : </color>";
+
+
+                        if (MayorSpawnChance.getFloat() > 0)
+
+                        {
+                            if (BonusBuzz.getSelection() == 0)
+                            {
+                                Mayor += "Bonus Buzz Mode : <color=#ff0000>Disabled.</color>";
+                                MayorFR += "Réunion d'urgence bonus : <color=#ff0000>Désactivé.</color>";
+
+                            }
+                            if (BonusBuzz.getSelection() == 1)
+                            {
+                                Mayor += "Bonus Buzz Mode : <color=#ff00ff>After First Meeting</color>, Cooldown : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
+                                MayorFR += "Réunion d'urgence bonus : <color=#ff00ff>Activé - Après la première réunion</color>, Délai : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
+
+                            }
+                            if (BonusBuzz.getSelection() == 2)
+                            {
+                                Mayor += "Bonus Buzz Mode : <color=#ff00ff>only if finished tasks</color>, Cooldown : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
+                                MayorFR += "Réunion d'urgence bonus : <color=#ff00ff>Acitvé - Lorsque le Maire termine ces Tâches</color>, Délai : <color=#00ffff>" + BuzzCooldown.getFloat() + "s</color>";
+
+                            }
+
+                        }
+                        if (MayorSpawnChance.getFloat() > 0 && MayorAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += MayorFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Mayor;
+                            }
+                        }
+
+
+
+                        //DETECTIVE
+                        string Detective = "<size=0.75><color=#BCFFBA>\n> Detective : </color>";
+                        string DetectiveFR = "<size=0.75><color=#BCFFBA>\n> Detective : </color>";
+
+
+                        if (DetectiveSpawnChance.getFloat() > 0)
+
+                        {
+                            if (detectiveFootprintanonymous.getBool() == true)
+                            {
+                                Detective += "<color=#ff00ff>Anonym</color> Footprint : <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> duration and <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color> visible.</color>";
+
+                                DetectiveFR += "Traces <color=#ff00ff>Anonyme</color> Délai d'activation: <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> l'effet persiste pendant <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> Les traces restent visibles <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color>.</color>";
+                            }
+                            if (detectiveFootprintanonymous.getBool() == false)
+                            {
+                                Detective += "<color=#ff00ff>Colored</color> Foorprint : <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> duration and <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color> visible.</color>";
+
+                                DetectiveFR += "Traces <color=#ff00ff>De la couleur des joueurs</color> Délai d'activation: <color=#00ffff>" + detectiveFootprintcooldown.getFloat() + "s</color> l'effet persiste pendant <color=#00ffff>" + detectiveFootprintDuration2.getFloat() + "s</color> Les traces restent visibles <color=#00ffff>" + detectiveFootprintDuration.getFloat() + "s</color>.</color>";
+                            }
+
+
+                        }
+                        if (DetectiveSpawnChance.getFloat() > 0 && DetectiveAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += DetectiveFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Detective;
+                            }
+                        }
+
+
+
+                        //NIGHTWATCH
+                        string Nightwatch = "<size=0.75><color=#9EB3FF>\n> Nightwatch : </color>";
+                        string NightwatchFR = "<size=0.75><color=#9EB3FF>\n> Veilleur : </color>";
+
+                        if (NightwatcherSpawnChance.getFloat() > 0)
+
+                        {
+                            Nightwatch += "Light Vision : <color=#00ffff>" + NightwatcherSetCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + NightwatcherSetDuration.getFloat() + "s</color> duration.";
+
+                            NightwatchFR += "Délai de la Vision Améliorée : <color=#00ffff>" + NightwatcherSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + NightwatcherSetDuration.getFloat() + "s</color>.";
+                        }
+                        if (NightwatcherSpawnChance.getFloat() > 0 && NightwatcherAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += NightwatchFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Nightwatch;
+                            }
+                        }
+
+
+                        //SPY
+                        string Spy = "<size=0.75><color=#9EE1FF>\n> Spy : </color>";
+                        string SpyFR = "<size=0.75><color=#9EE1FF>\n> Espion : </color>";
+
+
+                        if (SpySpawnChance.getFloat() > 0)
+
+                        {
+                            Spy += "Spy Ability Duration : <color=#00ffff>" + SpyDuration.getFloat() + "s</color>,";
+                            SpyFR += "La Capacité de l'espion dure : <color=#00ffff>" + SpyDuration.getFloat() + "s</color>,";
+                            if (SpyRange.getSelection() == 0)
+                            {
+                                Spy += " ability view Range : <color=#FF00FF>100%</color>.";
+                                SpyFR += " porté de la vision : <color=#00FF00>100%</color>.";
+                            }
+                            if (SpyRange.getSelection() == 1)
+                            {
+                                Spy += " ability view Range : <color=#FF00FF>125%</color>.";
+                                SpyFR += " porté de la vision : <color=#00FF00>125%</color>.";
+                            }
+                            if (SpyRange.getSelection() == 2)
+                            {
+                                Spy += " ability view Range : <color=#FF00FF>150%</color>.";
+                                SpyFR += " porté de la vision : <color=#00FF00>150%</color>.";
+                            }
+                        }
+                        if (SpySpawnChance.getFloat() > 0 && SpyAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SpyFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Spy;
+                            }
+                        }
+
+
+
+                        //INFORMANT
+                        string Informant = "<size=0.75><color=#ADFFEA>\n> Informant : </color>";
+                        string InformantFR = "<size=0.75><color=#ADFFEA>\n> Voyante : </color>";
+
+
+                        if (InforSpawnChance.getFloat() > 0)
+
+                        {
+                            if (InforAnalyseMod.getSelection() == 0)
+                            {
+                                Informant += "Analyse Ability Mode : <color=#ff00ff>Single</color>, Cooldown Before Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
+                                InformantFR += "Peut analyser : <color=#ff00ff>1 Joueur</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
+                            }
+                            if (InforAnalyseMod.getSelection() == 1)
+                            {
+                                Informant += "Analyse Ability Mode : <color=#ff00ff>Round</color>, Cooldown Before Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
+                                InformantFR += "Peut analyser : <color=#ff00ff>1x Par Tour</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
+                            }
+                            if (InforAnalyseMod.getSelection() == 2)
+                            {
+                                Informant += "Analyse Ability Mode : <color=#ff00ff>Cooldown</color>, Cooldown for Use : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
+                                InformantFR += "Peut analyser : <color=#ff00ff>Plusieurs fois</color>, Délai d'utilisation : <color=#00ffff>" + InforCooldown.getFloat() + "s</color>,";
+                            }
+
+                            if (InforRemainingTask.getFloat() == TotalTask)
+                            {
+
+                                Informant += "\nEnable : <color=#ff00ff>From the game start</color>,";
+                                InformantFR += "\nDisponible : <color=#ff00ff>Dés le début de la partie</color>,";
+                            }
+                            else
+                            {
+                                if (InforRemainingTask.getFloat() == 0)
+                                {
+                                    Informant += "\nEnable : <color=#ff00ff>When all task are complete</color>,";
+                                    InformantFR += "\nDisponible : <color=#00ff00>quand Toute les tâches sont terminées</color>,";
+                                }
+                                else
+                                {
+                                    Informant += "\nEnable :If <color=#ff00ff>" + (TotalTask - InforRemainingTask.getFloat()) + "/" + TotalTask + " task are completed</color>,";
+                                    InformantFR += "\nDisponible :Si <color=#ff00ff>" + (TotalTask - InforRemainingTask.getFloat()) + "/" + TotalTask + " Tâches sont terminées.</color>,";
+                                }
+                            }
+
+
+                            if (InforAnalyseTeam.getBool() == true)
+                            {
+                                Informant += " can see Special role Team : <color=#00ff00>Yes</color>.";
+                                InformantFR += " Peut voir l'équipe des Rôles spéciaux : <color=#00ff00>Oui</color>.";
+                            }
+                            if (InforAnalyseTeam.getBool() == false)
+                            {
+                                Informant += " can see Special role Team : <color=#ff0000>No</color>.";
+                                InformantFR += " Peut voir l'équipe des Rôles spéciaux : <color=#ff0000>Non</color>.";
+                            }
+
+
+                        }
+                        if (InforSpawnChance.getFloat() > 0 && InforAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += InformantFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Informant;
+                            }
+                        }
+
+                        //BAIT
+                        string Bait = "<size=0.75><color=#808080>\n> Bait : </color>";
+                        string BaitFR = "<size=0.75><color=#808080>\n> Appat : </color>";
+
+
+                        if (BaitSpawnChance.getFloat() > 0)
+
+                        {
+
+
+                            if (BaitReport.getSelection() != 0)
+                            {
+                                if (BaitReporttimeRnd.getFloat() != 0)
+                                {
+                                    Bait += "Bait Reporting time : <color=#00ffff>" + BaitReporttime.getFloat() + "s ~ " + (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat()) + "s</color>,";
+                                    BaitFR += "Délai avant que le Signalement s'active : <color=#00ffff>" + BaitReporttime.getFloat() + "s ~ " + (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat()) + "s</color>,";
+                                }
+                                else
+                                {
+                                    Bait += "Bait Reporting time : <color=#00ffff>" + BaitReporttime.getFloat() + "s</color>,";
+                                    BaitFR += "Délai avant que le Signalement s'active : <color=#00ffff>" + BaitReporttime.getFloat() + "s</color>,";
+                                }
+                            }
+                            else
+                            {
+                                Bait += "Bait Reporting time : <color=#ff0000>Disabled</color>,";
+                                BaitFR += "Délai avant que le Signalement s'active : <color=#ff0000>Désactivé</color>,";
+                            }
+
+                            if (BaitReport.getSelection() != 1)
+                            {
+                                Bait += " Bait Killer Stuns : <color=#00ff00>Yes</color>, Duration : <color=#00ffff>" + BaitStuns.getFloat() + "</color>s,";
+                                BaitFR += " Le tueur est étourdit : <color=#00ff00>Oui</color>, Pendant : <color=#00ffff>" + BaitStuns.getFloat() + "</color>s,";
+                            }
+                            else
+                            {
+                                Bait += " Bait Killer Stuns : <color=#ff0000>No</color>,";
+                                BaitFR += " Le tueur est étourdit : <color=#ff0000>Non</color>,";
+                            }
+
+
+
+                            if (BaitBalise.getFloat() != 0)
+                            {
+                                Bait += " Warn Area : <color=#ff00ff>x" + BaitBalise.getFloat() + "</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
+                                BaitFR += " Zone d'alerte : <color=#ff00ff>x\" + BaitBalise.getFloat() + \"</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
+                            }
+                            else
+                            {
+                                Bait += " Warn Area : <color=#ff0000>No</color>,";
+                                BaitFR += " Zone d'alerte : <color=#ff0000>Non</color>,";
+                            }
+
+
+                            if (BaitCanVent.getBool() == true)
+                            {
+                                Bait += " Can Use Vent : <color=#00FF00>yes</color>.";
+                                BaitFR += " peut utiliser les Vents : <color=#00FF00>Oui</color>.";
+
+                            }
+                            if (BaitCanVent.getBool() == false)
+                            {
+                                Bait += " Can Use Vent : <color=#FF0000>No</color>.";
+                                BaitFR += " peut utiliser les Vents : <color=#FF0000>Non</color>.";
+
+                            }
+
+
+                        }
+                        if (BaitSpawnChance.getFloat() > 0 && BaitAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += BaitFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Bait;
+                            }
+                        }
+
+
+                        //Mentalist
+                        string Mentalist = "<size=0.75><color=#A991FF>\n> Mentalist : </color>";
+                        string MentalistFR = "<size=0.75><color=#A991FF>\n> Mentaliste : </color>";
+
+
+                        if (MentalistSpawnChance.getFloat() > 0)
+
+                        {
+                            if (MentalistAbility.getSelection() != 1)
+                            {
+                                if (AdminSetting.getSelection() == 0)
+                                {
+                                    Mentalist += "Mentalist can See players color with admin (<color=#ff00ff>once use per Game</color>) : <color=#00FF00>Yes</color>, for :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
+
+                                    MentalistFR += "Peut voir les couleurs sur la table d'admin (<color=#ff00ff>1 seule fois par partie</color>) : <color=#00FF00>Oui</color>, Pendant :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
+                                }
+                                else
+                                {
+                                    Mentalist += "Mentalist can See players color with admin (<color=#ff00ff>once use per Round</color>) : <color=#00FF00>Yes</color>, for :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
+
+                                    MentalistFR += "Peut voir les couleurs sur la table d'admin (<color=#ff00ff>1x Par Tour</color>) : <color=#00FF00>Yes</color>, Pendant :<color=#00ffff>" + AdminDuration.getFloat() + "s</color>,";
+                                }
+
+                            }
+                            else
+                            {
+                                Mentalist += "Mentalist can See players color with admin : <color=#FF0000>No</color>,";
+
+                                MentalistFR += "Peut voir les couleurs sur la table d'admin : <color=#FF0000>Non</color>,";
+                            }
+
+
+                            if (MentalistAbility.getSelection() != 0)
+                            {
+                                Mentalist += " Can See color votes : <color=#00FF00>Yes</color>.";
+
+                                MentalistFR += " Peut voir les couleurs des votes : <color=#00FF00>Oui</color>.";
+
+                            }
+                            else
+                            {
+                                Mentalist += " Can See color votes : <color=#FF0000>No</color>.";
+
+                                MentalistFR += " Peut voir les couleurs des votes : <color=#FF0000>Non</color>.";
+
+                            }
+
+
+                        }
+                        if (MentalistSpawnChance.getFloat() > 0 && MentalistAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += MentalistFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Mentalist;
+                            }
+                        }
+
+                        //Mentalist
+                        string Builder = "<size=0.75><color=#FFC291>\n> Builder : </color>";
+                        string BuilderFR = "<size=0.75><color=#FFC291>\n> Constructeur : </color>";
+
+
+                        if (BuilderSpawnChance.getFloat() > 0)
+
+                        {
+                            if (MaxBuild.getSelection() == 0)
+                            {
+                                if (BuildRound.getBool() == true)
+                                {
+                                    Builder += "Max Vent Block :<color=#ff00ff>1</color>, Only one use per round : <color=#00ff00>Yes</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+                                    BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>1</color>, Une seul utilisation par tour : <color=#00ff00>Oui</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+
+                                }
+                                if (BuildRound.getBool() == false)
+                                {
+                                    Builder += "Max Vent Block :<color=#ff00ff>1</color>, Only one use per round : <color=#ff0000>No</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+
+                                    BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>1</color>, Une seul utilisation par tour : <color=#ff0000>Non</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+                                }
+                            }
+                            if (MaxBuild.getSelection() == 1)
+                            {
+                                if (BuildRound.getBool() == true)
+                                {
+                                    Builder += "Max Vent Block :<color=#ff00ff>2</color>, Only one use per round : <color=#00ff00>Yes</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+                                    BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>2</color>, Une seul utilisation par tour : <color=#00ff00>Oui</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+
+                                }
+                                if (BuildRound.getBool() == false)
+                                {
+                                    Builder += "Max Vent Block :<color=#ff00ff>2</color>, Only one use per round : <color=#ff0000>No</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+
+                                    BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>2</color>, Une seul utilisation par tour : <color=#ff0000>Non</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+                                }
+                            }
+                            if (MaxBuild.getSelection() == 2)
+                            {
+                                if (BuildRound.getBool() == true)
+                                {
+                                    Builder += "Max Vent Block :<color=#ff00ff>3</color>, Only one use per round : <color=#00ff00>Yes</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+                                    BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>3</color>, Une seul utilisation par tour : <color=#00ff00>Oui</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+
+                                }
+                                if (BuildRound.getBool() == false)
+                                {
+                                    Builder += "Max Vent Block :<color=#ff00ff>3</color>, Only one use per round : <color=#ff0000>No</color>. Cooldown :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+
+                                    BuilderFR += "Maximum de Vents blocables : <color=#ff00ff>3</color>, Une seul utilisation par tour : <color=#ff0000>Non</color>. Délai :<color=#00ffff>" + BuildCooldown.getFloat() + "s</color>.";
+                                }
+                            }
+
+
+                        }
+                        if (BuilderSpawnChance.getFloat() > 0 && BuilderAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += BuilderFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Builder;
+                            }
+                        }
+                        //Dictator
+                        string Dictator = "<size=0.75><color=#FF7A7A>\n> Dictator : </color>";
+                        string DictatorFR = "<size=0.75><color=#FF7A7A>\n> Dictateur : </color>";
+
+
+                        if (DictatorSpawnChance.getFloat() > 0)
+
+                        {
+
+                            if (DictatorFirstTurn.getBool() == false)
+                            {
+                                if (DictatorMeeting.getSelection() == 0)
+                                {
+                                    Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Passive</color> - As long as the dictator is alive the ability is activated.";
+                                    DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Passif</color> - Tant que le dictateur est en vie.";
+
+                                }
+                                if (DictatorMeeting.getSelection() == 1)
+                                {
+                                    Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Round</color> - The dictator chooses when he wants to use his Ability.";
+                                    DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Selection</color> - Le dictateur choisie quand il active sont pouvoir.";
+
+                                }
+                                if (DictatorMeeting.getSelection() == 2)
+                                {
+                                    Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Single</color> - The dictator chooses when he wants to use his Ability, Only one use per Game.";
+                                    DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Usage Unique</color> - Le dictateur choisie quand il active sont pouvoir.";
+
+                                }
+
+                            }
+                            if (DictatorFirstTurn.getBool() == true)
+                            {
+                                if (DictatorMeeting.getSelection() == 0)
+                                {
+                                    Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Passive</color> - As long as the dictator is alive the ability is activated.";
+                                    DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Passif</color> - Tant que le dictateur est en vie.";
+
+                                }
+                                if (DictatorMeeting.getSelection() == 1)
+                                {
+                                    Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Round</color> - The dictator chooses when he wants to use his Ability.";
+                                    DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Selection</color> - Le dictateur choisie quand il active sont pouvoir.";
+
+                                }
+                                if (DictatorMeeting.getSelection() == 2)
+                                {
+                                    Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Single</color> - The dictator chooses when he wants to use his Ability, Only one use per Game.";
+                                    DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Usage Unique</color> - Le dictateur choisie quand il active sont pouvoir..";
+
+                                }
+
+                            }
+
+                        }
+                        if (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += DictatorFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Dictator;
+                            }
+                        }
+
+
+                        //SENTINEL
+                        string Sentinel = "<size=0.75><color=#06AD17>\n> Sentinel : </color>";
+                        string SentinelFR = "<size=0.75><color=#06AD17>\n> Sentinelle : </color>";
+
+
+                        if (SentinelSpawnChance.getFloat() > 0)
+
+                        {
+
+                            Sentinel += "Scan : <color=#00ffff>" + ScanCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + ScanDuration.getFloat() + "s</color> duration,";
+                            SentinelFR += "Délai du Scan : <color=#00ffff>" + ScanCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + ScanDuration.getFloat() + "s</color>,";
+
+                            if (ScanAbility.getSelection() == 0)
+                            {
+                                Sentinel += " Enable dead Players : <color=#FF0000>No</color>, In Vent Player : <color=#00ff00>Yes</color>.";
+                                SentinelFR += " Détecte les joueurs - Mort : <color=#FF0000>Non</color>, - Dans une Vent : <color=#00ff00>Oui</color>.";
+                            }
+                            if (ScanAbility.getSelection() == 1)
+                            {
+                                Sentinel += " Enable dead Players : <color=#00FF00>Yes</color>, In Vent Player : <color=#ff0000>No</color>.";
+                                SentinelFR += " Détecte les joueurs - Mort : <color=#00FF00>Oui</color>, - Dans une Vent : <color=#ff0000>Non</color>.";
+                            }
+                            if (ScanAbility.getSelection() == 2)
+                            {
+                                Sentinel += " Enable dead Players : <color=#00FF00>Yes</color>, In Vent Player : <color=#00ff00>Yes</color>.";
+                                SentinelFR += " Détecte les joueurs - Mort : <color=#00FF00>Oui</color>, - Dans une Vent : <color=#00ff00>Oui</color>.";
+                            }
+                        }
+                        if (SentinelSpawnChance.getFloat() > 0 && SentinelAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += SentinelFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Sentinel;
+                            }
+                        }
+
+                        //LAWKEEPR
+                        string Lawkeeper = "<size=0.75><color=#FF9b9b>\n> Lawkeeper : </color>";
+                        string LawkeeperFR = "<size=0.75><color=#FF9b9b>\n> Justicier : </color>";
+
+
+                        if (LawkeeperSpawnChance.getFloat() > 0)
+
+                        {
+
+                            Lawkeeper += "if Lawkeeper Report deadbody :";
+                            LawkeeperFR += "Si il Signale un Corps :";
+
+                            if (LKTimer.getBool() == true)
+                            {
+                                Lawkeeper += " The kill delay is revealed : <color=#00ff00>Yes</color>.";
+                                LawkeeperFR += " Il Obtient le délai de la Mort : <color=#00ff00>Oui</color>.";
+                            }
+                            else
+                            {
+                                Lawkeeper += " The kill delay is revealed : <color=#FF0000>No</color>.";
+                                LawkeeperFR += " Il Obtient le délai de la Mort : <color=#FF0000>Non</color>.";
+                            }
+
+                            if (LKInfo.getBool() == true)
+                            {
+                                Lawkeeper += " Information about Kill revealed : <color=#00ff00>Yes</color>.";
+                                LawkeeperFR += " Des informations sur la Mort : <color=#00ff00>Oui</color>.";
+                            }
+                            else
+                            {
+                                Lawkeeper += " Information about Kill revealed : <color=#FF0000>No</color>.";
+                                LawkeeperFR += " Des informations sur la Mort : <color=#FF0000>Non</color>.";
+                            }
+
+
+
+
+                            if (TimeRName.getFloat() == 0)
+                            {
+                                if (TimeRList.getFloat() == 0)
+                                {
+                                    Lawkeeper += "";
+                                    LawkeeperFR += "";
+
+
+                                }
+                                else
+                                {
+                                    Lawkeeper += "\nIf the kill has less than<color=#00ffff> " + TimeRList.getFloat() + "s</color> Suspect List reveal.";
+                                    LawkeeperFR += "\nSi le meurtre à eu lieux avant <color=#00ffff> " + TimeRList.getFloat() + "s</color> Il obtient une liste de suspect.";
+
+                                }
+                            }
+                            else
+                            {
+                                if (TimeRList.getFloat() == 0)
+                                {
+                                    Lawkeeper += "\nIf the kill has less than<color=#00ffff> " + TimeRName.getFloat() + "s</color> Killer Name reveal.";
+                                    LawkeeperFR += "\nSi le meurtre à eu lieux avant <color=#00ffff> " + TimeRName.getFloat() + "s</color> Il obtient le nom du tueur.";
+
+                                }
+                                else
+                                {
+                                    Lawkeeper += "\nIf the kill has less than<color=#00ffff> " + TimeRName.getFloat() + "s</color> Killer Name reveal, \nIf the kill has less than<color=#00ffff> " + TimeRList.getFloat() + "s</color> Suspect List reveal.";
+                                    LawkeeperFR += "\nSi le meurtre à eu lieux avant <color=#00ffff> " + TimeRName.getFloat() + "s</color> Il obtient le nom du tueur, \nSi le meurtre à eu lieux avant<color=#00ffff> " + TimeRList.getFloat() + "s</color> Il obtient une liste de suspect.";
+
+                                }
+                            }
+
+
+
+
+                        }
+                        if (LawkeeperSpawnChance.getFloat() > 0 && LawkeeperAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += LawkeeperFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Lawkeeper;
+                            }
+                        }
+
+                        //FAKE
+                        string Fake = "<size=0.75><color=#FF7A7A>\n> Fake : </color>";
+                        string FakeFR = "<size=0.75><color=#FF7A7A>\n> Intru : </color>";
+
+
+                        if (FakeSpawnChance.getFloat() > 0)
+
+                        {
+                            if (ImpostorCanKillFake.getBool() == true)
+                            {
+                                Fake += "All Impostors can kill the Fake and Other Impostors : <color=#00FF00>Yes</color>,";
+                                FakeFR += "Les Imposteurs peuvent tuer l'intru et les autres imposteurs : <color=#00FF00>Oui</color>,";
+
+                            }
+                            if (ImpostorCanKillFake.getBool() == false)
+                            {
+                                Fake += "All Impostors can kill the Fake and Other Impostors : <color=#FF0000>No</color>,";
+                                FakeFR += "Les Imposteurs peuvent tuer l'intru et les autres imposteurs : <color=#FF0000>Non</color>,";
+
+                            }
+
+                            if (FakeCanVent.getBool() == true)
+                            {
+                                Fake += " Can Use Vent : <color=#00FF00>Yes</color>.";
+                                FakeFR += " Peut utiliser les vents : <color=#00FF00>Oui</color>,";
+
+                            }
+                            if (FakeCanVent.getBool() == false)
+                            {
+                                Fake += " Can Use Vent : <color=#FF0000>No</color>.";
+                                FakeFR += " Peut utiliser les vents : <color=#FF0000>Non</color>.";
+
+                            }
+
+
+
+                        }
+                        if (FakeSpawnChance.getFloat() > 0 && FakeAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += FakeFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Fake;
+                            }
+                        }
+
+                        //LEADER
+                        string Leader = "<size=0.75><color=#5A7DA5>\n> Leader : </color>";
+                        string LeaderFR = "<size=0.75><color=#5A7DA5>\n> Chef : </color>";
+
+
+                        if (LeaderSpawnChance.getFloat() > 0)
+
+                        {
+
+                            if (LeaderTaskEnd.getBool() == true)
+                            {
+                                Leader += "Mark Second player when : <color=#ff00ff>Player die or All task Completed</color>";
+                                LeaderFR += "Marque le 2eme Joueur Si : <color=#ff00ff>Le Chef Meure ou si il termine toute ces tâches</color>";
+                            }
+                            else
+                            {
+                                Leader += "Mark Second player when : <color=#ff00ff>Player die</color>";
+                                LeaderFR += "Marque le 2eme Joueur Si : <color=#ff00ff>Le Chef Meure</color>";
+                            }
+
+                            if (CupidAdd.getBool() == true && CupidSpawnChance.getFloat() > 0)
+                            {
+                                if (LeaderAffectCupid.getBool() == false)
+                                {
+                                    Leader += ", if the cupid is marked : <color=#ff00ff>Crewmates cannot be designer</color> by the second mark.";
+                                    LeaderFR += ", Si le Cupidon est marquer : <color=#ff00ff>Les coéquipiers ne pourront pas être désignés</color> par la 2eme marque.";
+                                }
+                                else
+                                {
+                                    Leader += ", if the cupid is marked : <color=#ff00ff>Crewmates can be designer</color> by the second mark.";
+                                    LeaderFR += ", si le Cupidon est marquer : <color=#ff00ff>Les coéquipiers pourront être désignés</color> par la 2eme marque.";
+                                }
+                            }
+
+                            else
+                            {
+                                Leader += ".";
+                                LeaderFR += ".";
+                            }
+
+
+                        }
+                        if (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += LeaderFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Leader;
+                            }
+                        }
+
+
+                        //SPACER ---
+                        string SpacerSpe = "\n";
+                        __instance.GameSettings.text += SpacerSpe;
+
+
+                        //JESTER
+                        string Jester = "<size=0.75><color=#FF0A88>\n> Jester : </color>";
+                        string JesterFR = "<size=0.75><color=#FF0A88>\n> Bouffon : </color>";
+
+
+                        if (JesterSpawnChance.getFloat() > 0)
+
+                        {
+
+
+                            if (JesterSingle.getSelection() == 0)
+                            {
+                                Jester += "Fake Kill Cooldown : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>, Only use one time.";
+                                JesterFR += "Délai du Faux Meurtre : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>, Usage unique.";
+
+                            }
+                            if (JesterSingle.getSelection() == 1)
+                            {
+                                Jester += "Fake Kill Cooldown : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>.";
+                                JesterFR += "Délai du Faux Meurtre : <color=#00ffff>" + JesterCooldown.getFloat() + "s</color>.";
+
+
+                            }
+                            if (JesterSingle.getSelection() == 2)
+                            {
+                                Jester += "Fake Kill :<color=#ff0000> Disable</color>.";
+                                JesterFR += "Faux Meurtre :<color=#ff0000> Désactivé</color>.";
+
+
+                            }
+
+
+
+                        }
+                        if (JesterSpawnChance.getFloat() > 0 && JesterAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += JesterFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Jester;
+                            }
+                        }
+
+
+
+                        //CUPID
+                        string Cupid = "<size=0.75><color=#FFAFFF>\n> Cupid : </color>";
+                        string CupidFR = "<size=0.75><color=#FFAFFF>\n> Cupidon : </color>";
+
+
+                        if (CupidSpawnChance.getFloat() > 0)
+
+                        {
+                            if (Loverdie.getBool() == true)
+                            {
+                                Cupid += "Both Lovers die : <color=#00FF00>Yes</color>.";
+                                CupidFR += "Les Amoureux meurent ensemble : <color=#00FF00>Oui</color>.";
+
+                            }
+                            if (Loverdie.getBool() == false)
+                            {
+                                Cupid += "Both Lovers die : <color=#FF0000>No</color>.";
+                                CupidFR += "Les Amoureux meurent ensemble : <color=#FF0000>Non</color>.";
+
+                            }
+
+
+                        }
+                        if (CupidSpawnChance.getFloat() > 0 && CupidAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += CupidFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Cupid;
+                            }
+                        }
+
+
+
+
+
+
+                        //EATER
+                        string Eater = "<size=0.75><color=#FF6E00>\n> Eater : </color>";
+                        string EaterFR = "<size=0.75><color=#FF6E00>\n> Dévoreur : </color>";
+
+
+                        if (EaterSpawnChance.getFloat() > 0)
+
+                        {
+                            if (EaterCanVent.getBool() == true)
+                            {
+
+                                if (EaterCanDrag.getBool() == true)
+                                {
+
+                                    if (BodyRemove.getBool() == true)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+
+                                    }
+                                    if (BodyRemove.getBool() == false)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+
+                                    }
+
+                                }
+                                if (EaterCanDrag.getBool() == false)
+                                {
+                                    if (BodyRemove.getBool() == true)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+
+                                    }
+                                    if (BodyRemove.getBool() == false)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#00FF00>Yes</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+
+                                    }
+
+
+
+                                }
+                            }
+                            if (EaterCanVent.getBool() == false)
+                            {
+                                if (EaterCanDrag.getBool() == true)
+                                {
+
+                                    if (BodyRemove.getBool() == true)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+
+                                    }
+                                    if (BodyRemove.getBool() == false)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#00FF00>Yes</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+
+                                    }
+
+                                }
+                                if (EaterCanDrag.getBool() == false)
+                                {
+
+                                    if (BodyRemove.getBool() == true)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#00FF00>Yes</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#00FF00>Oui</color>.";
+
+                                    }
+                                    if (BodyRemove.getBool() == false)
+                                    {
+                                        Eater += "Digest cooldown : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Time for Eat : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Body Eated for win : <color=#00ffff>x" + Eatervaluewin + "</color>, Eater Can Drag a Body : <color=#FF0000>No</color>, Can Vent : <color=#FF0000>No</color>, Blood removed after meeting : <color=#FF0000>No</color>.";
+                                        EaterFR += "Délai de Digestion : <color=#00ffff>" + EaterCooldown.getFloat() + "s</color>, Durée pour Dévorer : <color=#00ffff>" + Eaterduration.getFloat() + "s</color>, Nombre de Corps à dévorer pour Gagner : <color=#00ffff>x" + Eatervaluewin + "</color>, \nPeut Déplacer les corps : <color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>, Traces de sang effacées après une réunion : <color=#FF0000>Non</color>.";
+
+                                    }
+
+                                }
+                            }
+                        }
+                        if (EaterSpawnChance.getFloat() > 0 && EaterAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += EaterFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Eater;
+                            }
+                        }
+
+                        //CULTE
+                        string Culte = "<size=0.75><color=#8300FF>\n> Cultist : </color>";
+                        string CulteFR = "<size=0.75><color=#8300FF>\n> Cultiste : </color>";
+
+
+                        if (CultisteSpawnChance.getFloat() > 0)
+
+                        {
+                            if (Cultistdie.getSelection() == 0)
+                            {
+                                Culte += "Max Member of Culte : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Cooldowns : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Don't die if he fails his conversion</color>.";
+
+                                CulteFR += "Nombre de Conversion Possible : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Délai : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Ne meurt pas en cas d'echec de conversion</color>.";
+                            }
+                            if (Cultistdie.getSelection() == 1)
+                            {
+                                Culte += "Max Member of Culte : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Cooldowns : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Dies immediately if conversion fails</color>.";
+
+                                CulteFR += "Nombre de Conversion Possible : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Délai : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Meurt immédiatement en cas d'echec de conversion</color>.";
+                            }
+                            if (Cultistdie.getSelection() == 2)
+                            {
+                                Culte += "Max Member of Culte : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Cooldowns : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Dies at the start of the next meeting if the conversion fails</color>.";
+
+                                CulteFR += "Nombre de Conversion Possible : <color=#00ffff>x" + CulteMember.getFloat() + "</color>, Délai : <color=#00ffff>" + CultisteCooldown.getFloat() + "s</color>, <color=#FF00FF>Meurt au début du prochain meeting en cas d'echec de conversion</color>.";
+                            }
+
+
+
+                        }
+                        if (CultisteSpawnChance.getFloat() > 0 && CultisteAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += CulteFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Culte;
+                            }
+                        }
+
+
+                        //OUTLAW
+                        string Outlaw = "<size=0.75><color=#0033ff>\n> Outlaw : </color>";
+                        string OutlawFR = "<size=0.75><color=#0033ff>\n> Criminel : </color>";
+
+
+                        if (OutlawSpawnChance.getFloat() > 0)
+
+                        {
+                            if (OutlawKillRange.getSelection() == 0)
+                            {
+                                Outlaw += "Kill Cooldown : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Normal (100%)</color>";
+                                OutlawFR += "Délai pour Tuer : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Normal (100%)</color>";
+
+                            }
+                            if (OutlawKillRange.getSelection() == 1)
+                            {
+                                Outlaw += "Kill Cooldown : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, Kill distance : <color=#ff00ff>Upgraded (120%)</color>";
+                                OutlawFR += "Délai pour Tuer : <color=#00ffff>" + OutlawKillCooldown.getFloat() + "s</color>, distance : <color=#ff00ff>Amélioré (120%)</color>";
+
+                            }
+
+
+
+
+                        }
+                        if (OutlawSpawnChance.getFloat() > 0 && OutlawAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += OutlawFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Outlaw;
+                            }
+                        }
+
+                        //ARSONIST
+                        string Arsonist = "<size=0.75><color=#ffc800>\n> Arsonist : </color>";
+                        string ArsonistFR = "<size=0.75><color=#ffc800>\n> Pyromane : </color>";
+
+
+                        if (ArsonistSpawnChance.getFloat() > 0)
+
+                        {
+                            Arsonist += "Oil Cooldown : <color=#00ffff>" + ArsonistCooldown.getFloat() + "s</color>,";
+                            ArsonistFR += "Délai pour Huiler : <color=#00ffff>" + ArsonistCooldown.getFloat() + "s</color>,";
+
+                            if (ArsonistDuration.getFloat() == 0)
+                            {
+                                Arsonist += " Cast Time : <color=#ff0000>No</color>, ";
+                                ArsonistFR += " Temps d'action : <color=#ff0000>Non</color>, ";
+                            }
+                            else
+                            {
+                                Arsonist += " Cast Time : <color=#00ffff>" + ArsonistDuration.getFloat() + "s</color>, if ability failed : <color=#00ffff>+" + ArsonistFailDuration.getFloat() + "s</color>,\n";
+                                ArsonistFR += " Temps d'action : <color=#00ffff>" + ArsonistDuration.getFloat() + "s</color>, Délai en cas d'échec : <color=#00ffff>+" + ArsonistFailDuration.getFloat() + "s</color>,\n";
+                            }
+
+                            if (ArsonistFuelQT.getFloat() == 0)
+                            {
+                                Arsonist += "Oil Quantity for Use : <color=#ff0000>Disabled</color>";
+                                ArsonistFR += "Quantité d'huile requis : <color=#ff0000>Désactivé</color>";
+                            }
+                            else
+                            {
+                                Arsonist += " Oil Quantity for Use : <color=#00ffff>" + ArsonistFuelQT.getFloat() + "%</color>";
+                                ArsonistFR += " Quantité d'huile requis : <color=#00ffff>" + ArsonistFuelQT.getFloat() + "%</color>";
+                            }
+
+
+                            if (AutoRefuel.getBool() == true && ArsonistFuelQT.getFloat() != 0)
+                            {
+                                Arsonist += ", Meeting Auto Refuel : <color=#00ffff>+" + ArsonistFuelQT.getFloat() + "%</color>.";
+                                ArsonistFR += ", Rechage d'huile en meeting : <color=#00ffff>+" + ArsonistFuelQT.getFloat() + "%</color>.";
+
+                            }
+                            if (AutoRefuel.getBool() == true && ArsonistFuelQT.getFloat() == 0)
+                            {
+                                Arsonist += ".";
+                                ArsonistFR += ".";
+
+                            }
+                            if (AutoRefuel.getBool() == false)
+                            {
+                                Arsonist += ", Meeting Auto Refuel : <color=#ff0000>Disable</color>.";
+                                ArsonistFR += ", Rechage d'huile en meeting : <color=#ff0000>Désactivé</color>.";
+                            }
+
+                        }
+                        if (ArsonistSpawnChance.getFloat() > 0 && ArsonistAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += ArsonistFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Arsonist;
+                            }
+                        }
+
+
+                        //CURSED
+                        string Cursed = "<size=0.75><color=#3F683B>\n> Cursed : </color>";
+                        string CursedFR = "<size=0.75><color=#3F683B>\n> Maudit : </color>";
+
+
+                        if (CursedSpawnChance.getFloat() > 0)
+
+                        {
+
+                            if (CursedSpeedModifieur.getSelection() == 0)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>100%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 1)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>110%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>110%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 2)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>120%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 3)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>130%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 4)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>140%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 5)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>150%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 6)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>80%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+                            if (CursedSpeedModifieur.getSelection() == 7)
+                            {
+                                Cursed += "Curse disable for : <color=#00ffff>" + CursedTimer.getFloat() + "s</color>, charging speed <color=#00ffff>90%</color>";
+                                CursedFR += "Malédiction inactif pendant : <color=#00ffff>" + CursedTimer.getFloat() + "</color>s, Vitesse de charge <color=#00ffff>100%</color>";
+                            }
+
+
+                            if (CursedAbility.getBool() == false)
+                            {
+
+                                Cursed += ", Shelter Ability available : <color =#ff0000>No</color>.";
+                                CursedFR += ", Capacité Abri disponible : <color =#ff0000>Non</color>.";
+                            }
+                            else
+                            {
+                                Cursed += "\n Shelter Ability cooldown : <color=#00ffff>" + CursedCooldown.getFloat() + "</color>s, duration : <color=#00ffff>" + CursedDuration.getFloat() + "s</color>.";
+                                CursedFR += "\n Temps de recharge de la capacité Abri : <color=#00ffff>" + CursedCooldown.getFloat() + "</color>s, Durée de l'effet : <color=#00ffff>" + CursedDuration.getFloat() + "s</color>.";
+                            }
+
+
+
+
+
+
+
+
+
+
+                        }
+                        if (CursedSpawnChance.getFloat() > 0 && CursedAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += CursedFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Cursed;
+                            }
+                        }
+
+
+
+
+
+                        //SPACER ---
+                        string SpacerDuo = "\n";
+                        __instance.GameSettings.text += SpacerDuo;
+
+                        //MERCENARY
+                        string Mercenary = "<size=0.75><color=#FF49E6>\n> Mercenary : </color>";
+                        string MercenaryFR = "<size=0.75><color=#FF49E6>\n> Mercenaire : </color>";
+
+
+                        if (MercenarySpawnChance.getFloat() > 0)
+
+                        {
+                            if (MercenaryCanVent.getBool() == true)
+                            {
+                                Mercenary += "Kill Cooldown : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Can Use Vent : <color=#00FF00>Yes</color>.";
+                                MercenaryFR += "Délai pour Tuer : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Peut utiliser les vents : <color=#00FF00>Oui</color>.";
+                            }
+                            else
+                            {
+                                Mercenary += "Kill Cooldown : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Can Use Vent : <color=#FF0000>No</color>.";
+                                MercenaryFR += "Délai pour Tuer : <color=#00ffff>" + MercenaryKillCooldown.getFloat() + "s</color>, Peut utiliser les vents : <color=#FF0000>Non</color>.";
+                            }
+                        }
+                        if (MercenarySpawnChance.getFloat() > 0 && MercenaryAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += MercenaryFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Mercenary;
+                            }
+                        }
+
+
+
+                        //COPYCAT
+                        string CopyCat = "<size=0.75><color=#64E6B4>\n> CopyCat : </color>";
+                        string CopyCatFR = "<size=0.75><color=#64E6B4>\n> CopyCat : </color>";
+
+
+                        if (CopyCatSpawnChance.getFloat() > 0)
+
+                        {
+                            if (CopyImp.getSelection() == 0)
+                            {
+                                CopyCat += "If CopyCat try to Copy Impostors Rôle :<color=#ff00ff> CopyCat die</color>,";
+                                CopyCatFR += "Si il tente de copier un Imposteur :<color=#ff00ff> L'imitateur Meurt</color>,";
+
+                            }
+                            if (CopyImp.getSelection() == 1)
+                            {
+                                CopyCat += "If CopyCat try to Copy Impostors Rôle : Changed to <color=#FF0000>Impostor</color>,";
+                                CopyCatFR += "Si il tente de copier un Imposteur : Il devient un <color=#FF0000>Impostor</color>,";
+
+                            }
+                            if (CopyImp.getSelection() == 2)
+                            {
+                                CopyCat += "If CopyCat try to Copy Impostors Rôle : Changed to <color=#FFFF00>Sheriff</color>,";
+                                CopyCatFR += "Si il tente de copier un Imposteur : Il devient un <color=#FFFF00>Shérif</color>,";
+
+                            }
+                            if (CopyImp.getSelection() == 3)
+                            {
+                                CopyCat += "If CopyCat try to Copy Impostors Rôle : Changed to <color=#B4FAFA>Crewmate</color>,";
+                                CopyCatFR += "Si il tente de copier un Imposteur : Il devient un <color=#B4FAFA>Coéquipier</color>,";
+
+                            }
+                            if (CopySpe.getSelection() == 0)
+                            {
+                                CopyCat += " If CopyCat try to Copy Special Rôle :<color=#ff00ff> CopyCat die</color>.";
+                                CopyCatFR += " Si il tente de copier un Rôle Spécial :<color=#ff00ff> L'imitateur Meurt</color>.";
+
+                            }
+
+                            if (CopySpe.getSelection() == 1)
+                            {
+                                CopyCat += " If CopyCat try to Copy Special Rôle : Changed to <color=#FFFF00>Sheriff</color>.";
+                                CopyCatFR += " Si il tente de copier un Rôle Spécial : Il devient un <color=#FFFF00>Shérif</color>.";
+
+                            }
+                            if (CopySpe.getSelection() == 2)
+                            {
+                                CopyCat += " If CopyCat try to Copy Special Rôle : Changed to <color=#B4FAFA>Crewmate</color>.";
+                                CopyCatFR += " Si il tente de copier un Rôle Spécial : Il devient un <color=#B4FAFA>Coéquipier</color>.";
+
+                            }
+                        }
+
+
+
+                        if (CopyCatSpawnChance.getFloat() > 0 && CopyCatAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += CopyCatFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += CopyCat;
+                            }
+                        }
+
+                        //REVENGER
+                        string Revenger = "<size=0.75><color=#D9C27E>\n> Revenger : </color>";
+                        string RevengerFR = "<size=0.75><color=#D9C27E>\n> Vengeur : </color>";
+
+
+                        if (RevengerSpawnChance.getFloat() > 0)
+
+                        {
+                            if ((VengerKill.getBool() == true) && (VengerExil.getBool() == true))
+                            {
+                                Revenger += "If the revenge is killed in game, <color=#ff00ff>All</color> imposters lose their powers ! If the revenge is voted Out, <color=#ff00ff>All</color> Crewmates lose their powers ";
+
+                                RevengerFR += "Si il est tué en jeu, <color=#ff00ff>Tous</color> les imposteurs perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, <color=#ff00ff>Tous</color> les Rôles Coéquipiers Perdent leurs capacités octroyées par les rôles ";
+                            }
+                            if ((VengerKill.getBool() == false) && (VengerExil.getBool() == false))
+                            {
+                                Revenger += "If the revenge is : - killed in game, <color=#ff00ff>Selected</color> imposters lose their powers - Voted Out : <color=#ff00ff>Selected</color> Crewmates lose their powers ";
+                                RevengerFR += "Si il est tué en jeu, Les imposteurs <color=#ff00ff>Selectionner</color> perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, les Rôles de Coéquipiers <color=#ff00ff>Sélectionner</color> Perdent leurs capacités octroyées par les rôles ";
+
+                                Revenger += "\nEMP Cooldown : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Max Player Target by EMP : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
+                                RevengerFR += "\nDélai de la capacité EMP : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Nombre de joueurs Sélectionnables : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
+
+                            }
+                            if ((VengerKill.getBool() == true) && (VengerExil.getBool() == false))
+                            {
+                                Revenger += "If the revenge is : - killed in game, <color=#ff00ff>All</color> imposters lose their powers - Voted Out : <color=#ff00ff>Selected</color> Crewmates lose their powers ";
+                                RevengerFR += "Si il est tué en jeu, <color=#ff00ff>Tous</color> Les imposteurs perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, les Rôles Coéquipier <color=#ff00ff>Sélectionner</color> Perdent leurs capacités octroyées par les rôles ";
+
+                                Revenger += "\nEMP Cooldown : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Max Player Target by EMP : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
+                                RevengerFR += "\nDélai de la capacité EMP : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Nombre de joueurs Sélectionnables : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
+
+                            }
+                            if ((VengerKill.getBool() == false) && (VengerExil.getBool() == true))
+                            {
+                                Revenger += "If the revenge is : - killed in game, <color=#ff00ff>Selected</color> imposters lose their powers - Voted Out : <color=#ff00ff>All</color> Crewmates lose their powers ";
+                                RevengerFR += "Si il est tué en jeu, Les imposteurs <color=#ff00ff>Selectionner</color> perdent leurs capacités octroyées par les rôles ! Si il est exilé lors d'une réunion, <color=#ff00ff>Tous</color> les Rôles Coéquipier Perdent leurs capacités octroyées par les rôles ";
+                                Revenger += "\nEMP Cooldown : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Max Player Target by EMP : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
+                                RevengerFR += "\nDélai de la capacité EMP : <color=#00ffff>" + VengerCooldown.getFloat() + "s</color>, Nombre de joueurs Sélectionnables : <color=#ff00ff>x" + QtVenger.getFloat() + "</color>.";
+
+                            }
+
+
+                        }
+                        if (RevengerSpawnChance.getFloat() > 0 && RevengerAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += RevengerFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Revenger;
+                            }
+                        }
+
+
+
+
+
+
+                        //SPACER ---
+                        string SpacerImp = "\n";
+                        __instance.GameSettings.text += SpacerImp;
+
+
+
+
+                        //ASSASSIN
+                        string Assassin = "<size=0.75><color=#005106>\n> Assassin : </color>";
+                        string AssassinFR = "<size=0.75><color=#005106>\n> Assassin : </color>";
+
+
+                        if (AssassinSpawnChance.getFloat() > 0)
+
+                        {
+                            if (AssassinCanKillShield.getBool() == true)
+                            {
+                                Assassin += "Kill Cooldown : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Assassin can Kill Shielded Player : <color=#00FF00>yes</color>. \n<color=#ff0000>List of activated roles and their bonuses when the assassin kills them :</color>";
+
+                                AssassinFR += "Délai pour Tuer : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Peut tuer les joueurs Protégés par un Bouclier : <color=#00FF00>Oui</color>. \n<color=#ff0000>Liste des bonus actif lorsque l'assassin tue un joueur :</color>";
+                            }
+                            if (AssassinCanKillShield.getBool() == false)
+                            {
+                                Assassin += "Kill Cooldown : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Assassin can Kill Shielded Player : <color=#FF0000>No</color>. \n<color=#ff0000>List of activated roles and their bonuses when the assassin kills them :</color>";
+
+                                AssassinFR += "Délai pour Tuer : <color=#00ffff>" + AssassinKillCooldown.getFloat() + "s</color>, Peut tuer les joueurs Protégés par un Bouclier : <color=#FF0000>Non</color>. \n<color=#ff0000>Liste des bonus actif lorsque l'assassin tue un joueur :</color>";
+                            }
+                            if (BSheriff.getBool() == true && SherifAdd.getBool() == true && ((SherifSpawnChance.getFloat() > 0) || (Sherif2SpawnChance.getFloat() > 0) || (Sherif3SpawnChance.getFloat() > 0)))
+                            {
+                                Assassin += "<color=#FFFF00>\n--- Sheriff</color> (Instantly reset kill cooldown)";
+
+                                AssassinFR += "<color=#FFFF00>\n--- Shérif</color> (Délai pour tuer réinitialisé)";
+                            }
+                            if (BGuardian.getBool() == true && GuardianAdd.getBool() == true && (GuardianSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#00FFFF>\n--- Guardian</color> (Ability : Self Shield)";
+                                AssassinFR += "<color=#00FFFF>\n--- Guardien</color> (Pouvoir : Bouclier personnel permanent)";
+                            }
+                            if (BEngineer.getBool() == true && engineerAdd.getBool() == true && (engineerSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#FFA100>\n--- Engineer</color> (Passif : Assassin Can use Vent)";
+
+                                AssassinFR += "<color=#FFA100>\n--- Ingénieur</color> (Passif : Peut Utiliser les Vents)";
+                            }
+                            if (BTimelord.getBool() == true && TimeLordAdd.getBool() == true && (TimeLordSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#007FFF>\n--- TimeLord</color> (Ability : BreakTime Enabled)";
+
+                                AssassinFR += "<color=#007FFF>\n--- Temporel</color> (Pouvoir : Peut arrêter le temps)";
+                            }
+                            if (BMystic.getBool() == true && MysticAdd.getBool() == true && (MysticSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#F9FFB2>\n--- Mystic</color> (Ability : Self Shield)";
+
+                                AssassinFR += "<color=#F9FFB2>\n--- Mystique</color> (Pouvoir : Bouclier personnel permanent)";
+                            }
+                            if (BMayor.getBool() == true && MayorAdd.getBool() == true && (MayorSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#AF8269>\n--- Mayor</color> (Passif : Can see the colors of the votes)";
+
+                                AssassinFR += "<color=#AF8269>\n--- Maire</color> (Passif : peut voir les couleurs des votes)";
+                            }
+                            if (BDetective.getBool() == true && DetectiveAdd.getBool() == true && (DetectiveSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#BCFFBA>\n--- Detective</color> (Passif : Can see Player Footprint)";
+
+                                AssassinFR += "<color=#BCFFBA>\n--- Detective</color> (Passif : Peut voir les traces des joueurs)";
+                            }
+                            if (BNightwatcher.getBool() == true && NightwatcherAdd.getBool() == true && (NightwatcherSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#9EB3FF>\n--- Nightwatch</color> (Passif : Improved vision range)";
+
+                                AssassinFR += "<color=#9EB3FF>\n--- Veilleur</color> (Passif : Augmente la vision)";
+                            }
+                            if (BSpy.getBool() == true && SpyAdd.getBool() == true && (SpySpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#9EE1FF>\n--- Spy</color> (Passif : Improved vision range)";
+
+                                AssassinFR += "<color=#9EE1FF>\n--- Espion</color> (Passif : Augmente la vision)";
+                            }
+                            if (BInfor.getBool() == true && InforAdd.getBool() == true && (InforSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#ADFFEA>\n--- Informant</color> (Passif : Can See Player Roles, Infos and Task)";
+
+                                AssassinFR += "<color=#ADFFEA>\n--- Voyante</color> (Passif : peut voir les rôles et infos joueurs comme les morts)";
+                            }
+                            if (BMentalist.getBool() == true && MentalistAdd.getBool() == true && (MentalistSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#A991FF>\n--- Mentalist</color> (Passif : Can See Player color with Admin Table)";
+
+                                AssassinFR += "<color=#A991FF>\n--- Mentaliste</color> (Passif : peut voir les couleurs des joueurs sur la table d'admin)";
+                            }
+                            if (BBuilder.getBool() == true && BuilderAdd.getBool() == true && (BuilderSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#FFC291>\n--- Builder</color> (Passif : Assassin Can use Vent)";
+
+                                AssassinFR += "<color=#FFC291>\n--- Constructeur</color> (Passif : Peut Utiliser les Vents)";
+                            }
+                            if (BDictator.getBool() == true && DictatorAdd.getBool() == true && (DictatorSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#FF7A7A>\n--- Dictator</color> (Passif : Can see the colors of the votes)";
+
+                                AssassinFR += "<color=#FF7A7A>\n--- Dictateur</color> (Passif : peut voir les couleurs des votes)";
+                            }
+                            if (BSentinel.getBool() == true && SentinelAdd.getBool() == true && (SentinelSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#06AD17>\n--- Sentinel</color> (Passif : Improved vision range)";
+
+                                AssassinFR += "<color=#06AD17>\n--- Sentinelle</color> (Passif : Augmente la vision)";
+                            }
+                            if (BLawkeeper.getBool() == true && LawkeeperAdd.getBool() == true && (LawkeeperSpawnChance.getFloat() > 0))
+                            {
+                                Assassin += "<color=#FF9b9b>\n--- Lawkeeper</color> (Passif : Can see Player Footprint)";
+
+                                AssassinFR += "<color=#FF9b9b>\n--- Justicier</color> (Passif : Peut voir les traces des joueurs)";
+                            }
+                            if (BImpo.getBool() == true && RealImpostor > 1)
+                            {
+                                Assassin += "<color=#FF0000>\n--- Impostors</color> (Instantly reduce by 50% kill cooldown)";
+
+                                AssassinFR += "<color=#FF0000>\n--- Imposteurs</color> (Délai pour Tuer réduit de moitier)";
+                            }
+
+
+
+
+
+                        }
+                        if (AssassinSpawnChance.getFloat() > 0 && AssassinAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += AssassinFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Assassin;
+                            }
+                        }
+
+                        //Vector
+                        string Vector = "<size=0.75><color=#8C1919>\n> Vector : </color>";
+                        string VectorFR = "<size=0.75><color=#8C1919>\n> Vecteur : </color>";
+
+
+                        if (VectorSpawnChance.getFloat() > 0)
+
+                        {
+                            if (VectorBuffVisibility.getBool() == true)
+                            {
+                                if (VectorCanVent.getBool() == true)
+                                {
+                                    Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff : <color=#00FF00>Yes</color>, Can Use Vent : <color=#00FF00>Yes</color>,";
+
+                                    VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>,";
+                                }
+                                if (VectorCanVent.getBool() == false)
+                                {
+                                    Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff : <color=#00FF00>Yes</color>, Can Use Vent : <color=#FF0000>No</color>,";
+
+                                    VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté : <color=#00FF00>Oui</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>,";
+                                }
+
+                            }
+                            if (VectorBuffVisibility.getBool() == false)
+                            {
+                                if (VectorCanVent.getBool() == true)
+                                {
+                                    Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff :<color=#FF0000>No</color>, Can Use Vent : <color=#00FF00>Yes</color>,";
+
+                                    VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté :<color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#00FF00>Oui</color>,";
+                                }
+                                if (VectorCanVent.getBool() == false)
+                                {
+                                    Vector += "Infect Cooldown : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Kill Cooldown : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, Infected player can see Buff :<color=#FF0000>No</color>, Can Use Vent : <color=#FF0000>No</color>,";
+
+                                    VectorFR += "Délai pour Infecter : <color=#00ffff>" + VectorBuffCooldown.getFloat() + "s</color>, Délai pour Tuer le joueur infecté : <color=#00ffff>" + VectorKillCooldown.getFloat() + "s</color>, le joueur infecté sait qu'il est infecté :<color=#FF0000>Non</color>, Peut utiliser les Vents : <color=#FF0000>Non</color>,";
+                                }
+
+                            }
+                            /*if (VectorSolo.getBool() == true)
+                            {
+                                Vector += " Normal Kill if he is the last living impostor : <color=#00ff00>Yes</color>.";
+                            }
+                            if (VectorSolo.getBool() == false)
+                            {
+                                Vector += " Normal Kill if he is the last living impostor <color=#ff0000>No</color>.";
+                            }*/
+                        }
+                        if (VectorSpawnChance.getFloat() > 0 && VectorAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += VectorFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Vector;
+                            }
+                        }
+
+
+
+
+                        //Morphling
+                        string Morphling = "<size=0.75><color=#430054>\n> Morphling : </color>";
+                        string MorphlingFR = "<size=0.75><color=#430054>\n> Metamorph : </color>";
+
+
+                        if (MorphlingSpawnChance.getFloat() > 0)
+
+                        {
+
+
                             if (MorphlingCanVent.getBool() == true)
                             {
                                 Morphling += "Morph : <color=#00ffff>" + MorphSetCooldown.getFloat() + "s</color> Cooldown For <color=#00ffff>" + MorphSetDuration.getFloat() + "s</color> duration, Drop a Mark : <color=#FF0000>No</color>, Can Use Vent : <color=#00FF00>yes</color>.";
@@ -4699,85 +4733,68 @@ namespace ChallengerMod.Set
                                 MorphlingFR += "Délai pour se Métamorphoser : <color=#00ffff>" + MorphSetCooldown.getFloat() + "s</color> pendant <color=#00ffff>" + MorphSetDuration.getFloat() + "s</color>, Laisse une trace : <color=#FF0000>Non</color>, Peut utiliser les vents : <color=#FF0000>Non</color>.";
                             }
 
-                        
-                    }
-                    if (MorphlingSpawnChance.getFloat() > 0 && MorphlingAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += MorphlingFR;
+
                         }
-                        else
+                        if (MorphlingSpawnChance.getFloat() > 0 && MorphlingAdd.getBool() == true)
                         {
-                            __instance.GameSettings.text += Morphling;
-                        }
-                    }
-
-
-
-                    //SCRAMBLER
-                    string Scrambler = "<size=0.75><color=#544700>\n> Scrambler : </color>";
-                    string ScramblerFR = "<size=0.75><color=#544700>\n> Brouilleur : </color>";
-
-
-                    if (CamoSpawnChance.getFloat() > 0)
-
-                    {
-                        if (CamoCanVent.getBool() == true)
-                        {
-                            Scrambler += "Camo : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#00FF00>Yes</color>.";
-
-                            ScramblerFR += "Délai d'utilisation du Brouillage : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color>, Peut utiliser les vents : <color=#00FF00>Oui</color>.";
-                        }
-                        if (CamoCanVent.getBool() == false)
-                        {
-                            Scrambler += "Camo : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#FF0000>No</color>.";
-
-                            ScramblerFR += "Délai d'utilisation du Brouillage : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color>, Peut utiliser les vents : <color=#FF0000>Non</color>.";
-                        }
-
-
-                    }
-                    if (CamoSpawnChance.getFloat() > 0 && CamoAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += ScramblerFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Scrambler;
-                        }
-                    }
-
-                    //BARGHEST
-                    string Barghest = "<size=0.75><color=#000569>\n> Barghest : </color>";
-                    string BarghestFR = "<size=0.75><color=#000569>\n> Barghest : </color>";
-
-
-                    if (BarghestSpawnChance.getFloat() > 0)
-
-                    {
-
-
-                        if (BarghestAffectImpostor.getBool() == true) // true
-                        {
-                            if (BarghestCamlight.getBool() == true)
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
                             {
-                                Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#00FF00>Yes</color>, affect other impostors : <color=#00FF00>Yes</color>,";
-
-                                BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#00FF00>Oui</color>, affectent les autres imposteurs : <color=#00FF00>Oui</color>,";
+                                __instance.GameSettings.text += MorphlingFR;
                             }
-                            if (BarghestCamlight.getBool() == false)
+                            else
                             {
-                                Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#FF0000>No</color>, affect other impostors : <color=#00FF00>Yes</color>,";
-
-                                BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#FF0000>Non</color>, affectent les autres imposteurs : <color=#00FF00>Oui</color>,";
+                                __instance.GameSettings.text += Morphling;
                             }
                         }
-                        if (BarghestAffectImpostor.getBool() == false)
+
+
+
+                        //SCRAMBLER
+                        string Scrambler = "<size=0.75><color=#544700>\n> Scrambler : </color>";
+                        string ScramblerFR = "<size=0.75><color=#544700>\n> Brouilleur : </color>";
+
+
+                        if (CamoSpawnChance.getFloat() > 0)
+
                         {
-                            if (ImpostorsKnowEachother.getBool() == true) //false but force true
+                            if (CamoCanVent.getBool() == true)
+                            {
+                                Scrambler += "Camo : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#00FF00>Yes</color>.";
+
+                                ScramblerFR += "Délai d'utilisation du Brouillage : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color>, Peut utiliser les vents : <color=#00FF00>Oui</color>.";
+                            }
+                            if (CamoCanVent.getBool() == false)
+                            {
+                                Scrambler += "Camo : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#FF0000>No</color>.";
+
+                                ScramblerFR += "Délai d'utilisation du Brouillage : <color=#00ffff>" + CamoSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + CamoSetDuration.getFloat() + "s</color>, Peut utiliser les vents : <color=#FF0000>Non</color>.";
+                            }
+
+
+                        }
+                        if (CamoSpawnChance.getFloat() > 0 && CamoAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += ScramblerFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Scrambler;
+                            }
+                        }
+
+                        //BARGHEST
+                        string Barghest = "<size=0.75><color=#000569>\n> Barghest : </color>";
+                        string BarghestFR = "<size=0.75><color=#000569>\n> Barghest : </color>";
+
+
+                        if (BarghestSpawnChance.getFloat() > 0)
+
+                        {
+
+
+                            if (BarghestAffectImpostor.getBool() == true) // true
                             {
                                 if (BarghestCamlight.getBool() == true)
                                 {
@@ -4792,1946 +4809,1894 @@ namespace ChallengerMod.Set
                                     BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#FF0000>Non</color>, affectent les autres imposteurs : <color=#00FF00>Oui</color>,";
                                 }
                             }
-                            if (ImpostorsKnowEachother.getBool() == false) //false
+                            if (BarghestAffectImpostor.getBool() == false)
                             {
-                                if (BarghestCamlight.getBool() == true)
+                                if (ImpostorsKnowEachother.getBool() == true) //false but force true
                                 {
-                                    Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#00FF00>Yes</color>, affect other impostors : <color=#FF0000>No</color>,";
+                                    if (BarghestCamlight.getBool() == true)
+                                    {
+                                        Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#00FF00>Yes</color>, affect other impostors : <color=#00FF00>Yes</color>,";
 
-                                    BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#00FF00>Oui</color>, affectent les autres imposteurs : <color=#FF0000>Non</color>,";
+                                        BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#00FF00>Oui</color>, affectent les autres imposteurs : <color=#00FF00>Oui</color>,";
+                                    }
+                                    if (BarghestCamlight.getBool() == false)
+                                    {
+                                        Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#FF0000>No</color>, affect other impostors : <color=#00FF00>Yes</color>,";
+
+                                        BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#FF0000>Non</color>, affectent les autres imposteurs : <color=#00FF00>Oui</color>,";
+                                    }
                                 }
-                                if (BarghestCamlight.getBool() == false)
+                                if (ImpostorsKnowEachother.getBool() == false) //false
                                 {
-                                    Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#FF0000>No</color>, affect other impostors : <color=#FF0000>No</color>,";
+                                    if (BarghestCamlight.getBool() == true)
+                                    {
+                                        Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#00FF00>Yes</color>, affect other impostors : <color=#FF0000>No</color>,";
 
-                                    BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#FF0000>Non</color>, affectent les autres imposteurs : <color=#FF0000>Non</color>,";
+                                        BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#00FF00>Oui</color>, affectent les autres imposteurs : <color=#FF0000>Non</color>,";
+                                    }
+                                    if (BarghestCamlight.getBool() == false)
+                                    {
+                                        Barghest += "Call Shadow : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> duration, Shadow Disabled Camera : <color=#FF0000>No</color>, affect other impostors : <color=#FF0000>No</color>,";
+
+                                        BarghestFR += "Délai d'appel des Ténèbres : <color=#00ffff>" + BargestLightCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + BargestLightDuration.getFloat() + "s</color> Les Ténèbres désactivent les Caméras : <color=#FF0000>Non</color>, affectent les autres imposteurs : <color=#FF0000>Non</color>,";
+                                    }
                                 }
                             }
-                        }
 
-                        if (BarghestCanCreateVent.getBool() == true)
-                        {
-
-                            if (CanUseBarghestVent.getSelection() == 0)
+                            if (BarghestCanCreateVent.getBool() == true)
                             {
-                                Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Only Barghest</color> can Use Barghest Vent,";
-                                BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Le Barghest Uniquement</color> Peut les Utiliser,";
+
+                                if (CanUseBarghestVent.getSelection() == 0)
+                                {
+                                    Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Only Barghest</color> can Use Barghest Vent,";
+                                    BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Le Barghest Uniquement</color> Peut les Utiliser,";
+                                }
+                                if (CanUseBarghestVent.getSelection() == 1)
+                                {
+                                    Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Barghest and Other Impostors</color> can Use Barghest Vent,";
+                                    BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>tous les imposteurs</color> Peuvent les Utiliser,";
+                                }
+                                if (CanUseBarghestVent.getSelection() == 2)
+                                {
+                                    Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Only Impostor if he can use Normal vent</color> can Use Barghest Vent,";
+                                    BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>tous les Imposteurs qui peuvent utiliser les Vents</color> peuvent les Utiliser,";
+
+                                }
+                                if (CanUseBarghestVent.getSelection() == 3)
+                                {
+                                    Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Anyone who can use Normal vent</color> can Use Barghest Vent,";
+                                    BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Tous ceux qui peuvent utiliser les Vents</color> Peuvent les Utiliser,";
+
+                                }
+
+
+
                             }
-                            if (CanUseBarghestVent.getSelection() == 1)
+                            if (BarghestCanCreateVent.getBool() == false)
                             {
-                                Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Barghest and Other Impostors</color> can Use Barghest Vent,";
-                                BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>tous les imposteurs</color> Peuvent les Utiliser,";
+                                Barghest += "\n Can Create Barghest Vent : <color=#FF0000>No</color>,";
+                                BarghestFR += "\n Peut créer des Vents de Barghest : <color=#FF0000>Non</color>,";
+
                             }
-                            if (CanUseBarghestVent.getSelection() == 2)
+
+                            if (BarghestCanVent.getBool() == false)
                             {
-                                Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Only Impostor if he can use Normal vent</color> can Use Barghest Vent,";
-                                BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>tous les Imposteurs qui peuvent utiliser les Vents</color> peuvent les Utiliser,";
+                                Barghest += " Can Use Normal Vent : <color=#FF0000>No</color>.";
+                                BarghestFR += " Peut utiliser les Vents normal : <color=#FF0000>Non</color>.";
 
                             }
-                            if (CanUseBarghestVent.getSelection() == 3)
+                            if (BarghestCanVent.getBool() == true)
                             {
-                                Barghest += "\n Can Create Barghest Vent : <color=#00FF00>Yes</color>, Cooldown for Create Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Anyone who can use Normal vent</color> can Use Barghest Vent,";
-                                BarghestFR += "\n Peut créer des Vents de Barghest : <color=#00FF00>Oui</color>, Délai pour la création de Vent : <color=#00ffff>" + BarghestVentCD.getFloat() + "s</color>, <color=#FF00FF>Tous ceux qui peuvent utiliser les Vents</color> Peuvent les Utiliser,";
+                                Barghest += " Can Use Normal Vent : <color=#00FF00>Yes</color>.";
+                                BarghestFR += " Peut utiliser les Vents normal : <color=#00FF00>Oui</color>.";
 
                             }
 
 
 
                         }
-                        if (BarghestCanCreateVent.getBool() == false)
+                        if (BarghestSpawnChance.getFloat() > 0 && BarghestAdd.getBool() == true)
                         {
-                            Barghest += "\n Can Create Barghest Vent : <color=#FF0000>No</color>,";
-                            BarghestFR += "\n Peut créer des Vents de Barghest : <color=#FF0000>Non</color>,";
-
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += BarghestFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Barghest;
+                            }
                         }
 
-                        if (BarghestCanVent.getBool() == false)
+                        //GHOST
+                        string Ghost = "<size=0.75><color=#404040>\n> Ghost : </color>";
+                        string GhostFR = "<size=0.75><color=#404040>\n> Fantome : </color>";
+
+
+                        if (GhostSpawnChance.getFloat() > 0)
+
                         {
-                            Barghest += " Can Use Normal Vent : <color=#FF0000>No</color>.";
-                            BarghestFR += " Peut utiliser les Vents normal : <color=#FF0000>Non</color>.";
+                            if (GhostCanVent.getBool() == true)
+                            {
+                                Ghost += "Invisibility : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + HideSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#00FF00>yes</color>.";
+
+                                GhostFR += "Délai de l'Invisibilité : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + HideSetDuration.getFloat() + "s</color>, Peut utiliser les vents : <color=#00FF00>Oui</color>.";
+                            }
+                            if (GhostCanVent.getBool() == false)
+                            {
+                                Ghost += "Invisibility : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + HideSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#FF0000>No</color>.";
+
+                                GhostFR += "Délai de l'Invisibilité : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + HideSetDuration.getFloat() + "s</color> Peut utiliser les vents : <color=#FF0000>No,</color>.";
+                            }
+
 
                         }
-                        if (BarghestCanVent.getBool() == true)
+                        if (GhostSpawnChance.getFloat() > 0 && GhostAdd.getBool() == true)
                         {
-                            Barghest += " Can Use Normal Vent : <color=#00FF00>Yes</color>.";
-                            BarghestFR += " Peut utiliser les Vents normal : <color=#00FF00>Oui</color>.";
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += GhostFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Ghost;
+                            }
+                        }
 
+                        //VANDAL
+                        string Imp3 = "<size=0.75><color=#542B00>\n> Sorcerer : </color>";
+                        string Imp3FR = "<size=0.75><color=#542B00>\n> Sorcier : </color>";
+
+
+                        if (WarSpawnChance.getFloat() > 0)
+
+                        {
+                            Imp3 += "Find cooldown : <color=#00ffff>" + WarCooldown.getFloat() + "s</color>,";
+                            Imp3FR += "Délai de la capacité de recherche : <color=#00ffff>" + WarCooldown.getFloat() + "s</color>,";
+
+                            if (War1.getBool() == false)
+                            {
+                                Imp3 += " Can Use Focus (x1 rune) : <color=#FF0000>No</color>,";
+                                Imp3FR += " Peut utiliser Focalisation (x1 rune) : <color=#FF0000>Non</color>,";
+
+                            }
+                            if (War1.getBool() == true)
+                            {
+                                Imp3 += " Can Use Focus (x1 rune) : <color=#00FF00>Yes</color>,";
+                                Imp3FR += " Peut utiliser Focalisation (x1 rune) : <color=#00FF00>Oui</color>,";
+
+                            }
+                            if (War2.getBool() == false)
+                            {
+                                Imp3 += " Can Use Vision (x2 runes) : <color=#FF0000>No</color>,";
+                                Imp3FR += " Peut utiliser Vision (x2 runes) : <color=#FF0000>Non</color>,";
+
+                            }
+                            if (War2.getBool() == true)
+                            {
+                                Imp3 += " Can Use Vision (x2 runes) : <color=#00FF00>Yes</color>,";
+                                Imp3FR += " Peut utiliser Vision (x2 runes) : <color=#00FF00>Oui</color>,";
+
+                            }
+                            if (War3.getBool() == false)
+                            {
+                                Imp3 += "\nCan Use Confuse (x3 runes) : <color=#FF0000>No</color>,";
+                                Imp3FR += "\nPeut utiliser Confusion (x3 runes) : <color=#FF0000>Non</color>,";
+
+                            }
+                            if (War3.getBool() == true)
+                            {
+                                Imp3 += "\nCan Use Confuse (x3 runes) : <color=#00FF00>Yes</color>,";
+                                Imp3FR += "\nPeut utiliser Confision (x3 runes) : <color=#00FF00>Oui</color>,";
+
+                            }
+                            if (War4.getBool() == false)
+                            {
+                                Imp3 += " Can Use Destroy (x4 runes) : <color=#FF0000>No</color>,";
+                                Imp3FR += " Peut utiliser Detruire (x4 runes) : <color=#FF0000>Non</color>,";
+
+                            }
+                            if (War4.getBool() == true)
+                            {
+                                Imp3 += " Can Use Destroy (x4 runes) : <color=#00FF00>Yes</color>,";
+                                Imp3FR += " Peut utiliser Detruire (x4 runes) : <color=#00FF00>Oui</color>,";
+
+                            }
+
+
+                            if (WarCanVent.getBool() == false)
+                            {
+                                Imp3 += " Can Use Vent : <color=#FF0000>No</color>.";
+                                Imp3FR += " Peut utiliser les vents : <color=#FF0000>Non</color>.";
+
+                            }
+                            if (WarCanVent.getBool() == true)
+                            {
+                                Imp3 += " Can Use Vent : <color=#00FF00>Yes</color>.";
+                                Imp3FR += " Peut utiliser les vents  : <color=#00FF00>Oui</color>.";
+
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+                        }
+                        if (WarSpawnChance.getFloat() > 0 && WarAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += Imp3FR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Imp3;
+                            }
+                        }
+
+                        //GUESSER
+                        string Guess = "<size=0.75><color=#003954>\n> Guesser : </color>";
+                        string GuessFR = "<size=0.75><color=#003954>\n> Devin : </color>";
+
+
+                        if (GuesserSpawnChance.getFloat() > 0)
+
+                        {
+
+
+                            if (GuessTryOne.getBool() == true)
+                            {
+                                Guess += "Try to Kill during meeting : <color=#00ffff>x" + Gestry.getFloat() + "</color>, Only use 1 try per round  : <color=#00FF00>Yes</color>";
+                                GuessFR += "Tentative de tuer pendant une Réunion : <color=#00ffff>x" + Gestry.getFloat() + "</color>, utilisable 1x par tour : <color=#00FF00>Oui</color>";
+
+                            }
+                            if (GuessTryOne.getBool() == false)
+                            {
+                                Guess += "Try to Kill during meeting : <color=#00ffff>x" + Gestry.getFloat() + "</color> Only use 1 try per round : <color=#FF0000>No</color>";
+                                GuessFR += "Tentative de tuer pendant une Réunion : <color=#00ffff>x" + Gestry.getFloat() + "</color> utilisable 1x par tour : <color=#FF0000>Non</color>";
+
+
+                            }
+
+
+                            if (GuessDie.getBool() == true)
+                            {
+                                Guess += ", die on a failure : <color=#00FF00>yes</color>";
+                                GuessFR += ", Meurt en cas d'échec : <color=#00FF00>Oui</color>";
+
+                            }
+                            if (GuessDie.getBool() == false)
+                            {
+                                Guess += ", die on a failure : <color=#FF0000>No</color>";
+                                GuessFR += ", Meurt en cas d'échec : <color=#FF0000>Non</color>";
+
+                            }
+
+                            if (GuessCanVent.getBool() == true)
+                            {
+                                Guess += ", Can Use Vent : <color=#00FF00>yes</color>";
+                                GuessFR += ", Peut utiliser les vents : <color=#00FF00>Oui</color>";
+
+                            }
+                            if (GuessCanVent.getBool() == false)
+                            {
+                                Guess += ", Can Use Vent : <color=#FF0000>No</color>";
+                                GuessFR += ", Peut utiliser les vents : <color=#FF0000>Non</color>";
+
+                            }
+                            if (GuessMystic.getBool() == false && GuessSpirit.getBool() == false && GuessFake.getBool() == false) // 0
+                            {
+                                Guess += ".";
+                                GuessFR += ".";
+
+                            }
+                            if (GuessMystic.getBool() == true && GuessSpirit.getBool() == false && GuessFake.getBool() == false) // Mystic only
+                            {
+                                Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color>.";
+
+                            }
+                            if (GuessMystic.getBool() == false && GuessSpirit.getBool() == true && GuessFake.getBool() == false) // Spirit only
+                            {
+                                Guess += ", Can't Guess : <color=#A1FF00>Spirit</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#A1FF00>Spirite</color>.";
+                            }
+                            if (GuessMystic.getBool() == false && GuessSpirit.getBool() == false && GuessFake.getBool() == true) // Fake only
+                            {
+                                Guess += ", Can't Guess : <color=#FF7A7A>Fake</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#FF7A7A>Intru</color>.";
+                            }
+                            if (GuessMystic.getBool() == true && GuessSpirit.getBool() == true && GuessFake.getBool() == false) // Mystic+spirit
+                            {
+                                Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color> / <color=#A1FF00>Spirit</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color> / <color=#A1FF00>Spirite</color>.";
+                            }
+                            if (GuessMystic.getBool() == true && GuessSpirit.getBool() == false && GuessFake.getBool() == true) // Mystic+Fake
+                            {
+                                Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color> / <color=#FF7A7A>Fake</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color> / <color=#FF7A7A>Intru</color>.";
+                            }
+                            if (GuessMystic.getBool() == false && GuessSpirit.getBool() == true && GuessFake.getBool() == true) // Spirit+Fake
+                            {
+                                Guess += ", Can't Guess : <color=#A1FF00>Spirit</color> / <color=#FF7A7A>Fake</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#A1FF00>Spirite</color> / <color=#FF7A7A>Intru</color>.";
+                            }
+                            if (GuessMystic.getBool() == true && GuessSpirit.getBool() == true && GuessFake.getBool() == false) // Mystic+spirit+Fake
+                            {
+                                Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color> / <color=#A1FF00>Spirit</color> / <color=#FF7A7A>Fake</color>.";
+                                GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color> / <color=#A1FF00>Spirite</color> / <color=#FF7A7A>Intru</color>.";
+                            }
+                        }
+                        if (GuesserSpawnChance.getFloat() > 0 && GuesserAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += GuessFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Guess;
+                            }
+                        }
+
+
+                        //BASILISK
+                        string Basilisk = "<color=#5B466B>\n> Basilisk : </color>";
+                        string BasiliskFR = "<color=#5B466B>\n> Basilik : </color>";
+
+
+                        if (BasiliskSpawnChance.getFloat() > 0 && BasiliskAdd.getBool() == true)
+
+                        {
+
+
+
+                            Basilisk += "Maximum amount of storable dose(s): <color=#ff00ff>x" + BasiliskCooldown.getFloat() + "</color>, Start game with : <color=#ff00ff>x" + BasiliskStart.getFloat() + "</color> dose(s), killing a player grants : <color=#ff00ff>x" + BasiliskKill.getFloat() + "</color> dose(s), Each new round grants : <color=#ff00ff>x" + BasiliskMeet.getFloat() + "</color> dose(s).\n";
+                            BasiliskFR += "Quantité maximum de dose(s) stockable : <color=#ff00ff>x" + BasiliskCooldown.getFloat() + "</color>, Commence la partie avec : <color=#ff00ff>x" + BasiliskStart.getFloat() + "</color> dose(s), Tuer un joueur raporte : <color=#ff00ff>x" + BasiliskKill.getFloat() + "</color> dose(s), Chaque nouveau tour de jeu donne : <color=#ff00ff>x" + BasiliskMeet.getFloat() + "</color> dose(s).\n";
+
+                            Basilisk += "Paralyze Cost : <color=#ff00ff>x" + BasiliskParalizeCost.getFloat() + "</color> dose(s), Petrify Cost : <color=#ff00ff>x" + BasiliskPetrifyCost.getFloat() + "</color> dose(s).\n";
+                            BasiliskFR += "Paralyzer coûte : <color=#ff00ff>x" + BasiliskParalizeCost.getFloat() + "</color> dose(s), Petrifier coûte : <color=#ff00ff>x" + BasiliskPetrifyCost.getFloat() + "</color> dose(s).\n";
+
+
+                            if (BasiliskVote.getSelection() == 0)
+                            {
+                                Basilisk += "Can Use Paralyze (Paralized player can to be voted) : <color=#00ff00>Yes</color>.\n";
+                                BasiliskFR += "Peut utiliser Paralyser, (Le joueur Paralyser peut être voter) : <color=#00ff00>Oui</color>.\n";
+                                Basilisk += "Can Use Petrify, (Petrified player cant to be voted) : <color=#00ff00>Yes</color>.\n";
+                                BasiliskFR += "Peut utiliser Pétrifier, (Le joueur Petrifier ne peut pas être voter) : <color=#00ff00>Oui</color>.\n";
+                            }
+
+                            if (BasiliskVote.getSelection() == 1)
+                            {
+                                Basilisk += "Can Use Paralyze (Paralized player can to be voted) : <color=#00ff00>Yes</color>.\n";
+                                BasiliskFR += "Peut utiliser Paralyser, (Le joueur Paralyser peut être voter) : <color=#00ff00>Oui</color>.\n";
+                                Basilisk += "Can Use Petrify, (Petrified player cant to be voted) : <color=#ff0000>No</color>.\n";
+                                BasiliskFR += "Peut utiliser Pétrifier, (Le joueur Petrifier ne peut pas être voter) : <color=#ff0000>Non</color>.\n";
+                            }
+
+                            if (BasiliskVote.getSelection() == 2)
+                            {
+                                Basilisk += "Can Use Paralyze (Paralized player can to be voted) : <color=#ff0000>No</color>.\n";
+                                BasiliskFR += "Peut utiliser Paralyser, (Le joueur Paralyser peut être voter) : <color=#ff0000>Non</color>.\n";
+                                Basilisk += "Can Use Petrify, (Petrified player cant to be voted) : <color=#00ff00>Yes</color>.\n";
+                                BasiliskFR += "Peut utiliser Pétrifier, (Le joueur Petrifier ne peut pas être voter) : <color=#00ff00>Oui</color>.\n";
+                            }
+
+
+                            if (BasiliskSinglePetrify.getBool() == true)
+                            {
+                                Basilisk += "Paralyze/Petrify players can only be affected once : <color=#00ff00>Yes</color>";
+                                BasiliskFR += "Les joueurs Paralyser/Pétrifier ne peuvent être affectés qu'une seule fois : <color=#00ff00>Yes</color>";
+                            }
+                            if (BasiliskSinglePetrify.getBool() == false)
+                            {
+                                Basilisk += "Paralyze/Petrify players can only be affected once : <color=#ff0000>No</color>";
+                                BasiliskFR += "Les joueurs Paralyser/Pétrifier ne peuvent être affectés qu'une seule fois : <color=#ff0000>Non</color>";
+                            }
+
+                            if (BasiliskCanVent.getBool() == true)
+                            {
+                                Basilisk += ", Can Use Vent : <color=#00ff00>Yes</color>";
+                                BasiliskFR += ", Peut utiliser les vents : <color=#00ff00>Oui</color>";
+                            }
+                            if (BasiliskCanVent.getBool() == false)
+                            {
+                                Basilisk += ", Can Use Vent : <color=#FF0000>No</color>";
+                                BasiliskFR += ", Peut utiliser les vents : <color=#FF0000>Non</color>";
+                            }
+                        }
+                        if (BasiliskSpawnChance.getFloat() > 0 && BasiliskAdd.getBool() == true)
+                        {
+                            if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                __instance.GameSettings.text += BasiliskFR;
+                            }
+                            else
+                            {
+                                __instance.GameSettings.text += Basilisk;
+                            }
                         }
 
 
 
-                    }
-                    if (BarghestSpawnChance.getFloat() > 0 && BarghestAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
+                        //SPACER ---
+                        string SpacerEnd = "\n\n\n ...\n\n";
+                        __instance.GameSettings.text += SpacerEnd;
+
+
+                        AdminButtonMaxTimer = 0f;
+                        CamButtonMaxTimer = 0f;
+                        VitalButtonMaxTimer = 0f;
+                        BuzzButtonMaxTimer = 0f;
+
+
+
+                        //COOLDOWN BUTTON AUTO-SET
+
+
+                        //CREWMATES
+                        SheriffKillButtonMaxTimer = SherifKillCooldown.getFloat();
+
+
+                        GuardianAbilityButtonMaxTimer = 5f;
+
+                        EngineerAbilityButtonMaxTimer = EngineerRepairCD.getFloat();
+
+                        TimelordAbilityButtonMaxTimer = TimeLordStopCooldown.getFloat();
+                        TimelordAbilityButtonEffectDuration = TimeLordStopDuration.getFloat();
+
+                        HunterAbilityButtonMaxTimer = 5f;
+
+                        MysticAbilityButtonMaxTimer = MysticSetCooldown.getFloat();
+                        MysticAbilityButtonEffectDuration = MysticSetDuration.getFloat();
+
+                        SpiritAbilityButtonMaxTimer = 0f;
+
+                        MayorAbilityButtonMaxTimer = BuzzCooldown.getFloat();
+
+                        DetectiveAbilityButtonMaxTimer = detectiveFootprintcooldown.getFloat();
+                        DetectiveAbilityButtonEffectDuration = detectiveFootprintDuration2.getFloat();
+
+                        NightwatchAbilityButtonMaxTimer = NightwatcherSetCooldown.getFloat();
+                        NightwatchAbilityButtonEffectDuration = NightwatcherSetDuration.getFloat();
+
+                        SpyAbilityButtonMaxTimer = 5f;
+                        SpyAbilityButtonEffectDuration = SpyDuration.getFloat();
+
+                        InformantAbilityButtonMaxTimer = InforCooldown.getFloat();
+
+                        MentalistAbilityButtonMaxTimer = 5f;
+                        MentalistAbilityButtonEffectDuration = AdminDuration.getFloat();
+
+                        BuilderAbilityButtonMaxTimer = BuildCooldown.getFloat();
+
+                        DictatorAbilityButtonMaxTimer = 5f;
+
+                        SentinelAbilityButtonMaxTimer = ScanCooldown.getFloat();
+                        SentinelAbilityButtonEffectDuration = ScanDuration.getFloat();
+
+                        BaitButtonMaxTimer = BaitBaliseTime.getFloat();
+
+
+                        //HYBRID
+                        MercenaryKillButtonMaxTimer = MercenaryKillCooldown.getFloat();
+
+                        CopyCatScanAbilityButtonMaxTimer = 5f;
+
+                        RevengerAbilityButtonMaxTimer = VengerCooldown.getFloat();
+
+                        //SPECIALS
+                        CupidAbilityButtonMaxTimer = 1f;
+
+                        CultistAbilityButtonMaxTimer = CultisteCooldown.getFloat();
+
+                        OutlawKillButtonMaxTimer = OutlawKillCooldown.getFloat();
+
+                        JesterAbilityButtonMaxTimer = JesterCooldown.getFloat();
+
+                        CursedTime = CursedTimer.getFloat();
+                        CursedAbilityButtonMaxTimer = CursedCooldown.getFloat();
+                        CursedAbilityButtonEffectDuration = CursedDuration.getFloat();
+
+
+                        EaterDraggAbilityButtonMaxTimer = 0f;
+                        EaterBarAbilityButtonMaxTimer = 0f;
+                        EaterEatAbilityButtonMaxTimer = EaterCooldown.getFloat();
+                        EaterEatAbilityButtonEffectDuration = Eaterduration.getFloat();
+
+                        ArsonistOilAbilityButtonMaxTimer = ArsonistCooldown.getFloat();
+                        ArsonistOilAbilityButtonEffectDuration = ArsonistDuration.getFloat();
+                        ArsonistBurnAbilityButtonMaxTimer = 0f;
+
+                        //IMPOSTOR
+
+                        ImpostorsKillButtonMaxTimer = PlayerControl.GameOptions.KillCooldown + 0f;
+
+                        AssassinKillButtonMaxTimer = AssassinKillCooldown.getFloat();
+
+                        VectorInfectAbilityButtonMaxTimer = VectorBuffCooldown.getFloat();
+                        VectorKillButtonMaxTimer = VectorKillCooldown.getFloat();
+
+                        MorphlingScanAbilityButtonMaxTimer = 5f;
+                        MorphlingMorphAbilityButtonMaxTimer = MorphSetCooldown.getFloat();
+                        MorphlingMorphAbilityButtonEffectDuration = MorphSetDuration.getFloat();
+
+                        ScramblerAbilityButtonMaxTimer = CamoSetCooldown.getFloat();
+                        ScramblerAbilityButtonEffectDuration = CamoSetDuration.getFloat();
+
+                        BarghestShadowAbilityButtonMaxTimer = BargestLightCooldown.getFloat();
+                        BarghestShadowAbilityButtonEffectDuration = BargestLightDuration.getFloat();
+                        BarghestCreateVentAbilityButtonMaxTimer = BarghestVentCD.getFloat();
+
+                        GhostAbilityButtonMaxTimer = HideSetCooldown.getFloat();
+                        GhostAbilityButtonEffectDuration = HideSetDuration.getFloat();
+
+                        SorcererFindAbilityButtonMaxTimer = WarCooldown.getFloat();
+                        SorcererStuffAbilityButtonMaxTimer = 0f;
+
+                        TotalTask = PlayerControl.GameOptions.NumCommonTasks + PlayerControl.GameOptions.NumLongTasks + PlayerControl.GameOptions.NumShortTasks;
+
+                        if (TotalTask == 0)
                         {
-                            __instance.GameSettings.text += BarghestFR;
+                            PlayerControl.GameOptions.NumShortTasks = 1;
+                        }
+
+
+
+                        ChallengerMod.Roles.Bait.BaliseCount = BaitBalise.getFloat();
+                        ChallengerMod.Roles.Bait.stunsDelay = BaitStuns.getFloat();
+                        ChallengerMod.Roles.Bait.reportDelayMin = BaitReporttime.getFloat();
+                        ChallengerMod.Roles.Bait.reportDelayMax = (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat());
+
+                        Challenger.NuclearTimeMin = NuclearTime1.getFloat();
+                        Challenger.NuclearTimeAdd = (NuclearTime1.getFloat() + NuclearTimeRND.getFloat());
+
+                        ChallengerMod.Roles.Guesser.remainingShots = ChallengerOS.Utils.Option.CustomOptionHolder.Gestry.getFloat();
+                        ChallengerMod.Roles.Basilisk.CostParalize = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.getFloat();
+                        ChallengerMod.Roles.Basilisk.CostPetrify = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskPetrifyCost.getFloat();
+
+                        ChallengerMod.Roles.Basilisk.PetrifyMax = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat();
+                        ChallengerMod.Roles.Basilisk.PetrifyCount = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.getFloat();
+
+                        ChallengerMod.Roles.Basilisk.DoseMeet = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskMeet.getFloat();
+                        ChallengerMod.Roles.Basilisk.DoseKill = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskKill.getFloat();
+                        ChallengerMod.Roles.Basilisk.DoseStart = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.getFloat();
+
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 0) { ChallengerMod.Roles.Cursed.SpeedModifieur = 0; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 1) { ChallengerMod.Roles.Cursed.SpeedModifieur = 1; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 2) { ChallengerMod.Roles.Cursed.SpeedModifieur = 2; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 3) { ChallengerMod.Roles.Cursed.SpeedModifieur = 3; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 4) { ChallengerMod.Roles.Cursed.SpeedModifieur = 4; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 5) { ChallengerMod.Roles.Cursed.SpeedModifieur = 5; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 6) { ChallengerMod.Roles.Cursed.SpeedModifieur = -2; }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 7) { ChallengerMod.Roles.Cursed.SpeedModifieur = -1; }
+
+
+                        SetInformantTaskRemaining = (int)Math.Round(TotalTask);
+                        SetCost = (int)Math.Round(ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat() - 1);
+                        SetCost0 = (int)Math.Round(ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat());
+
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.EaterCanDrag.getBool() == true) { ChallengerMod.Roles.Eater.CanDragg = true; }
+                        else { ChallengerMod.Roles.Eater.CanDragg = false; }
+
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskVote.getSelection() == 0)
+                        {
+                            ChallengerMod.Roles.Basilisk.CanPetrifyAndShield = true;
+                            ChallengerMod.Roles.Basilisk.CanPetrify = true;
+                        }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskVote.getSelection() == 1)
+                        {
+                            ChallengerMod.Roles.Basilisk.CanPetrifyAndShield = false;
+                            ChallengerMod.Roles.Basilisk.CanPetrify = true;
+                        }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskVote.getSelection() == 2)
+                        {
+                            ChallengerMod.Roles.Basilisk.CanPetrifyAndShield = true;
+                            ChallengerMod.Roles.Basilisk.CanPetrify = false;
+                        }
+
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.getFloat() > TotalTask)
+                        {
+                            ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.updateSelection(SetInformantTaskRemaining);
+                        }
+
+
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
+                        {
+                            ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.updateSelection(SetCost);
+                        }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskPetrifyCost.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
+                        {
+                            ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskPetrifyCost.updateSelection(SetCost);
+                        }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskKill.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
+                        {
+                            ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskKill.updateSelection(SetCost0);
+                        }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskMeet.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
+                        {
+                            ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskMeet.updateSelection(SetCost0);
+                        }
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
+                        {
+                            ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.updateSelection(SetCost0);
+                        }
+
+
+                        if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskSinglePetrify.getBool() == true) { ChallengerMod.Roles.Basilisk.SinglePetrify = true; }
+                        else { ChallengerMod.Roles.Basilisk.SinglePetrify = false; }
+
+                        if (ImpostorsKnowEachother.getSelection() == 0) { ChallengerMod.Challenger.UnknowImpostors = false; }
+                        else { ChallengerMod.Challenger.UnknowImpostors = true; }
+
+                        if (ImpostorCanKillFake.getBool() == false) { ChallengerMod.Challenger.ImpostorCanKillOther = false; }
+                        else { ChallengerMod.Challenger.ImpostorCanKillOther = true; }
+
+                        if (AssassinCanKillShield.getBool() == false) { ChallengerMod.Roles.Assassin.CanKillShield = false; }
+                        else { ChallengerMod.Roles.Assassin.CanKillShield = true; }
+
+                        if (BSheriff.getBool() == true) { ChallengerMod.Roles.Assassin.BSheriff = true; }
+                        else { ChallengerMod.Roles.Assassin.BSheriff = false; }
+
+                        if (BGuardian.getBool() == true) { ChallengerMod.Roles.Assassin.BGuardian = true; }
+                        else { ChallengerMod.Roles.Assassin.BGuardian = false; }
+
+                        if (BEngineer.getBool() == true) { ChallengerMod.Roles.Assassin.BEngineer = true; }
+                        else { ChallengerMod.Roles.Assassin.BEngineer = false; }
+
+                        if (BTimelord.getBool() == true) { ChallengerMod.Roles.Assassin.BTimelord = true; }
+                        else { ChallengerMod.Roles.Assassin.BTimelord = false; }
+
+                        if (BMystic.getBool() == true) { ChallengerMod.Roles.Assassin.BMystic = true; }
+                        else { ChallengerMod.Roles.Assassin.BSheriff = false; }
+
+                        if (BMayor.getBool() == true) { ChallengerMod.Roles.Assassin.BMayor = true; }
+                        else { ChallengerMod.Roles.Assassin.BMayor = false; }
+
+                        if (BDetective.getBool() == true) { ChallengerMod.Roles.Assassin.BDetective = true; }
+                        else { ChallengerMod.Roles.Assassin.BDetective = false; }
+
+                        if (BNightwatcher.getBool() == true) { ChallengerMod.Roles.Assassin.BNightwatcher = true; }
+                        else { ChallengerMod.Roles.Assassin.BNightwatcher = false; }
+
+                        if (BSpy.getBool() == true) { ChallengerMod.Roles.Assassin.BSpy = true; }
+                        else { ChallengerMod.Roles.Assassin.BSpy = false; }
+
+                        if (BInfor.getBool() == true) { ChallengerMod.Roles.Assassin.BInfor = true; }
+                        else { ChallengerMod.Roles.Assassin.BInfor = false; }
+
+                        if (BMentalist.getBool() == true) { ChallengerMod.Roles.Assassin.BMentalist = true; }
+                        else { ChallengerMod.Roles.Assassin.BMentalist = false; }
+
+                        if (BBuilder.getBool() == true) { ChallengerMod.Roles.Assassin.BBuilder = true; }
+                        else { ChallengerMod.Roles.Assassin.BBuilder = false; }
+
+                        if (BDictator.getBool() == true) { ChallengerMod.Roles.Assassin.BDictator = true; }
+                        else { ChallengerMod.Roles.Assassin.BDictator = false; }
+
+                        if (BSentinel.getBool() == true) { ChallengerMod.Roles.Assassin.BSentinel = true; }
+                        else { ChallengerMod.Roles.Assassin.BSentinel = false; }
+
+                        if (BDictator.getBool() == true) { ChallengerMod.Roles.Assassin.BDictator = true; }
+                        else { ChallengerMod.Roles.Assassin.BDictator = false; }
+
+                        if (BLawkeeper.getBool() == true) { ChallengerMod.Roles.Assassin.BLawkeeper = true; }
+                        else { ChallengerMod.Roles.Assassin.BDictator = false; }
+
+                        if (BImpo.getBool() == true) { ChallengerMod.Roles.Assassin.BImpo = true; }
+                        else { ChallengerMod.Roles.Assassin.BImpo = false; }
+
+
+
+
+                        if (EngineerCanVent.getBool() == true) { ChallengerMod.Roles.Engineer.CanVent = true; }
+                        else { ChallengerMod.Roles.Engineer.CanVent = false; }
+
+                        if (BaitCanVent.getBool() == true) { ChallengerMod.Roles.Bait.CanVent = true; }
+                        else { ChallengerMod.Roles.Bait.CanVent = false; }
+
+                        if (FakeCanVent.getBool() == true) { ChallengerMod.Roles.Fake.CanVent = true; }
+                        else { ChallengerMod.Roles.Fake.CanVent = false; }
+
+                        if (EaterCanVent.getBool() == true) { ChallengerMod.Roles.Eater.CanVent = true; }
+                        else { ChallengerMod.Roles.Eater.CanVent = false; }
+
+                        if (MercenaryCanVent.getBool() == true) { ChallengerMod.Roles.Mercenary.CanVent = true; }
+                        else { ChallengerMod.Roles.Mercenary.CanVent = false; }
+
+                        if (VectorCanVent.getBool() == true) { ChallengerMod.Roles.Vector.CanVent = true; }
+                        else { ChallengerMod.Roles.Vector.CanVent = false; }
+
+                        if (MorphlingCanVent.getBool() == true) { ChallengerMod.Roles.Morphling.CanVent = true; }
+                        else { ChallengerMod.Roles.Morphling.CanVent = false; }
+
+                        if (CamoCanVent.getBool() == true) { ChallengerMod.Roles.Scrambler.CanVent = true; }
+                        else { ChallengerMod.Roles.Scrambler.CanVent = false; }
+
+                        if (BarghestCanVent.getBool() == true) { ChallengerMod.Roles.Barghest.CanVent = true; }
+                        else { ChallengerMod.Roles.Barghest.CanVent = false; }
+
+                        if (GhostCanVent.getBool() == true) { ChallengerMod.Roles.Ghost.CanVent = true; }
+                        else { ChallengerMod.Roles.Ghost.CanVent = false; }
+
+                        if (WarCanVent.getBool() == true) { ChallengerMod.Roles.Sorcerer.CanVent = true; }
+                        else { ChallengerMod.Roles.Sorcerer.CanVent = false; }
+
+                        if (GuessCanVent.getBool() == true) { ChallengerMod.Roles.Guesser.CanVent = true; }
+                        else { ChallengerMod.Roles.Guesser.CanVent = false; }
+
+                        if (BasiliskCanVent.getBool() == true) { ChallengerMod.Roles.Basilisk.CanVent = true; }
+                        else { ChallengerMod.Roles.Basilisk.CanVent = false; }
+
+
+
+
+
+
+                        PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
+                        PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.GuardianAngel, 0, 0);
+                        PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Engineer, 0, 0);
+                        PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Scientist, 0, 0);
+
+
+
+
+
+
+                        if (Challenger.IsrankedGame)
+                        {
+                            PlayerControl.GameOptions.ConfirmImpostor = false;
+                            PlayerControl.GameOptions.AnonymousVotes = true;
+                            PlayerControl.GameOptions.VisualTasks = false;
+                            PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
+                            PlayerControl.GameOptions.DiscussionTime = 15;
+                            PlayerControl.GameOptions.VotingTime = 165;
+                            PlayerControl.GameOptions.PlayerSpeedMod = 1f;
+                            PlayerControl.GameOptions.CrewLightMod = 0.5f;
+                            PlayerControl.GameOptions.ImpostorLightMod = 1f;
+                            PlayerControl.GameOptions.EmergencyCooldown = 15;
+                            PlayerControl.GameOptions.KillDistance = 0;
+
+                            PlayerControl.GameOptions.NumEmergencyMeetings = 3;
+                            PlayerControl.GameOptions.KillCooldown = 25f;
+                            PlayerControl.GameOptions.NumCommonTasks = 2;
+                            PlayerControl.GameOptions.NumShortTasks = 5;
+                            PlayerControl.GameOptions.NumLongTasks = 3;
+
+                            if (QTImp.getFloat() == 1) { PlayerControl.GameOptions.NumImpostors = 1; }
+                            else if (QTImp.getFloat() == 2) { PlayerControl.GameOptions.NumImpostors = 2; }
+                            else if (QTImp.getFloat() == 3) { PlayerControl.GameOptions.NumImpostors = 3; }
+
+
+                            if (AmongUsClient.Instance.AmHost)
+                            {
+                                Challenger._Players = PlayerControl.GameOptions.MaxPlayers;
+
+                                if (QTImp.getFloat() == 0) { QTImp.updateSelection(1); }
+
+
+                                Challenger._CRW = 0 + Challenger._Players - Challenger._IMP - Challenger._DUO - Challenger._SPE;
+                               
+                                if (QTCrew.getFloat() != Challenger._CRW)
+                                {
+                                    QTCrew.updateSelection(Challenger._CRW);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                
+
+                                if ((PlayerControl.GameOptions.NumImpostors == 2 && Challenger._Players < 12 && MercenaryAdd.getBool() == true)
+                                    || (PlayerControl.GameOptions.NumImpostors == 3 && Challenger._Players < 15 && MercenaryAdd.getBool() == true)
+                                    )
+                                {
+                                    MercenaryAdd.updateSelection(0);
+                                }
+                                if (Challenger._Players == 10)
+                                {
+                                    if (QTImp.getFloat() > 2) 
+                                    { 
+                                        QTImp.updateSelection(2);
+                                        Challenger._IMP = 2;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    if (QTDuo.getFloat() > 1) 
+                                    { 
+                                        QTDuo.updateSelection(1);
+                                        Challenger._DUO = 1;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    if (QTSpe.getFloat() > 1) 
+                                    { 
+                                        QTSpe.updateSelection(1);
+                                        Challenger._SPE = 1;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                                if (Challenger._Players == 11)
+                                {
+                                    if (QTImp.getFloat() > 2) 
+                                    { 
+                                        QTImp.updateSelection(2);
+                                        Challenger._IMP = 2;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    if (QTDuo.getFloat() > 2) 
+
+                                    { 
+                                        QTDuo.updateSelection(2);
+                                        Challenger._DUO = 2;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    if (QTSpe.getFloat() > 2)
+                                    { 
+                                        QTSpe.updateSelection(2);
+                                        Challenger._SPE = 2;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                                if (Challenger._Players == 12)
+                                {
+                                    if (QTImp.getFloat() > 2) 
+                                    { 
+                                        QTImp.updateSelection(2);
+                                        Challenger._IMP = 2;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    if (QTDuo.getFloat() > 3) 
+                                    {
+                                        QTDuo.updateSelection(3);
+                                        Challenger._DUO = 3;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    if (QTSpe.getFloat() > 3)
+                                    {
+                                        QTSpe.updateSelection(3);
+                                        Challenger._SPE = 3;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                                if (Challenger._Players == 13)
+                                {
+                                    if (QTSpe.getFloat() > 4) 
+                                    { 
+                                        QTSpe.updateSelection(4);
+                                        Challenger._SPE = 4;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                                if (Challenger._Players == 14)
+                                {
+                                    if (QTSpe.getFloat() > 5)
+                                    {
+                                        QTSpe.updateSelection(5);
+                                        Challenger._SPE = 5;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+
+                                }
+
+                                BuzzCommon.updateSelection(1);
+                                CommsSabotageAnonymous.updateSelection(0);
+                                ImpostorsKnowEachother.updateSelection(0);
+                                BetterTaskWeapon.updateSelection(0);
+
+                                DisabledAdmin.updateSelection(0);
+                                DisabledVitales.updateSelection(0);
+                                DisabledCamera.updateSelection(0);
+
+                                AdminTimeOn.updateSelection(1);
+                                VitalTimeOn.updateSelection(1);
+                                CamTimeOn.updateSelection(1);
+
+                                AdminTime.updateSelection(34);
+                                VitalTime.updateSelection(24);
+                                CamTime.updateSelection(39);
+
+
+
+                                if (Challenger._MapID >= 8) { SherifKillSettings.updateSelection(0); }
+                                else { SherifKillSettings.updateSelection(2); }
+
+                                SherifKillCooldown.updateSelection(6);
+                                SherifKillRange.updateSelection(1);
+                                SherifKillCulteMember.updateSelection(1);
+
+                                ShieldSettings.updateSelection(0);
+                                GuardianShieldVisibility.updateSelection(0);
+                                GuardianShieldVisibilitytry.updateSelection(2);
+                                GuardianShieldSound.updateSelection(1);
+
+                                EngineerCanVent.updateSelection(1);
+                                EngineerRepairCD.updateSelection(2);
+                                RepairSettings.updateSelection(0);
+
+                                TimeLordStopCooldown.updateSelection(12);
+                                TimeLordStopDuration.updateSelection(7);
+
+                                ResetTrack.updateSelection(1);
+                                Followtrack.updateSelection(1);
+
+                                MysticSetCooldown.updateSelection(8);
+                                MysticSetDuration.updateSelection(9);
+
+                                SpiritSab.updateSelection(1);
+
+                                BonusBuzz.updateSelection(2);
+                                BuzzCooldown.updateSelection(4);
+
+                                detectiveFootprintcooldown.updateSelection(8);
+                                detectiveFootprintDuration.updateSelection(7);
+                                detectiveFootprintDuration2.updateSelection(10);
+                                detectiveFootprintanonymous.updateSelection(0);
+
+                                NightwatcherSetCooldown.updateSelection(8);
+                                NightwatcherSetDuration.updateSelection(11);
+
+                                SpyDuration.updateSelection(4);
+                                SpyRange.updateSelection(1);
+
+                                InforRemainingTask.updateSelection(3);
+                                InforCooldown.updateSelection(4);
+                                InforAnalyseMod.updateSelection(0);
+                                InforAnalyseMod.updateSelection(1);
+
+                                BaitReport.updateSelection(0);
+                                BaitReporttime.updateSelection(0);
+                                BaitReporttimeRnd.updateSelection(0);
+                                BaitStuns.updateSelection(7);
+                                BaitCanVent.updateSelection(0);
+                                BaitBalise.updateSelection(5);
+                                BaitBaliseTime.updateSelection(5);
+
+
+                               
+                                MentalistAbility.updateSelection(0);
+                                AdminSetting.updateSelection(1);
+                                AdminDuration.updateSelection(9);
+
+                                BuildRound.updateSelection(1);
+                                MaxBuild.updateSelection(2);
+                                BuildCooldown.updateSelection(4);
+
+                                DictatorMeeting.updateSelection(1);
+                                DictatorFirstTurn.updateSelection(1);
+
+                                ScanCooldown.updateSelection(7);
+                                ScanDuration.updateSelection(8);
+                                ScanAbility.updateSelection(2);
+
+                                LKTimer.updateSelection(1);
+                                LKInfo.updateSelection(1);
+                                TimeRName.updateSelection(2);
+                                TimeRList.updateSelection(12);
+                                SuperInfo.updateSelection(0);
+
+                                ImpostorCanKillFake.updateSelection(1);
+                                FakeCanVent.updateSelection(0);
+
+
+                                LeaderTaskEnd.updateSelection(1);
+                                LeaderAffectCupid.updateSelection(0);
+
+
+                                MercenaryKillCooldown.updateSelection(6);
+                                MercenaryCanVent.updateSelection(1);
+
+
+
+                                if (((Challenger._Players == 10 && Challenger._IMP == 1) && ChallengerMod.Set.Data.MercenaryMin == 0f)
+                                    || ((Challenger._Players == 11 && Challenger._IMP == 1) && ChallengerMod.Set.Data.MercenaryMin == 0f)
+                                    || ((Challenger._Players == 12 && Challenger._IMP == 1) && ChallengerMod.Set.Data.MercenaryMin == 0f)
+                                    || ((Challenger._Players == 13 && Challenger._IMP == 1))
+                                    || ((Challenger._Players == 13 && Challenger._IMP == 2) && ChallengerMod.Set.Data.MercenaryMin == 0f)
+                                    || ((Challenger._Players == 14 && Challenger._IMP == 1))
+                                    || ((Challenger._Players == 14 && Challenger._IMP == 2) && ChallengerMod.Set.Data.MercenaryMin == 0f)
+                                    || ((Challenger._Players == 15))
+                                    ) { CopyImp.updateSelection(1); }
+                                else { CopyImp.updateSelection(2); }
+
+                                CopySpe.updateSelection(1);
+
+                                SurvivorWinJester.updateSelection(1);
+                                SurvivorWinEater.updateSelection(1);
+                                SurvivorWinOutlaw.updateSelection(1);
+                                SurvivorWinCulte.updateSelection(0);
+                                SurvivorWinArsonist.updateSelection(0);
+                                SurvivorWinCursed.updateSelection(0);
+
+                                QtVenger.updateSelection(2);
+                                VengerCooldown.updateSelection(8);
+                                VengerKill.updateSelection(0);
+                                VengerExil.updateSelection(0);
+
+                                //SPE
+                                Loverdie.updateSelection(1);
+
+                                if (Challenger._Players == 10 && ChallengerMod.Set.Data.CultisteMin == 1f) { CulteMember.updateSelection(0); }
+                                if (Challenger._Players == 11 && ChallengerMod.Set.Data.CultisteMin == 1f) { CulteMember.updateSelection(0); }
+                                if (Challenger._Players == 12 && ChallengerMod.Set.Data.CultisteMin == 1f) { CulteMember.updateSelection(1); }
+                                if (Challenger._Players == 13 && ChallengerMod.Set.Data.CultisteMin == 1f) { CulteMember.updateSelection(1); }
+                                if (Challenger._Players == 14 && ChallengerMod.Set.Data.CultisteMin == 1f) { CulteMember.updateSelection(2); }
+                                if (Challenger._Players == 15 && ChallengerMod.Set.Data.CultisteMin == 1f) { CulteMember.updateSelection(2); }
+
+
+                                CultisteCooldown.updateSelection(12);
+                                Cultistdie.updateSelection(0);
+
+                                JesterSingle.updateSelection(2);
+                                JesterCooldown.updateSelection(12);
+
+
+
+                                if (Challenger._Players == 10 && ChallengerMod.Set.Data.EaterMin == 1f) { Eatvalueforwin.updateSelection(1); EaterCooldown.updateSelection(4); Eaterduration.updateSelection(2); }
+                                if (Challenger._Players == 11 && ChallengerMod.Set.Data.EaterMin == 1f) { Eatvalueforwin.updateSelection(1); EaterCooldown.updateSelection(4); Eaterduration.updateSelection(2); }
+                                if (Challenger._Players == 12 && ChallengerMod.Set.Data.EaterMin == 1f) { Eatvalueforwin.updateSelection(1); EaterCooldown.updateSelection(4); Eaterduration.updateSelection(2); }
+                                if (Challenger._Players == 13 && ChallengerMod.Set.Data.EaterMin == 1f) { Eatvalueforwin.updateSelection(1); EaterCooldown.updateSelection(4); Eaterduration.updateSelection(2); }
+                                if (Challenger._Players == 14 && ChallengerMod.Set.Data.EaterMin == 1f) { Eatvalueforwin.updateSelection(2); EaterCooldown.updateSelection(2); Eaterduration.updateSelection(1); }
+                                if (Challenger._Players == 15 && ChallengerMod.Set.Data.EaterMin == 1f) { Eatvalueforwin.updateSelection(2); EaterCooldown.updateSelection(2); Eaterduration.updateSelection(1); }
+
+                                EaterCanVent.updateSelection(0);
+                                EaterCanDrag.updateSelection(1);
+                                BodyRemove.updateSelection(0);
+
+                                OutlawKillCooldown.updateSelection(6);
+                                OutlawKillRange.updateSelection(1);
+
+                                if (Challenger._MapID >= 8 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistFuelQT.updateSelection(0); }
+                                else { ArsonistFuelQT.updateSelection(3); }
+
+                                if (Challenger._Players == 10 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistCooldown.updateSelection(4); ArsonistDuration.updateSelection(2); ArsonistFailDuration.updateSelection(4); }
+                                if (Challenger._Players == 11 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistCooldown.updateSelection(4); ArsonistDuration.updateSelection(2); ArsonistFailDuration.updateSelection(4); }
+                                if (Challenger._Players == 12 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistCooldown.updateSelection(4); ArsonistDuration.updateSelection(2); ArsonistFailDuration.updateSelection(4); }
+                                if (Challenger._Players == 13 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistCooldown.updateSelection(2); ArsonistDuration.updateSelection(1); ArsonistFailDuration.updateSelection(4); }
+                                if (Challenger._Players == 14 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistCooldown.updateSelection(2); ArsonistDuration.updateSelection(1); ArsonistFailDuration.updateSelection(4); }
+                                if (Challenger._Players == 15 && ChallengerMod.Set.Data.ArsonistMin == 1f) { ArsonistCooldown.updateSelection(2); ArsonistDuration.updateSelection(1); ArsonistFailDuration.updateSelection(4); }
+
+
+                                AutoRefuel.updateSelection(0);
+
+                                if (Challenger._Players == 10 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID >= 8) { CursedSpeedModifieur.updateSelection(0); }
+                                if (Challenger._Players == 11 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID >= 8) { CursedSpeedModifieur.updateSelection(0); }
+                                if (Challenger._Players == 12 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID >= 8) { CursedSpeedModifieur.updateSelection(7); }
+                                if (Challenger._Players == 13 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID >= 8) { CursedSpeedModifieur.updateSelection(7); }
+                                if (Challenger._Players == 14 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID >= 8) { CursedSpeedModifieur.updateSelection(6); }
+                                if (Challenger._Players == 15 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID >= 8) { CursedSpeedModifieur.updateSelection(6); }
+
+                                if (Challenger._Players == 10 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID < 8) { CursedSpeedModifieur.updateSelection(2); }
+                                if (Challenger._Players == 11 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID < 8) { CursedSpeedModifieur.updateSelection(1); }
+                                if (Challenger._Players == 12 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID < 8) { CursedSpeedModifieur.updateSelection(0); }
+                                if (Challenger._Players == 13 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID < 8) { CursedSpeedModifieur.updateSelection(0); }
+                                if (Challenger._Players == 14 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID < 8) { CursedSpeedModifieur.updateSelection(7); }
+                                if (Challenger._Players == 15 && ChallengerMod.Set.Data.CursedMin == 1f && Challenger._MapID < 8) { CursedSpeedModifieur.updateSelection(7); }
+
+                                CursedTimer.updateSelection(4);
+                                CursedAbility.updateSelection(1);
+                                CursedCooldown.updateSelection(4);
+                                CursedDuration.updateSelection(9);
+
+                                //IMP
+                                AssassinKillCooldown.updateSelection(6);
+                                AssassinCanKillShield.updateSelection(1);
+                                BSheriff.updateSelection(1);
+                                BGuardian.updateSelection(1);
+                                BEngineer.updateSelection(1);
+                                BTimelord.updateSelection(1);
+                                BMystic.updateSelection(1);
+                                BMayor.updateSelection(1);
+                                BDetective.updateSelection(1);
+                                BNightwatcher.updateSelection(1);
+                                BSpy.updateSelection(1);
+                                BInfor.updateSelection(1);
+                                BMentalist.updateSelection(1);
+                                BBuilder.updateSelection(1);
+                                BDictator.updateSelection(1);
+                                BSentinel.updateSelection(1);
+                                BLawkeeper.updateSelection(1);
+                                BImpo.updateSelection(1);
+
+                                VectorBuffCooldown.updateSelection(6);
+                                VectorKillCooldown.updateSelection(4);
+                                VectorBuffVisibility.updateSelection(1);
+                                VectorCanVent.updateSelection(1);
+
+                                MorphSetCooldown.updateSelection(8);
+                                MorphSetDuration.updateSelection(14);
+                                MorphlingCanVent.updateSelection(1);
+
+                                CamoSetCooldown.updateSelection(10);
+                                CamoSetDuration.updateSelection(9);
+                                CamoCanVent.updateSelection(1);
+
+                                BargestLightCooldown.updateSelection(10);
+                                BargestLightDuration.updateSelection(7);
+                                BarghestAffectImpostor.updateSelection(0);
+                                BarghestCamlight.updateSelection(1);
+
+                                if (Challenger._MapID >= 8) { BarghestCanCreateVent.updateSelection(0); }
+                                else { BarghestCanCreateVent.updateSelection(1); }
+
+                                BarghestVentCD.updateSelection(6);
+                                BarghestCanVent.updateSelection(1);
+                                CanUseBarghestVent.updateSelection(0);
+
+                                HideSetCooldown.updateSelection(10);
+                                HideSetDuration.updateSelection(14);
+                                GhostCanVent.updateSelection(1);
+
+                                WarCooldown.updateSelection(6);
+                                War1.updateSelection(1);
+                                War2.updateSelection(1);
+                                War3.updateSelection(1);
+                                War4.updateSelection(1);
+                                WarCanVent.updateSelection(1);
+
+
+                                if ((Challenger._Players == 10) && (Challenger._IMP == 1)) { GuessDie.updateSelection(0); Gestry.updateSelection(1); }
+                                if ((Challenger._Players == 10) && (Challenger._IMP == 2)) { GuessDie.updateSelection(1); Gestry.updateSelection(1); }
+                                if ((Challenger._Players == 11) && (Challenger._IMP == 1)) { GuessDie.updateSelection(0); Gestry.updateSelection(1); }
+                                if ((Challenger._Players == 11) && (Challenger._IMP == 2)) { GuessDie.updateSelection(1); Gestry.updateSelection(1); }
+                                if ((Challenger._Players == 12) && (Challenger._IMP == 1)) { GuessDie.updateSelection(0); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 12) && (Challenger._IMP == 2)) { GuessDie.updateSelection(1); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 13) && (Challenger._IMP == 1)) { GuessDie.updateSelection(0); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 13) && (Challenger._IMP == 2)) { GuessDie.updateSelection(1); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 13) && (Challenger._IMP == 3)) { GuessDie.updateSelection(1); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 14) && (Challenger._IMP == 1)) { GuessDie.updateSelection(0); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 14) && (Challenger._IMP == 2)) { GuessDie.updateSelection(1); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 14) && (Challenger._IMP == 3)) { GuessDie.updateSelection(1); Gestry.updateSelection(2); }
+                                if ((Challenger._Players == 15) && (Challenger._IMP == 1)) { GuessDie.updateSelection(0); Gestry.updateSelection(3); }
+                                if ((Challenger._Players == 15) && (Challenger._IMP == 2)) { GuessDie.updateSelection(1); Gestry.updateSelection(3); }
+                                if ((Challenger._Players == 15) && (Challenger._IMP == 3)) { GuessDie.updateSelection(1); Gestry.updateSelection(3); }
+
+                                GuessTryOne.updateSelection(1);
+                                GuessMystic.updateSelection(1);
+                                GuessSpirit.updateSelection(1);
+                                GuessFake.updateSelection(1);
+                                GuessCanVent.updateSelection(1);
+
+
+
+                                BasiliskCooldown.updateSelection(2);
+                                BasiliskStart.updateSelection(0);
+                                BasiliskMeet.updateSelection(0);
+                                BasiliskKill.updateSelection(1);
+                                BasiliskVote.updateSelection(0);
+                                BasiliskParalizeCost.updateSelection(0);
+                                BasiliskPetrifyCost.updateSelection(1);
+                                BasiliskSinglePetrify.updateSelection(1);
+                                BasiliskCanVent.updateSelection(1);
+                            }
+                        }
+
+
+
+
+
+
+
+
+
+                        if ((PlayerControl.GameOptions.NumImpostors == 1 && FakeAdd.getBool() == true) || ImpostorsKnowEachother.getSelection() == 1 && FakeAdd.getBool() == true)
+                        {
+                            FakeAdd.updateSelection(0);
+                        }
+
+
+                        if (PlayerControl.GameOptions.NumImpostors == 1 && ImpostorsKnowEachother.getSelection() == 1)
+                        {
+                            ImpostorsKnowEachother.updateSelection(0);
+                        }
+
+
+                        if (SherifAdd.getBool() == true)
+                        {
+                            HIDE_Sheriff.updateSelection(1);
                         }
                         else
                         {
-                            __instance.GameSettings.text += Barghest;
-                        }
-                    }
-
-                    //GHOST
-                    string Ghost = "<size=0.75><color=#404040>\n> Ghost : </color>";
-                    string GhostFR = "<size=0.75><color=#404040>\n> Fantome : </color>";
-
-
-                    if (GhostSpawnChance.getFloat() > 0)
-
-                    {
-                        if (GhostCanVent.getBool() == true)
-                        {
-                            Ghost += "Invisibility : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + HideSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#00FF00>yes</color>.";
-
-                            GhostFR += "Délai de l'Invisibilité : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + HideSetDuration.getFloat() + "s</color>, Peut utiliser les vents : <color=#00FF00>Oui</color>.";
-                        }
-                        if (GhostCanVent.getBool() == false)
-                        {
-                            Ghost += "Invisibility : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Cooldown for <color=#00ffff>" + HideSetDuration.getFloat() + "s</color> duration, Can Use Vent : <color=#FF0000>No</color>.";
-
-                            GhostFR += "Délai de l'Invisibilité : <color=#00ffff>" + HideSetCooldown.getFloat() + "s</color> Pendant <color=#00ffff>" + HideSetDuration.getFloat() + "s</color> Peut utiliser les vents : <color=#FF0000>No,</color>.";
-                        }
-
-
-                    }
-                    if (GhostSpawnChance.getFloat() > 0 && GhostAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += GhostFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Ghost;
-                        }
-                    }
-
-                    //VANDAL
-                    string Imp3 = "<size=0.75><color=#542B00>\n> Sorcerer : </color>";
-                    string Imp3FR = "<size=0.75><color=#542B00>\n> Sorcier : </color>";
-
-
-                    if (WarSpawnChance.getFloat() > 0)
-
-                    {
-                        Imp3 += "Find cooldown : <color=#00ffff>" + WarCooldown.getFloat() + "s</color>,";
-                        Imp3FR += "Délai de la capacité de recherche : <color=#00ffff>" + WarCooldown.getFloat() + "s</color>,";
-
-                        if (War1.getBool() == false)
-                        {
-                            Imp3 += " Can Use Focus (x1 rune) : <color=#FF0000>No</color>,";
-                            Imp3FR += " Peut utiliser Focalisation (x1 rune) : <color=#FF0000>Non</color>,";
-
-                        }
-                        if (War1.getBool() == true)
-                        {
-                            Imp3 += " Can Use Focus (x1 rune) : <color=#00FF00>Yes</color>,";
-                            Imp3FR += " Peut utiliser Focalisation (x1 rune) : <color=#00FF00>Oui</color>,";
-
-                        }
-                        if (War2.getBool() == false)
-                        {
-                            Imp3 += " Can Use Vision (x2 runes) : <color=#FF0000>No</color>,";
-                            Imp3FR += " Peut utiliser Vision (x2 runes) : <color=#FF0000>Non</color>,";
-
-                        }
-                        if (War2.getBool() == true)
-                        {
-                            Imp3 += " Can Use Vision (x2 runes) : <color=#00FF00>Yes</color>,";
-                            Imp3FR += " Peut utiliser Vision (x2 runes) : <color=#00FF00>Oui</color>,";
-
-                        }
-                        if (War3.getBool() == false)
-                        {
-                            Imp3 += "\nCan Use Confuse (x3 runes) : <color=#FF0000>No</color>,";
-                            Imp3FR += "\nPeut utiliser Confusion (x3 runes) : <color=#FF0000>Non</color>,";
-
-                        }
-                        if (War3.getBool() == true)
-                        {
-                            Imp3 += "\nCan Use Confuse (x3 runes) : <color=#00FF00>Yes</color>,";
-                            Imp3FR += "\nPeut utiliser Confision (x3 runes) : <color=#00FF00>Oui</color>,";
-
-                        }
-                        if (War4.getBool() == false)
-                        {
-                            Imp3 += " Can Use Destroy (x4 runes) : <color=#FF0000>No</color>,";
-                            Imp3FR += " Peut utiliser Detruire (x4 runes) : <color=#FF0000>Non</color>,";
-
-                        }
-                        if (War4.getBool() == true)
-                        {
-                            Imp3 += " Can Use Destroy (x4 runes) : <color=#00FF00>Yes</color>,";
-                            Imp3FR += " Peut utiliser Detruire (x4 runes) : <color=#00FF00>Oui</color>,";
-
-                        }
-
-
-                        if (WarCanVent.getBool() == false)
-                        {
-                            Imp3 += " Can Use Vent : <color=#FF0000>No</color>.";
-                            Imp3FR += " Peut utiliser les vents : <color=#FF0000>Non</color>.";
-
-                        }
-                        if (WarCanVent.getBool() == true)
-                        {
-                            Imp3 += " Can Use Vent : <color=#00FF00>Yes</color>.";
-                            Imp3FR += " Peut utiliser les vents  : <color=#00FF00>Oui</color>.";
-
-                        }
-
-
-
-
-
-
-
-
-
-
-
-
-                    }
-                    if (WarSpawnChance.getFloat() > 0 && WarAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += Imp3FR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Imp3;
-                        }
-                    }
-
-                    //GUESSER
-                    string Guess = "<size=0.75><color=#003954>\n> Guesser : </color>";
-                    string GuessFR = "<size=0.75><color=#003954>\n> Devin : </color>";
-
-
-                    if (GuesserSpawnChance.getFloat() > 0)
-
-                    {
-
-
-                        if (GuessTryOne.getBool() == true)
-                        {
-                            Guess += "Try to Kill during meeting : <color=#00ffff>x" + Gestry.getFloat() + "</color>, Only use 1 try per round  : <color=#00FF00>Yes</color>";
-                            GuessFR += "Tentative de tuer pendant une Réunion : <color=#00ffff>x" + Gestry.getFloat() + "</color>, utilisable 1x par tour : <color=#00FF00>Oui</color>";
-
-                        }
-                        if (GuessTryOne.getBool() == false)
-                        {
-                            Guess += "Try to Kill during meeting : <color=#00ffff>x" + Gestry.getFloat() + "</color> Only use 1 try per round : <color=#FF0000>No</color>";
-                            GuessFR += "Tentative de tuer pendant une Réunion : <color=#00ffff>x" + Gestry.getFloat() + "</color> utilisable 1x par tour : <color=#FF0000>Non</color>";
-
-
-                        }
-
-
-                        if (GuessDie.getBool() == true)
-                        {
-                            Guess += ", die on a failure : <color=#00FF00>yes</color>";
-                            GuessFR += ", Meurt en cas d'échec : <color=#00FF00>Oui</color>";
-
-                        }
-                        if (GuessDie.getBool() == false)
-                        {
-                            Guess += ", die on a failure : <color=#FF0000>No</color>";
-                            GuessFR += ", Meurt en cas d'échec : <color=#FF0000>Non</color>";
-
-                        }
-
-                        if (GuessCanVent.getBool() == true)
-                        {
-                            Guess += ", Can Use Vent : <color=#00FF00>yes</color>";
-                            GuessFR += ", Peut utiliser les vents : <color=#00FF00>Oui</color>";
-
-                        }
-                        if (GuessCanVent.getBool() == false)
-                        {
-                            Guess += ", Can Use Vent : <color=#FF0000>No</color>";
-                            GuessFR += ", Peut utiliser les vents : <color=#FF0000>Non</color>";
-
-                        }
-                        if (GuessMystic.getBool() == false && GuessSpirit.getBool() == false && GuessFake.getBool() == false) // 0
-                        {
-                            Guess += ".";
-                            GuessFR += ".";
-
-                        }
-                        if (GuessMystic.getBool() == true && GuessSpirit.getBool() == false && GuessFake.getBool() == false) // Mystic only
-                        {
-                            Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color>.";
-
-                        }
-                        if (GuessMystic.getBool() == false && GuessSpirit.getBool() == true && GuessFake.getBool() == false) // Spirit only
-                        {
-                            Guess += ", Can't Guess : <color=#A1FF00>Spirit</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#A1FF00>Spirite</color>.";
-                        }
-                        if (GuessMystic.getBool() == false && GuessSpirit.getBool() == false && GuessFake.getBool() == true) // Fake only
-                        {
-                            Guess += ", Can't Guess : <color=#FF7A7A>Fake</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#FF7A7A>Intru</color>.";
-                        }
-                        if (GuessMystic.getBool() == true && GuessSpirit.getBool() == true && GuessFake.getBool() == false) // Mystic+spirit
-                        {
-                            Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color> / <color=#A1FF00>Spirit</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color> / <color=#A1FF00>Spirite</color>.";
-                        }
-                        if (GuessMystic.getBool() == true && GuessSpirit.getBool() == false && GuessFake.getBool() == true) // Mystic+Fake
-                        {
-                            Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color> / <color=#FF7A7A>Fake</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color> / <color=#FF7A7A>Intru</color>.";
-                        }
-                        if (GuessMystic.getBool() == false && GuessSpirit.getBool() == true && GuessFake.getBool() == true) // Spirit+Fake
-                        {
-                            Guess += ", Can't Guess : <color=#A1FF00>Spirit</color> / <color=#FF7A7A>Fake</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#A1FF00>Spirite</color> / <color=#FF7A7A>Intru</color>.";
-                        }
-                        if (GuessMystic.getBool() == true && GuessSpirit.getBool() == true && GuessFake.getBool() == false) // Mystic+spirit+Fake
-                        {
-                            Guess += ", Can't Guess : <color=#F9FFB2>Mystic</color> / <color=#A1FF00>Spirit</color> / <color=#FF7A7A>Fake</color>.";
-                            GuessFR += ", Rôles impossible à deviner : <color=#F9FFB2>Mystique</color> / <color=#A1FF00>Spirite</color> / <color=#FF7A7A>Intru</color>.";
-                        }
-                    }
-                    if (GuesserSpawnChance.getFloat() > 0 && GuesserAdd.getBool() == true)
-                    {
-                        if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                        {
-                            __instance.GameSettings.text += GuessFR;
-                        }
-                        else
-                        {
-                            __instance.GameSettings.text += Guess;
-                        }
-                    }
-
-
-                      //BASILISK
-                      string Basilisk = "<color=#5B466B>\n> Basilisk : </color>";
-                      string BasiliskFR = "<color=#5B466B>\n> Basilik : </color>";
-
-
-                    if (BasiliskSpawnChance.getFloat() > 0 && BasiliskAdd.getBool() == true)
-
-                    {
-                       
-                        
-                        
-                        Basilisk += "Maximum amount of storable dose(s): <color=#ff00ff>x" + BasiliskCooldown.getFloat() + "</color>, Start game with : <color=#ff00ff>x" + BasiliskStart.getFloat() + "</color> dose(s), killing a player grants : <color=#ff00ff>x" + BasiliskKill.getFloat() + "</color> dose(s), Each new round grants : <color=#ff00ff>x" + BasiliskMeet.getFloat() + "</color> dose(s).\n";
-                        BasiliskFR += "Quantité maximum de dose(s) stockable : <color=#ff00ff>x" + BasiliskCooldown.getFloat() + "</color>, Commence la partie avec : <color=#ff00ff>x" + BasiliskStart.getFloat() + "</color> dose(s), Tuer un joueur raporte : <color=#ff00ff>x" + BasiliskKill.getFloat() + "</color> dose(s), Chaque nouveau tour de jeu donne : <color=#ff00ff>x" + BasiliskMeet.getFloat() + "</color> dose(s).\n";
-
-                        Basilisk += "Paralyze Cost : <color=#ff00ff>x" + BasiliskParalizeCost.getFloat() + "</color> dose(s), Petrify Cost : <color=#ff00ff>x" + BasiliskPetrifyCost.getFloat() + "</color> dose(s).\n";
-                        BasiliskFR += "Paralyzer coûte : <color=#ff00ff>x" + BasiliskParalizeCost.getFloat() + "</color> dose(s), Petrifier coûte : <color=#ff00ff>x" + BasiliskPetrifyCost.getFloat() + "</color> dose(s).\n";
-
-
-                        if (BasiliskVote.getSelection() == 0)
-                        {
-                            Basilisk += "Can Use Paralyze (Paralized player can to be voted) : <color=#00ff00>Yes</color>.\n";
-                            BasiliskFR += "Peut utiliser Paralyser, (Le joueur Paralyser peut être voter) : <color=#00ff00>Oui</color>.\n";
-                            Basilisk += "Can Use Petrify, (Petrified player cant to be voted) : <color=#00ff00>Yes</color>.\n";
-                            BasiliskFR += "Peut utiliser Pétrifier, (Le joueur Petrifier ne peut pas être voter) : <color=#00ff00>Oui</color>.\n";
-                        }
-
-                        if (BasiliskVote.getSelection() == 1)
-                        {
-                            Basilisk += "Can Use Paralyze (Paralized player can to be voted) : <color=#00ff00>Yes</color>.\n";
-                            BasiliskFR += "Peut utiliser Paralyser, (Le joueur Paralyser peut être voter) : <color=#00ff00>Oui</color>.\n";
-                            Basilisk += "Can Use Petrify, (Petrified player cant to be voted) : <color=#ff0000>No</color>.\n";
-                            BasiliskFR += "Peut utiliser Pétrifier, (Le joueur Petrifier ne peut pas être voter) : <color=#ff0000>Non</color>.\n";
-                        }
-
-                        if (BasiliskVote.getSelection() == 2)
-                        {
-                            Basilisk += "Can Use Paralyze (Paralized player can to be voted) : <color=#ff0000>No</color>.\n";
-                            BasiliskFR += "Peut utiliser Paralyser, (Le joueur Paralyser peut être voter) : <color=#ff0000>Non</color>.\n";
-                            Basilisk += "Can Use Petrify, (Petrified player cant to be voted) : <color=#00ff00>Yes</color>.\n";
-                            BasiliskFR += "Peut utiliser Pétrifier, (Le joueur Petrifier ne peut pas être voter) : <color=#00ff00>Oui</color>.\n";
-                        }
-
-
-                        if (BasiliskSinglePetrify.getBool() == true)
-                        {
-                            Basilisk += "Paralyze/Petrify players can only be affected once : <color=#00ff00>Yes</color>";
-                            BasiliskFR += "Les joueurs Paralyser/Pétrifier ne peuvent être affectés qu'une seule fois : <color=#00ff00>Yes</color>";
-                        }
-                        if (BasiliskSinglePetrify.getBool() == false)
-                        {
-                            Basilisk += "Paralyze/Petrify players can only be affected once : <color=#ff0000>No</color>";
-                            BasiliskFR += "Les joueurs Paralyser/Pétrifier ne peuvent être affectés qu'une seule fois : <color=#ff0000>Non</color>";
-                        }
-
-                        if (BasiliskCanVent.getBool() == true)
-                        {
-                            Basilisk += ", Can Use Vent : <color=#00ff00>Yes</color>";
-                            BasiliskFR += ", Peut utiliser les vents : <color=#00ff00>Oui</color>";
-                        }
-                        if (BasiliskCanVent.getBool() == false)
-                        {
-                            Basilisk += ", Can Use Vent : <color=#FF0000>No</color>";
-                            BasiliskFR += ", Peut utiliser les vents : <color=#FF0000>Non</color>";
-                        }
-                    }
-                      if (BasiliskSpawnChance.getFloat() > 0 && BasiliskAdd.getBool() == true)
-                      {
-                          if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
-                          {
-                              __instance.GameSettings.text += BasiliskFR;
-                          }
-                          else
-                          {
-                              __instance.GameSettings.text += Basilisk;
-                          }
-                      }
-
-                    
-
-                    //SPACER ---
-                    string SpacerEnd = "\n\n\n ...\n\n";
-                    __instance.GameSettings.text += SpacerEnd;
-
-
-                    AdminButtonMaxTimer = 0f;
-                    CamButtonMaxTimer = 0f;
-                    VitalButtonMaxTimer = 0f;
-                    BuzzButtonMaxTimer = 0f;
-
-
-
-                    //COOLDOWN BUTTON AUTO-SET
-
-
-                    //CREWMATES
-                    SheriffKillButtonMaxTimer = SherifKillCooldown.getFloat();
-
-
-                    GuardianAbilityButtonMaxTimer = 5f;
-
-                    EngineerAbilityButtonMaxTimer = EngineerRepairCD.getFloat();
-
-                    TimelordAbilityButtonMaxTimer = TimeLordStopCooldown.getFloat();
-                    TimelordAbilityButtonEffectDuration = TimeLordStopDuration.getFloat();
-
-                    HunterAbilityButtonMaxTimer = 5f;
-
-                    MysticAbilityButtonMaxTimer = MysticSetCooldown.getFloat();
-                    MysticAbilityButtonEffectDuration = MysticSetDuration.getFloat();
-
-                    SpiritAbilityButtonMaxTimer = 0f;
-
-                    MayorAbilityButtonMaxTimer = BuzzCooldown.getFloat();
-
-                    DetectiveAbilityButtonMaxTimer = detectiveFootprintcooldown.getFloat();
-                    DetectiveAbilityButtonEffectDuration = detectiveFootprintDuration2.getFloat();
-
-                    NightwatchAbilityButtonMaxTimer = NightwatcherSetCooldown.getFloat();
-                    NightwatchAbilityButtonEffectDuration = NightwatcherSetDuration.getFloat();
-
-                    SpyAbilityButtonMaxTimer = 5f;
-                    SpyAbilityButtonEffectDuration = SpyDuration.getFloat();
-
-                    InformantAbilityButtonMaxTimer = InforCooldown.getFloat();
-
-                    MentalistAbilityButtonMaxTimer = 5f;
-                    MentalistAbilityButtonEffectDuration = AdminDuration.getFloat();
-
-                    BuilderAbilityButtonMaxTimer = BuildCooldown.getFloat();
-
-                    DictatorAbilityButtonMaxTimer = 5f;
-
-                    SentinelAbilityButtonMaxTimer = ScanCooldown.getFloat();
-                    SentinelAbilityButtonEffectDuration = ScanDuration.getFloat();
-
-                    BaitButtonMaxTimer = BaitBaliseTime.getFloat();
-
-
-                    //HYBRID
-                    MercenaryKillButtonMaxTimer = MercenaryKillCooldown.getFloat();
-
-                    CopyCatScanAbilityButtonMaxTimer = 5f;
-
-                    RevengerAbilityButtonMaxTimer = VengerCooldown.getFloat();
-
-                    //SPECIALS
-                    CupidAbilityButtonMaxTimer = 1f;
-
-                    CultistAbilityButtonMaxTimer = CultisteCooldown.getFloat();
-
-                    OutlawKillButtonMaxTimer = OutlawKillCooldown.getFloat();
-
-                    JesterAbilityButtonMaxTimer = JesterCooldown.getFloat();
-
-                    CursedTime = CursedTimer.getFloat();
-                    CursedAbilityButtonMaxTimer = CursedCooldown.getFloat();
-                    CursedAbilityButtonEffectDuration = CursedDuration.getFloat();
-
-
-                    EaterDraggAbilityButtonMaxTimer = 0f;
-                    EaterBarAbilityButtonMaxTimer = 0f;
-                    EaterEatAbilityButtonMaxTimer = EaterCooldown.getFloat();
-                    EaterEatAbilityButtonEffectDuration = Eaterduration.getFloat();
-
-                    ArsonistOilAbilityButtonMaxTimer = ArsonistCooldown.getFloat();
-                    ArsonistOilAbilityButtonEffectDuration = ArsonistDuration.getFloat();
-                    ArsonistBurnAbilityButtonMaxTimer = 0f;
-
-                    //IMPOSTOR
-
-                    ImpostorsKillButtonMaxTimer = PlayerControl.GameOptions.KillCooldown + 0f;
-
-                    AssassinKillButtonMaxTimer = AssassinKillCooldown.getFloat();
-
-                    VectorInfectAbilityButtonMaxTimer = VectorBuffCooldown.getFloat();
-                    VectorKillButtonMaxTimer = VectorKillCooldown.getFloat();
-
-                    MorphlingScanAbilityButtonMaxTimer = 5f;
-                    MorphlingMorphAbilityButtonMaxTimer = MorphSetCooldown.getFloat();
-                    MorphlingMorphAbilityButtonEffectDuration = MorphSetDuration.getFloat();
-
-                    ScramblerAbilityButtonMaxTimer = CamoSetCooldown.getFloat();
-                    ScramblerAbilityButtonEffectDuration = CamoSetDuration.getFloat();
-
-                    BarghestShadowAbilityButtonMaxTimer = BargestLightCooldown.getFloat();
-                    BarghestShadowAbilityButtonEffectDuration = BargestLightDuration.getFloat();
-                    BarghestCreateVentAbilityButtonMaxTimer = BarghestVentCD.getFloat();
-
-                    GhostAbilityButtonMaxTimer = HideSetCooldown.getFloat();
-                    GhostAbilityButtonEffectDuration = HideSetDuration.getFloat();
-
-                    SorcererFindAbilityButtonMaxTimer = WarCooldown.getFloat();
-                    SorcererStuffAbilityButtonMaxTimer = 0f;
-
-                    TotalTask = PlayerControl.GameOptions.NumCommonTasks + PlayerControl.GameOptions.NumLongTasks + PlayerControl.GameOptions.NumShortTasks;
-
-                    if (TotalTask == 0)
-                    {
-                        PlayerControl.GameOptions.NumShortTasks = 1;
-                    }
-
-                    ChallengerMod.Roles.Bait.reportDelayMin = BaitReporttime.getFloat();
-                    ChallengerMod.Roles.Bait.reportDelayMax = (BaitReporttime.getFloat() + BaitReporttimeRnd.getFloat());
-
-                    Challenger.NuclearTimeMin = NuclearTime1.getFloat();
-                    Challenger.NuclearTimeAdd = (NuclearTime1.getFloat() + NuclearTimeRND.getFloat());
-
-                    ChallengerMod.Roles.Guesser.remainingShots = ChallengerOS.Utils.Option.CustomOptionHolder.Gestry.getFloat();
-                    ChallengerMod.Roles.Basilisk.CostParalize = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.getFloat();
-                    ChallengerMod.Roles.Basilisk.CostPetrify = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskPetrifyCost.getFloat();
-
-                    ChallengerMod.Roles.Basilisk.PetrifyMax = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat();
-                    ChallengerMod.Roles.Basilisk.PetrifyCount = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.getFloat();
-
-                    ChallengerMod.Roles.Basilisk.DoseMeet = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskMeet.getFloat();
-                    ChallengerMod.Roles.Basilisk.DoseKill = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskKill.getFloat();
-                    ChallengerMod.Roles.Basilisk.DoseStart = ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.getFloat();
-
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 0) { ChallengerMod.Roles.Cursed.SpeedModifieur = 0; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 1) { ChallengerMod.Roles.Cursed.SpeedModifieur = 1; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 2) { ChallengerMod.Roles.Cursed.SpeedModifieur = 2; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 3) { ChallengerMod.Roles.Cursed.SpeedModifieur = 3; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 4) { ChallengerMod.Roles.Cursed.SpeedModifieur = 4; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 5) { ChallengerMod.Roles.Cursed.SpeedModifieur = 5; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 6) { ChallengerMod.Roles.Cursed.SpeedModifieur = -2; }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.CursedSpeedModifieur.getSelection() == 7) { ChallengerMod.Roles.Cursed.SpeedModifieur = -1; }
-
-
-                    SetInformantTaskRemaining = (int)Math.Round(TotalTask);
-                    SetCost = (int)Math.Round(ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat() -1);
-                    SetCost0 = (int)Math.Round(ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat());
-
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.EaterCanDrag.getBool() == true) { ChallengerMod.Roles.Eater.CanDragg = true; }
-                    else { ChallengerMod.Roles.Eater.CanDragg = false; }
-
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskVote.getSelection() == 0)
-                    {
-                        ChallengerMod.Roles.Basilisk.CanPetrifyAndShield = true;
-                        ChallengerMod.Roles.Basilisk.CanPetrify = true;
-                    }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskVote.getSelection() == 1) 
-                    {
-                        ChallengerMod.Roles.Basilisk.CanPetrifyAndShield = false;
-                        ChallengerMod.Roles.Basilisk.CanPetrify = true;
-                    }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskVote.getSelection() == 2) 
-                    {
-                        ChallengerMod.Roles.Basilisk.CanPetrifyAndShield = true;
-                        ChallengerMod.Roles.Basilisk.CanPetrify = false;
-                    }
-                  
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.getFloat() > TotalTask)
-                    {
-                        ChallengerOS.Utils.Option.CustomOptionHolder.InforRemainingTask.updateSelection(SetInformantTaskRemaining);
-                    }
-
-
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
-                    {
-                        ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskParalizeCost.updateSelection(SetCost);
-                    }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskPetrifyCost.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
-                    {
-                        ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskPetrifyCost.updateSelection(SetCost);
-                    }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskKill.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
-                    {
-                        ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskKill.updateSelection(SetCost0);
-                    }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskMeet.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
-                    {
-                        ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskMeet.updateSelection(SetCost0);
-                    }
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.getFloat() > ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskCooldown.getFloat())
-                    {
-                        ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskStart.updateSelection(SetCost0);
-                    }
-
-
-                    if (ChallengerOS.Utils.Option.CustomOptionHolder.BasiliskSinglePetrify.getBool() == true) { ChallengerMod.Roles.Basilisk.SinglePetrify = true; }
-                    else { ChallengerMod.Roles.Basilisk.SinglePetrify = false; }
-
-                    if (ImpostorsKnowEachother.getSelection() == 0) { ChallengerMod.Challenger.UnknowImpostors = false; }
-                    else { ChallengerMod.Challenger.UnknowImpostors = true; }
-
-                    if (ImpostorCanKillFake.getBool() == false) { ChallengerMod.Challenger.ImpostorCanKillOther = false; }
-                    else { ChallengerMod.Challenger.ImpostorCanKillOther = true; }
-
-                    if (AssassinCanKillShield.getBool() == false) { ChallengerMod.Roles.Assassin.CanKillShield = false; }
-                    else { ChallengerMod.Roles.Assassin.CanKillShield = true; }
-
-                    if (BSheriff.getBool() == true) { ChallengerMod.Roles.Assassin.BSheriff = true; }
-                    else { ChallengerMod.Roles.Assassin.BSheriff = false; }
-
-                    if (BGuardian.getBool() == true) { ChallengerMod.Roles.Assassin.BGuardian = true; }
-                    else { ChallengerMod.Roles.Assassin.BGuardian = false; }
-
-                    if (BEngineer.getBool() == true) { ChallengerMod.Roles.Assassin.BEngineer = true; }
-                    else { ChallengerMod.Roles.Assassin.BEngineer = false; }
-
-                    if (BTimelord.getBool() == true) { ChallengerMod.Roles.Assassin.BTimelord = true; }
-                    else { ChallengerMod.Roles.Assassin.BTimelord = false; }
-
-                    if (BMystic.getBool() == true) { ChallengerMod.Roles.Assassin.BMystic = true; }
-                    else { ChallengerMod.Roles.Assassin.BSheriff = false; }
-
-                    if (BMayor.getBool() == true) { ChallengerMod.Roles.Assassin.BMayor = true; }
-                    else { ChallengerMod.Roles.Assassin.BMayor = false; }
-
-                    if (BDetective.getBool() == true) { ChallengerMod.Roles.Assassin.BDetective = true; }
-                    else { ChallengerMod.Roles.Assassin.BDetective = false; }
-
-                    if (BNightwatcher.getBool() == true) { ChallengerMod.Roles.Assassin.BNightwatcher = true; }
-                    else { ChallengerMod.Roles.Assassin.BNightwatcher = false; }
-
-                    if (BSpy.getBool() == true) { ChallengerMod.Roles.Assassin.BSpy = true; }
-                    else { ChallengerMod.Roles.Assassin.BSpy = false; }
-
-                    if (BInfor.getBool() == true) { ChallengerMod.Roles.Assassin.BInfor = true; }
-                    else { ChallengerMod.Roles.Assassin.BInfor = false; }
-
-                    if (BMentalist.getBool() == true) { ChallengerMod.Roles.Assassin.BMentalist = true; }
-                    else { ChallengerMod.Roles.Assassin.BMentalist = false; }
-
-                    if (BBuilder.getBool() == true) { ChallengerMod.Roles.Assassin.BBuilder = true; }
-                    else { ChallengerMod.Roles.Assassin.BBuilder = false; }
-
-                    if (BDictator.getBool() == true) { ChallengerMod.Roles.Assassin.BDictator = true; }
-                    else { ChallengerMod.Roles.Assassin.BDictator = false; }
-
-                    if (BSentinel.getBool() == true) { ChallengerMod.Roles.Assassin.BSentinel = true; }
-                    else { ChallengerMod.Roles.Assassin.BSentinel = false; }
-
-                    if (BDictator.getBool() == true) { ChallengerMod.Roles.Assassin.BDictator = true; }
-                    else { ChallengerMod.Roles.Assassin.BDictator = false; }
-
-                    if (BLawkeeper.getBool() == true) { ChallengerMod.Roles.Assassin.BLawkeeper = true; }
-                    else { ChallengerMod.Roles.Assassin.BDictator = false; }
-
-                    if (BImpo.getBool() == true) { ChallengerMod.Roles.Assassin.BImpo = true; }
-                    else { ChallengerMod.Roles.Assassin.BImpo = false; }
-
-
-
-
-                    if (EngineerCanVent.getBool() == true) { ChallengerMod.Roles.Engineer.CanVent = true; }
-                    else { ChallengerMod.Roles.Engineer.CanVent = false; }
-
-                    if (BaitCanVent.getBool() == true) { ChallengerMod.Roles.Bait.CanVent = true; }
-                    else { ChallengerMod.Roles.Bait.CanVent = false; }
-
-                    if (FakeCanVent.getBool() == true) { ChallengerMod.Roles.Fake.CanVent = true; }
-                    else { ChallengerMod.Roles.Fake.CanVent = false; }
-
-                    if (EaterCanVent.getBool() == true) { ChallengerMod.Roles.Eater.CanVent = true; }
-                    else { ChallengerMod.Roles.Eater.CanVent = false; }
-
-                    if (MercenaryCanVent.getBool() == true) { ChallengerMod.Roles.Mercenary.CanVent = true; }
-                    else { ChallengerMod.Roles.Mercenary.CanVent = false; }
-
-                    if (VectorCanVent.getBool() == true) { ChallengerMod.Roles.Vector.CanVent = true; }
-                    else { ChallengerMod.Roles.Vector.CanVent = false; }
-
-                    if (MorphlingCanVent.getBool() == true) { ChallengerMod.Roles.Morphling.CanVent = true; }
-                    else { ChallengerMod.Roles.Morphling.CanVent = false; }
-
-                    if (CamoCanVent.getBool() == true) { ChallengerMod.Roles.Scrambler.CanVent = true; }
-                    else { ChallengerMod.Roles.Scrambler.CanVent = false; }
-
-                    if (BarghestCanVent.getBool() == true) { ChallengerMod.Roles.Barghest.CanVent = true; }
-                    else { ChallengerMod.Roles.Barghest.CanVent = false; }
-
-                    if (GhostCanVent.getBool() == true) { ChallengerMod.Roles.Ghost.CanVent = true; }
-                    else { ChallengerMod.Roles.Ghost.CanVent = false; }
-
-                    if (WarCanVent.getBool() == true) { ChallengerMod.Roles.Sorcerer.CanVent = true; }
-                    else { ChallengerMod.Roles.Sorcerer.CanVent = false; }
-
-                    if (GuessCanVent.getBool() == true) { ChallengerMod.Roles.Guesser.CanVent = true; }
-                    else { ChallengerMod.Roles.Guesser.CanVent = false; }
-
-                    if (BasiliskCanVent.getBool() == true) { ChallengerMod.Roles.Basilisk.CanVent = true; }
-                    else { ChallengerMod.Roles.Basilisk.CanVent = false; }
-
-
-
-                    
-
-                    
-                    PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
-                    PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.GuardianAngel, 0, 0);
-                    PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Engineer, 0, 0);
-                    PlayerControl.GameOptions.RoleOptions.SetRoleRate(RoleTypes.Scientist, 0, 0);
-
-                    if (Challenger.IsrankedGameSet == 0) // Vanilla
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 10;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 1;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-
-
-
-                    }
-                    if (Challenger.IsrankedGameSet == 1) // Lite
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 10;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 1;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 2) // Tryhard
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 15;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 3;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 22.5f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 3) // Jester
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 11;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 2;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 4) // Eater
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 11;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 2;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 5) // Outlaw
-                    {
-                       PlayerControl.GameOptions.MaxPlayers = 12;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 2;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 6) // Cupid
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 13;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 2;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 7) // Culte
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 13;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 2;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-                    if (Challenger.IsrankedGameSet == 8) // Arsonist
-                    {
-                        PlayerControl.GameOptions.MaxPlayers = 12;
-                        PlayerControl.GameOptions.MapId = 2;
-                        PlayerControl.GameOptions.NumImpostors = 2;
-                        PlayerControl.GameOptions.ConfirmImpostor = false;
-                        PlayerControl.GameOptions.NumEmergencyMeetings = 2;
-                        PlayerControl.GameOptions.EmergencyCooldown = 15;
-                        PlayerControl.GameOptions.DiscussionTime = 15;
-                        PlayerControl.GameOptions.VotingTime = 150;
-                        PlayerControl.GameOptions.AnonymousVotes = true;
-                        PlayerControl.GameOptions.PlayerSpeedMod = 1f;
-                        PlayerControl.GameOptions.CrewLightMod = 0.5f;
-                        PlayerControl.GameOptions.ImpostorLightMod = 1f;
-                        PlayerControl.GameOptions.KillCooldown = 25f;
-                        PlayerControl.GameOptions.KillDistance = 0;
-                        PlayerControl.GameOptions.VisualTasks = false;
-                        PlayerControl.GameOptions.TaskBarMode = (TaskBarMode)1;
-                        PlayerControl.GameOptions.NumCommonTasks = 2;
-                        PlayerControl.GameOptions.NumShortTasks = 5;
-                        PlayerControl.GameOptions.NumLongTasks = 3;
-                    }
-
-
-                    if ((PlayerControl.GameOptions.NumImpostors == 1 && FakeAdd.getBool() == true) || ImpostorsKnowEachother.getSelection() == 1 && FakeAdd.getBool() == true)
-                    {
-                        FakeAdd.updateSelection(0);
-                    }
-                    if (PlayerControl.GameOptions.NumImpostors == 1 && ImpostorsKnowEachother.getSelection() == 1)
-                    {
-                        ImpostorsKnowEachother.updateSelection(0);
-                    }
-
-
-                    if (SherifAdd.getBool() == true)
-                    {
-                        HIDE_Sheriff.updateSelection(1);
-                    }
-                    else
-                    {
-                        if (CopyCatAdd.getBool() == true)
-                        {
-                            if ((CopyImp.getSelection() == 2 || CopySpe.getSelection() == 1))
+                            if (CopyCatAdd.getBool() == true)
                             {
-                                HIDE_Sheriff.updateSelection(1);
+                                if ((CopyImp.getSelection() == 2 || CopySpe.getSelection() == 1))
+                                {
+                                    HIDE_Sheriff.updateSelection(1);
+                                }
+                                else
+                                {
+                                    HIDE_Sheriff.updateSelection(0);
+                                }
                             }
                             else
                             {
                                 HIDE_Sheriff.updateSelection(0);
                             }
                         }
+
+
+
+                        if (BetterMapPL.getSelection() == 2) { HIDE_Map.updateSelection(1); }
+                        else { HIDE_Map.updateSelection(0); }
+
+
+
+                        if (engineerSpawnChance.getFloat() > 1 && engineerAdd.getBool() == true)
+                        {
+                            EngineerMin = 1f;
+                            g_role_Engineer = "engineer,";
+                        }
                         else
                         {
-                            HIDE_Sheriff.updateSelection(0);
+                            EngineerMin = 0f;
+                            g_role_Engineer = "";
                         }
-                    }
-
-
-                    
-                    if (BetterMapPL.getSelection() == 2) { HIDE_Map.updateSelection(1); } 
-                    else { HIDE_Map.updateSelection(0); }
-
-
-
-                    if (engineerSpawnChance.getFloat() > 1 && engineerAdd.getBool() == true)
-                    {
-                        EngineerMin = 1f;
-                        g_role_Engineer = "engineer,";
-                    }
-                    else
-                    {
-                        EngineerMin = 0f;
-                        g_role_Engineer = "";
-                    }
-
-                    if (engineerSpawnChance.getFloat() == 100 && engineerAdd.getBool() == true)
-                    {
-                        EngineerMax = 1f;
-                    }
-                    else
-                    {
-                        EngineerMax = 0f;
-                    }
-
-
-
-                    if (GuardianSpawnChance.getFloat() > 1 && GuardianAdd.getBool() == true)
-                    {
-                        GuardianMin = 1f;
-                        g_role_Guardian = "guardian,";
-                    }
-                    else
-                    {
-                        GuardianMin = 0f;
-                        g_role_Guardian = "";
-                    }
-
-                    if (GuardianSpawnChance.getFloat() == 100 && GuardianAdd.getBool() == true)
-                    {
-                        GuardianMax = 1f;
-                    }
-                    else
-                    {
-                        GuardianMax = 0f;
-                    }
-
-                    if (MateSpawnChance.getFloat() > 1 && MateAdd.getBool() == true)
-                    {
-                        Team1Min = 1f;
-                        Team2Min = 1f;
-                        g_role_Teammate = "teammate,";
-                    }
-                    else
-                    {
-                        Team1Min = 0f;
-                        Team2Min = 0f;
-                        g_role_Teammate = "";
-                    }
-
-                    if (MateSpawnChance.getFloat() == 100 && MateAdd.getBool() == true)
-                    {
-                        Team1Max = 1f;
-                        Team2Max = 1f;
-                    }
-                    else
-                    {
-                        Team1Max = 0f;
-                        Team2Max = 0f;
-                    }
-
-
-                    
-
-                    if (SherifAdd.getBool() == true && QTCrew.getFloat() != 0 && (SherifSpawnChance.getFloat() > 1 || Sherif2SpawnChance.getFloat() > 1 || Sherif3SpawnChance.getFloat() > 1))
-                    {
-                        g_role_Sheriff = "sheriff,";
-                    }
-                    else
-                    {
-                        g_role_Sheriff = "";
-                    }
-
-
-
-                    if (SherifSpawnChance.getFloat() > 1 && SherifAdd.getBool() == true)
-                    {
-                        SherifMin = 1f;
-                        
-                    }
-                    else
-                    {
-                        SherifMin = 0f;
-                    }
-
-                    if (SherifSpawnChance.getFloat() == 100 && SherifAdd.getBool() == true)
-                    {
-                        SherifMax = 1f;
-                    }
-                    else
-                    {
-                        SherifMax = 0f;
-                    }
-
-
-
-                    if (Sherif2SpawnChance.getFloat() > 1 && SherifAdd.getBool() == true)
-                    {
-                        Sherif2Min = 1f;
-                    }
-                    else
-                    {
-                        Sherif2Min = 0f;
-                    }
-
-                    if (Sherif2SpawnChance.getFloat() == 100 && SherifAdd.getBool() == true)
-                    {
-                        Sherif2Max = 1f;
-                    }
-                    else
-                    {
-                        Sherif2Max = 0f;
-                    }
-
-
-
-                    if (Sherif3SpawnChance.getFloat() > 1 && SherifAdd.getBool() == true)
-                    {
-                        Sherif3Min = 1f;
-                    }
-                    else
-                    {
-                        Sherif3Min = 0f;
-                    }
-
-                    if (Sherif3SpawnChance.getFloat() == 100 && SherifAdd.getBool() == true)
-                    {
-                        Sherif3Max = 1f;
-                    }
-                    else
-                    {
-                        Sherif3Max = 0f;
-                    }
-
-
-
-                    if (TimeLordSpawnChance.getFloat() > 1 && TimeLordAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        TimelordMin = 1f;
-                        g_role_Timelord = "timelord,";
-                    }
-                    else
-                    {
-                        TimelordMin = 0f;
-                        g_role_Timelord = "";
-                    }
-
-                    if (TimeLordSpawnChance.getFloat() == 100 && TimeLordAdd.getBool() == true)
-                    {
-                        TimelordMax = 1f;
-                    }
-                    else
-                    {
-                        TimelordMax = 0f;
-                    }
-
-
-
-                    if (HunterSpawnChance.getFloat() > 1 && HunterAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        HunterMin = 1f;
-                        g_role_Hunter = "hunter,";
-                    }
-                    else
-                    {
-                        HunterMin = 0f;
-                        g_role_Hunter = "";
-                    }
-
-                    if (HunterSpawnChance.getFloat() == 100 && HunterAdd.getBool() == true)
-                    {
-                        HunterMax = 1f;
-                    }
-                    else
-                    {
-                        HunterMax = 0f;
-                    }
-
-
-
-                    if (MysticSpawnChance.getFloat() > 1 && MysticAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        MysticMin = 1f;
-                        g_role_Mystic = "mystic,";
-                    }
-                    else
-                    {
-                        MysticMin = 0f;
-                        g_role_Mystic = "";
-                    }
-
-                    if (MysticSpawnChance.getFloat() == 100 && MysticAdd.getBool() == true)
-                    {
-                        MysticMax = 1f;
-                    }
-                    else
-                    {
-                        MysticMax = 0f;
-                    }
-
-
-
-                    if (SpiritSpawnChance.getFloat() > 1 && SpiritAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        SpiritMin = 1f;
-                        g_role_Spirit = "spirit,";
-                    }
-                    else
-                    {
-                        SpiritMin = 0f;
-                        g_role_Spirit = "";
-                    }
-
-                    if (SpiritSpawnChance.getFloat() == 100 && SpiritAdd.getBool() == true)
-                    {
-                        SpiritMax = 1f;
-                    }
-                    else
-                    {
-                        SpiritMax = 0f;
-                    }
-
-                    if (MentalistSpawnChance.getFloat() > 1 && MentalistAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        MentalistMin = 1f;
-                        g_role_Mentalist = "mentalist,";
-                    }
-                    else
-                    {
-                        MentalistMin = 0f;
-                        g_role_Mentalist = "";
-
-                    }
-
-                    if (MentalistSpawnChance.getFloat() == 100 && MentalistAdd.getBool() == true)
-                    {
-                        MentalistMax = 1f;
-                    }
-                    else
-                    {
-                        MentalistMax = 0f;
-                    }
-
-
-
-                    if (MayorSpawnChance.getFloat() > 1 && MayorAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        MayorMin = 1f;
-                        g_role_Mayor = "mayor,";
-                    }
-                    else
-                    {
-                        MayorMin = 0f;
-                        g_role_Mayor = "";
-                    }
-
-                    if (MayorSpawnChance.getFloat() == 100 && MayorAdd.getBool() == true)
-                    {
-                        MayorMax = 1f;
-                    }
-                    else
-                    {
-                        MayorMax = 0f;
-                    }
-
-
-
-                    if (DetectiveSpawnChance.getFloat() > 1 && DetectiveAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        DetectiveMin = 1f;
-                        g_role_Detective = "detective,";
-                    }
-                    else
-                    {
-                        DetectiveMin = 0f;
-                        g_role_Detective = "";
-                    }
-
-                    if (DetectiveSpawnChance.getFloat() == 100 && DetectiveAdd.getBool() == true)
-                    {
-                        DetectiveMax = 1f;
-                    }
-                    else
-                    {
-                        DetectiveMax = 0f;
-                    }
-
-                    if (BuilderSpawnChance.getFloat() > 1 && BuilderAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        BuilderMin = 1f;
-                        g_role_Builder = "builder,";
-                    }
-                    else
-                    {
-                        BuilderMin = 0f;
-                        g_role_Builder = "";
-                    }
-
-                    if (BuilderSpawnChance.getFloat() == 100 && BuilderAdd.getBool() == true)
-                    {
-                        BuilderMax = 1f;
-                    }
-                    else
-                    {
-                        BuilderMax = 0f;
-                    }
-                   
-                    if (FakeSpawnChance.getFloat() > 1 && FakeAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        g_role_Fake = "fake,";
-                    }
-                    else
-                    {
-                        g_role_Fake = "";
-                    }
-
-                    
-
-                    if (NightwatcherSpawnChance.getFloat() > 1 && NightwatcherAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        NightwatcherMin = 1f;
-                        g_role_Nightwatch = "nightwatch,";
-                    }
-                    else
-                    {
-                        NightwatcherMin = 0f;
-                        g_role_Nightwatch = "";
-                    }
-
-                    if (NightwatcherSpawnChance.getFloat() == 100 && NightwatcherAdd.getBool() == true)
-                    {
-                        NightwatcherMax = 1f;
-                    }
-                    else
-                    {
-                        NightwatcherMax = 0f;
-                    }
-
-
-
-                    if (SpySpawnChance.getFloat() > 1 && SpyAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        SpyMin = 1f;
-                        g_role_Spy = "spy,";
-                    }
-                    else
-                    {
-                        SpyMin = 0f;
-                        g_role_Spy = "";
-                    }
-
-                    if (SpySpawnChance.getFloat() == 100 && SpyAdd.getBool() == true)
-                    {
-                        SpyMax = 1f;
-                    }
-                    else
-                    {
-                        SpyMax = 0f;
-                    }
-
-
-
-                    if (InforSpawnChance.getFloat() > 1 && InforAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        InforMin = 1f;
-                        g_role_Informant = "informant,";
-                    }
-                    else
-                    {
-                        InforMin = 0f;
-                        g_role_Informant = "";
-                    }
-
-                    if (InforSpawnChance.getFloat() == 100 && InforAdd.getBool() == true)
-                    {
-                        InforMax = 1f;
-                    }
-                    else
-                    {
-                        InforMax = 0f;
-                    }
-
-
-
-                    if (BaitSpawnChance.getFloat() > 1 && BaitAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        BaitMin = 1f;
-                        g_role_Bait = "bait,";
-                    }
-                    else
-                    {
-                        BaitMin = 0f;
-                        g_role_Bait = "";
-                    }
-
-                    if (BaitSpawnChance.getFloat() == 100 && BaitAdd.getBool() == true)
-                    {
-                        BaitMax = 1f;
-                    }
-                    else
-                    {
-                        BaitMax = 0f;
-                    }
-
-
-
-                    if (JesterSpawnChance.getFloat() > 1 && JesterAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        JesterMin = 1f;
-                        g_role_Jester = "jester,";
-                    }
-                    else
-                    {
-                        JesterMin = 0f;
-                        g_role_Jester = "";
-                    }
-
-                    if (JesterSpawnChance.getFloat() == 100 && JesterAdd.getBool() == true)
-                    {
-                        JesterMax = 1f;
-                    }
-                    else
-                    {
-                        JesterMax = 0f;
-                    }
-
-                    if (CursedSpawnChance.getFloat() > 1 && CursedAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        CursedMin = 1f;
-                        g_role_Cursed = "cursed,";
-                    }
-                    else
-                    {
-                        CursedMin = 0f;
-                        g_role_Cursed = "";
-                    }
-
-                    if (CursedSpawnChance.getFloat() == 100 && CursedAdd.getBool() == true)
-                    {
-                        CursedMax = 1f;
-                    }
-                    else
-                    {
-                        CursedMax = 0f;
-                    }
-
-
-
-                    if (MercenarySpawnChance.getFloat() > 1 && MercenaryAdd.getBool() == true && QTDuo.getFloat() != 0)
-                    {
-                        MercenaryMin = 1f;
-                        g_role_Mercenary = "mercenary,";
-                    }
-                    else
-                    {
-                        MercenaryMin = 0f;
-                        g_role_Mercenary = "";
-                    }
-
-                    if (MercenarySpawnChance.getFloat() == 100 && MercenaryAdd.getBool() == true)
-                    {
-                        MercenaryMax = 1f;
-                    }
-                    else
-                    {
-                        MercenaryMax = 0f;
-                    }
-
-                    if (RevengerSpawnChance.getFloat() > 1 && RevengerAdd.getBool() == true && QTDuo.getFloat() != 0)
-                    {
-                        RevengerMin = 1f;
-                        g_role_Revenger = "revenger,";
-                    }
-                    else
-                    {
-                        RevengerMin = 0f;
-                        g_role_Revenger = "";
-                    }
-
-                    if (RevengerSpawnChance.getFloat() == 100 && RevengerAdd.getBool() == true)
-                    {
-                        RevengerMax = 1f;
-                    }
-                    else
-                    {
-                        RevengerMax = 0f;
-                    }
-
-
-                    if (CopyCatSpawnChance.getFloat() > 1 && CopyCatAdd.getBool() == true && QTDuo.getFloat() != 0)
-                    {
-                        CopyCatMin = 1f;
-                        g_role_CopyCat = "copycat,";
-                    }
-                    else
-                    {
-                        CopyCatMin = 0f;
-                        g_role_CopyCat = "";
-                    }
-
-                    if (CopyCatSpawnChance.getFloat() == 100 && CopyCatAdd.getBool() == true)
-                    {
-                        CopyCatMax = 1f;
-                    }
-                    else
-                    {
-                        CopyCatMax = 0f;
-                    }
-
-                    if (DictatorSpawnChance.getFloat() > 1 && DictatorAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        DictatorMin = 1f;
-                        g_role_Dictator = "dictator,";
-                    }
-                    else
-                    {
-                        DictatorMin = 0f;
-                        g_role_Dictator = "";
-                    }
-
-                    if (DictatorSpawnChance.getFloat() == 100 && DictatorAdd.getBool() == true)
-                    {
-                        DictatorMax = 1f;
-                    }
-                    else
-                    {
-                        DictatorMax = 0f;
-                    }
-
-                    if (SentinelSpawnChance.getFloat() > 1 && SentinelAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        SentinelMin = 1f;
-                        g_role_Sentinel = "sentinel,";
-                    }
-                    else
-                    {
-                        SentinelMin = 0f;
-                        g_role_Sentinel = "";
-                    }
-
-                    if (SentinelSpawnChance.getFloat() == 100 && SentinelAdd.getBool() == true)
-                    {
-                        SentinelMax = 1f;
-                    }
-                    else
-                    {
-                        SentinelMax = 0f;
-                    }
-                    if (LawkeeperSpawnChance.getFloat() > 1 && LawkeeperAdd.getBool() == true && QTCrew.getFloat() != 0)
-                    {
-                        LawkeeperMin = 1f;
-                        g_role_Lawkeeper = "lawkeeper,";
-                    }
-                    else
-                    {
-                        LawkeeperMin = 0f;
-                        g_role_Lawkeeper = "";
-                    }
-
-                    if (LawkeeperSpawnChance.getFloat() == 100 && LawkeeperAdd.getBool() == true)
-                    {
-                        LawkeeperMax = 1f;
-                    }
-                    else
-                    {
-                        LawkeeperMax = 0f;
-                    }
-
-
-
-                    if (SorcererSpawnChance.getFloat() > 1 && SorcererAdd.getBool() == true && QTDuo.getFloat() != 0)
-                    {
-                        SorcererMin = 1f;
-                        g_role_Sorcerer = "survivor,";
-                    }
-                    else
-                    {
-                        SorcererMin = 0f;
-                        g_role_Sorcerer = "";
-                    }
-
-                    if (SorcererSpawnChance.getFloat() == 100 && SorcererAdd.getBool() == true)
-                    {
-                        SorcererMax = 1f;
-                    }
-                    else
-                    {
-                        SorcererMax = 0f;
-                    }
-
-                    if (EaterSpawnChance.getFloat() > 1 && EaterAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        EaterMin = 1f;
-                        g_role_Eater = "eater,";
-                    }
-                    else
-                    {
-                        EaterMin = 0f;
-                        g_role_Eater = "";
-                    }
-
-                    if (EaterSpawnChance.getFloat() == 100 && EaterAdd.getBool() == true)
-                    {
-                        EaterMax = 1f;
-                    }
-                    else
-                    {
-                        EaterMax = 0f;
-                    }
-
-
-                    if (CupidSpawnChance.getFloat() > 1 && CupidAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        CupidMin = 1f;
-                        g_role_Cupid = "cupid,";
-                    }
-                    else
-                    {
-                        CupidMin = 0f;
-                        g_role_Cupid = "";
-                    }
-
-                    if (CupidSpawnChance.getFloat() == 100 && CupidAdd.getBool() == true)
-                    {
-                        CupidMax = 1f;
-                    }
-                    else
-                    {
-                        CupidMax = 0f;
-                    }
-
-                    if (CultisteSpawnChance.getFloat() > 1 && CultisteAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        CultisteMin = 1f;
-                        g_role_Cultist = "cultist,";
-                    }
-                    else
-                    {
-                        CultisteMin = 0f;
-                        g_role_Cultist = "";
-                    }
-
-                    if (CultisteSpawnChance.getFloat() == 100 && CultisteAdd.getBool() == true)
-                    {
-                        CultisteMax = 1f;
-                    }
-                    else
-                    {
-                        CultisteMax = 0f;
-                    }
-
-                    if (OutlawSpawnChance.getFloat() > 1 && OutlawAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        OutlawMin = 1f;
-                        g_role_Outlaw = "outlaw,";
-                    }
-                    else
-                    {
-                        OutlawMin = 0f;
-                        g_role_Outlaw = "";
-                    }
-
-                    if (OutlawSpawnChance.getFloat() == 100 && OutlawAdd.getBool() == true)
-                    {
-                        OutlawMax = 1f;
-                    }
-                    else
-                    {
-                        OutlawMax = 0f;
-                    }
-                    if (ArsonistSpawnChance.getFloat() > 1 && ArsonistAdd.getBool() == true && QTSpe.getFloat() != 0)
-                    {
-                        ArsonistMin = 1f;
-                        g_role_Arsonist = "arsonist,";
-                    }
-                    else
-                    {
-                        ArsonistMin = 0f;
-                        g_role_Arsonist = "";
-                    }
-
-                    if (ArsonistSpawnChance.getFloat() == 100 && ArsonistAdd.getBool() == true)
-                    {
-                        ArsonistMax = 1f;
-                    }
-                    else
-                    {
-                        ArsonistMax = 0f;
-                    }
-
-
-
-                    if (AssassinSpawnChance.getFloat() > 1 && AssassinAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        AssassinMin = 1f;
-                        g_role_Assassin = "assassin,";
-                    }
-                    else
-                    {
-                        AssassinMin = 0f;
-                        g_role_Assassin = "";
-                    }
-
-                    if (AssassinSpawnChance.getFloat() == 100 && AssassinAdd.getBool() == true)
-                    {
-                        AssassinMax = 1f;
-                    }
-                    else
-                    {
-                        AssassinMax = 0f;
-                    }
-
-
-
-                    if (VectorSpawnChance.getFloat() > 1 && VectorAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        VectorMin = 1f;
-                        g_role_Vector = "vector,";
-                    }
-                    else
-                    {
-                        VectorMin = 0f;
-                        g_role_Vector = "";
-                    }
-
-                    if (VectorSpawnChance.getFloat() == 100 && VectorAdd.getBool() == true)
-                    {
-                        VectorMax = 1f;
-                    }
-                    else
-                    {
-                        VectorMax = 0f;
-                    }
-
-
-
-                    if (MorphlingSpawnChance.getFloat() > 1 && MorphlingAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        MorphMin = 1f;
-                        g_role_Morphling = "morphling,";
-                    }
-                    else
-                    {
-                        MorphMin = 0f;
-                        g_role_Morphling = "";
-                    }
-
-                    if (MorphlingSpawnChance.getFloat() == 100 && MorphlingAdd.getBool() == true)
-                    {
-                        MorphMax = 1f;
-                    }
-                    else
-                    {
-                        MorphMax = 0f;
-                    }
-
-
-
-                    if (CamoSpawnChance.getFloat() > 1 && CamoAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        CamoMin = 1f;
-                        g_role_Scrambler = "scrambler,";
-                    }
-                    else
-                    {
-                        CamoMin = 0f;
-                        g_role_Scrambler = "";
-                    }
-
-                    if (CamoSpawnChance.getFloat() == 100 && CamoAdd.getBool() == true)
-                    {
-                        CamoMax = 1f;
-                    }
-                    else
-                    {
-                        CamoMax = 0f;
-                    }
-
-
-
-
-                    if (BarghestSpawnChance.getFloat() > 1 && BarghestAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        BarghestMin = 1f;
-                        g_role_Barghest = "barghest,";
-                    }
-                    else
-                    {
-                        BarghestMin = 0f;
-                        g_role_Barghest = "";
-                    }
-
-                    if (BarghestSpawnChance.getFloat() == 100 && BarghestAdd.getBool() == true)
-                    {
-                        BarghestMax = 1f;
-                    }
-                    else
-                    {
-                        BarghestMax = 0f;
-                    }
-
-
-                    if (GhostSpawnChance.getFloat() > 1 && GhostAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        GhostMin = 1f;
-                        g_role_Ghost = "ghost,";
-                    }
-                    else
-                    {
-                        GhostMin = 0f;
-                        g_role_Ghost = "";
-                    }
-
-                    if (GhostSpawnChance.getFloat() == 100 && GhostAdd.getBool() == true)
-                    {
-                        GhostMax = 1f;
-                    }
-                    else
-                    {
-                        GhostMax = 0f;
-                    }
-
-                    if (WarSpawnChance.getFloat() > 1 && WarAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        Impo4Min = 1f;
-                        g_role_Survivor = "sorcerer,";
-                    }
-                    else
-                    {
-                        Impo4Min = 0f;
-                        g_role_Survivor = "";
-                    }
-
-                    if (WarSpawnChance.getFloat() == 100 && WarAdd.getBool() == true)
-                    {
-                        Impo4Max = 1f;
-                    }
-                    else
-                    {
-                        Impo4Max = 0f;
-                    }
-                    if (GuesserSpawnChance.getFloat() > 1 && GuesserAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        GuesserMin = 1f;
-                        g_role_Guesser = "guesser,";
-                    }
-                    else
-                    {
-                        GuesserMin = 0f;
-                        g_role_Guesser = "";
-                    }
-
-                    if (GuesserSpawnChance.getFloat() == 100 && GuesserAdd.getBool() == true)
-                    {
-                        GuesserMax = 1f;
-                    }
-                    else
-                    {
-                        GuesserMax = 0f;
-                    }
-
-                    if (BasiliskSpawnChance.getFloat() > 1 && BasiliskAdd.getBool() == true && QTImp.getFloat() != 0)
-                    {
-                        BasiliskMin = 1f;
-                        g_role_Basilisk = "basilisk,";
-                    }
-                    else
-                    {
-                        BasiliskMin = 0f;
-                        g_role_Basilisk = "";
-                    }
-
-                    if (BasiliskSpawnChance.getFloat() == 100 && BasiliskAdd.getBool() == true)
-                    {
-                        BasiliskMax = 1f;
-                    }
-                    else
-                    {
-                        BasiliskMax = 0f;
-                    }
-
-                    g_role_All = g_role_Sheriff + g_role_Guardian + g_role_Engineer + g_role_Timelord + g_role_Hunter + g_role_Mystic + g_role_Spirit + g_role_Mayor + g_role_Detective + g_role_Nightwatch + g_role_Spy + g_role_Informant
-                         + g_role_Bait + g_role_Mentalist + g_role_Builder + g_role_Dictator + g_role_Sentinel + g_role_Teammate + g_role_Lawkeeper + g_role_Fake + g_role_Doctor + g_role_Leader + g_role_Slave + g_role_Traveler
-                         + g_role_Assassin + g_role_Vector + g_role_Morphling + g_role_Scrambler + g_role_Barghest + g_role_Ghost + g_role_Sorcerer + g_role_Guesser + g_role_Basilisk + g_role_Mesmer + g_role_Saboteur + g_role_Reaper
-                         + g_role_Survivor + g_role_Mercenary + g_role_CopyCat + g_role_Revenger + g_role_Jester + g_role_Outlaw + g_role_Eater + g_role_Arsonist + g_role_Cultist + g_role_Cupid + g_role_Cursed; 
-
-
-                    
-
-
-                    if (Eatvalueforwin.getSelection() == 0)
-                    {
-                        Eatervaluewin = 1f;
-                    }
-                    if (Eatvalueforwin.getSelection() == 1)
-                    {
-                        Eatervaluewin = 2f;
-                    }
-                    if (Eatvalueforwin.getSelection() == 2)
-                    {
-                        Eatervaluewin = 3f;
-                    }
-                    if (Eatvalueforwin.getSelection() == 3)
-                    {
-                        Eatervaluewin = 4f;
-                    }
-                    if (Eatvalueforwin.getSelection() == 4)
-                    {
-                        Eatervaluewin = 5f;
-                    }
-
-                    if (RankedInt.getFloat() == 0f)
-                    {
-                        Challenger.IsrankedGameSet = 0f;
-                    }
-                    if (RankedInt.getFloat() == 1f)
-                    {
-                        Challenger.IsrankedGameSet = 1f;
-                    }
-                    if (RankedInt.getFloat() == 2f)
-                    {
-                        Challenger.IsrankedGameSet = 2f;
-                    }
-                    if (RankedInt.getFloat() == 3f)
-                    {
-                        Challenger.IsrankedGameSet = 3f;
-                    }
-                    if (RankedInt.getFloat() == 4f)
-                    {
-                        Challenger.IsrankedGameSet = 4f;
-                    }
-                    if (RankedInt.getFloat() == 5f)
-                    {
-                        Challenger.IsrankedGameSet = 5f;
-                    }
-                    if (RankedInt.getFloat() == 6f)
-                    {
-                        Challenger.IsrankedGameSet = 6f;
-                    }
-                    if (RankedInt.getFloat() == 7f)
-                    {
-                        Challenger.IsrankedGameSet = 7f;
-                    }
-                    if (RankedInt.getFloat() == 8f)
-                    {
-                        Challenger.IsrankedGameSet = 8f;
-                    }
-                    if (RankedInt.getFloat() == 100f)
-                    {
-                        Challenger.IsrankedGameSet = 100f;
-                    }
-
-                    //KICK SERVICE
-                    if (ChallengerMod.Challenger.IsrankedGame == false && Ranked.getBool() == false)
-                    {
-
-                    }
-                    else if (ChallengerMod.Challenger.IsrankedGame == true && Ranked.getBool() == true)
-                    {
-
-                    }
-                    else if (ChallengerMod.Challenger.IsrankedGame == true && Ranked.getBool() == false)
-                    {
-                        SceneChanger.ChangeScene("MainMenu");
-                        AmongUsClient.Instance.DisconnectInternal(DisconnectReasons.ServerRequest);
-                    }
-                    else if (ChallengerMod.Challenger.IsrankedGame == false && Ranked.getBool() == true)
-                    {
-                        SceneChanger.ChangeScene("MainMenu");
-                        AmongUsClient.Instance.DisconnectInternal(DisconnectReasons.ServerRequest);
-                    }
-                    else
-                    {
 
+
+
+
+
+                        if (GuardianSpawnChance.getFloat() > 1 && GuardianAdd.getBool() == true)
+                        {
+                            GuardianMin = 1f;
+                            g_role_Guardian = "guardian,";
+                        }
+                        else
+                        {
+                            GuardianMin = 0f;
+                            g_role_Guardian = "";
+                        }
+
+
+
+                        if (MateSpawnChance.getFloat() > 1 && MateAdd.getBool() == true)
+                        {
+                            Team1Min = 1f;
+                            Team2Min = 1f;
+                            g_role_Teammate = "teammate,";
+                        }
+                        else
+                        {
+                            Team1Min = 0f;
+                            Team2Min = 0f;
+                            g_role_Teammate = "";
+                        }
+
+
+
+
+
+                        if (SherifAdd.getBool() == true && QTCrew.getFloat() != 0 && (SherifSpawnChance.getFloat() > 1 || Sherif2SpawnChance.getFloat() > 1 || Sherif3SpawnChance.getFloat() > 1))
+                        {
+                            g_role_Sheriff = "sheriff,";
+                        }
+                        else
+                        {
+                            g_role_Sheriff = "";
+                        }
+
+
+
+                        if (SherifSpawnChance.getFloat() > 1 && SherifAdd.getBool() == true)
+                        {
+                            SherifMin = 1f;
+
+                        }
+                        else
+                        {
+                            SherifMin = 0f;
+                        }
+
+                        if (SherifSpawnChance.getFloat() == 100 && SherifAdd.getBool() == true)
+                        {
+                            Sheriff1Max = 1f;
+                        }
+                        else
+                        {
+                            Sheriff1Max = 0f;
+                        }
+
+
+
+                        if (Sherif2SpawnChance.getFloat() > 1 && SherifAdd.getBool() == true)
+                        {
+                            Sherif2Min = 1f;
+                        }
+                        else
+                        {
+                            Sherif2Min = 0f;
+                        }
+
+                        if (Sherif2SpawnChance.getFloat() == 100 && SherifAdd.getBool() == true)
+                        {
+                            Sheriff2Max = 1f;
+                        }
+                        else
+                        {
+                            Sheriff2Max = 0f;
+                        }
+
+
+
+                        if (Sherif3SpawnChance.getFloat() > 1 && SherifAdd.getBool() == true)
+                        {
+                            Sherif3Min = 1f;
+                        }
+                        else
+                        {
+                            Sherif3Min = 0f;
+                        }
+
+                        if (Sherif3SpawnChance.getFloat() == 100 && SherifAdd.getBool() == true)
+                        {
+                            Sheriff3Max = 1f;
+                        }
+                        else
+                        {
+                            Sheriff3Max = 0f;
+                        }
+
+
+
+                        if (TimeLordSpawnChance.getFloat() > 1 && TimeLordAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            TimelordMin = 1f;
+                            g_role_Timelord = "timelord,";
+                        }
+                        else
+                        {
+                            TimelordMin = 0f;
+                            g_role_Timelord = "";
+                        }
+
+
+
+
+
+                        if (HunterSpawnChance.getFloat() > 1 && HunterAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            HunterMin = 1f;
+                            g_role_Hunter = "hunter,";
+                        }
+                        else
+                        {
+                            HunterMin = 0f;
+                            g_role_Hunter = "";
+                        }
+
+
+
+                        if (MysticSpawnChance.getFloat() > 1 && MysticAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            MysticMin = 1f;
+                            g_role_Mystic = "mystic,";
+                        }
+                        else
+                        {
+                            MysticMin = 0f;
+                            g_role_Mystic = "";
+                        }
+
+
+
+                        if (SpiritSpawnChance.getFloat() > 1 && SpiritAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            SpiritMin = 1f;
+                            g_role_Spirit = "spirit,";
+                        }
+                        else
+                        {
+                            SpiritMin = 0f;
+                            g_role_Spirit = "";
+                        }
+
+
+                        if (MentalistSpawnChance.getFloat() > 1 && MentalistAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            MentalistMin = 1f;
+                            g_role_Mentalist = "mentalist,";
+                        }
+                        else
+                        {
+                            MentalistMin = 0f;
+                            g_role_Mentalist = "";
+
+                        }
+
+
+                        if (MayorSpawnChance.getFloat() > 1 && MayorAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            MayorMin = 1f;
+                            g_role_Mayor = "mayor,";
+                        }
+                        else
+                        {
+                            MayorMin = 0f;
+                            g_role_Mayor = "";
+                        }
+
+
+
+                        if (DetectiveSpawnChance.getFloat() > 1 && DetectiveAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            DetectiveMin = 1f;
+                            g_role_Detective = "detective,";
+                        }
+                        else
+                        {
+                            DetectiveMin = 0f;
+                            g_role_Detective = "";
+                        }
+
+
+
+                        if (BuilderSpawnChance.getFloat() > 1 && BuilderAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            BuilderMin = 1f;
+                            g_role_Builder = "builder,";
+                        }
+                        else
+                        {
+                            BuilderMin = 0f;
+                            g_role_Builder = "";
+                        }
+
+
+                        if (FakeSpawnChance.getFloat() > 1 && FakeAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            FakeMin = 1f;
+                            g_role_Fake = "fake,";
+                        }
+                        else
+                        {
+                            FakeMin = 0f;
+                            g_role_Fake = "";
+                        }
+
+                        if (LeaderSpawnChance.getFloat() > 1 && LeaderAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            LeaderMin = 1f;
+                            g_role_Leader = "leader,";
+                        }
+                        else
+                        {
+                            LeaderMin = 0f;
+                            g_role_Leader = "";
+                        }
+
+
+                        if (NightwatcherSpawnChance.getFloat() > 1 && NightwatcherAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            NightwatcherMin = 1f;
+                            g_role_Nightwatch = "nightwatch,";
+                        }
+                        else
+                        {
+                            NightwatcherMin = 0f;
+                            g_role_Nightwatch = "";
+                        }
+
+
+
+
+
+                        if (SpySpawnChance.getFloat() > 1 && SpyAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            SpyMin = 1f;
+                            g_role_Spy = "spy,";
+                        }
+                        else
+                        {
+                            SpyMin = 0f;
+                            g_role_Spy = "";
+                        }
+
+
+
+
+
+                        if (InforSpawnChance.getFloat() > 1 && InforAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            InforMin = 1f;
+                            g_role_Informant = "informant,";
+                        }
+                        else
+                        {
+                            InforMin = 0f;
+                            g_role_Informant = "";
+                        }
+
+
+
+
+
+                        if (BaitSpawnChance.getFloat() > 1 && BaitAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            BaitMin = 1f;
+                            g_role_Bait = "bait,";
+                        }
+                        else
+                        {
+                            BaitMin = 0f;
+                            g_role_Bait = "";
+                        }
+
+
+
+
+
+                        if (JesterSpawnChance.getFloat() > 1 && JesterAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            JesterMin = 1f;
+                            g_role_Jester = "jester,";
+                        }
+                        else
+                        {
+                            JesterMin = 0f;
+                            g_role_Jester = "";
+                        }
+
+
+                        if (CursedSpawnChance.getFloat() > 1 && CursedAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            CursedMin = 1f;
+                            g_role_Cursed = "cursed,";
+                        }
+                        else
+                        {
+                            CursedMin = 0f;
+                            g_role_Cursed = "";
+                        }
+
+
+
+
+
+                        if (MercenarySpawnChance.getFloat() > 1 && MercenaryAdd.getBool() == true && QTDuo.getFloat() != 0)
+                        {
+                            MercenaryMin = 1f;
+                            g_role_Mercenary = "mercenary,";
+                        }
+                        else
+                        {
+                            MercenaryMin = 0f;
+                            g_role_Mercenary = "";
+                        }
+
+
+
+                        if (RevengerSpawnChance.getFloat() > 1 && RevengerAdd.getBool() == true && QTDuo.getFloat() != 0)
+                        {
+                            RevengerMin = 1f;
+                            g_role_Revenger = "revenger,";
+                        }
+                        else
+                        {
+                            RevengerMin = 0f;
+                            g_role_Revenger = "";
+                        }
+
+
+
+
+                        if (CopyCatSpawnChance.getFloat() > 1 && CopyCatAdd.getBool() == true && QTDuo.getFloat() != 0)
+                        {
+                            CopyCatMin = 1f;
+                            g_role_CopyCat = "copycat,";
+                        }
+                        else
+                        {
+                            CopyCatMin = 0f;
+                            g_role_CopyCat = "";
+                        }
+
+
+
+                        if (DictatorSpawnChance.getFloat() > 1 && DictatorAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            DictatorMin = 1f;
+                            g_role_Dictator = "dictator,";
+                        }
+                        else
+                        {
+                            DictatorMin = 0f;
+                            g_role_Dictator = "";
+                        }
+
+
+
+                        if (SentinelSpawnChance.getFloat() > 1 && SentinelAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            SentinelMin = 1f;
+                            g_role_Sentinel = "sentinel,";
+                        }
+                        else
+                        {
+                            SentinelMin = 0f;
+                            g_role_Sentinel = "";
+                        }
+
+
+                        if (LawkeeperSpawnChance.getFloat() > 1 && LawkeeperAdd.getBool() == true && QTCrew.getFloat() != 0)
+                        {
+                            LawkeeperMin = 1f;
+                            g_role_Lawkeeper = "lawkeeper,";
+                        }
+                        else
+                        {
+                            LawkeeperMin = 0f;
+                            g_role_Lawkeeper = "";
+                        }
+
+
+
+
+                        if (SorcererSpawnChance.getFloat() > 1 && SorcererAdd.getBool() == true && QTDuo.getFloat() != 0)
+                        {
+                            SorcererMin = 1f;
+                            g_role_Sorcerer = "survivor,";
+                        }
+                        else
+                        {
+                            SorcererMin = 0f;
+                            g_role_Sorcerer = "";
+                        }
+
+
+
+                        if (EaterSpawnChance.getFloat() > 1 && EaterAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            EaterMin = 1f;
+                            g_role_Eater = "eater,";
+                        }
+                        else
+                        {
+                            EaterMin = 0f;
+                            g_role_Eater = "";
+                        }
+
+
+
+                        if (CupidSpawnChance.getFloat() > 1 && CupidAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            CupidMin = 1f;
+                            g_role_Cupid = "cupid,";
+                        }
+                        else
+                        {
+                            CupidMin = 0f;
+                            g_role_Cupid = "";
+                        }
+
+
+
+                        if (CultisteSpawnChance.getFloat() > 1 && CultisteAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            CultisteMin = 1f;
+                            g_role_Cultist = "cultist,";
+                        }
+                        else
+                        {
+                            CultisteMin = 0f;
+                            g_role_Cultist = "";
+                        }
+
+
+                        if (OutlawSpawnChance.getFloat() > 1 && OutlawAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            OutlawMin = 1f;
+                            g_role_Outlaw = "outlaw,";
+                        }
+                        else
+                        {
+                            OutlawMin = 0f;
+                            g_role_Outlaw = "";
+                        }
+
+                        if (ArsonistSpawnChance.getFloat() > 1 && ArsonistAdd.getBool() == true && QTSpe.getFloat() != 0)
+                        {
+                            ArsonistMin = 1f;
+                            g_role_Arsonist = "arsonist,";
+                        }
+                        else
+                        {
+                            ArsonistMin = 0f;
+                            g_role_Arsonist = "";
+                        }
+
+
+
+
+
+                        if (AssassinSpawnChance.getFloat() > 1 && AssassinAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            AssassinMin = 1f;
+                            g_role_Assassin = "assassin,";
+                        }
+                        else
+                        {
+                            AssassinMin = 0f;
+                            g_role_Assassin = "";
+                        }
+
+
+
+                        if (VectorSpawnChance.getFloat() > 1 && VectorAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            VectorMin = 1f;
+                            g_role_Vector = "vector,";
+                        }
+                        else
+                        {
+                            VectorMin = 0f;
+                            g_role_Vector = "";
+                        }
+
+
+
+
+                        if (MorphlingSpawnChance.getFloat() > 1 && MorphlingAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            MorphMin = 1f;
+                            g_role_Morphling = "morphling,";
+                        }
+                        else
+                        {
+                            MorphMin = 0f;
+                            g_role_Morphling = "";
+                        }
+
+
+
+
+                        if (CamoSpawnChance.getFloat() > 1 && CamoAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            CamoMin = 1f;
+                            g_role_Scrambler = "scrambler,";
+                        }
+                        else
+                        {
+                            CamoMin = 0f;
+                            g_role_Scrambler = "";
+                        }
+
+
+
+
+                        if (BarghestSpawnChance.getFloat() > 1 && BarghestAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            BarghestMin = 1f;
+                            g_role_Barghest = "barghest,";
+                        }
+                        else
+                        {
+                            BarghestMin = 0f;
+                            g_role_Barghest = "";
+                        }
+
+
+
+                        if (GhostSpawnChance.getFloat() > 1 && GhostAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            GhostMin = 1f;
+                            g_role_Ghost = "ghost,";
+                        }
+                        else
+                        {
+                            GhostMin = 0f;
+                            g_role_Ghost = "";
+                        }
+
+
+
+                        if (WarSpawnChance.getFloat() > 1 && WarAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            Impo4Min = 1f;
+                            g_role_Survivor = "sorcerer,";
+                        }
+                        else
+                        {
+                            Impo4Min = 0f;
+                            g_role_Survivor = "";
+                        }
+
+                        if (GuesserSpawnChance.getFloat() > 1 && GuesserAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            GuesserMin = 1f;
+                            g_role_Guesser = "guesser,";
+                        }
+                        else
+                        {
+                            GuesserMin = 0f;
+                            g_role_Guesser = "";
+                        }
+
+
+
+                        if (BasiliskSpawnChance.getFloat() > 1 && BasiliskAdd.getBool() == true && QTImp.getFloat() != 0)
+                        {
+                            BasiliskMin = 1f;
+                            g_role_Basilisk = "basilisk,";
+                        }
+                        else
+                        {
+                            BasiliskMin = 0f;
+                            g_role_Basilisk = "";
+                        }
+
+
+                        g_role_All = g_role_Sheriff + g_role_Guardian + g_role_Engineer + g_role_Timelord + g_role_Hunter + g_role_Mystic + g_role_Spirit + g_role_Mayor + g_role_Detective + g_role_Nightwatch + g_role_Spy + g_role_Informant
+                             + g_role_Bait + g_role_Mentalist + g_role_Builder + g_role_Dictator + g_role_Sentinel + g_role_Teammate + g_role_Lawkeeper + g_role_Fake + g_role_Doctor + g_role_Leader + g_role_Slave + g_role_Traveler
+                             + g_role_Assassin + g_role_Vector + g_role_Morphling + g_role_Scrambler + g_role_Barghest + g_role_Ghost + g_role_Sorcerer + g_role_Guesser + g_role_Basilisk + g_role_Mesmer + g_role_Saboteur + g_role_Reaper
+                             + g_role_Survivor + g_role_Mercenary + g_role_CopyCat + g_role_Revenger + g_role_Jester + g_role_Outlaw + g_role_Eater + g_role_Arsonist + g_role_Cultist + g_role_Cupid + g_role_Cursed;
+
+
+
+
+
+                        if (Eatvalueforwin.getSelection() == 0)
+                        {
+                            Eatervaluewin = 1f;
+                        }
+                        if (Eatvalueforwin.getSelection() == 1)
+                        {
+                            Eatervaluewin = 2f;
+                        }
+                        if (Eatvalueforwin.getSelection() == 2)
+                        {
+                            Eatervaluewin = 3f;
+                        }
+                        if (Eatvalueforwin.getSelection() == 3)
+                        {
+                            Eatervaluewin = 4f;
+                        }
+                        if (Eatvalueforwin.getSelection() == 4)
+                        {
+                            Eatervaluewin = 5f;
+                        }
+
+                        if (ChallengerMod.Challenger.IsrankedGame)
+                        {
+                            string Player = GameStartManager.Instance.LastPlayerCount + "";
+                            string MaxPlayer = PlayerControl.GameOptions.MaxPlayers + "";
+                            if (GameStartManager.Instance.LastPlayerCount != PlayerControl.GameOptions.MaxPlayers)
+                            {
+                                GameStartManager.Instance.PlayerCounter.SetText("<color=#ff0000>" + Player + "/" + MaxPlayer + "</color>");
+                            }
+                            else
+                            {
+                                GameStartManager.Instance.PlayerCounter.SetText("<color=#00ff00>" + Player + "/" + MaxPlayer + "</color>");
+                            }
+
+                        }
+
+                        //KICK SERVICE
+                        if (ChallengerMod.Challenger.IsrankedGame == false && Ranked.getBool() == false)
+                        {
+
+                        }
+                        else if (ChallengerMod.Challenger.IsrankedGame == true && Ranked.getBool() == true)
+                        {
+
+                        }
+                        else if (ChallengerMod.Challenger.IsrankedGame == true && Ranked.getBool() == false)
+                        {
+                            SceneChanger.ChangeScene("MainMenu");
+                            AmongUsClient.Instance.DisconnectInternal(DisconnectReasons.ServerRequest);
+                        }
+                        else if (ChallengerMod.Challenger.IsrankedGame == false && Ranked.getBool() == true)
+                        {
+                            SceneChanger.ChangeScene("MainMenu");
+                            AmongUsClient.Instance.DisconnectInternal(DisconnectReasons.ServerRequest);
+                        }
+                        else
+                        {
+
+                        }
                     }
                 }
             }
         }
     }
 }
-    

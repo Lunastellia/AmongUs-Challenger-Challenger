@@ -1,5 +1,9 @@
+using HarmonyLib;
 using PowerTools;
+using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore;
+using UnityEngine.U2D;
 
 namespace ChallengerMod.Utility.Utils
 {
@@ -54,5 +58,17 @@ namespace ChallengerMod.Utility.Utils
             gameObject.name = "Circle";
             gameObject.layer = 5;
         }
+        public static void Test(AnimationClip clip, Vector3 position, float scale, float speed = 1f)
+        {
+            GameObject gameObject = new GameObject();
+            gameObject.transform.position = position;
+            gameObject.transform.localScale *= scale;
+            gameObject.AddComponent<SpriteRenderer>();
+            gameObject.AddComponent<SpriteAnim>().Play(clip, speed);
+            gameObject.name = "Testanim";
+            gameObject.layer = 5;
+
+        }
+       
     }
 }

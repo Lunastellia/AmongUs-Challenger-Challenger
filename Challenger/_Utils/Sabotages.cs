@@ -45,18 +45,18 @@ namespace ChallengerMod.Sabotages
                         __instance.PlayerCam.shakePeriod = 400;
                         if (reactorTask.reactor.Countdown <= 30)
                         {
-                            HudManager.Instance.FullScreen.color = new Color(1f, 0f, 0f, 0.5f);
-                            HudManager.Instance.FullScreen.enabled = true;
+                           // HudManager.Instance.FullScreen.color = new Color(1f, 0f, 0f, 0.5f);
+                           // HudManager.Instance.FullScreen.enabled = true;
                         }
                         else if (reactorTask.reactor.Countdown <= 20)
                         {
-                            HudManager.Instance.FullScreen.color = new Color(1f, 0f, 0f, 0.65f);
-                            HudManager.Instance.FullScreen.enabled = true;
+                           // HudManager.Instance.FullScreen.color = new Color(1f, 0f, 0f, 0.65f);
+                            //HudManager.Instance.FullScreen.enabled = true;
                         }
                         else if (reactorTask.reactor.Countdown <= 10)
                         {
-                            HudManager.Instance.FullScreen.color = new Color(1f, 0f, 0f, 0.8f);
-                            HudManager.Instance.FullScreen.enabled = true;
+                          //  HudManager.Instance.FullScreen.color = new Color(1f, 0f, 0f, 0.8f);
+                           // HudManager.Instance.FullScreen.enabled = true;
                         }
                     }
                     else
@@ -204,16 +204,37 @@ namespace ChallengerMod.Sabotages
                         {
                             if (Barghest.Shadow == true)
                             {
-
+                                if (Bait.StunsPlayer == true) 
+                                { 
+                                    player.MyPhysics.Speed = 0.85f;
+                                }
+                                else
+                                {
+                                    player.MyPhysics.Speed = 1.85f;
+                                }
+                            }
+                            else
+                            {
+                                if (Bait.StunsPlayer == true)
+                                {
+                                    player.MyPhysics.Speed = 0.85f;
+                                }
+                                else
+                                {
+                                    player.MyPhysics.Speed = 2.5f;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Bait.StunsPlayer == true)
+                            {
+                                player.MyPhysics.Speed = 0.85f;
                             }
                             else
                             {
                                 player.MyPhysics.Speed = 2.5f;
                             }
-                        }
-                        else
-                        {
-                            player.MyPhysics.Speed = 2.5f;
                         }
                     }
                 }

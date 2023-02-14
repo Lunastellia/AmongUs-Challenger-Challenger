@@ -22,12 +22,12 @@ namespace ChallengerMod
             {
                 if (Challenger.IsrankedGame == true)
                 {
-                        __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Partie Classé</color><color=#252525> - </color>" + RT_ACTIF + "\n\n</size>";
+                        __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Partie Classé</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
                     
                 }
                 else
                 {
-                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Partie Normal</color><color=#252525> - </color>" + RT_ACTIF + "\n\n</size>";
+                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Partie Normal</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
                     
                 }
 
@@ -59,6 +59,7 @@ namespace ChallengerMod
                     || (LawkeeperSpawnChance.getFloat() > 0 && LawkeeperAdd.getBool() == true)
                     || (MateSpawnChance.getFloat() > 0 && MateAdd.getBool() == true)
                     || (FakeSpawnChance.getFloat() > 0 && FakeAdd.getBool() == true)
+                    || (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
                     )))
                 {
                     __instance.text.text += "<size=1><color=#189FEC>\n\n                                                                                                                                                                                                       </size><size=1.5>[" + (0 + QTCrew.getFloat()) + "] Crewmate</color></size>";
@@ -171,6 +172,11 @@ namespace ChallengerMod
                     {
                         __instance.text.text +=
                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF4D35>(Intru " + FakeSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#5A7DA5>(Chef " + LeaderSpawnChance.getFloat() + "%)</color></size>";
                     }
                 }
                 if (((QTSpe.getFloat() != 0) &&
@@ -324,16 +330,15 @@ namespace ChallengerMod
             {
                 if (Challenger.IsrankedGame == true)
                 {
-                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Game Ranked</color><color=#252525> - </color>" + RT_ACTIF + "\n\n</size>";
+                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Game Ranked</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
                     
                 }
                 else
                 {
-                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Normal Game</color><color=#252525> - </color>" + RT_ACTIF + "\n\n</size>";
+                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Normal Game</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
                    
                 }
-
-               // __instance.text.text += "--->" + debugg + debugg02 + debugg03 + "";
+                
 
                 __instance.text.text += "<size=1>\n\n\n</size>";
                 if (((QTCrew.getFloat() != 0) &&
@@ -359,6 +364,7 @@ namespace ChallengerMod
                     || (LawkeeperSpawnChance.getFloat() > 0 && LawkeeperAdd.getBool() == true)
                     || (MateSpawnChance.getFloat() > 0 && MateAdd.getBool() == true)
                     || (FakeSpawnChance.getFloat() > 0 && FakeAdd.getBool() == true)
+                    || (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
                     )))
                 {
                     __instance.text.text += "<size=1><color=#189FEC>\n\n                                                                                                                                                                                                       </size><size=1.5>[" + (0 + QTCrew.getFloat()) + "] Crewmate</color></size>";
@@ -471,6 +477,11 @@ namespace ChallengerMod
                     {
                         __instance.text.text +=
                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF4D35>(Fake " + FakeSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#5A7DA5>(Leader " + LeaderSpawnChance.getFloat() + "%)</color></size>";
                     }
                 }
                 if (((QTSpe.getFloat() != 0) &&

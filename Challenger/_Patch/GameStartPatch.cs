@@ -18,6 +18,8 @@ namespace ChallengerMod.GameStart
             {
                 GLMod.GLMod.getRank();
                 GLMod.GLMod.reloadItems();
+                //ChallengerMod.Cosmetiques.PlayerCosmetics.CheckForUnlock();
+
             }
         }
     }

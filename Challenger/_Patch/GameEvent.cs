@@ -8,6 +8,7 @@ using static ChallengerMod.Roles;
 using static ChallengerMod.Challenger;
 using ChallengerMod.RPC;
 using ChallengerOS.Utils;
+using ChallengerOS.Objects;
 
 namespace ChallengerMod
 {
@@ -72,6 +73,40 @@ namespace ChallengerMod
             }
         }
 
+
+        public static void BaitBaliseEnable(bool flag)
+        {
+            if (flag)
+            {
+                if (Balise.balise.Count() != 0 && Bait.Role != null)
+                {
+                    foreach (Balise balise in Balise.balise)
+                    {
+                        SpriteRenderer Bs = balise.background.GetComponent<SpriteRenderer>();
+
+                        if (Bait.BaliseEnable)
+                        {
+                            Bs.sprite = BaitBaliseArea;
+                            Bait.BaliseData = false;
+                        }
+                        else
+                        {
+                            if ((Bait.Role != null && PlayerControl.LocalPlayer == Bait.Role)
+                                || (CopyCat.Role != null && PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.copyRole == 13 && CopyCat.CopyStart == true)
+                                || (PlayerControl.LocalPlayer.Data.IsDead)
+                                )
+                            {
+                                Bs.sprite = BaitBaliseArea0;
+                                Bait.BaliseData = false;
+                            }
+                            else { Bait.BaliseData = false; }
+
+                        }
+                    }
+                }
+                
+            }
+        }
 
         public static void ResetSpritesIfPlayerDie(bool flag)
         {
@@ -1408,6 +1443,7 @@ namespace ChallengerMod
                 if (!SendtoGoodloss)
                 {
 
+                    GLMod.GLMod.step = 0;
                     GLMod.GLMod.StartGame("******", STRMap, isRankedGame);
 
 
@@ -1557,6 +1593,12 @@ namespace ChallengerMod
                 ChallengerMod.Challenger.NuclearLastTimer -= Time.deltaTime;
             }
         }
+        public static void ResetIntroCooldown(bool flag)
+        {
+            ChallengerMod.CustomButton.HudManagerStartPatch.setCustomButtonCooldowns();
+            ResetIntroCD = true;
+        }
+
         public static void setIntroCooldown(bool flag)
         {
             if (flag)
@@ -1712,6 +1754,42 @@ namespace ChallengerMod
             }
         }
 
+        //BAIT
+        public static void stunned(bool flag)
+        {
+            if (flag)
+            {
+                Bait.stunsDelay -= Time.deltaTime;
+
+                if (Bait.stunsDelay < 0) 
+                {
+                    if (Barghest.Shadow == true)
+                    {
+                        PlayerControl.LocalPlayer.MyPhysics.Speed = 1.85f;
+                        Bait.ResetStunsPlayer = true;
+                    }
+                    else
+                    {
+                        PlayerControl.LocalPlayer.MyPhysics.Speed = 2.5f;
+                        Bait.ResetStunsPlayer = true;
+                    }
+                }
+                else
+                {
+                    PlayerControl.LocalPlayer.MyPhysics.Speed = 0.85f;
+                }
+                
+            }
+        }
+        public static void resetstunned(bool flag)
+        {
+            if (flag)
+            {
+                Bait.stunsDelay = ChallengerOS.Utils.Option.CustomOptionHolder.BaitStuns.getFloat() + 0;
+                Bait.StunsPlayer = false;
+                Bait.ResetStunsPlayer = false;
+            }
+        }
 
         //CUPID
         public static void killLover1(bool flag)

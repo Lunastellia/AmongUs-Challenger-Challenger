@@ -33,12 +33,14 @@ namespace ChallengerMod
         public static void ResetLobbySettings()
         {
             ResetAllPlayersSkin = false;
+            EventStarted = false;
             ChallengerMod.Set.Data.LoadImpostor = 0;
             NuclearTimer = NuclearTime1.getFloat();
             NuclearLastTimer = NuclearTime2.getFloat();
             QTEmergency = PlayerControl.GameOptions.NumEmergencyMeetings;
             StartTimer = false;
             IntroCD = false;
+            ResetIntroCD = false;
             StartNuclear = false;
             StartSabNuclear = false;
             EmergencyDestroy = false;
@@ -66,6 +68,7 @@ namespace ChallengerMod
             GuesserNotDie = false;
             OutlawAlive = false;
             PlayerControlled = false;
+            IntroScreen = false;
             RoleTaskAssigned = false;
             VentSpriteEdited = false;
             CulteTaskAssigned = false;
@@ -96,9 +99,10 @@ namespace ChallengerMod
             Challenger.draggers = new List<byte>();
             Challenger.corpse = new List<int>();
             Challenger.ventsToSeal = new List<Vent>();
-            Challenger._Crewmates = new List<PlayerControl>();
-            Challenger._Impostors = new List<PlayerControl>();
             Challenger._Alls = new List<PlayerControl>();
+            Challenger.LeaderList = new List<PlayerControl>();
+            Challenger.LeaderCopyList = new List<PlayerControl>();
+
             ChallengerOS.Objects.Balise.clear();
         }
         public static void ResetRolePick()
@@ -255,8 +259,10 @@ namespace ChallengerMod
             //BAIT
             Bait.active = new Dictionary<ChallengerOS.Utils.Helpers.DeadPlayer, float>();
             Bait.bait = new List<PlayerControl>();
-            Bait.BaliseUsed = false;
             Bait.BaliseEnable = false;
+            Bait.BaliseData = false;
+            Bait.StunsPlayer = false;
+            Bait.ResetStunsPlayer = false;
 
 
             //MENTALIST
@@ -283,6 +289,13 @@ namespace ChallengerMod
             //LAWKEEPER
             Lawkeeper.AbilityEnable = false;
             Lawkeeper.TaskEND = false;
+
+            //LEADER
+            Leader.Target = null;
+            Leader.Target2 = null;
+            Leader.Used = false;
+            Leader.Used2 = false;
+            Leader.TaskEND = false;
 
             //DOCTOR
             Doctor.Patient1 = null;
@@ -314,6 +327,10 @@ namespace ChallengerMod
             CopyCat.Suicide = false;
             CopyCat.SuicideShield = false;
             CopyCat.AbilityEnable = false;
+            CopyCat.Target = null;
+            CopyCat.Target2 = null;
+            CopyCat.Used = false;
+            CopyCat.Used2 = false;
 
             //REVENGER
             Revenger.EMP1 = null;

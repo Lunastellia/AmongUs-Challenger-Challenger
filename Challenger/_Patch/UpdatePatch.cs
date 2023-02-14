@@ -35,6 +35,10 @@ using ChallengerMod.Item;
 using Discord;
 using Rewired;
 using UnityEngine.Video;
+using ChallengerOS.Utils.Option;
+using ChallengerOS.Objects;
+using ChallengerMod.Cosmetics;
+using ChallengerMod.Cosmetiques;
 
 namespace ChallengerMod
 {
@@ -72,6 +76,7 @@ namespace ChallengerMod
     {
         public static void Prefix(MMOnlineManager __instance)
         {
+            Challenger.RankedSettings = false;
             GameObject AnimationLogin = new GameObject();
             AnimationLogin.transform.name = "ChallengerUI_VP";
             AnimationLogin.transform.localPosition = new Vector3(0f, 0f, 3f);
@@ -85,51 +90,136 @@ namespace ChallengerMod
             LoginAnimationV2V.Play();
             LoginAnimationV2V.isLooping = true;
 
-            
+            GameObject BlocGL = new GameObject();
+            GameObject BlocPL = new GameObject();
+            GameObject BlocPLM = new GameObject();
+
+            BlocGL.name = "Bloc_GLMod";
+            BlocPL.name = "Bloc_Player";
+            BlocPLM.name = "Bloc_PlayerMax";
+
+            if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
+            {
+                SpriteRenderer BlocGLSprite = BlocGL.AddComponent<SpriteRenderer>();
+                SpriteRenderer BlocPLSprite = BlocPL.AddComponent<SpriteRenderer>();
+                SpriteRenderer BlocPLMSprite = BlocPLM.AddComponent<SpriteRenderer>();
+
+                if (GLMod.GLMod.isLoggedIn() == true)
+                {
+                    BlocGLSprite.sprite = TB_GL1_FR;
+
+                }
+                else
+                {
+                    BlocGLSprite.sprite = TB_GL0_FR;
+
+                }
+
+                BlocPLSprite.sprite = TB_PLAYER_FR;
+                BlocPLMSprite.sprite = TB_MAXPLAYER_FR;
+            }
+            else
+            {
+
+                SpriteRenderer BlocGLSprite = BlocGL.AddComponent<SpriteRenderer>();
+                SpriteRenderer BlocPLSprite = BlocPL.AddComponent<SpriteRenderer>();
+                SpriteRenderer BlocPLMSprite = BlocPLM.AddComponent<SpriteRenderer>();
+
+
+                if (GLMod.GLMod.isLoggedIn() == true)
+                {
+                    BlocGLSprite.sprite = TB_GL1;
+
+                }
+                else
+                {
+                    BlocGLSprite.sprite = TB_GL0;
+
+                }
+                BlocPLSprite.sprite = TB_PLAYER;
+                BlocPLMSprite.sprite = TB_MAXPLAYER;
+
+            }
 
             var CustomIcone = GameObject.Find("NormalMenu/HelpButton");
-            var RKvanilla = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKlite = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKunknow = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKjester = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKeater = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKoutlaw = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKcupid = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKculte = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKarsonist = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKnone = UnityEngine.Object.Instantiate(CustomIcone, null);
             var RK_Ico = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RK_Tab = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKFond = UnityEngine.Object.Instantiate(CustomIcone, null);
-            var RKFree = UnityEngine.Object.Instantiate(CustomIcone, null);
-
-            
+            var GL_Create = UnityEngine.Object.Instantiate(CustomIcone, null);
+            var GL_Login = UnityEngine.Object.Instantiate(CustomIcone, null);
+            var GL_Profil = UnityEngine.Object.Instantiate(CustomIcone, null);
 
 
-            RKvanilla.name = "RKvanilla";
-            RKlite.name = "RKlite";
-            RKunknow.name = "RKunknow";
-            RKjester.name = "RKjester";
-            RKeater.name = "RKeater";
-            RKoutlaw.name = "RKoutlaw";
-            RKcupid.name = "RKcupid";
-            RKculte.name = "RKculte";
-            RKarsonist.name = "RKarsonist";
-            RKnone.name = "RKnone";
             RK_Ico.name = "RK_Ico";
-            RK_Tab.name = "RK_Tab";
-            RKFond.name = "RKFond"; 
-            RKFree.name = "RKFree";
+            GL_Create.name = "GL_Create";
+            GL_Login.name = "GL_Login";
+            GL_Profil.name = "GL_Profil";
+
+            if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
+            {
+                GL_Create.GetComponent<SpriteRenderer>().sprite = UI2_GLLoginFR;
+                GL_Login.GetComponent<SpriteRenderer>().sprite = StartGameR0_FR;
+                GL_Profil.GetComponent<SpriteRenderer>().sprite = UI2_GLProfil;
+            }
+            else
+            {
+                GL_Create.GetComponent<SpriteRenderer>().sprite = UI2_GLCreate;
+                GL_Login.GetComponent<SpriteRenderer>().sprite = UI2_GLLogin;
+                GL_Profil.GetComponent<SpriteRenderer>().sprite = UI2_GLProfil;
+            }
+
+            BoxCollider2D GL_CreateButtonCollider = GL_Create.GetComponent<BoxCollider2D>();
+            GL_CreateButtonCollider.size = new Vector2(2.4f, 0.65f);
+            PassiveButton GL_CreateButton = GL_Create.GetComponent<PassiveButton>();
+            GL_CreateButton.OnClick = new Button.ButtonClickedEvent();
+            GL_CreateButton.OnClick.AddListener((UnityEngine.Events.UnityAction)GL_CreateButton_onClick);
+            void GL_CreateButton_onClick()
+            {
+                Application.OpenURL("https://goodloss.fr/register");
+            }
+
+            BoxCollider2D GL_LoginButtonCollider = GL_Login.GetComponent<BoxCollider2D>();
+            GL_LoginButtonCollider.size = new Vector2(2.4f, 0.65f);
+            PassiveButton GL_LoginButton = GL_Login.GetComponent<PassiveButton>();
+            GL_LoginButton.OnClick = new Button.ButtonClickedEvent();
+            GL_LoginButton.OnClick.AddListener((UnityEngine.Events.UnityAction)GL_LoginButton_onClick);
+            void GL_LoginButton_onClick()
+            {
+                if (GLMod.GLMod.isLoggedIn() == false)
+                {
+                   // ChallengerMod.GLLogin.GLMod_Login.tryLogin();
+                }
+            }
+
+            BoxCollider2D GL_ProfilButtonCollider = GL_Profil.GetComponent<BoxCollider2D>();
+            GL_ProfilButtonCollider.size = new Vector2(2.4f, 0.65f);
+            PassiveButton GL_ProfilButton = GL_Profil.GetComponent<PassiveButton>();
+            GL_ProfilButton.OnClick = new Button.ButtonClickedEvent();
+            GL_ProfilButton.OnClick.AddListener((UnityEngine.Events.UnityAction)GL_ProfilButton_onClick);
+            void GL_ProfilButton_onClick()
+            {
+                if (GLMod.GLMod.isLoggedIn() == true)
+                {
+                    Application.OpenURL("https://goodloss.fr/player/" + GLMod.GLMod.getAccountName());
+                }
+            }
+
 
             var CustomText = GameObject.Find("AccountManager").transform.FindChild("AccountTab").transform.FindChild("AccountWindow").transform.FindChild("Card").transform.FindChild("CardContents").transform.FindChild("IDCard").transform.FindChild("UserNameTitle_TMP");
             var RankText = UnityEngine.Object.Instantiate(CustomText, null);
-            var ModText = UnityEngine.Object.Instantiate(CustomText, null);
+            //var ModText = UnityEngine.Object.Instantiate(CustomText, null);
             RankText.name = "RK_Text";
-            ModText.name = "TAB_Text";
 
+            var PoolablePlayer = GameObject.Find("AccountManager/AccountTab/AccountWindow/Card/CardContents/IDCard/PoolablePlayer");
+            var CustomPlayer = UnityEngine.Object.Instantiate(PoolablePlayer, null);
+            CustomPlayer.name = "CustomPlayer";
 
+            var IDBgMask = GameObject.Find("AccountManager/AccountTab/AccountWindow/Card/CardContents/IDCard/IDBgMask");
+            var CustomPlayerMask = UnityEngine.Object.Instantiate(IDBgMask, null);
+            CustomPlayerMask.name = "CustomPlayerMask";
 
+            //ModText.name = "TAB_Text";
             
+               
+
 
         }
     }
@@ -146,8 +236,211 @@ namespace ChallengerMod
             //Set FreeName 
 
             var FreeName = GameObject.Find("NameText(Clone)");
-                FreeName.transform.localPosition = new Vector3(0f, -1f, 0f);
-                FreeName.transform.localScale = new Vector3(0.65f, 0.65f, 0f);
+            
+            if (GameObject.Find("OptionsMenu/Content/Confirm")) // SCENE 2
+            {
+                FreeName.transform.localScale = new Vector3(0f, 0f, 0f);
+
+                if (GameObject.Find("Bloc_Player"))
+                {
+                    GameObject Tab_Player = GameObject.Find("Bloc_Player");
+                    Tab_Player.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("Bloc_PlayerMax"))
+                {
+                    GameObject Tab_PlayerMax = GameObject.Find("Bloc_PlayerMax");
+                    Tab_PlayerMax.transform.localScale = new Vector3(0.6f, 0.55f, 1f);
+                    Tab_PlayerMax.transform.localPosition = new Vector3(0f, 0.3f, 0.7f);
+
+                }
+                if (GameObject.Find("Bloc_GLMod"))
+                {
+                    GameObject Tab_Account = GameObject.Find("Bloc_GLMod");
+                    Tab_Account.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("GL_Create"))
+                {
+                    GameObject GL_Create = GameObject.Find("GL_Create");
+                    GL_Create.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("GL_Login"))
+                {
+                    GameObject GL_Login = GameObject.Find("GL_Login");
+                    GL_Login.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("GL_Profil"))
+                {
+                    GameObject GL_Profil = GameObject.Find("GL_Profil");
+                    GL_Profil.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("NormalMenu/BackButton"))
+                {
+                    GameObject BackButton = GameObject.Find("NormalMenu/BackButton");
+                    BackButton.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("CustomPlayer"))
+                {
+                    GameObject CustomPlayer = GameObject.Find("CustomPlayer");
+                    CustomPlayer.transform.localScale = new Vector3(0f, 0f, 0f);
+
+                }
+                if (GameObject.Find("CustomPlayerMask"))
+                {
+                    GameObject CustomPlayerMask = GameObject.Find("CustomPlayerMask");
+                    CustomPlayerMask.transform.localScale = new Vector3(0f, 0f, 0f);
+
+                }
+                if (GameObject.Find("OptionsMenu/Content/LanguageMenu"))
+                {
+                    GameObject LanguageMenu = GameObject.Find("OptionsMenu/Content/LanguageMenu");
+                    LanguageMenu.transform.localPosition = new Vector3(100f, 0f, -10f);
+                }
+                if (GameObject.Find("OptionsMenu/Content/Languages/PickerButton"))
+                {
+                    GameObject PickerButton = GameObject.Find("OptionsMenu/Content/Languages/PickerButton");
+                    PickerButton.transform.localPosition = new Vector3(103.325f, 0.6f, 0f);
+                }
+
+            }
+            else // SCENE 1
+            {
+                
+                FreeName.transform.localPosition = new Vector3(1.29f, -0.2f, -0.5f);
+                FreeName.transform.localScale = new Vector3(0.45f, 0.5f, 0f);
+                
+                if (GameObject.Find("Bloc_PlayerMax"))
+                {
+                    GameObject Tab_PlayerMax = GameObject.Find("Bloc_PlayerMax");
+                    Tab_PlayerMax.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("Bloc_Player"))
+                {
+                    GameObject Tab_Player = GameObject.Find("Bloc_Player");
+                    Tab_Player.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                    Tab_Player.transform.localPosition = new Vector3(1.3f, 0.7f, 1f);
+                }
+
+                if (GameObject.Find("Bloc_GLMod"))
+                {
+                    GameObject Tab_Account = GameObject.Find("Bloc_GLMod");
+                   Tab_Account.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                   Tab_Account.transform.localPosition = new Vector3(-1.3f, 0.7f, 1f);
+                }
+
+                if (GameObject.Find("GL_Create"))
+                {
+                    if (GLMod.GLMod.isLoggedIn() == true)
+                    {
+                        GameObject GL_Create = GameObject.Find("GL_Create");
+                        GL_Create.transform.localScale = new Vector3(0f, 0f, 0f);
+
+                    }
+                    else
+                    {
+                        GameObject GL_Create = GameObject.Find("GL_Create");
+                        GL_Create.transform.localScale = new Vector3(0.65f, 0.45f, 1f);
+                        GL_Create.transform.localPosition = new Vector3(-1.3f, 0.45f, 0f);
+                    }
+                       
+                }
+
+                if (GameObject.Find("GL_Login"))
+                {
+                    if (GLMod.GLMod.isLoggedIn() == true)
+                    {
+                        GameObject GL_Login = GameObject.Find("GL_Login");
+                        GL_Login.transform.localScale = new Vector3(0f, 0f, 0f);
+
+                    }
+                    else
+                    {
+                       
+                        GameObject GL_Login = GameObject.Find("GL_Login");
+                        GL_Login.transform.localScale = new Vector3(0.65f, 0.45f, 1f);
+                        GL_Login.transform.localPosition = new Vector3(-1.3f, -0.05f, 0f);
+                    }
+                       
+                }
+
+                if (GameObject.Find("GL_Profil"))
+                {
+
+                    if (GLMod.GLMod.isLoggedIn() == true)
+                    {
+                        GameObject GL_Profil = GameObject.Find("GL_Profil");
+                        GL_Profil.transform.localScale = new Vector3(0.65f, 0.45f, 1f);
+                        GL_Profil.transform.localPosition = new Vector3(-1.3f, 1.25f, 0f);
+                    }
+                    else
+                    {
+                        GameObject GL_Profil = GameObject.Find("GL_Profil");
+                        GL_Profil.transform.localScale = new Vector3(0f, 0f, 0f);
+                    }
+                    
+                }
+
+
+
+                if (GameObject.Find("OptionsMenu/Content/LanguageMenu"))
+                {
+                    GameObject LanguageMenu = GameObject.Find("OptionsMenu/Content/LanguageMenu");
+                    LanguageMenu.transform.localPosition = new Vector3(0f, 0f, 0f);
+                }
+                if (GameObject.Find("OptionsMenu/Content/Languages/PickerButton"))
+                {
+                    GameObject PickerButton = GameObject.Find("OptionsMenu/Content/Languages/PickerButton");
+                    PickerButton.transform.localPosition = new Vector3(0f, 0f, 0f);
+                }
+
+               
+
+                if (GameObject.Find("NormalMenu/BackButton"))
+                {
+                    GameObject BackButton = GameObject.Find("NormalMenu/BackButton");
+                   BackButton.transform.localScale = new Vector3(1.95f, 1.8f, 1f);
+                   BackButton.transform.localPosition = new Vector3(0f, -2.5f, -3f);
+                    BoxCollider2D BackButtonbox = BackButton.GetComponent<BoxCollider2D>();
+                    BackButtonbox.size = new Vector2(1f, 0.35f);
+
+                    if (GameObject.Find("NormalMenu/BackButton/Text_TMP"))
+                    {
+                        GameObject BackButtonSTR = GameObject.Find("NormalMenu/BackButton/Text_TMP");
+                        BackButtonSTR.transform.localScale = new Vector3(0f, 0f, 0f);
+                    }
+
+                    if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
+                    {
+                        SpriteRenderer BackButtonSprite = BackButton.GetComponent<SpriteRenderer>();
+                        BackButtonSprite.sprite = UI2_MainMenuFR;
+                    }
+                    else
+                    {
+                        SpriteRenderer BackButtonSprite = BackButton.GetComponent<SpriteRenderer>();
+                        BackButtonSprite.sprite = UI2_MainMenu;
+                    }
+                }
+                if (GameObject.Find("CustomPlayer"))
+                {
+                    GameObject CustomPlayer = GameObject.Find("CustomPlayer");
+                    CustomPlayer.transform.localScale = new Vector3(0.42f, 0.42f, 1f);
+                    CustomPlayer.transform.localPosition = new Vector3(1.3f, 0.45f, -0.2f);
+
+                }
+                if (GameObject.Find("CustomPlayerMask"))
+                {
+                    GameObject CustomPlayerMask = GameObject.Find("CustomPlayerMask");
+                   CustomPlayerMask.transform.localScale = new Vector3(2.39f, 1.9f, 1f);
+                   CustomPlayerMask.transform.localPosition = new Vector3(1.29f, 0.64f, 0.1f);
+
+                }
+
+                
+
+
+
+            }
+
+
 
             if (GameObject.Find("NormalMenu/RegionButton"))
             {
@@ -165,15 +458,17 @@ namespace ChallengerMod
 
             //FindGameButton
             var FindGameButton = GameObject.Find("NormalMenu/FindGameButton/FindGameButton");
-            FindGameButton.transform.localScale = new Vector3(1f, 2.6f, -1f);
+           FindGameButton.transform.localScale = new Vector3(1f, 1.8f, -1f);
 
             if (GameObject.Find("OptionsMenu/Content/Confirm"))
             {
-                FindGameButton.transform.localPosition = new Vector3(102f, -1.65f, -3f);
+                FindGameButton.transform.localPosition = new Vector3(0f, -1.92f, -3f);
+
             }
             else
             {
-                FindGameButton.transform.localPosition = new Vector3(0f, -1.92f, -3f);
+                 FindGameButton.transform.localPosition = new Vector3(100f, -2f, -3f);
+
             }
 
 
@@ -183,16 +478,16 @@ namespace ChallengerMod
                
                 if (ChallengerMod.Challenger.IsrankedGame)
                 {
-                    FindGameButton.GetComponent<SpriteRenderer>().sprite = FindBtt0_FR;
+                    FindGameButton.GetComponent<SpriteRenderer>().sprite = UI2_FindGameOffFR;
                     BoxCollider2D FindGameButtonbox = FindGameButton.GetComponent<BoxCollider2D>();
                     FindGameButtonbox.size = new Vector2(0f, 0f);
 
                 }
                 else
                 {
-                    FindGameButton.GetComponent<SpriteRenderer>().sprite = FindBtt_FR;
+                    FindGameButton.GetComponent<SpriteRenderer>().sprite = UI2_FindGameOnFR;
                     BoxCollider2D FindGameButtonbox = FindGameButton.GetComponent<BoxCollider2D>();
-                    FindGameButtonbox.size = new Vector2(1.5f, 0.55f);
+                    FindGameButtonbox.size = new Vector2(1.9f, 0.2f);
                 }
                 
             }
@@ -202,16 +497,16 @@ namespace ChallengerMod
 
                 if (ChallengerMod.Challenger.IsrankedGame)
                 {
-                    FindGameButton.GetComponent<SpriteRenderer>().sprite = FindBtt0;
+                    FindGameButton.GetComponent<SpriteRenderer>().sprite = UI2_FindGameOff;
                     BoxCollider2D FindGameButtonbox = FindGameButton.GetComponent<BoxCollider2D>();
                     FindGameButtonbox.size = new Vector2(0f, 0f);
 
                 }
                 else
                 {
-                    FindGameButton.GetComponent<SpriteRenderer>().sprite = FindBtt;
+                    FindGameButton.GetComponent<SpriteRenderer>().sprite = UI2_FindGameOn;
                     BoxCollider2D FindGameButtonbox = FindGameButton.GetComponent<BoxCollider2D>();
-                    FindGameButtonbox.size = new Vector2(1.5f, 0.55f);
+                    FindGameButtonbox.size = new Vector2(1.9f, 0.2f);
                 }
             }
 
@@ -221,15 +516,21 @@ namespace ChallengerMod
 
             //CreateGameButton
             var HostGameButton = GameObject.Find("NormalMenu/HostGameButton/CreateGameButton");
-            HostGameButton.transform.localScale = new Vector3(1.1f, 2.8f, -1f);
-            
+           HostGameButton.transform.localScale = new Vector3(1f, 1.8f, -1f);
+
+          
+           
+
+
             if (GameObject.Find("OptionsMenu/Content/Confirm"))
             {
                 HostGameButton.transform.localPosition = new Vector3(0f, -1.25f, -3f);
+
             }
             else
             {
-                HostGameButton.transform.localPosition = new Vector3(100f, -1.92f, -3f);
+               HostGameButton.transform.localPosition = new Vector3(100f, -1f, -3f);
+
 
             }
 
@@ -237,14 +538,14 @@ namespace ChallengerMod
 
             if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
             {
-                HostGameButton.GetComponent<SpriteRenderer>().sprite = ValidServer_FR;
+                HostGameButton.GetComponent<SpriteRenderer>().sprite = UI2_CreateGameFR;
             }
             else
             {
-                HostGameButton.GetComponent<SpriteRenderer>().sprite = ValidServer;
+                HostGameButton.GetComponent<SpriteRenderer>().sprite = UI2_CreateGame;
             }
             BoxCollider2D HostGameButtonbox = HostGameButton.GetComponent<BoxCollider2D>();
-                HostGameButtonbox.size = new Vector2(1.5f, 0.55f);
+                HostGameButtonbox.size = new Vector2(1.9f, 0.2f);
             
             
             var FixCreateGameButtonText_TMP = GameObject.Find("NormalMenu/HostGameButton/CreateGameButton/Text_TMP"); ;
@@ -254,33 +555,34 @@ namespace ChallengerMod
             //JoinGameButton
             var JoinGameButton = GameObject.Find("NormalMenu/JoinGameButton/JoinGameButton");
             BoxCollider2D boxNsize4 = JoinGameButton.GetComponent<BoxCollider2D>();
-            boxNsize4.size = new Vector2(1.75f, 0.22f);
+            boxNsize4.size = new Vector2(1.9f, 0.2f);
             if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
             {
-                JoinGameButton.GetComponent<SpriteRenderer>().sprite = GameCodeBtt_FR;
+                JoinGameButton.GetComponent<SpriteRenderer>().sprite = UI2_EnterCodeFR;
             }
             else
             {
-                JoinGameButton.GetComponent<SpriteRenderer>().sprite = GameCodeBtt;
+                JoinGameButton.GetComponent<SpriteRenderer>().sprite = UI2_EnterCode;
             }
             
-            JoinGameButton.transform.localScale = new Vector3(1f, 2.72f, 1f);//**
+            JoinGameButton.transform.localScale = new Vector3(1f, 1.8f, 1f);//**
             var FixText_TMP3 = GameObject.Find("NormalMenu/JoinGameButton/JoinGameButton/Text_TMP");
             FixText_TMP3.transform.localScale = new Vector3(0f, 0f, 0f);
 
             if (GameObject.Find("OptionsMenu/Content/Confirm"))
             {
-                
-                JoinGameButton.transform.localPosition = new Vector3(100f, -1.65f, -3f);//**
+                JoinGameButton.transform.localPosition = new Vector3(0f, -1.65f, -3f);
+
             }
             else
             {
-                JoinGameButton.transform.localPosition = new Vector3(0f, -1.65f, -3f);
+               JoinGameButton.transform.localPosition = new Vector3(100f, -1.5f, -3f);
+
             }
 
-                
 
-            
+
+
             //Fix Panel for Join Game
             if (GameObject.Find("NormalMenu/JoinGameButton/JoinGameMenu"))
             {
@@ -288,182 +590,110 @@ namespace ChallengerMod
                 JoinGameMenu.transform.localPosition = new Vector3(100f, 0f, -31f);
             }
 
-                if (GameObject.Find("OptionsMenu/Content/Confirm"))
+            if (GameObject.Find("OptionsMenu/Content/Confirm"))
             {
                 var Content = GameObject.Find("OptionsMenu/Content");
                 Content.transform.localPosition = new Vector3(-100f, 0f, -1f);
 
                 //CreateGame
                 var CustomButtonCreate = GameObject.Find("OptionsMenu/Content/Confirm");
-                CustomButtonCreate.transform.localPosition = new Vector3(98f, -1.65f, -3f); //**
-                CustomButtonCreate.transform.localScale = new Vector3(1.3f, 3.3f, -1f);//**
+                CustomButtonCreate.transform.localPosition = new Vector3(100f, -1.4f, -3f); //**
+                CustomButtonCreate.transform.localScale = new Vector3(1.5f, 2.5f, -1f);//**
                 BoxCollider2D boxNsize = CustomButtonCreate.GetComponent<BoxCollider2D>();
-                boxNsize.size = new Vector2(1.3f, 0.15f);
-                
-                if (Challenger.IsrankedGame == true)
-                {
+                boxNsize.size = new Vector2(1.9f, 0.2f);
+
                     if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
                     {
-                        CustomButtonCreate.GetComponent<SpriteRenderer>().sprite = CreateGameR_FR;
+                        CustomButtonCreate.GetComponent<SpriteRenderer>().sprite = UI2_CreateConfirmFR;
                     }
                     else
                     {
-                        CustomButtonCreate.GetComponent<SpriteRenderer>().sprite = CreateGameR;
+                        CustomButtonCreate.GetComponent<SpriteRenderer>().sprite = UI2_CreateConfirm;
                     }
-                }
-                else
-                {
-                    if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
-                    {
-                        CustomButtonCreate.GetComponent<SpriteRenderer>().sprite = CreateGame_FR;
-                    }
-                    else
-                    {
-                        CustomButtonCreate.GetComponent<SpriteRenderer>().sprite = CreateGame;
-                    }
-                    
-                }
-                
+
                 var FixText_TMP = GameObject.Find("OptionsMenu/Content/Confirm/Text_TMP");
                 FixText_TMP.transform.localScale = new Vector3(0f, 0f, 0f);
-                
-                //SELECT SERVER
+
+                //CANCEL
                 var CustomButtonCancel = GameObject.Find("OptionsMenu/Content/Cancel");
-                CustomButtonCancel.transform.localPosition = new Vector3(100f, -2.28f, -3f);
-                CustomButtonCancel.transform.localScale = new Vector3(1.6f, 3.6f, -1f);
+                CustomButtonCancel.transform.localPosition = new Vector3(100f, -2f, -3f);
+                CustomButtonCancel.transform.localScale = new Vector3(1.5f, 2.5f, -1f);
                 BoxCollider2D boxNsize2 = CustomButtonCancel.GetComponent<BoxCollider2D>();
                 boxNsize2.size = new Vector2(1.3f, 0.15f);
-                
+
                 if (ChallengerMod.Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
                 {
-                    CustomButtonCancel.GetComponent<SpriteRenderer>().sprite = BackServer_FR;
+                    CustomButtonCancel.GetComponent<SpriteRenderer>().sprite = UI2_CreateCancelFR;
                 }
                 else
                 {
-                    CustomButtonCancel.GetComponent<SpriteRenderer>().sprite = BackServer;
+                    CustomButtonCancel.GetComponent<SpriteRenderer>().sprite = UI2_CreateCancel;
                 }
                 var FixText_TMP2 = GameObject.Find("OptionsMenu/Content/Cancel/Text_TMP");
                 FixText_TMP2.transform.localScale = new Vector3(0f, 0f, 0f);
+
+                //PMAX
+                var Num10 = GameObject.Find("OptionsMenu/Content/Max Players/10");
+                var Num11 = GameObject.Find("OptionsMenu/Content/Max Players/11");
+                var Num12 = GameObject.Find("OptionsMenu/Content/Max Players/12");
+                var Num13 = GameObject.Find("OptionsMenu/Content/Max Players/13");
+                var Num14 = GameObject.Find("OptionsMenu/Content/Max Players/14");
+                var Num15 = GameObject.Find("OptionsMenu/Content/Max Players/15");
+                Num10.transform.localPosition = new Vector3(100.768f, 2.1f, 21f);
+                Num11.transform.localPosition = new Vector3(101.218f, 2.1f, 21f);
+                Num12.transform.localPosition = new Vector3(101.668f, 2.1f, 21f);
+                Num13.transform.localPosition = new Vector3(102.118f, 2.1f, 21f);
+                Num14.transform.localPosition = new Vector3(102.568f, 2.1f, 21f);
+                Num15.transform.localPosition = new Vector3(103.018f, 2.1f, 21f);
+
+
+                
+                //BoxCollider2D boxNsize2 = CustomButtonCancel.GetComponent<BoxCollider2D>();
+                //boxNsize2.size = new Vector2(1.3f, 0.15f);
+
+                if (ChallengerMod.Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
+                {
+                    CustomButtonCancel.GetComponent<SpriteRenderer>().sprite = UI2_CreateCancelFR;
+                }
+                else
+                {
+                    CustomButtonCancel.GetComponent<SpriteRenderer>().sprite = UI2_CreateCancel;
+                }
+               
+
             }
 
-            //RANKED ONLY
-            
-
-            var RKvanilla = GameObject.Find("RKvanilla");
-            RKvanilla.transform.localPosition = new Vector3(-3.10f, -0.23f, 0f);
-            RKvanilla.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKvanillaBC = RKvanilla.GetComponent<BoxCollider2D>();
-            RKvanillaBC.size = new Vector2(1f, 0.9f);
-
-            var RKlite = GameObject.Find("RKlite");
-            RKlite.transform.localPosition = new Vector3(-2.40f, -0.23f, 0f);
-            RKlite.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKliteBC = RKlite.GetComponent<BoxCollider2D>();
-            RKliteBC.size = new Vector2(1f, 0.9f);
-
-            var RKunknow = GameObject.Find("RKunknow");
-            RKunknow.transform.localPosition = new Vector3(-1.70f, -0.23f, 0f);
-            RKunknow.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKunknowBC = RKunknow.GetComponent<BoxCollider2D>();
-            RKunknowBC.size = new Vector2(1f, 0.9f);
-
-            var RKjester = GameObject.Find("RKjester");
-            RKjester.transform.localPosition = new Vector3(-1f, -0.23f, 0f);
-            RKjester.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKjesterBC = RKjester.GetComponent<BoxCollider2D>();
-            RKjesterBC.size = new Vector2(1f, 0.9f);
-
-            var RKeater = GameObject.Find("RKeater");
-            RKeater.transform.localPosition = new Vector3(-0.30f, -0.23f, 0f);
-            RKeater.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKeaterBC = RKeater.GetComponent<BoxCollider2D>();
-            RKeaterBC.size = new Vector2(1f, 0.9f);
-
-            var RKoutlaw = GameObject.Find("RKoutlaw");
-            RKoutlaw.transform.localPosition = new Vector3(0.40f, -0.23f, 0f);
-            RKoutlaw.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKoutlawBC = RKoutlaw.GetComponent<BoxCollider2D>();
-            RKoutlawBC.size = new Vector2(1f, 0.9f);
-
-            var RKcupid = GameObject.Find("RKcupid");
-            RKcupid.transform.localPosition = new Vector3(1.10f, -0.23f, 0f);
-            RKcupid.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKcupidBC = RKcupid.GetComponent<BoxCollider2D>();
-            RKcupidBC.size = new Vector2(1f, 0.9f);
-
-            var RKculte = GameObject.Find("RKculte");
-            RKculte.transform.localPosition = new Vector3(1.80f, -0.23f, 0f);
-            RKculte.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKculteBC = RKculte.GetComponent<BoxCollider2D>();
-            RKculteBC.size = new Vector2(1f, 0.9f);
-
-            var RKarsonist = GameObject.Find("RKarsonist");
-            RKarsonist.transform.localPosition = new Vector3(2.50f, -0.23f, 0f);
-            RKarsonist.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKarsonistBC = RKarsonist.GetComponent<BoxCollider2D>();
-            RKarsonistBC.size = new Vector2(1f, 0.9f);
-
-            var RKnone = GameObject.Find("RKnone");
-            RKnone.transform.localPosition = new Vector3(3.20f, -0.23f, 0f);
-            RKnone.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RKnoneBC = RKnone.GetComponent<BoxCollider2D>();
-            RKnoneBC.size = new Vector2(0f, 0f);
-
             var RK_Ico = GameObject.Find("RK_Ico");
-            RK_Ico.transform.localPosition = new Vector3(-2.27f, 1.17f, 0f);
-            RK_Ico.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
-            BoxCollider2D RK_IcoBC = RK_Ico.GetComponent<BoxCollider2D>();
-            RK_IcoBC.size = new Vector2(0f, 0f);
+            var RankTextFind = GameObject.Find("RK_Text");
 
-            var RK_Tab = GameObject.Find("RK_Tab");
-            RK_Tab.transform.localPosition = new Vector3(1.3f, 1.025f, 0f);
-            RK_Tab.transform.localScale = new Vector3(1f, 1f, -40f);
-            BoxCollider2D RK_TabBC = RK_Tab.GetComponent<BoxCollider2D>();
-            RK_TabBC.size = new Vector2(0f, 0f);
-
-            var RKFond = GameObject.Find("RKFond");
-            RKFond.transform.localPosition = new Vector3(0.1f, 0.69f, 1f);
-            RKFond.transform.localScale = new Vector3(6.3f, 2.44f, -40f); 
-            BoxCollider2D RKFondBC = RKFond.GetComponent<BoxCollider2D>();
-            RKFondBC.size = new Vector2(0f, 0f);
-
-            var RKFree = GameObject.Find("RKFree");
-            RKFree.transform.localPosition = new Vector3(-2.27f, 1.025f, 0f);
-            RKFree.transform.localScale = new Vector3(1f, 1f, -40f);
-
-            if (Challenger.IsrankedGame == true)
+            if (GameObject.Find("OptionsMenu/Content/Confirm"))
             {
-                BoxCollider2D RKFreeBC = RKFree.GetComponent<BoxCollider2D>();
-                RKFreeBC.size = new Vector2(0f, 0f);
-                RKFree.GetComponent<SpriteRenderer>().sprite = empty;
+               
+                RK_Ico.transform.localScale = new Vector3(0f, 0f, 0f);
+                RankTextFind.transform.localScale = new Vector3(0f, 0f, 0f);
             }
             else
             {
-                BoxCollider2D RKFreeBC = RKFree.GetComponent<BoxCollider2D>();
-                RKFreeBC.size = new Vector2(1f, 0.9f);
-                RKFree.GetComponent<SpriteRenderer>().sprite = IRKFree;
+                if (GLMod.GLMod.isLoggedIn() == true)
+                {
+                    RK_Ico.transform.localPosition = new Vector3(-1.3f, 0.5f, 0f);
+                    RK_Ico.transform.localScale = new Vector3(0.5f, 0.5f, -40f);
+                    RankTextFind.transform.localPosition = new Vector3(-1.3f, -0.1f, -1f);
+                    RankTextFind.transform.localScale = new Vector3(0.72f, 0.72f, 1f);
+                }
+                else
+                {
+                    RK_Ico.transform.localScale = new Vector3(0f, 0f, 0f);
+                    RankTextFind.transform.localScale = new Vector3(0f, 0f, 0f);
+                }
+                
             }
 
-
-
-            RKvanilla.GetComponent<SpriteRenderer>().sprite = IRKvanilla;
-            RKlite.GetComponent<SpriteRenderer>().sprite = IRKLite;
-            RKunknow.GetComponent<SpriteRenderer>().sprite = IRKuknow;
-            RKjester.GetComponent<SpriteRenderer>().sprite = IRKjester;
-            RKeater.GetComponent<SpriteRenderer>().sprite = IRKeat;
-            RKoutlaw.GetComponent<SpriteRenderer>().sprite = IRKoutlaw;
-            RKcupid.GetComponent<SpriteRenderer>().sprite = IRKcupid;
-            RKculte.GetComponent<SpriteRenderer>().sprite = IRKculte;
-            RKarsonist.GetComponent<SpriteRenderer>().sprite = IRKarsonist;
-            RKnone.GetComponent<SpriteRenderer>().sprite = IRKnone;
-            RKFond.GetComponent<SpriteRenderer>().sprite = Colliderblack;
-
-            var RankTextFind = GameObject.Find("RK_Text");
-            RankTextFind.transform.localPosition = new Vector3(-2.25f, 0.355f, -1f);
-            RankTextFind.transform.localScale = new Vector3(0.72f, 0.72f, 1f);
+            BoxCollider2D RK_IcoBC = RK_Ico.GetComponent<BoxCollider2D>();
+            RK_IcoBC.size = new Vector2(0f, 0f);
             TMP_Text RankSTRT = RankTextFind.GetComponent<TMP_Text>();
             RankSTRT.horizontalAlignment = HorizontalAlignmentOptions.Center;
-            
+
             if (GLMod.GLMod.isLoggedIn() == true)
             {
                 GoodlossRank = GLMod.GLMod.rank.id;
@@ -530,10 +760,14 @@ namespace ChallengerMod
                     STR_myRankname = DR_M;
                 }
             }
-            else { STR_myRankname = DR_Unranked; }
-            
+            else
+            {
 
-            if (ChallengerMod.Challenger.IsrankedGame == true)
+                STR_myRankname = DR_Unranked;
+            }
+
+
+            if (GLMod.GLMod.isLoggedIn() == true)
             {
 
                 if (GoodlossRank == 0)
@@ -641,39 +875,36 @@ namespace ChallengerMod
                     var RKSTR = "<color=#FF9D9D>" + STR_GoodlossRank + "</color>\n<color=#FF4EE1>[" + GoodlossRankValue + "]</color>";
                     RankSTRT.SetText(RKSTR);
                 }
-                if (presetSelection.getSelection() != 4)
+            }
+            else
+            {
+                RK_Ico.GetComponent<SpriteRenderer>().sprite = Rank_0;
+                STR_GoodlossRank = ChallengerMod.Set.Data.R_Unranked;
+                var RKSTR = "<color=#D4D4D4>" + STR_GoodlossRank + "</color>";
+                RankSTRT.SetText(RKSTR);
+            }
+
+            if (ChallengerMod.Challenger.IsrankedGame == true) //CLASSE
+            {
+
+                if (presetSelection.getSelection() != 3)
                 {
-                    ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(4);
-                    ChallengerOS.Utils.Option.CustomOption.switchPreset(4);
+                    ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(3);
+                    ChallengerOS.Utils.Option.CustomOption.switchPreset(3);
+                    Ranked.updateSelection(1);
                 }
                 else
                 {
                     Ranked.updateSelection(1);
                 }
             }
-            else
+            else //NORMAL
             {
-                RK_Ico.GetComponent<SpriteRenderer>().sprite = empty;
-                var RKSTR = "";
-                RankSTRT.SetText(RKSTR);
-
-
                 
-
-
-
-
-                if (presetSelection.getSelection() != 0 && IsrankedGameSet == 100)
+                if (presetSelection.getSelection() != 0)
                 {
                     ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(0);
                     ChallengerOS.Utils.Option.CustomOption.switchPreset(0);
-                    Ranked.updateSelection(0);
-                    RankedInt.updateSelection(100);
-                }
-                else if (presetSelection.getSelection() != 3 && IsrankedGameSet <= 99)
-                {
-                    ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(3);
-                    ChallengerOS.Utils.Option.CustomOption.switchPreset(3);
                     Ranked.updateSelection(0);
                 }
                 else
@@ -683,528 +914,21 @@ namespace ChallengerMod
 
             }
 
-            var TabTextFind = GameObject.Find("TAB_Text");
-            TabTextFind.transform.localPosition = new Vector3(-0.28f, 0.375f, -1f);
-            TabTextFind.transform.localScale = new Vector3(0.63f, 0.63f, 1f);
-            TMP_Text TabTextFindTMP = TabTextFind.GetComponent<TMP_Text>();
-            TabTextFindTMP.horizontalAlignment = HorizontalAlignmentOptions.Center;
+           
 
 
-            if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
-            {
-                if (IsrankedGameSet == 0f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBvanillaFR;//<color=#FF0000>IMPOSTEURS x2</color>
-                    var TABSTR = C_BlueColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[0]" + CC
-                       + "\n\n" + C_BlueColor + "Rôles Coéquipiers (8) :" + CC + "\n"
-                       + R_CrewmateColor + "x8 " + Role_Crewmate + CC + " \n "
-                       + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                       + R_ImpostorColor +"x2 " + Role_Impostor + CC + " \n"
-                       + " \n\n\n\n\n\n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                    
-                else if (IsrankedGameSet == 1f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBliteFR;
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[0]" + CC
-                        + "\n\n" + C_CyanColor + "Rôles Coéquipiers (8) :" + CC + "\n"
-                        + R_SheriffColor + Role_Sheriff + CC + " - "
-                        + R_GuardianColor + Role_Guardian + CC + " - "
-                        + R_EngineerColor + Role_Engineer + CC + " \n "
-                        + R_MayorColor + Role_Mayor + CC + " - "
-                        + R_NightwatchColor + Role_Nightwatch + CC + " - "
-                        + R_CrewmateColor + "x3 " + Role_Crewmate + CC + " \n "
-                        + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                        + R_ScramblerColor + Role_Scrambler + CC + " - "
-                        + R_ImpostorColor + Role_Impostor + CC + " \n "
-                        + " \n\n\n\n"
-                        ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 2f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBuknowFR;
-                    var TABSTR = C_CyanColor + "[10]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[3]" + CC
-                       + "\n\n" + C_CyanColor + "Rôles Coéquipiers (10) :" + CC + "\n"
-                       + R_SheriffColor + "x3 " + Role_Sheriff + CC + " - "
-                       + R_GuardianColor + Role_Guardian + CC + " - "
-                       + R_EngineerColor + Role_Engineer + CC + " \n "
-                       + R_TimelordColor + Role_Timelord + CC + " - "
-                       + R_MysticColor + Role_Mystic + CC + " - "
-                       + R_MayorColor + Role_Mayor + CC + " \n "
-                       + R_SpyColor + Role_Spy + CC + " - "
-                       + R_MentalistColor + Role_Mentalist + CC + " - "
-                       + R_FakeColor + Role_Fake + CC + " \n "
-                       + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                       + R_AssassinColor + Role_Assassin + CC + " - "
-                       + R_VectorColor + Role_Vector + CC + " - "
-                       + R_GuesserColor + Role_Guesser + CC + " \n "
-                       + "\n" + C_PinkColor + "Rôles Spéciaux (2) :" + CC + "\n"
-                       + R_OutlawColor + Role_Outlaw + CC + " - "
-                       + R_JesterColor + Role_Jester + CC + " - "
-                       + R_EaterColor + Role_Eater + CC + "\n"
-                       + "\n" + C_PinkColor + "Rôles Hybrid (1) :" + CC + "\n"
-                       + R_CopyCatColor + Role_CopyCat + CC + " - "
-                       + R_SurvivorColor + Role_Survivor + CC + " \n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 3f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBjesterFR;
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                       + "\n\n" + C_CyanColor + "Rôles Coéquipiers (8) :" + CC + "\n"
-                       + R_SheriffColor + Role_Sheriff + CC + " - "
-                       + R_GuardianColor + Role_Guardian + CC + " - "
-                       + R_EngineerColor + Role_Engineer + CC + " \n "
-                       + R_TimelordColor + Role_Timelord + CC + " - "
-                       + R_SpiritColor + Role_Spirit + CC + " - "
-                       + R_MayorColor + Role_Mayor + CC + " \n "
-                       + R_SpyColor + Role_Spy + CC + " - "
-                       + R_InformantColor + Role_Informant + CC + " \n "
-                       + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                       + R_MorphlingColor + Role_Morphling + CC + " - "
-                       + R_GuesserColor + Role_Guesser + CC + " - "
-                       + R_BasiliskColor + Role_Basilisk + CC + " \n "
-                       + "\n" + C_PinkColor + "Rôles Spéciaux (1) :" + CC + "\n"
-                       + R_JesterColor + Role_Jester + CC + " \n\n\n\n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 4f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBeaterFR;
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                       + "\n\n" + C_CyanColor + "Rôles Coéquipiers (8) :" + CC + "\n"
-                       + R_SheriffColor + Role_Sheriff + CC + " - "
-                       + R_HunterColor + Role_Hunter + CC + " - "
-                       + R_MysticColor + Role_Mystic + CC + " \n "
-                       + R_DetectiveColor + Role_Detective + CC + " - "
-                       + R_NightwatchColor + Role_Nightwatch + CC + " - "
-                       + R_MentalistColor + Role_Mentalist + CC + " \n "
-                       + R_BuilderColor + Role_Builder + CC + " - "
-                       + R_LawkeeperColor + Role_Lawkeeper + CC + " \n "
-                       + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                       + R_AssassinColor + Role_Assassin + CC + " - "
-                       + R_VectorColor + Role_Vector + CC + " - "
-                       + R_BasiliskColor + Role_Basilisk + CC + " \n "
-                       + "\n" + C_PinkColor + "Rôles Spéciaux (1) :" + CC + "\n"
-                       + R_EaterColor + Role_Eater + CC + " \n\n\n\n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 5f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBoutlawFR;
-                    var TABSTR = C_CyanColor + "[9]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                      + "\n\n" + C_CyanColor + "Rôles Coéquipiers (9) :" + CC + "\n"
-                      + R_SheriffColor + Role_Sheriff + CC + " - "
-                      + R_EngineerColor + Role_Engineer + CC + " - "
-                      + R_MysticColor + Role_Mystic + CC + " \n "
-                      + R_MayorColor + Role_Mayor + CC + " - "
-                      + R_BaitColor + Role_Bait + CC + " - "
-                      + R_DictatorColor + Role_Dictator + CC + " \n "
-                      + R_SentinelColor + Role_Sentinel + CC + " - "
-                      + R_CrewmateColor + "x2" + Role_Teammate + CC + " \n "
-                      + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                      + R_ScramblerColor + Role_Scrambler + CC + " - "
-                      + R_BarghestColor + Role_Barghest + CC + " - "
-                      + R_ImpostorColor + Role_Impostor + CC + " \n "
-                      + "\n" + C_PinkColor + "Rôles Spéciaux (1) :" + CC + "\n"
-                      + R_OutlawColor + Role_Outlaw + CC + " \n\n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 6f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBcupidFR;
-                    var TABSTR = C_CyanColor + "[9]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[2]" + CC
-                      + "\n\n" + C_CyanColor + "Rôles Coéquipiers (9) :" + CC + "\n"
-                      + R_TimelordColor + Role_Timelord + CC + " - "
-                      + R_SpiritColor + Role_Spirit + CC + " - "
-                      + R_DetectiveColor + Role_Detective + CC + " \n "
-                      + R_NightwatchColor + Role_Nightwatch + CC + " - "
-                      + R_InformantColor + Role_Informant + CC + " - "
-                      + R_BuilderColor + Role_Builder + CC + " \n "
-                      + R_LawkeeperColor + Role_Lawkeeper + CC + " - "
-                      + R_FakeColor + Role_Fake + CC + " - "
-                      + R_CopyCatColor + Role_CopyCat + CC + " \n "
-                      + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                      + R_MorphlingColor + Role_Morphling + CC + " - "
-                      + R_ScramblerColor + Role_Scrambler + CC + " \n "
-                      + R_GhostColor + Role_Ghost + CC + " - "
-                      + R_GuesserColor + Role_Guesser + CC + " \n "
-                      + "\n" + C_PinkColor + "Rôles Spéciaux/Hybride (2) :" + CC + "\n"
-                      + R_CupidColor + Role_Cupid + CC + " - "
-                      + R_SurvivorColor + Role_Survivor + CC + " \n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 7f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBcultistFR;
-                    var TABSTR = C_CyanColor + "[10]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                      + "\n\n" + C_CyanColor + "Rôles Coéquipiers (9) :" + CC + "\n"
-                      + R_SheriffColor + "x2 " + Role_Sheriff + CC + " - "
-                      + R_EngineerColor + Role_Engineer + CC + " - "
-                      + R_TimelordColor + Role_Timelord + CC + " \n "
-                      + R_HunterColor + Role_Hunter + CC + " - "
-                      + R_SpyColor + Role_Spy + CC + " - "
-                      + R_BaitColor + Role_Bait + CC + " \n "
-                      + R_SentinelColor + Role_Sentinel + CC + " - "
-                      + R_FakeColor + Role_Fake + CC + " \n "
-                      + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                      + R_AssassinColor + Role_Assassin + CC + " - "
-                      + R_VectorColor + Role_Vector + CC + " \n "
-                      + R_BarghestColor + Role_Barghest + CC + " - "
-                      + R_SorcererColor + Role_Sorcerer + CC + " \n "
-                      + "\n" + C_PinkColor + "Rôles Spéciaux/Hybride (2) :" + CC + "\n"
-                      + R_CulteColor + Role_Cultist + CC + " - "
-                      + R_RevengerColor + Role_Revenger + CC + " \n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 8f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBarsonistFR;
-                    var TABSTR = C_CyanColor + "[9]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                      + "\n\n" + C_CyanColor + "Rôles Coéquipiers (9) :" + CC + "\n"
-                      + R_SheriffColor + Role_Sheriff + CC + " - "
-                      + R_GuardianColor + Role_Guardian + CC + " - "
-                      + R_MysticColor + Role_Mystic + CC + " \n "
-                      + R_SpyColor + Role_Spy + CC + " - "
-                      + R_MentalistColor + Role_Mentalist + CC + " - "
-                      + R_SentinelColor + Role_Sentinel + CC + " \n "
-                      + R_CrewmateColor + "x2 " + Role_Teammate + CC + " - "
-                      + R_CopyCatColor + Role_CopyCat + CC + " \n "
-                      + "\n" + C_RedColor + "Rôles Imposteurs (2) :" + CC + "\n"
-                      + R_GhostColor + Role_Ghost + CC + " - "
-                      + R_SorcererColor + Role_Sorcerer + CC + " - "
-                       + R_ImpostorColor + Role_Impostor + CC + " \n "
-                      + "\n" + C_PinkColor + "Rôles Spéciaux (1) :" + CC + "\n"
-                      + R_ArsonistColor + Role_Arsonist + CC + " \n\n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet >= 99f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBFreeFR;
-                    var TABSTR = "";
-                    TabTextFindTMP.SetText(TABSTR);
-
-                }
-
-            }
-            else
-            {
-                if (IsrankedGameSet == 0f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBvanilla;//<color=#FF0000>IMPOSTEURS x2</color>
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[0]" + CC
-                       + "\n\n" + C_CyanColor + "Crewmates Roles (8) :" + CC + "\n"
-                       + R_CrewmateColor + "x8 " + Role_Crewmate + CC + " \n "
-                       + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                       + R_ImpostorColor + "x2 " + Role_Impostor + CC + " \n"
-                       + " \n\n\n\n\n\n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-
-                else if (IsrankedGameSet == 1f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBlite;
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[0]" + CC
-                        + "\n\n" + C_CyanColor + "Crewmates Roles (8) :" + CC + "\n"
-                        + R_SheriffColor + Role_Sheriff + CC + " - "
-                        + R_GuardianColor + Role_Guardian + CC + " - "
-                        + R_EngineerColor + Role_Engineer + CC + " \n "
-                        + R_MayorColor + Role_Mayor + CC + " - "
-                        + R_NightwatchColor + Role_Nightwatch + CC + " - "
-                        + R_CrewmateColor + "x3 " + Role_Crewmate + CC + " \n "
-                        + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                        + R_ScramblerColor + Role_Scrambler + CC + " - "
-                        + R_ImpostorColor + Role_Impostor + CC + " \n "
-                        + " \n\n\n\n"
-                        ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 2f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBuknow;
-                    var TABSTR = C_CyanColor + "[10]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[3]" + CC
-                       + "\n\n" + C_CyanColor + "Crewmates Roles (10) :" + CC + "\n"
-                       + R_SheriffColor + "x3 " + Role_Sheriff + CC + " - "
-                       + R_GuardianColor + Role_Guardian + CC + " - "
-                       + R_EngineerColor + Role_Engineer + CC + " \n "
-                       + R_TimelordColor + Role_Timelord + CC + " - "
-                       + R_MysticColor + Role_Mystic + CC + " - "
-                       + R_MayorColor + Role_Mayor + CC + " \n "
-                       + R_SpyColor + Role_Spy + CC + " - "
-                       + R_MentalistColor + Role_Mentalist + CC + " - "
-                       + R_FakeColor + Role_Fake + CC + " \n "
-                       + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                       + R_AssassinColor + Role_Assassin + CC + " - "
-                       + R_VectorColor + Role_Vector + CC + " - "
-                       + R_GuesserColor + Role_Guesser + CC + " \n "
-                       + "\n" + C_PinkColor + "Special Roles (2) :" + CC + "\n"
-                       + R_OutlawColor + Role_Outlaw + CC + " - "
-                       + R_JesterColor + Role_Jester + CC + " - "
-                       + R_EaterColor + Role_Eater + CC + "\n"
-                       + "\n" + C_PinkColor + "Hybrid Roles (1) :" + CC + "\n"
-                       + R_CopyCatColor + Role_CopyCat + CC + " - "
-                       + R_SurvivorColor + Role_Survivor + CC + " \n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 3f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBjester;
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                       + "\n\n" + C_CyanColor + "Crewmates Roles (8) :" + CC + "\n"
-                       + R_SheriffColor + Role_Sheriff + CC + " - "
-                       + R_GuardianColor + Role_Guardian + CC + " - "
-                       + R_EngineerColor + Role_Engineer + CC + " \n "
-                       + R_TimelordColor + Role_Timelord + CC + " - "
-                       + R_SpiritColor + Role_Spirit + CC + " - "
-                       + R_MayorColor + Role_Mayor + CC + " \n "
-                       + R_SpyColor + Role_Spy + CC + " - "
-                       + R_InformantColor + Role_Informant + CC + " \n "
-                       + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                       + R_MorphlingColor + Role_Morphling + CC + " - "
-                       + R_GuesserColor + Role_Guesser + CC + " \n "
-                       + "\n" + C_PinkColor + "Special Roles (1) :" + CC + "\n"
-                       + R_JesterColor + Role_Jester + CC + " \n\n\n\n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 4f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBeater;
-                    var TABSTR = C_CyanColor + "[8]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                       + "\n\n" + C_CyanColor + "Crewmates Roles (8) :" + CC + "\n"
-                       + R_SheriffColor + Role_Sheriff + CC + " - "
-                       + R_HunterColor + Role_Hunter + CC + " - "
-                       + R_MysticColor + Role_Mystic + CC + " \n "
-                       + R_DetectiveColor + Role_Detective + CC + " - "
-                       + R_NightwatchColor + Role_Nightwatch + CC + " - "
-                       + R_MentalistColor + Role_Mentalist + CC + " \n "
-                       + R_BuilderColor + Role_Builder + CC + " - "
-                       + R_LawkeeperColor + Role_Lawkeeper + CC + " \n "
-                       + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                       + R_AssassinColor + Role_Assassin + CC + " - "
-                       + R_VectorColor + Role_Vector + CC + " \n "
-                       + "\n" + C_PinkColor + "Special Roles (1) :" + CC + "\n"
-                       + R_EaterColor + Role_Eater + CC + " \n\n\n\n"
-                       ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 5f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBoutlaw;
-                    var TABSTR = C_CyanColor + "[9]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                      + "\n\n" + C_CyanColor + "Crewmates Roles (9) :" + CC + "\n"
-                      + R_SheriffColor + Role_Sheriff + CC + " - "
-                      + R_EngineerColor + Role_Engineer + CC + " - "
-                      + R_MysticColor + Role_Mystic + CC + " \n "
-                      + R_MayorColor + Role_Mayor + CC + " - "
-                      + R_BaitColor + Role_Bait + CC + " - "
-                      + R_DictatorColor + Role_Dictator + CC + " \n "
-                      + R_SentinelColor + Role_Sentinel + CC + " - "
-                      + R_CrewmateColor + "x2" + Role_Teammate + CC + " \n "
-                      + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                      + R_ScramblerColor + Role_Scrambler + CC + " - "
-                      + R_BarghestColor + Role_Barghest + CC + " \n "
-                      + "\n" + C_PinkColor + "Special Roles (1) :" + CC + "\n"
-                      + R_OutlawColor + Role_Outlaw + CC + " \n\n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 6f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBcupid;
-                    var TABSTR = C_CyanColor + "[9]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[2]" + CC
-                      + "\n\n" + C_CyanColor + "Crewmates Roles (9) :" + CC + "\n"
-                      + R_TimelordColor + Role_Timelord + CC + " - "
-                      + R_SpiritColor + Role_Spirit + CC + " - "
-                      + R_DetectiveColor + Role_Detective + CC + " \n "
-                      + R_NightwatchColor + Role_Nightwatch + CC + " - "
-                      + R_InformantColor + Role_Informant + CC + " - "
-                      + R_BuilderColor + Role_Builder + CC + " \n "
-                      + R_LawkeeperColor + Role_Lawkeeper + CC + " - "
-                      + R_FakeColor + Role_Fake + CC + " - "
-                      + R_CopyCatColor + Role_CopyCat + CC + " \n "
-                      + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                      + R_MorphlingColor + Role_Morphling + CC + " - "
-                      + R_ScramblerColor + Role_Scrambler + CC + " \n "
-                      + R_GhostColor + Role_Ghost + CC + " - "
-                      + R_GuesserColor + Role_Guesser + CC + " \n "
-                      + "\n" + C_PinkColor + "Special/Hybrid Roles (2) :" + CC + "\n"
-                      + R_CupidColor + Role_Cupid + CC + " - "
-                      + R_SurvivorColor + Role_Survivor + CC + " \n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 7f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBcultist;
-                    var TABSTR = C_CyanColor + "[10]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                      + "\n\n" + C_CyanColor + "Crewmates Roles (9) :" + CC + "\n"
-                      + R_SheriffColor + "x2 " + Role_Sheriff + CC + " - "
-                      + R_EngineerColor + Role_Engineer + CC + " - "
-                      + R_TimelordColor + Role_Timelord + CC + " \n "
-                      + R_HunterColor + Role_Hunter + CC + " - "
-                      + R_SpyColor + Role_Spy + CC + " - "
-                      + R_BaitColor + Role_Bait + CC + " \n "
-                      + R_SentinelColor + Role_Sentinel + CC + " - "
-                      + R_FakeColor + Role_Fake + CC + " \n "
-                      + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                      + R_AssassinColor + Role_Assassin + CC + " - "
-                      + R_VectorColor + Role_Vector + CC + " \n "
-                      + R_BarghestColor + Role_Barghest + CC + " - "
-                      + R_SorcererColor + Role_Sorcerer + CC + " \n "
-                      + "\n" + C_PinkColor + "Special/Hybrid Roles (2) :" + CC + "\n"
-                      + R_CulteColor + Role_Cultist + CC + " - "
-                      + R_RevengerColor + Role_Revenger + CC + " \n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet == 8f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBarsonist;
-                    var TABSTR = C_CyanColor + "[9]" + CC + " - " + C_RedColor + "[2]" + CC + " - " + C_PinkColor + "[1]" + CC
-                      + "\n\n" + C_CyanColor + "Crewmates Roles (9) :" + CC + "\n"
-                      + R_SheriffColor + Role_Sheriff + CC + " - "
-                      + R_GuardianColor + Role_Guardian + CC + " - "
-                      + R_MysticColor + Role_Mystic + CC + " \n "
-                      + R_SpyColor + Role_Spy + CC + " - "
-                      + R_MentalistColor + Role_Mentalist + CC + " - "
-                      + R_SentinelColor + Role_Sentinel + CC + " \n "
-                      + R_CrewmateColor + "x2 " + Role_Teammate + CC + " - "
-                      + R_CopyCatColor + Role_CopyCat + CC + " \n "
-                      + "\n" + C_RedColor + "Impostors Roles (2) :" + CC + "\n"
-                      + R_GhostColor + Role_Ghost + CC + " - "
-                      + R_SorcererColor + Role_Sorcerer + CC + " \n "
-                      + "\n" + C_PinkColor + "Special Roles (1) :" + CC + "\n"
-                      + R_ArsonistColor + Role_Arsonist + CC + " \n\n\n\n"
-                      ;
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-                else if (IsrankedGameSet >= 99f)
-                {
-                    RK_Tab.GetComponent<SpriteRenderer>().sprite = RBFree;
-                    var TABSTR = "";
-                    TabTextFindTMP.SetText(TABSTR);
-                }
-            }
+           
+                
+            
 
             
 
 
 
-            PassiveButton PRKvanilla = RKvanilla.GetComponent<PassiveButton>();
-            PRKvanilla.OnClick = new Button.ButtonClickedEvent();
-            PRKvanilla.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKvanilla);
-            PassiveButton PRKlite = RKlite.GetComponent<PassiveButton>();
-            PRKlite.OnClick = new Button.ButtonClickedEvent();
-            PRKlite.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKlite);
-            PassiveButton PRKunknow = RKunknow.GetComponent<PassiveButton>();
-            PRKunknow.OnClick = new Button.ButtonClickedEvent();
-            PRKunknow.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKunknow);
-            PassiveButton PRKjester = RKjester.GetComponent<PassiveButton>();
-            PRKjester.OnClick = new Button.ButtonClickedEvent();
-            PRKjester.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKjester);
-            PassiveButton PRKeater = RKeater.GetComponent<PassiveButton>();
-            PRKeater.OnClick = new Button.ButtonClickedEvent();
-            PRKeater.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKeater);
-            PassiveButton PRKoutlaw = RKoutlaw.GetComponent<PassiveButton>();
-            PRKoutlaw.OnClick = new Button.ButtonClickedEvent();
-            PRKoutlaw.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKoutlaw);
-            PassiveButton PRKcupid = RKcupid.GetComponent<PassiveButton>();
-            PRKcupid.OnClick = new Button.ButtonClickedEvent();
-            PRKcupid.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKcupid);
-            PassiveButton PRKculte = RKculte.GetComponent<PassiveButton>();
-            PRKculte.OnClick = new Button.ButtonClickedEvent();
-            PRKculte.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKculte);
-            PassiveButton PRKarsonist = RKarsonist.GetComponent<PassiveButton>();
-            PRKarsonist.OnClick = new Button.ButtonClickedEvent();
-            PRKarsonist.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKarsonist);
-            PassiveButton PRKnone = RKnone.GetComponent<PassiveButton>();
-            PRKnone.OnClick = new Button.ButtonClickedEvent();
-            PRKnone.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKnone);
-            PassiveButton PRKFree = RKFree.GetComponent<PassiveButton>();
-            PRKFree.OnClick = new Button.ButtonClickedEvent();
-            PRKFree.OnClick.AddListener((UnityEngine.Events.UnityAction)setRKFree);
+           
 
-            //0 vanilla
-            //1 lite
-            //2 unknow
-            //3 jester
-            //4 Eater
-            //5 outlaw
-            //6 Cupid
-            //7 Culte
-            //8 Arsonist
-            //9 Other
-            //100 Free
 
-            void setRKvanilla()
-            {
-                IsrankedGameSet = 0f;
-                RankedInt.updateSelection(0);
-            }
-            void setRKlite()
-            {
-                IsrankedGameSet = 1f;
-                RankedInt.updateSelection(1);
-            }
-            void setRKunknow()
-            {
-                IsrankedGameSet = 2f;
-                RankedInt.updateSelection(2);
-            }
-            void setRKjester()
-            {
-                IsrankedGameSet = 3f;
-                RankedInt.updateSelection(3);
-            }
-            void setRKeater()
-            {
-                IsrankedGameSet = 4f;
-                RankedInt.updateSelection(4);
-            }
-            void setRKoutlaw()
-            {
-                IsrankedGameSet = 5f;
-                RankedInt.updateSelection(5);
-            }
-            void setRKcupid()
-            {
-                IsrankedGameSet = 6f;
-                RankedInt.updateSelection(6);
-            }
-            void setRKculte()
-            {
-                IsrankedGameSet = 7f;
-                RankedInt.updateSelection(7);
-            }
-            void setRKarsonist()
-            {
-                IsrankedGameSet = 8f;
-                RankedInt.updateSelection(8);
-            }
-            void setRKnone()
-            {
-                IsrankedGameSet = 9f;
-                RankedInt.updateSelection(9);
-            }
-            void setRKFree()
-            {
-                IsrankedGameSet = 100f;
-                RankedInt.updateSelection(100);
-                
-            }
+           
 
 
         }
@@ -1220,7 +944,6 @@ namespace ChallengerMod
             foreach (PlayerControl player in PlayerControl.AllPlayerControls)
             {
                 String playerName = player.Data.PlayerName;
-               // if (Morphling.morphTimer > 0f && Morphling.morphling == player && Morphling.morphTarget != null) playerName = Morphling.morphTarget.Data.PlayerName; // Temporary hotfix for the Morphling's name
 
                 player.cosmetics.nameText.text = ChallengerOS.Utils.Helpers.hidePlayerName(PlayerControl.LocalPlayer, player) ? ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x") : playerName;
 
@@ -1645,8 +1368,10 @@ namespace ChallengerMod
 
             if (AmongUsClient.Instance.GameState != InnerNetClient.GameStates.Started)
             {
+                
 
                 
+
                 ChallengerMod.Challenger.RoleAssigned = false; //reset SetRoles
 
                 if (GameObject.Find("Main Camera").transform.FindChild("Hud").transform.FindChild("GameStartManager").transform.FindChild("PlayerCounter_TMP"))
@@ -1675,7 +1400,6 @@ namespace ChallengerMod
                 timerLN = (int)Math.Round(ChallengerMod.Challenger.NuclearLastTimer);
 
                 
-
 
 
                 //CREATE_OBJECT
@@ -1719,22 +1443,14 @@ namespace ChallengerMod
                                 ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(0);
                                 ChallengerOS.Utils.Option.CustomOption.switchPreset(0);
                                 ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-                                Challenger.IsrankedGameSet = 100;
-                                ChallengerOS.Utils.Option.CustomOptionHolder.RankedInt.updateSelection(100);
-                                Challenger.IsrankedGameSet = 100;
-
                             }
-
                         }
                         else
                         {
                             var CustomButton = GameObject.Find("Main Camera/Hud/ChatUi/ChatButton");
                             var ButtonParent = GameObject.Find("Main Camera/Hud/");
-
                             var button1 = UnityEngine.Object.Instantiate(CustomButton, null);
-
                             button1.transform.parent = ButtonParent.transform;
-
                             button1.transform.name = "PressetButton_1";
                         }
 
@@ -1774,21 +1490,14 @@ namespace ChallengerMod
                                 ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(1);
                                 ChallengerOS.Utils.Option.CustomOption.switchPreset(1);
                                 ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-                                Challenger.IsrankedGameSet = 100;
-                                ChallengerOS.Utils.Option.CustomOptionHolder.RankedInt.updateSelection(100);
-                                Challenger.IsrankedGameSet = 100;
                             }
-
                         }
                         else
                         {
                             var CustomButton = GameObject.Find("Main Camera/Hud/ChatUi/ChatButton");
                             var ButtonParent = GameObject.Find("Main Camera/Hud/");
-
                             var button1 = UnityEngine.Object.Instantiate(CustomButton, null);
-
                             button1.transform.parent = ButtonParent.transform;
-
                             button1.transform.name = "PressetButton_2";
                         }
 
@@ -1807,7 +1516,6 @@ namespace ChallengerMod
                                 else
                                 {
                                     button.GetComponent<SpriteRenderer>().sprite = PS3EN1;
-
                                 }
                             }
                             else
@@ -1829,10 +1537,6 @@ namespace ChallengerMod
                                 ChallengerOS.Utils.Option.CustomOptionHolder.presetSelection.updateSelection(2);
                                 ChallengerOS.Utils.Option.CustomOption.switchPreset(2);
                                 ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-                                Challenger.IsrankedGameSet = 100;
-                                ChallengerOS.Utils.Option.CustomOptionHolder.RankedInt.updateSelection(100);
-                                Challenger.IsrankedGameSet = 100;
-
                             }
 
                         }
@@ -1840,13 +1544,2472 @@ namespace ChallengerMod
                         {
                             var CustomButton = GameObject.Find("Main Camera/Hud/ChatUi/ChatButton");
                             var ButtonParent = GameObject.Find("Main Camera/Hud/");
-
                             var button1 = UnityEngine.Object.Instantiate(CustomButton, null);
-
                             button1.transform.parent = ButtonParent.transform;
-
                             button1.transform.name = "PressetButton_3";
                         }
+
+                        //UI_RANKED_BUTTON
+                        if (GameObject.Find("RankedButton"))
+                        {
+                            var button = GameObject.Find("Main Camera/Hud/RankedButton");
+                            
+
+                            if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
+                            {
+                                if (RankedSettings == false)
+                                {
+                                    button.GetComponent<SpriteRenderer>().sprite = UI2_BTTNFR;
+                                    button.transform.localPosition = new Vector3(0f, 2.65f, 1f);
+                                    button.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                                }
+                                else
+                                {
+                                    button.GetComponent<SpriteRenderer>().sprite = UI2_CreateConfirmFR;
+                                }
+                            }
+                            else
+                            {
+                                if (RankedSettings == false)
+                                {
+                                    button.GetComponent<SpriteRenderer>().sprite = UI2_BTTN;
+                                    button.transform.localPosition = new Vector3(0f, 2.65f, 1f);
+                                    button.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                                }
+                                else
+                                {
+                                    button.GetComponent<SpriteRenderer>().sprite = UI2_CreateConfirm;
+                                }
+                            }
+
+                            
+
+                        }
+                        else
+                        {
+                            if (Challenger.IsrankedGame)
+                            {
+                                var CustomButton = GameObject.Find("Main Camera/Hud/ChatUi/ChatButton");
+                                var ButtonParent = GameObject.Find("Main Camera/Hud/");
+                                var button1 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                button1.transform.parent = ButtonParent.transform;
+                                PassiveButton passiveButton = button1.GetComponent<PassiveButton>();
+                                passiveButton.OnClick = new Button.ButtonClickedEvent();
+                                passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                                void onClick()
+                                {
+                                    //OPENUI
+                                    if (RankedSettings == false)
+                                    {
+                                        RankedSettings = true;
+                                        PlayerControl.LocalPlayer.moveable = false;
+                                        PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                                    }
+                                    else
+                                    {
+                                        RankedSettings = false;
+                                        PlayerControl.LocalPlayer.moveable = true;
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                                button1.transform.name = "RankedButton";
+                            }
+                            
+                        }
+
+
+                        //UI_RANKED
+                        if (GameObject.Find("RankedUI"))
+                        {
+                            var UITAB = GameObject.Find("Main Camera/Hud/RankedUI");
+                            UITAB.transform.localPosition = new Vector3(0f, 0f, -100f);
+                            if (RankedSettings == false) { UITAB.transform.localScale = new Vector3(0f, 0f, 0f); }
+                            else { UITAB.transform.localScale = new Vector3(0.4f, 0.4f, 1f); }
+                        }
+                        else
+                        {
+                            if (Challenger.IsrankedGame)
+                            {
+                                GameObject CustomUI = new GameObject();
+                                var HUD = GameObject.Find("Main Camera/Hud/");
+                                CustomUI.layer = 5;
+                                CustomUI.transform.parent = HUD.transform;
+                                CustomUI.transform.localScale = new Vector3(0f, 0f, 0f);
+
+
+                                CustomUI.AddComponent<SpriteRenderer>().sprite = UI2_TAB;
+                                CustomUI.transform.name = "RankedUI";
+
+                                var CustomButton = GameObject.Find("Main Camera/Hud/ChatUi/ChatButton");
+
+
+                                var IMP1 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                IMP1.transform.parent = CustomUI.transform;
+                                IMP1.name = "IMP1";
+
+                                var IMP2 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                IMP2.transform.parent = CustomUI.transform;
+                                IMP2.name = "IMP2";
+
+                                var IMP3 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                IMP3.transform.parent = CustomUI.transform;
+                                IMP3.name = "IMP3";
+
+                                var DUO0 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                DUO0.transform.parent = CustomUI.transform;
+                                DUO0.name = "DUO0";
+
+                                var DUO1 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                DUO1.transform.parent = CustomUI.transform;
+                                DUO1.name = "DUO1";
+
+                                var DUO2 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                DUO2.transform.parent = CustomUI.transform;
+                                DUO2.name = "DUO2";
+
+                                var DUO3 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                DUO3.transform.parent = CustomUI.transform;
+                                DUO3.name = "DUO3";
+
+                                var SPE0 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE0.transform.parent = CustomUI.transform;
+                                SPE0.name = "SPE0";
+
+                                var SPE1 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE1.transform.parent = CustomUI.transform;
+                                SPE1.name = "SPE1";
+
+                                var SPE2 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE2.transform.parent = CustomUI.transform;
+                                SPE2.name = "SPE2";
+
+                                var SPE3 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE3.transform.parent = CustomUI.transform;
+                                SPE3.name = "SPE3";
+
+                                var SPE4 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE4.transform.parent = CustomUI.transform;
+                                SPE4.name = "SPE4";
+
+                                var SPE5 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE5.transform.parent = CustomUI.transform;
+                                SPE5.name = "SPE5";
+
+                                var SPE6 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                SPE6.transform.parent = CustomUI.transform;
+                                SPE6.name = "SPE6";
+
+                                var MAP_POLUS = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_POLUS.transform.parent = CustomUI.transform;
+                                MAP_POLUS.name = "MAP_POLUS";
+
+                                var MAP_BPOLUS = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_BPOLUS.transform.parent = CustomUI.transform;
+                                MAP_BPOLUS.name = "MAP_BPOLUS";
+
+                                var MAP_CPOLUS = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_CPOLUS.transform.parent = CustomUI.transform;
+                                MAP_CPOLUS.name = "MAP_CPOLUS";
+
+                                var MAP_NPOLUS = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_NPOLUS.transform.parent = CustomUI.transform;
+                                MAP_NPOLUS.name = "MAP_NPOLUS";
+
+                                var MAP_SKELD = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_SKELD.transform.parent = CustomUI.transform;
+                                MAP_SKELD.name = "MAP_SKELD";
+
+                                var MAP_CSKELD = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_CSKELD.transform.parent = CustomUI.transform;
+                                MAP_CSKELD.name = "MAP_CSKELD";
+
+                                var MAP_MIRA = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_MIRA.transform.parent = CustomUI.transform;
+                                MAP_MIRA.name = "MAP_MIRA";
+
+                                var MAP_CMIRA = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_CMIRA.transform.parent = CustomUI.transform;
+                                MAP_CMIRA.name = "MAP_CMIRA";
+
+                                var MAP_AIRSHIP = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_AIRSHIP.transform.parent = CustomUI.transform;
+                                MAP_AIRSHIP.name = "MAP_AIRSHIP";
+
+                                var MAP_SUBMERGED = UnityEngine.Object.Instantiate(CustomButton, null);
+                                MAP_SUBMERGED.transform.parent = CustomUI.transform;
+                                MAP_SUBMERGED.name = "MAP_SUBMERGED";
+
+                                var PMAX_ADD = UnityEngine.Object.Instantiate(CustomButton, null);
+                                PMAX_ADD.transform.parent = CustomUI.transform;
+                                PMAX_ADD.name = "PMAX_ADD";
+
+                                var PMAX_REMOVE = UnityEngine.Object.Instantiate(CustomButton, null);
+                                PMAX_REMOVE.transform.parent = CustomUI.transform;
+                                PMAX_REMOVE.name = "PMAX_REMOVE";
+
+                                var PMAX_NUM = UnityEngine.Object.Instantiate(CustomButton, null);
+                                PMAX_NUM.transform.parent = CustomUI.transform;
+                                PMAX_NUM.name = "PMAX_NUM";
+
+
+                                var ROLE_CRW_SHERIFF = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_SHERIFF.transform.parent = CustomUI.transform;
+                                ROLE_CRW_SHERIFF.name = "ROLE_CRW_Sheriff1";
+
+                                var ROLE_CRW_SHERIFF2 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_SHERIFF2.transform.parent = CustomUI.transform;
+                                ROLE_CRW_SHERIFF2.name = "ROLE_CRW_Sheriff2";
+
+                                var ROLE_CRW_SHERIFF3 = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_SHERIFF3.transform.parent = CustomUI.transform;
+                                ROLE_CRW_SHERIFF3.name = "ROLE_CRW_Sheriff3";
+
+                                var ROLE_CRW_GUARDIAN = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_GUARDIAN.transform.parent = CustomUI.transform;
+                                ROLE_CRW_GUARDIAN.name = "ROLE_CRW_Guardian";
+
+                                var ROLE_CRW_ENGINEER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_ENGINEER.transform.parent = CustomUI.transform;
+                                ROLE_CRW_ENGINEER.name = "ROLE_CRW_Engineer";
+
+                                var ROLE_CRW_TMELORD = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_TMELORD.transform.parent = CustomUI.transform;
+                                ROLE_CRW_TMELORD.name = "ROLE_CRW_Timelord";
+
+                                var ROLE_CRW_HUNTER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_HUNTER.transform.parent = CustomUI.transform;
+                                ROLE_CRW_HUNTER.name = "ROLE_CRW_Hunter";
+
+                                var ROLE_CRW_MYSTIC = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_MYSTIC.transform.parent = CustomUI.transform;
+                                ROLE_CRW_MYSTIC.name = "ROLE_CRW_Mystic";
+
+                                var ROLE_CRW_SPIRIT = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_SPIRIT.transform.parent = CustomUI.transform;
+                                ROLE_CRW_SPIRIT.name = "ROLE_CRW_Spirit";
+
+                                var ROLE_CRW_MAYOR = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_MAYOR.transform.parent = CustomUI.transform;
+                                ROLE_CRW_MAYOR.name = "ROLE_CRW_Mayor";
+
+                                var ROLE_CRW_DETECTIVE = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_DETECTIVE.transform.parent = CustomUI.transform;
+                                ROLE_CRW_DETECTIVE.name = "ROLE_CRW_Detective";
+
+                                var ROLE_CRW_NIGHTWATCH = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_NIGHTWATCH.transform.parent = CustomUI.transform;
+                                ROLE_CRW_NIGHTWATCH.name = "ROLE_CRW_Nightwatch";
+
+                                var ROLE_CRW_SPY = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_SPY.transform.parent = CustomUI.transform;
+                                ROLE_CRW_SPY.name = "ROLE_CRW_Spy";
+
+                                var ROLE_CRW_INFORMANT = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_INFORMANT.transform.parent = CustomUI.transform;
+                                ROLE_CRW_INFORMANT.name = "ROLE_CRW_Informant";
+
+                                var ROLE_CRW_BAIT = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_BAIT.transform.parent = CustomUI.transform;
+                                ROLE_CRW_BAIT.name = "ROLE_CRW_Bait";
+
+                                var ROLE_CRW_MENTALIST = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_MENTALIST.transform.parent = CustomUI.transform;
+                                ROLE_CRW_MENTALIST.name = "ROLE_CRW_Mentalist";
+
+                                var ROLE_CRW_BUILDER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_BUILDER.transform.parent = CustomUI.transform;
+                                ROLE_CRW_BUILDER.name = "ROLE_CRW_Builder";
+
+                                var ROLE_CRW_DICTATOR = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_DICTATOR.transform.parent = CustomUI.transform;
+                                ROLE_CRW_DICTATOR.name = "ROLE_CRW_Dictator";
+
+                                var ROLE_CRW_SENTINEL = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_SENTINEL.transform.parent = CustomUI.transform;
+                                ROLE_CRW_SENTINEL.name = "ROLE_CRW_Sentinel";
+
+                                var ROLE_CRW_TEAMMATE = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_TEAMMATE.transform.parent = CustomUI.transform;
+                                ROLE_CRW_TEAMMATE.name = "ROLE_CRW_Teammate";
+
+                                var ROLE_CRW_LAWKEEPER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_LAWKEEPER.transform.parent = CustomUI.transform;
+                                ROLE_CRW_LAWKEEPER.name = "ROLE_CRW_Lawkeeper";
+
+                                var ROLE_CRW_FAKE = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_FAKE.transform.parent = CustomUI.transform;
+                                ROLE_CRW_FAKE.name = "ROLE_CRW_Fake";
+
+                                var ROLE_CRW_LEADER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_LEADER.transform.parent = CustomUI.transform;
+                                ROLE_CRW_LEADER.name = "ROLE_CRW_Leader";
+
+                                var ROLE_CRW_DOCTOR = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_DOCTOR.transform.parent = CustomUI.transform;
+                                ROLE_CRW_DOCTOR.name = "ROLE_CRW_Doctor";
+
+                                var ROLE_CRW_TRAVELER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_CRW_TRAVELER.transform.parent = CustomUI.transform;
+                                ROLE_CRW_TRAVELER.name = "ROLE_CRW_Traveler";
+
+
+
+                                var ROLE_DUO_MERCENARY = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_DUO_MERCENARY.transform.parent = CustomUI.transform;
+                                ROLE_DUO_MERCENARY.name = "ROLE_DUO_Mercenary";
+
+                                var ROLE_DUO_COPYCAT = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_DUO_COPYCAT.transform.parent = CustomUI.transform;
+                                ROLE_DUO_COPYCAT.name = "ROLE_DUO_Copycat";
+
+                                var ROLE_DUO_REVENGER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_DUO_REVENGER.transform.parent = CustomUI.transform;
+                                ROLE_DUO_REVENGER.name = "ROLE_DUO_Revenger";
+
+                                var ROLE_DUO_SURVIVOR = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_DUO_SURVIVOR.transform.parent = CustomUI.transform;
+                                ROLE_DUO_SURVIVOR.name = "ROLE_DUO_Survivor";
+
+                                var ROLE_DUO_SLAVE = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_DUO_SLAVE.transform.parent = CustomUI.transform;
+                                ROLE_DUO_SLAVE.name = "ROLE_DUO_Slave";
+
+
+                                var ROLE_SPE_CUPID = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_CUPID.transform.parent = CustomUI.transform;
+                                ROLE_SPE_CUPID.name = "ROLE_SPE_Cupid";
+
+                                var ROLE_SPE_CULTIST = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_CULTIST.transform.parent = CustomUI.transform;
+                                ROLE_SPE_CULTIST.name = "ROLE_SPE_Cultist";
+
+                                var ROLE_SPE_JESTER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_JESTER.transform.parent = CustomUI.transform;
+                                ROLE_SPE_JESTER.name = "ROLE_SPE_Jester";
+
+                                var ROLE_SPE_EATER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_EATER.transform.parent = CustomUI.transform;
+                                ROLE_SPE_EATER.name = "ROLE_SPE_Eater";
+
+                                var ROLE_SPE_OUTLAW = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_OUTLAW.transform.parent = CustomUI.transform;
+                                ROLE_SPE_OUTLAW.name = "ROLE_SPE_Outlaw";
+
+                                var ROLE_SPE_ARSONIST = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_ARSONIST.transform.parent = CustomUI.transform;
+                                ROLE_SPE_ARSONIST.name = "ROLE_SPE_Arsonist";
+
+                                var ROLE_SPE_CURSED = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_SPE_CURSED.transform.parent = CustomUI.transform;
+                                ROLE_SPE_CURSED.name = "ROLE_SPE_Cursed";
+
+
+                                var ROLE_IMP_ASSASSIN = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_ASSASSIN.transform.parent = CustomUI.transform;
+                                ROLE_IMP_ASSASSIN.name = "ROLE_IMP_Assassin";
+
+                                var ROLE_IMP_VECTOR = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_VECTOR.transform.parent = CustomUI.transform;
+                                ROLE_IMP_VECTOR.name = "ROLE_IMP_Vector";
+
+                                var ROLE_IMP_MORPHLING = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_MORPHLING.transform.parent = CustomUI.transform;
+                                ROLE_IMP_MORPHLING.name = "ROLE_IMP_Morphling";
+
+                                var ROLE_IMP_SCRAMBLER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_SCRAMBLER.transform.parent = CustomUI.transform;
+                                ROLE_IMP_SCRAMBLER.name = "ROLE_IMP_Scrambler";
+
+                                var ROLE_IMP_BARGHEST = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_BARGHEST.transform.parent = CustomUI.transform;
+                                ROLE_IMP_BARGHEST.name = "ROLE_IMP_Barghest";
+
+                                var ROLE_IMP_GHOST = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_GHOST.transform.parent = CustomUI.transform;
+                                ROLE_IMP_GHOST.name = "ROLE_IMP_Ghost";
+
+                                var ROLE_IMP_SORCERER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_SORCERER.transform.parent = CustomUI.transform;
+                                ROLE_IMP_SORCERER.name = "ROLE_IMP_Sorcerer";
+
+                                var ROLE_IMP_GUESSER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_GUESSER.transform.parent = CustomUI.transform;
+                                ROLE_IMP_GUESSER.name = "ROLE_IMP_Guesser";
+
+                                var ROLE_IMP_BASILISK = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_BASILISK.transform.parent = CustomUI.transform;
+                                ROLE_IMP_BASILISK.name = "ROLE_IMP_Basilisk";
+
+                                var ROLE_IMP_REAPER = UnityEngine.Object.Instantiate(CustomButton, null);
+                                ROLE_IMP_REAPER.transform.parent = CustomUI.transform;
+                                ROLE_IMP_REAPER.name = "ROLE_IMP_Reaper";
+
+
+                            }
+
+                        }
+
+                        if (GameObject.Find("MAP_POLUS"))
+                        {
+                            var button = GameObject.Find("MAP_POLUS");
+                            button.transform.localPosition = new Vector3(4.175f, 4.7f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 0) { button.GetComponent<SpriteRenderer>().sprite = UI2_Polus1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Polus0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 0)
+                                {
+                                    Challenger._MapID = 0;
+                                    PlayerControl.GameOptions.MapId = 2;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(2);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(2);
+                                    BetterMapPL.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_BPOLUS"))
+                        {
+                            var button = GameObject.Find("MAP_BPOLUS");
+                            button.transform.localPosition = new Vector3(5.8f, 4.7f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 1) { button.GetComponent<SpriteRenderer>().sprite = UI2_Bpolus1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Bpolus0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 1)
+                                {
+                                    Challenger._MapID = 1;
+                                    PlayerControl.GameOptions.MapId = 2;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(2);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(2);
+                                    BetterMapPL.updateSelection(1);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_CPOLUS"))
+                        {
+                            var button = GameObject.Find("MAP_CPOLUS");
+                            button.transform.localPosition = new Vector3(4.175f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 2) { button.GetComponent<SpriteRenderer>().sprite = UI2_Cpolus1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Cpolus0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 2)
+                                {
+                                    Challenger._MapID = 2;
+                                    PlayerControl.GameOptions.MapId = 2;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(2);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(2);
+                                    BetterMapPL.updateSelection(2);
+                                    NuclearTimerMod.updateSelection(0);
+                                    NuclearRND.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_NPOLUS"))
+                        {
+                            var button = GameObject.Find("MAP_NPOLUS");
+                            button.transform.localPosition = new Vector3(5.8f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 3) { button.GetComponent<SpriteRenderer>().sprite = UI2_Npolus1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Npolus0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 3)
+                                {
+                                    Challenger._MapID = 3;
+                                    PlayerControl.GameOptions.MapId = 2;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(2);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(2);
+                                    BetterMapPL.updateSelection(2);
+                                    NuclearRND.updateSelection(20);
+                                    NuclearTimerMod.updateSelection(1);
+                                    NuclearHide.updateSelection(2);
+                                    NuclearTime1.updateSelection(0);
+                                    NuclearTimeRND.updateSelection(24);
+                                    NuclearTime2.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_SKELD"))
+                        {
+                            var button = GameObject.Find("MAP_SKELD");
+                            button.transform.localPosition = new Vector3(4.175f, 1.4f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 4) { button.GetComponent<SpriteRenderer>().sprite = UI2_Skeld1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Skeld0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 4)
+                                {
+                                    Challenger._MapID = 4;
+                                    PlayerControl.GameOptions.MapId = 0;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(0);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(0);
+                                    BetterMapSK.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_CSKELD"))
+                        {
+                            var button = GameObject.Find("MAP_CSKELD");
+                            button.transform.localPosition = new Vector3(5.8f, 1.4f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 5) { button.GetComponent<SpriteRenderer>().sprite = UI2_Cskeld1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Csleld0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 5)
+                                {
+                                    Challenger._MapID = 5;
+                                    PlayerControl.GameOptions.MapId = 0;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(0);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(0);
+                                    BetterMapSK.updateSelection(1);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_MIRA"))
+                        {
+                            var button = GameObject.Find("MAP_MIRA");
+                            button.transform.localPosition = new Vector3(4.175f, -0.3f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 6) { button.GetComponent<SpriteRenderer>().sprite = UI2_Mira1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Mira0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 6)
+                                {
+                                    Challenger._MapID = 6;
+                                    PlayerControl.GameOptions.MapId = 1;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(1);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(1);
+                                    BetterMapHQ.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_CMIRA"))
+                        {
+                            var button = GameObject.Find("MAP_CMIRA");
+                            button.transform.localPosition = new Vector3(5.8f, -0.3f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 7) { button.GetComponent<SpriteRenderer>().sprite = UI2_Cmira1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Cmira0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 7)
+                                {
+                                    Challenger._MapID = 7;
+                                    PlayerControl.GameOptions.MapId = 1;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(1);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(1);
+                                    BetterMapHQ.updateSelection(1);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_AIRSHIP"))
+                        {
+                            var button = GameObject.Find("MAP_AIRSHIP");
+                            button.transform.localPosition = new Vector3(4.175f, -2f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 8) { button.GetComponent<SpriteRenderer>().sprite = UI2_Airship1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Airship0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 8)
+                                {
+                                    Challenger._MapID = 8;
+                                    PlayerControl.GameOptions.MapId = 4;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(4);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(4);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("MAP_SUBMERGED"))
+                        {
+                            var button = GameObject.Find("MAP_SUBMERGED");
+                            button.transform.localPosition = new Vector3(5.8f, -2f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._MapID == 9) { button.GetComponent<SpriteRenderer>().sprite = UI2_Sub1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Sub0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._MapID != 9)
+                                {
+                                    Challenger._MapID = 9;
+                                    PlayerControl.GameOptions.MapId = 5;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewMapID, Hazel.SendOption.Reliable);
+                                    writer.Write(5);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewMapID(5);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("PMAX_REMOVE"))
+                        {
+                            var button = GameObject.Find("PMAX_REMOVE");
+                            button.transform.localPosition = new Vector3(3.9f, -5f, -1f);
+                            button.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+                            if (PlayerControl.GameOptions.MaxPlayers > 10 && GameStartManager.Instance.LastPlayerCount < PlayerControl.GameOptions.MaxPlayers)
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PMREM1;
+                            }
+                            else
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PMREM0;
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (GameStartManager.Instance.LastPlayerCount < PlayerControl.GameOptions.MaxPlayers)
+                                {
+
+                                    if (PlayerControl.GameOptions.MaxPlayers == 11)
+                                    {
+                                        MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                        writer.Write(10);
+                                        writer.EndMessage();
+                                        RPCProcedure.shareNewPLayerSlot(10);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    else if (PlayerControl.GameOptions.MaxPlayers == 12)
+                                    {
+                                        MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                        writer.Write(11);
+                                        writer.EndMessage();
+                                        RPCProcedure.shareNewPLayerSlot(11);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    else if (PlayerControl.GameOptions.MaxPlayers == 13)
+                                    {
+                                        MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                        writer.Write(12);
+                                        writer.EndMessage();
+                                        RPCProcedure.shareNewPLayerSlot(12);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    else if (PlayerControl.GameOptions.MaxPlayers == 14)
+                                    {
+                                        MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                        writer.Write(13);
+                                        writer.EndMessage();
+                                        RPCProcedure.shareNewPLayerSlot(13);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    else if (PlayerControl.GameOptions.MaxPlayers >= 15)
+                                    {
+                                        MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                        writer.Write(14);
+                                        writer.EndMessage();
+                                        RPCProcedure.shareNewPLayerSlot(14);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    else { }
+                                }
+
+                            }
+                        }
+                        if (GameObject.Find("PMAX_ADD"))
+                        {
+                            var button = GameObject.Find("PMAX_ADD");
+                            button.transform.localPosition = new Vector3(5.9f, -5f, -1f);
+                            button.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+                            if (PlayerControl.GameOptions.MaxPlayers < 15)
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PMADD1;
+                            }
+                            else
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PMADD0;
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (PlayerControl.GameOptions.MaxPlayers == 14)
+                                {
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                    writer.Write(15);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewPLayerSlot(15);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else if (PlayerControl.GameOptions.MaxPlayers == 13)
+                                {
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                    writer.Write(14);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewPLayerSlot(14);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else if (PlayerControl.GameOptions.MaxPlayers == 12)
+                                {
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                    writer.Write(13);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewPLayerSlot(13);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else if (PlayerControl.GameOptions.MaxPlayers == 11)
+                                {
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                    writer.Write(12);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewPLayerSlot(12);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else if (PlayerControl.GameOptions.MaxPlayers <= 10)
+                                {
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareNewPLayerSlot, Hazel.SendOption.Reliable);
+                                    writer.Write(11);
+                                    writer.EndMessage();
+                                    RPCProcedure.shareNewPLayerSlot(11);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else { }
+                            }
+                        }
+                        if (GameObject.Find("PMAX_NUM"))
+                        {
+                            var button = GameObject.Find("PMAX_NUM");
+                            button.transform.localPosition = new Vector3(4.9f, -5f, -1f);
+                            button.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+                            
+                            if (PlayerControl.GameOptions.MaxPlayers == 10) 
+                            { 
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PM10; 
+                            }
+                            else if (PlayerControl.GameOptions.MaxPlayers == 11)
+                            { 
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PM11;
+                            }
+                            else if (PlayerControl.GameOptions.MaxPlayers == 12)
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PM12;
+                            }
+                            else if (PlayerControl.GameOptions.MaxPlayers == 13)
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PM13;
+                            }
+                            else if (PlayerControl.GameOptions.MaxPlayers == 14)
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PM14;
+                            }
+                            else if (PlayerControl.GameOptions.MaxPlayers == 15)
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_PM15;
+                            }
+                        }
+                        
+
+
+                        if (GameObject.Find("IMP1"))
+                        {
+                            var button = GameObject.Find("IMP1");
+                            button.transform.localPosition = new Vector3(-4.5f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._IMP == 1) { button.GetComponent<SpriteRenderer>().sprite = UI2_1N1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_1N0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._IMP != 1)
+                                {
+                                    Challenger._IMP = 1;
+                                    PlayerControl.GameOptions.NumImpostors = 1;
+                                    QTImp.updateSelection(1);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("IMP2"))
+                        {
+                            var button = GameObject.Find("IMP2");
+                            button.transform.localPosition = new Vector3(-3.7f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._IMP == 2) { button.GetComponent<SpriteRenderer>().sprite = UI2_2N1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_2N0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._IMP != 2)
+                                {
+                                    Challenger._IMP = 2;
+                                    PlayerControl.GameOptions.NumImpostors = 2;
+                                    QTImp.updateSelection(2);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("IMP3"))
+                        {
+                            var button = GameObject.Find("IMP3");
+                            button.transform.localPosition = new Vector3(-2.9f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 13) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._IMP == 3) { button.GetComponent<SpriteRenderer>().sprite = UI2_3N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_3N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._IMP != 3 && Challenger._Players >= 13)
+                                {
+                                    Challenger._IMP = 3;
+                                    PlayerControl.GameOptions.NumImpostors = 3;
+                                    QTImp.updateSelection(3);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+
+                        if (GameObject.Find("DUO0"))
+                        {
+                            var button = GameObject.Find("DUO0");
+                            button.transform.localPosition = new Vector3(-0.25f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._DUO == 0) { button.GetComponent<SpriteRenderer>().sprite = UI2_0N1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_0N0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._DUO != 0)
+                                {
+                                    Challenger._DUO = 0;
+                                    QTDuo.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+
+                        if (GameObject.Find("DUO1"))
+                        {
+                            var button = GameObject.Find("DUO1");
+                            button.transform.localPosition = new Vector3(0.65f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._DUO == 1) { button.GetComponent<SpriteRenderer>().sprite = UI2_1N1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_1N0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._DUO != 1)
+                                {
+                                    Challenger._DUO = 1;
+                                    QTDuo.updateSelection(1);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("DUO2"))
+                        {
+                            var button = GameObject.Find("DUO2");
+                            button.transform.localPosition = new Vector3(1.45f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 11) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._DUO == 2) { button.GetComponent<SpriteRenderer>().sprite = UI2_2N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_2N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 11)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._DUO != 2)
+                                    {
+                                        Challenger._DUO = 2;
+                                        QTDuo.updateSelection(2);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+                        if (GameObject.Find("DUO3"))
+                        {
+                            var button = GameObject.Find("DUO3");
+                            button.transform.localPosition = new Vector3(2.25f, 5.365f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                            if (Challenger._Players < 12) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._DUO == 3) { button.GetComponent<SpriteRenderer>().sprite = UI2_3N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_3N0; }
+                            }
+
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 12)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._DUO != 3)
+                                    {
+                                        Challenger._DUO = 3;
+                                        QTDuo.updateSelection(3);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (GameObject.Find("SPE0"))
+                        {
+                            var button = GameObject.Find("SPE0");
+                            button.transform.localPosition = new Vector3(-4.5f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._SPE == 0) { button.GetComponent<SpriteRenderer>().sprite = UI2_0N1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_0N0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._SPE != 0)
+                                {
+                                    Challenger._SPE = 0;
+                                    QTSpe.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+
+                        if (GameObject.Find("SPE1"))
+                        {
+                            var button = GameObject.Find("SPE1");
+                            button.transform.localPosition = new Vector3(-3.7f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._SPE == 1) { button.GetComponent<SpriteRenderer>().sprite = UI2_1N1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_1N0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._SPE != 1)
+                                {
+                                    Challenger._SPE = 1;
+                                    QTSpe.updateSelection(1);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("SPE2"))
+                        {
+                            var button = GameObject.Find("SPE2");
+                            button.transform.localPosition = new Vector3(-2.9f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 11) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._SPE == 2) { button.GetComponent<SpriteRenderer>().sprite = UI2_2N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_2N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 11)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._SPE != 2)
+                                    {
+                                        Challenger._SPE = 2;
+                                        QTSpe.updateSelection(2);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+                        if (GameObject.Find("SPE3"))
+                        {
+                            var button = GameObject.Find("SPE3");
+                            button.transform.localPosition = new Vector3(-2.1f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 12) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._SPE == 3) { button.GetComponent<SpriteRenderer>().sprite = UI2_3N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_3N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 12)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._SPE != 3)
+                                    {
+                                        Challenger._SPE = 3;
+                                        QTSpe.updateSelection(3);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+                        if (GameObject.Find("SPE4"))
+                        {
+                            var button = GameObject.Find("SPE4");
+                            button.transform.localPosition = new Vector3(-1.3f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 13) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._SPE == 4) { button.GetComponent<SpriteRenderer>().sprite = UI2_4N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_4N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 13)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._SPE != 4)
+                                    {
+                                        Challenger._SPE = 4;
+                                        QTSpe.updateSelection(4);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+                        if (GameObject.Find("SPE5"))
+                        {
+                            var button = GameObject.Find("SPE5");
+                            button.transform.localPosition = new Vector3(-0.5f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 14) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._SPE == 5) { button.GetComponent<SpriteRenderer>().sprite = UI2_5N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_5N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 14)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._SPE != 5)
+                                    {
+                                        Challenger._SPE = 5;
+                                        QTSpe.updateSelection(5);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+                        if (GameObject.Find("SPE6"))
+                        {
+                            var button = GameObject.Find("SPE6");
+                            button.transform.localPosition = new Vector3(0.3f, 4.52f, -1f);
+                            button.transform.localScale = new Vector3(1f, 1f, 1f);
+                            if (Challenger._Players < 15) { button.GetComponent<SpriteRenderer>().sprite = UI2_NUMBER_LOCK; }
+                            else
+                            {
+                                if (Challenger._SPE == 6) { button.GetComponent<SpriteRenderer>().sprite = UI2_6N1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_6N0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (Challenger._Players < 15)
+                                {
+
+                                }
+                                else
+                                {
+                                    if (Challenger._SPE != 6)
+                                    {
+                                        Challenger._SPE = 6;
+                                        QTSpe.updateSelection(6);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (GameObject.Find("ROLE_CRW_Sheriff1"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Sheriff1");
+                            button.transform.localPosition = new Vector3(-5.5f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.SherifMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Sheriff1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Sheriff0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.SherifMin != 1f)
+                                {
+                                    SherifAdd.updateSelection(1);
+                                    SherifSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    SherifSpawnChance.updateSelection(0);
+                                    if (ChallengerMod.Set.Data.Sherif2Min == 0f && ChallengerMod.Set.Data.Sherif3Min == 0f) { SherifAdd.updateSelection(0); }
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Sheriff2"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Sheriff2");
+                            button.transform.localPosition = new Vector3(-4.1f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.Sherif2Min == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Sheriff1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Sheriff0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.Sherif2Min != 1f)
+                                {
+                                    SherifAdd.updateSelection(1);
+                                    Sherif2SpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    Sherif2SpawnChance.updateSelection(0);
+                                    if (ChallengerMod.Set.Data.SherifMin == 0f && ChallengerMod.Set.Data.Sherif3Min == 0f) { SherifAdd.updateSelection(0); }
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Sheriff3"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Sheriff3");
+                            button.transform.localPosition = new Vector3(-2.7f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.Sherif3Min == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Sheriff1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Sheriff0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.Sherif3Min != 1f)
+                                {
+                                    SherifAdd.updateSelection(1);
+                                    Sherif3SpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    Sherif3SpawnChance.updateSelection(0);
+                                    if (ChallengerMod.Set.Data.SherifMin == 0f && ChallengerMod.Set.Data.Sherif2Min == 0f) { SherifAdd.updateSelection(0); }
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+
+
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Guardian"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Guardian");
+                            button.transform.localPosition = new Vector3(-1.3f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.GuardianMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Guardian1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Guardian0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.GuardianMin != 1f)
+                                {
+                                    GuardianAdd.updateSelection(1);
+                                    GuardianSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    GuardianSpawnChance.updateSelection(0);
+                                    GuardianAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Engineer"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Engineer");
+                            button.transform.localPosition = new Vector3(0.1f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.EngineerMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Engineer1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Engineer0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.EngineerMin != 1f)
+                                {
+                                    engineerAdd.updateSelection(1);
+                                    engineerSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    engineerSpawnChance.updateSelection(0);
+                                    engineerAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Timelord"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Timelord");
+                            button.transform.localPosition = new Vector3(1.5f, 3.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.TimelordMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Timelord1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Timelord0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.TimelordMin != 1f)
+                                {
+                                    TimeLordAdd.updateSelection(1);
+                                    TimeLordSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    TimeLordSpawnChance.updateSelection(0);
+                                    TimeLordAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Hunter"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Hunter");
+                            button.transform.localPosition = new Vector3(-5.5f, 2.3f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.HunterMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Hunter1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Hunter0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.HunterMin != 1f)
+                                {
+                                    HunterAdd.updateSelection(1);
+                                    HunterSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    HunterSpawnChance.updateSelection(0);
+                                    HunterAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Mystic"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Mystic");
+                            button.transform.localPosition = new Vector3(-4.1f, 2.3f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.MysticMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Mystic1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Mystic0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.MysticMin != 1f)
+                                {
+                                    MysticAdd.updateSelection(1);
+                                    MysticSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    MysticSpawnChance.updateSelection(0);
+                                    MysticAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Spirit"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Spirit");
+                            button.transform.localPosition = new Vector3(-2.7f, 2.3f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.SpiritMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Spirit1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Spirit0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.SpiritMin != 1f)
+                                {
+                                    SpiritAdd.updateSelection(1);
+                                    SpiritSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    SpiritSpawnChance.updateSelection(0);
+                                    SpiritAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Mayor"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Mayor");
+                            button.transform.localPosition = new Vector3(-1.3f, 2.3f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.MayorMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Mayor1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Mayor0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.MayorMin != 1f)
+                                {
+                                    MayorAdd.updateSelection(1);
+                                    MayorSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    MayorSpawnChance.updateSelection(0);
+                                    MayorAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Detective"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Detective");
+                            button.transform.localPosition = new Vector3(0.1f, 2.3f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.DetectiveMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Detective1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Detective0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.DetectiveMin != 1f)
+                                {
+                                    DetectiveAdd.updateSelection(1);
+                                    DetectiveSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    DetectiveSpawnChance.updateSelection(0);
+                                    DetectiveAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Nightwatch"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Nightwatch");
+                            button.transform.localPosition = new Vector3(1.5f, 2.3f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.NightwatcherMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Nightwatch1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Nightwatch0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.NightwatcherMin != 1f)
+                                {
+                                    NightwatcherAdd.updateSelection(1);
+                                    NightwatcherSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    NightwatcherSpawnChance.updateSelection(0);
+                                    NightwatcherAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Spy"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Spy");
+                            button.transform.localPosition = new Vector3(-5.5f, 1.5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.SpyMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Spy1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Spy0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.SpyMin != 1f)
+                                {
+                                    SpyAdd.updateSelection(1);
+                                    SpySpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    SpySpawnChance.updateSelection(0);
+                                    SpyAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Informant"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Informant");
+                            button.transform.localPosition = new Vector3(-4.1f, 1.5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.InforMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Informant1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Informant0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.InforMin != 1f)
+                                {
+                                    InforAdd.updateSelection(1);
+                                    InforSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    InforSpawnChance.updateSelection(0);
+                                    InforAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Bait"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Bait");
+                            button.transform.localPosition = new Vector3(-2.7f, 1.5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.BaitMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Bait1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Bait0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.BaitMin != 1f)
+                                {
+                                    BaitAdd.updateSelection(1);
+                                    BaitSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    BaitSpawnChance.updateSelection(0);
+                                    BaitAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Mentalist"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Mentalist");
+                            button.transform.localPosition = new Vector3(-1.3f, 1.5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.MentalistMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Mentalist1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Mentalist0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.MentalistMin != 1f)
+                                {
+                                    MentalistAdd.updateSelection(1);
+                                    MentalistSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    MentalistSpawnChance.updateSelection(0);
+                                    MentalistAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Builder"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Builder");
+                            button.transform.localPosition = new Vector3(0.1f, 1.5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.BuilderMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Builder1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Builder0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.BuilderMin != 1f)
+                                {
+                                    BuilderAdd.updateSelection(1);
+                                    BuilderSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    BuilderSpawnChance.updateSelection(0);
+                                    BuilderAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Dictator"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Dictator");
+                            button.transform.localPosition = new Vector3(1.5f, 1.5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.DictatorMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Dictator1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Dictator0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.DictatorMin != 1f)
+                                {
+                                    DictatorAdd.updateSelection(1);
+                                    DictatorSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    DictatorSpawnChance.updateSelection(0);
+                                    DictatorAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Sentinel"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Sentinel");
+                            button.transform.localPosition = new Vector3(-5.5f, 0.7f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.SentinelMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Sentinel1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Sentinel0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.SentinelMin != 1f)
+                                {
+                                    SentinelAdd.updateSelection(1);
+                                    SentinelSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    SentinelSpawnChance.updateSelection(0);
+                                    SentinelAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Teammate"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Teammate");
+                            button.transform.localPosition = new Vector3(-4.1f, 0.7f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.Team1Min == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Teammate1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Teammate0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.Team1Min != 1f)
+                                {
+                                    MateAdd.updateSelection(1);
+                                    MateSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    MateSpawnChance.updateSelection(0);
+                                    MateAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Lawkeeper"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Lawkeeper");
+                            button.transform.localPosition = new Vector3(-2.7f, 0.7f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.LawkeeperMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Lawkeeper1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Lawkeeper0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.LawkeeperMin != 1f)
+                                {
+                                    LawkeeperAdd.updateSelection(1);
+                                    LawkeeperSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    LawkeeperSpawnChance.updateSelection(0);
+                                    LawkeeperAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Fake"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Fake");
+                            button.transform.localPosition = new Vector3(-1.3f, 0.7f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (Challenger._IMP == 1) { button.GetComponent<SpriteRenderer>().sprite = UI2_ROLE_LOCK; }
+                            else
+                            {
+                                if (ChallengerMod.Set.Data.FakeMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Fake1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_Fake0; }
+                            }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.FakeMin != 1f)
+                                {
+                                    FakeAdd.updateSelection(1);
+                                    FakeSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    FakeSpawnChance.updateSelection(0);
+                                    FakeAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Leader"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Leader");
+                            button.transform.localPosition = new Vector3(0.1f, 0.7f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.LeaderMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Leader1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Leader0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.LeaderMin != 1f)
+                                {
+                                    LeaderAdd.updateSelection(1);
+                                    LeaderSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    LeaderSpawnChance.updateSelection(0);
+                                    LeaderAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Doctor"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Doctor");
+                            button.transform.localPosition = new Vector3(1.5f, 0.7f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            button.GetComponent<SpriteRenderer>().sprite = UI2_ROLE_LOCK;
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                
+                                
+                            }
+                        }
+                        if (GameObject.Find("ROLE_CRW_Traveler"))
+                        {
+                            var button = GameObject.Find("ROLE_CRW_Traveler");
+                            button.transform.localPosition = new Vector3(-5.5f, -0.1f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            button.GetComponent<SpriteRenderer>().sprite = UI2_ROLE_LOCK; 
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                
+                            }
+                        }
+
+                        if (GameObject.Find("ROLE_IMP_Assassin"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Assassin");
+                            button.transform.localPosition = new Vector3(-5.5f, -1.55f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.AssassinMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Assassin1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Assassin0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.AssassinMin != 1f)
+                                {
+                                    AssassinAdd.updateSelection(1);
+                                    AssassinSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    AssassinSpawnChance.updateSelection(0);
+                                    AssassinAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Vector"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Vector");
+                            button.transform.localPosition = new Vector3(-4.1f, -1.55f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.VectorMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Vector1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Vector0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.VectorMin != 1f)
+                                {
+                                    VectorAdd.updateSelection(1);
+                                    VectorSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    VectorSpawnChance.updateSelection(0);
+                                    VectorAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Morphling"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Morphling");
+                            button.transform.localPosition = new Vector3(-2.7f, -1.55f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.MorphMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Morphling1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Morphling0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.MorphMin != 1f)
+                                {
+                                    MorphlingAdd.updateSelection(1);
+                                    MorphlingSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    MorphlingSpawnChance.updateSelection(0);
+                                    MorphlingAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Scrambler"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Scrambler");
+                            button.transform.localPosition = new Vector3(-1.3f, -1.55f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.CamoMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Scrambler1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Scrambler0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.CamoMin != 1f)
+                                {
+                                    CamoAdd.updateSelection(1);
+                                    CamoSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    CamoSpawnChance.updateSelection(0);
+                                    CamoAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Barghest"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Barghest");
+                            button.transform.localPosition = new Vector3(0.1f, -1.55f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.BarghestMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Barghest1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Barghest0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.BarghestMin != 1f)
+                                {
+                                    BarghestAdd.updateSelection(1);
+                                    BarghestSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    BarghestSpawnChance.updateSelection(0);
+                                    BarghestAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Ghost"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Ghost");
+                            button.transform.localPosition = new Vector3(1.5f, -1.55f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.GhostMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Ghost1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Ghost0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.GhostMin != 1f)
+                                {
+                                    GhostAdd.updateSelection(1);
+                                    GhostSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    GhostSpawnChance.updateSelection(0);
+                                    GhostAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Sorcerer"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Sorcerer");
+                            button.transform.localPosition = new Vector3(-5.5f, -2.35f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.Impo4Min == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Sorcerer1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Sorcerer0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.Impo4Min != 1f)
+                                {
+                                    SorcererAdd.updateSelection(1);
+                                    SorcererSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    SorcererSpawnChance.updateSelection(0);
+                                    SorcererAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Guesser"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Guesser");
+                            button.transform.localPosition = new Vector3(-4.1f, -2.35f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.GuesserMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Guesser1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Guesser0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.GuesserMin != 1f)
+                                {
+                                    GuesserAdd.updateSelection(1);
+                                    GuesserSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    GuesserSpawnChance.updateSelection(0);
+                                    GuesserAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Basilisk"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Basilisk");
+                            button.transform.localPosition = new Vector3(-2.7f, -2.35f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.BasiliskMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Basilisk1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Basilisk0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.BasiliskMin != 1f)
+                                {
+                                    BasiliskAdd.updateSelection(1);
+                                    BasiliskSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    BasiliskSpawnChance.updateSelection(0);
+                                    BasiliskAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_IMP_Reaper"))
+                        {
+                            var button = GameObject.Find("ROLE_IMP_Reaper");
+                            button.transform.localPosition = new Vector3(-1.3f, -2.35f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            button.GetComponent<SpriteRenderer>().sprite = UI2_ROLE_LOCK;
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                
+                            }
+                        }
+                        if (GameObject.Find("ROLE_DUO_Mercenary"))
+                        {
+                            var button = GameObject.Find("ROLE_DUO_Mercenary");
+                            button.transform.localPosition = new Vector3(-5.5f, -3.6f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if ((Challenger._IMP == 3 && Challenger._Players < 15) 
+                                || (Challenger._IMP == 2 && Challenger._Players < 12)
+                                ) 
+                            {
+                                button.GetComponent<SpriteRenderer>().sprite = UI2_ROLE_LOCK;
+                            }
+                            else
+                            {
+                                if (ChallengerMod.Set.Data.MercenaryMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Mercenary1; }
+                                else { button.GetComponent<SpriteRenderer>().sprite = UI2_Mercenary0; }
+                            }
+                           
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if ((Challenger._IMP == 3 && Challenger._Players < 15)
+                                || (Challenger._IMP == 2 && Challenger._Players < 12)
+                                )
+                                {
+
+                                }
+                                else
+                                {
+                                    if (ChallengerMod.Set.Data.MercenaryMin != 1f)
+                                    {
+                                        MercenaryAdd.updateSelection(1);
+                                        MercenarySpawnChance.updateSelection(20);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                    else
+                                    {
+                                        MercenarySpawnChance.updateSelection(0);
+                                        MercenaryAdd.updateSelection(0);
+                                        ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                    }
+                                }
+                                    
+                            }
+                        }
+                        if (GameObject.Find("ROLE_DUO_Copycat"))
+                        {
+                            var button = GameObject.Find("ROLE_DUO_Copycat");
+                            button.transform.localPosition = new Vector3(-4.1f, -3.6f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.CopyCatMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_CopyCat1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_CopyCat0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.CopyCatMin != 1f)
+                                {
+                                    CopyCatAdd.updateSelection(1);
+                                    CopyCatSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    CopyCatSpawnChance.updateSelection(0);
+                                    CopyCatAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_DUO_Revenger"))
+                        {
+                            var button = GameObject.Find("ROLE_DUO_Revenger");
+                            button.transform.localPosition = new Vector3(-2.7f, -3.6f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.RevengerMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Revenger1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Revenger0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.RevengerMin != 1f)
+                                {
+                                    RevengerAdd.updateSelection(1);
+                                    RevengerSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    RevengerSpawnChance.updateSelection(0);
+                                    RevengerAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_DUO_Survivor"))
+                        {
+                            var button = GameObject.Find("ROLE_DUO_Survivor");
+                            button.transform.localPosition = new Vector3(-1.3f, -3.6f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            if (ChallengerMod.Set.Data.SorcererMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Survivor1; }
+                            else { button.GetComponent<SpriteRenderer>().sprite = UI2_Survivor0; }
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+                                if (ChallengerMod.Set.Data.SorcererMin != 1f)
+                                {
+                                    SorcererAdd.updateSelection(1);
+                                    SorcererSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    SorcererSpawnChance.updateSelection(0);
+                                    SorcererAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                            }
+                        }
+                        if (GameObject.Find("ROLE_DUO_Slave"))
+                        {
+                            var button = GameObject.Find("ROLE_DUO_Slave");
+                            button.transform.localPosition = new Vector3(0.1f, -3.6f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                            button.GetComponent<SpriteRenderer>().sprite = UI2_ROLE_LOCK;
+                            PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                            passiveButton.OnClick = new Button.ButtonClickedEvent();
+                            passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                            void onClick()
+                            {
+
+                            }
+
+                        }
+                    if (GameObject.Find("ROLE_SPE_Cupid"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Cupid");
+                            button.transform.localPosition = new Vector3(-5.5f, -5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.CupidMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Cupid1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Cupid0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.CupidMin != 1f)
+                                {
+                                    CupidAdd.updateSelection(1);
+                                    CupidSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    CupidSpawnChance.updateSelection(0);
+                                    CupidAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+                    if (GameObject.Find("ROLE_SPE_Cultist"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Cultist");
+                            button.transform.localPosition = new Vector3(-4.1f, -5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.CultisteMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Cultist1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Cultist0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.CultisteMin != 1f)
+                                {
+                                    CultisteAdd.updateSelection(1);
+                                    CultisteSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    CultisteSpawnChance.updateSelection(0);
+                                    CultisteAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+                    if (GameObject.Find("ROLE_SPE_Jester"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Jester");
+                            button.transform.localPosition = new Vector3(-2.7f, -5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.JesterMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Jester1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Jester0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.JesterMin != 1f)
+                                {
+                                    JesterAdd.updateSelection(1);
+                                    JesterSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    JesterSpawnChance.updateSelection(0);
+                                    JesterAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+                    if (GameObject.Find("ROLE_SPE_Eater"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Eater");
+                            button.transform.localPosition = new Vector3(-1.3f, -5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.EaterMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Eater1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Eater0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.EaterMin != 1f)
+                                {
+                                    EaterAdd.updateSelection(1);
+                                    EaterSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    EaterSpawnChance.updateSelection(0);
+                                    EaterAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+                    if (GameObject.Find("ROLE_SPE_Outlaw"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Outlaw");
+                            button.transform.localPosition = new Vector3(0.1f, -5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.OutlawMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Outlaw1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Outlaw0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.OutlawMin != 1f)
+                                {
+                                    OutlawAdd.updateSelection(1);
+                                    OutlawSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    OutlawSpawnChance.updateSelection(0);
+                                    OutlawAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+                    if (GameObject.Find("ROLE_SPE_Arsonist"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Arsonist");
+                            button.transform.localPosition = new Vector3(1.5f, -5f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.ArsonistMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Arsonist1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Arsonist0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.ArsonistMin != 1f)
+                                {
+                                    ArsonistAdd.updateSelection(1);
+                                    ArsonistSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    ArsonistSpawnChance.updateSelection(0);
+                                    ArsonistAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+                    if (GameObject.Find("ROLE_SPE_Cursed"))
+                    {
+                        var button = GameObject.Find("ROLE_SPE_Cursed");
+                            button.transform.localPosition = new Vector3(-5.5f, -5.8f, -1f);
+                            button.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+                        if (ChallengerMod.Set.Data.CursedMin == 1f) { button.GetComponent<SpriteRenderer>().sprite = UI2_Cursed1; }
+                        else { button.GetComponent<SpriteRenderer>().sprite = UI2_Cursed0; }
+                        PassiveButton passiveButton = button.GetComponent<PassiveButton>();
+                        passiveButton.OnClick = new Button.ButtonClickedEvent();
+                        passiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)onClick);
+                        void onClick()
+                        {
+                                if (ChallengerMod.Set.Data.CursedMin != 1f)
+                                {
+                                    CursedAdd.updateSelection(1);
+                                    CursedSpawnChance.updateSelection(20);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                                else
+                                {
+                                    CursedSpawnChance.updateSelection(0);
+                                    CursedAdd.updateSelection(0);
+                                    ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
+                                }
+                        }
+                    }
+
+
+
+
+
+                    if (GameObject.Find("Main Camera").transform.FindChild("Hud").transform.FindChild("GameStartManager").transform.FindChild("StartButton"))
+                        {
+                            var StartButton = GameObject.Find("Main Camera").transform.FindChild("Hud").transform.FindChild("GameStartManager").transform.FindChild("StartButton");
+
+
+                            if (RankedSettings)
+                            {
+                                BoxCollider2D StartButton_Collider = StartButton.GetComponent<BoxCollider2D>();
+                                StartButton_Collider.size = new Vector2(0f, 0f);
+                            }
+                            else
+                            {
+                                if (ChallengerMod.HarmonyMain.CanStartTheGame)
+                                {
+                                    BoxCollider2D StartButton_Collider = StartButton.GetComponent<BoxCollider2D>();
+                                    StartButton_Collider.size = new Vector2(1f, 1f);
+                                }
+                                else
+                                {
+                                    BoxCollider2D StartButton_Collider = StartButton.GetComponent<BoxCollider2D>();
+                                    StartButton_Collider.size = new Vector2(0f, 0f);
+                                }
+                            }
+                        }
+
+
+
+
+                        if ((GameData.Instance.PlayerCount <= 3) && !ChallengerMod.Challenger.IsrankedGame) // normal
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = false;
+                        }
+                        else if ((GameData.Instance.PlayerCount <= 9) && ChallengerMod.Challenger.IsrankedGame) //ranked
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = false;
+                        }
+                        else if (ChallengerMod.Challenger.ReadyPlayers.Count() != GameData.Instance.PlayerCount - 0 && ChallengerMod.Challenger.IsrankedGame)
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = false;
+                        }
+
+                        //All Role Exed
+                        else if ((ChallengerOS.Utils.Option.CustomOptionHolder.QTImp.getFloat() + ChallengerOS.Utils.Option.CustomOptionHolder.QTSpe.getFloat() + ChallengerOS.Utils.Option.CustomOptionHolder.QTDuo.getFloat() + ChallengerOS.Utils.Option.CustomOptionHolder.QTCrew.getFloat()) > GameData.Instance.PlayerCount)
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = false;
+                        }
+                        //Impo Exced
+                        else if (ChallengerOS.Utils.Option.CustomOptionHolder.QTImp.getFloat() > ChallengerMod.Set.Data.RealImpostor)
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = false;
+                        }
+                        // CRE+SPE+DUO exed (Players - Impo)
+                        else if ((ChallengerOS.Utils.Option.CustomOptionHolder.QTCrew.getFloat() + ChallengerOS.Utils.Option.CustomOptionHolder.QTDuo.getFloat() + ChallengerOS.Utils.Option.CustomOptionHolder.QTSpe.getFloat()) > (GameData.Instance.PlayerCount - ChallengerMod.Set.Data.RealImpostor))
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = false;
+                        }
+                        else
+                        {
+                            ChallengerMod.HarmonyMain.CanStartTheGame = true;
+                        }
+
+
+
                     }
 
                     //GL
@@ -1913,7 +4076,7 @@ namespace ChallengerMod
 
 
 
-                    if (ChallengerMod.Challenger.IsrankedGameSet != 100f)
+                    if (ChallengerMod.Challenger.IsrankedGame == true)
                     {
                         if (GameObject.Find("Lobby(Clone)").transform.FindChild("SmallBox").transform.FindChild("Panel"))
                         {
@@ -1943,13 +4106,38 @@ namespace ChallengerMod
                             var button = GameObject.Find("Main Camera/Hud/PressetButton_3");
                             button.transform.localScale = new Vector3(0f, 0f, 0f);
                         }
+                        
+                        if (AmongUsClient.Instance.AmHost)
+                        {
+                            if (GameObject.Find("Main Camera/Hud/RankedButton"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedButton");
+                                button.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                            }
+                            
+                            
+                        }
+                        else
+                        {
+                            if (GameObject.Find("Main Camera/Hud/RankedButton"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedButton");
+                                button.transform.localScale = new Vector3(0f, 0f, 0f);
+                            }
+                            if (GameObject.Find("Main Camera/Hud/RankedUI"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedUI");
+                                button.transform.localScale = new Vector3(0f, 0f, 0f);
+                            }
+                            
+                        }
                     }
                     else
                     {
                         if (GameObject.Find("Lobby(Clone)").transform.FindChild("SmallBox").transform.FindChild("Panel"))
                         {
                             var Panel = GameObject.Find("Lobby(Clone)").transform.FindChild("SmallBox").transform.FindChild("Panel");
-                            Panel.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+                            Panel.transform.localScale = new Vector3(1.3f, 1.3f, 1.2f);
 
                         }
                         //ENABLE PRESSET BUTTON
@@ -1970,6 +4158,16 @@ namespace ChallengerMod
                                 var button = GameObject.Find("Main Camera/Hud/PressetButton_3");
                                 button.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                             }
+                            if (GameObject.Find("Main Camera/Hud/RankedButton"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedButton");
+                                button.transform.localScale = new Vector3(0f, 0f, 0f);
+                            }
+                            if (GameObject.Find("Main Camera/Hud/RankedUI"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedUI");
+                                button.transform.localScale = new Vector3(0f, 0f, 0f);
+                            }
                         }
                         else
                         {
@@ -1988,6 +4186,17 @@ namespace ChallengerMod
                                 var button = GameObject.Find("Main Camera/Hud/PressetButton_3");
                                 button.transform.localScale = new Vector3(0f, 0f, 0f);
                             }
+                            if (GameObject.Find("Main Camera/Hud/RankedButton"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedButton");
+                                button.transform.localScale = new Vector3(0f, 0f, 0f);
+                            }
+                            if (GameObject.Find("Main Camera/Hud/RankedUI"))
+                            {
+                                var button = GameObject.Find("Main Camera/Hud/RankedUI");
+                                button.transform.localScale = new Vector3(0f, 0f, 0f);
+                            }
+                            
                         }
                     }
 
@@ -3103,8 +5312,8 @@ namespace ChallengerMod
 
                 }
 
-                
 
+               
 
 
                 foreach (PlayerControl player in PlayerControl.AllPlayerControls)
@@ -3129,70 +5338,25 @@ namespace ChallengerMod
                     }
                 }
 
+                
+
+                   // Playercontrol.Renderer.material.SetColor(ChallengerMod.ColorTable.VisorColor, Palette.ImpostorRed);
+                
+
 
                 GetSteamID = SteamUser.GetSteamID().ToString();
 
                 
                 ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank = GoodlossRank;
-                
 
-                if (GLMod.GLMod.isUnlocked("CC-00")) { ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Stellia = true; }
-                if (GLMod.GLMod.isUnlocked("CC-01")) { ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Matux = true; }
-                if (GLMod.GLMod.isUnlocked("CC-02")) { ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Emy = true; }
-                if (GLMod.GLMod.isUnlocked("CC-03")) { ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Asman = true; }
-                if (GLMod.GLMod.isUnlocked("CC-04")) { ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Val = true; }
-
-                //UPDATE UNLOCK
-
-                if (GLMod.GLMod.isUnlocked("AC-H1")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Demon = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H2")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angel = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H3")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Vampire = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H4")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Kawaii = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H5")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angry = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H6")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Cat = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H7")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Knight = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H8")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Crazy = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H9")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_FireFighter = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H10")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Ninja = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H11")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Alien = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H12")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Barghest = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H13")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Bomber = true; }
-                if (GLMod.GLMod.isUnlocked("AC-H14")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Dragon = true; }
-
-                if (GLMod.GLMod.isUnlocked("AC-V1")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Gun = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V2")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Knifte = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V3")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Katana = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V4")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Orbe = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V5")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Cube = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V6")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_VampireTooth = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V7")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Axe = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V8")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_DNA = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V9")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Chain = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V10")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_MagicWand = true; }
-                if (GLMod.GLMod.isUnlocked("AC-V11")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_FireBall = true; }
-
-                if (GLMod.GLMod.isUnlocked("AC-C1")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Bloody = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C2")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Earth = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C3")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Chedard = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C4")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Sun = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C5")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Leef = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C6")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Radian = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C7")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Swamp = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C8")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ice = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C9")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Lagoon = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C10")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ocean = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C11")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Night = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C12")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Dawn = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C13")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Candy = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C14")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Galaxy = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C15")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Snow = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C16")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Cender = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C17")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Dark = true; }
-                if (GLMod.GLMod.isUnlocked("AC-C18")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Rainbow = true; }
-
-                if (GLMod.GLMod.hasDlc(2171400)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Eater = true; }
-                if (GLMod.GLMod.hasDlc(2240160)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Prime = true; }
-
+                        /*byte Player = 0;
+                        int color = 0;
+                        Player = PlayerControl.LocalPlayer.PlayerId;
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetVisorColor, Hazel.SendOption.Reliable, -1);
+                        writer.Write(Player);
+                        writer.Write(color);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.setVisorColor(Player, color);*/
 
 
 
@@ -3207,11 +5371,11 @@ namespace ChallengerMod
                 {
                     if (Input.GetKeyDown(KeyCode.Keypad0))
                     {
-
+                        debugMod = 0;
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad1))
                     {
-
+                        debugMod = 0;
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad2))
                     {
@@ -3225,11 +5389,11 @@ namespace ChallengerMod
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad4))
                     {
-
+                        debugMod = 0;
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad5))
                     {
-
+                        debugMod = 0;
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad6))
                     {
@@ -3238,7 +5402,7 @@ namespace ChallengerMod
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad7))
                     {
-
+                        debugMod = 0;
                     }
                     if (Input.GetKeyDown(KeyCode.Keypad8))
                     {
@@ -3251,6 +5415,7 @@ namespace ChallengerMod
                         {
                             debugMod += 1;
                             SoundManager.Instance.PlaySound(ShieldBuff, false, 100f);
+                            
                         }
                         else { debugMod = 0; }
                     }
@@ -3260,587 +5425,20 @@ namespace ChallengerMod
 
 
 
-                //UNLOCK CHECK
-                if (ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Stellia)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-00") { H.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-00") { V.Free = true; } }
-                }
-                else
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-00") { H.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-00") { V.Free = false; } }
-                }
-
-
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Matux)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-01") { H.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-01") { V.Free = true; } }
-                }
-                else
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-01") { H.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-01") { V.Free = false; } }
-                }
-
-
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Emy)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-02") { H.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-02") { V.Free = true; } }
-                }
-                else
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-02") { H.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-02") { V.Free = false; } }
-                }
-
-
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Asman)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-03") { H.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-03") { V.Free = true; } }
-                }
-                else
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-03") { H.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-03") { V.Free = false; } }
-                }
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Val)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-04") { H.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-04") { V.Free = true; } }
-                }
-                else
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-04") { H.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-04") { V.Free = false; } }
-                }
-
-
-
-                //ACHIEVEMENT & Shop
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Demon)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H1") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angel)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H2") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Vampire)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H3") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Kawaii)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H4") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angry)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H5") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Cat)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H6") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Knight)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H7") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Crazy)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H8") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_FireFighter)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H9") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Ninja)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H10") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Alien)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H11") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Barghest)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H12") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Bomber)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H13") { H.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Dragon)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H14") { H.Free = true; } }
-                }
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Gun)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V1") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Knifte)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V2") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Katana)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V3") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Orbe)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V4") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Cube)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V5") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_VampireTooth)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V6") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Axe)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V7") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_DNA)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V8") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Chain)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V9") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_MagicWand)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V10") { V.Free = true; } }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_FireBall)
-                {
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V11") { V.Free = true; } }
-                }
-
-
                 
-
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Eater)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates) { if (P.BundleId == "SH-EAT") { P.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "SH-EAT") { V.Free = true; } }
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "SH-EAT") { H.Free = true; } }
-                }
-                else
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates) { if (P.BundleId == "SH-EAT") { P.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "SH-EAT") { V.Free = false; } }
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "SH-EAT") { H.Free = false; } }
-                }
-                
-                if (ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Prime)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates) { if (P.BundleId == "PRIME") { P.Free = true; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "PRIME") { V.Free = true; } }
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "PRIME") { H.Free = true; } }
-                }
-                else
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates) { if (P.BundleId == "PRIME") { P.Free = false; } }
-                    foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "PRIME") { V.Free = false; } }
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "PRIME") { H.Free = false; } }
-
-                }
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Lily)
-                {
-                    foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "SH-LILY") { H.Free = true; } }
-                }
-
-
-
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 0)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-
-
-
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 1)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = true; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 2)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = true; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 3)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = true; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 4)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = true; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 5)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = true; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 6)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = true; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 7)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = true; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 8)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = true; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 9)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = true; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 10)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = true; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 11)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = true; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 12)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = true; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 13)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = true; }
-                        if (P.BundleId == "R-S1R14") { P.Free = false; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 14)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = false; }
-                        if (P.BundleId == "R-S1R2") { P.Free = false; }
-                        if (P.BundleId == "R-S1R3") { P.Free = false; }
-                        if (P.BundleId == "R-S1R4") { P.Free = false; }
-                        if (P.BundleId == "R-S1R5") { P.Free = false; }
-                        if (P.BundleId == "R-S1R6") { P.Free = false; }
-                        if (P.BundleId == "R-S1R7") { P.Free = false; }
-                        if (P.BundleId == "R-S1R8") { P.Free = false; }
-                        if (P.BundleId == "R-S1R9") { P.Free = false; }
-                        if (P.BundleId == "R-S1R10") { P.Free = false; }
-                        if (P.BundleId == "R-S1R11") { P.Free = false; }
-                        if (P.BundleId == "R-S1R12") { P.Free = false; }
-                        if (P.BundleId == "R-S1R13") { P.Free = false; }
-                        if (P.BundleId == "R-S1R14") { P.Free = true; }
-                    }
-                }
-                if (ChallengerMod.Cosmetiques.Cosmetics_Ranked.IntRank == 15)
-                {
-                    foreach (NamePlateData P in HatManager.Instance.allNamePlates)
-                    {
-                        if (P.BundleId == "R-S1R1") { P.Free = true; }
-                        if (P.BundleId == "R-S1R2") { P.Free = true; }
-                        if (P.BundleId == "R-S1R3") { P.Free = true; }
-                        if (P.BundleId == "R-S1R4") { P.Free = true; }
-                        if (P.BundleId == "R-S1R5") { P.Free = true; }
-                        if (P.BundleId == "R-S1R6") { P.Free = true; }
-                        if (P.BundleId == "R-S1R7") { P.Free = true; }
-                        if (P.BundleId == "R-S1R8") { P.Free = true; }
-                        if (P.BundleId == "R-S1R9") { P.Free = true; }
-                        if (P.BundleId == "R-S1R10") { P.Free = true; }
-                        if (P.BundleId == "R-S1R11") { P.Free = true; }
-                        if (P.BundleId == "R-S1R12") { P.Free = true; }
-                        if (P.BundleId == "R-S1R13") { P.Free = true; }
-                        if (P.BundleId == "R-S1R14") { P.Free = true; }
-                    }
-                }
 
                 if (Challenger.IsrankedGame == true)
                 {
                     RTXT_0 = RTXT_2;
+                    RT_ACTIF = "";
                 }
                 if (Challenger.IsrankedGame == false)
                 {
                     RTXT_0 = RTXT_1;
+                    RT_ACTIF = "";
                 }
 
-                if (Challenger.IsrankedGameSet == 0)
-                {
-                    RT_ACTIF = RT_0;
-                }
-                if (Challenger.IsrankedGameSet == 1)
-                {
-                    RT_ACTIF = RT_1;
-                }
-                if (Challenger.IsrankedGameSet == 2)
-                {
-                    RT_ACTIF = RT_2;
-                }
-                if (Challenger.IsrankedGameSet == 3)
-                {
-                    RT_ACTIF = RT_3;
-                }
-                if (Challenger.IsrankedGameSet == 4)
-                {
-                    RT_ACTIF = RT_4;
-                }
-                if (Challenger.IsrankedGameSet == 5)
-                {
-                    RT_ACTIF = RT_5;
-                }
-                if (Challenger.IsrankedGameSet == 6)
-                {
-                    RT_ACTIF = RT_6;
-                }
-                if (Challenger.IsrankedGameSet == 7)
-                {
-                    RT_ACTIF = RT_7;
-                }
-                if (Challenger.IsrankedGameSet == 8)
-                {
-                    RT_ACTIF = RT_8;
-                }
-                if (Challenger.IsrankedGameSet == 100)
-                {
-                    RT_ACTIF = RT_100;
-                }
+                
 
 
                 if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
@@ -3990,11 +5588,13 @@ namespace ChallengerMod
                     BTT_Role_Detective = BTT_DetectiveFR;
                     BTT_Role_Nightwatch = BTT_NightwatchFR;
                     BTT_Role_Spy = BTT_SpyFR;
+                    BTT_Role_Bait = BTT_BaitFR;
                     BTT_Role_Informant = BTT_InformantFR;
                     BTT_Role_Mentalist = BTT_MentalistFR;
                     BTT_Role_Builder = BTT_BuilderFR;
                     BTT_Role_Dictator = BTT_DictatorFR;
                     BTT_Role_Sentinel = BTT_SentinelFR;
+                    BTT_Role_Leader = BTT_LeaderFR;
                     BTT_Role_Traveler = BTT_TravelerFR;
                     BTT_Role_Doctor1 = BTT_Doctor1FR;
                     BTT_Role_Cupid = BTT_CupidFR;
@@ -4194,11 +5794,13 @@ namespace ChallengerMod
                     BTT_Role_Detective = BTT_DetectiveEN;
                     BTT_Role_Nightwatch = BTT_NightwatchEN;
                     BTT_Role_Spy = BTT_SpyEN;
+                    BTT_Role_Bait = BTT_BaitEN;
                     BTT_Role_Informant = BTT_InformantEN;
                     BTT_Role_Mentalist = BTT_MentalistEN;
                     BTT_Role_Builder = BTT_BuilderEN;
                     BTT_Role_Dictator = BTT_DictatorEN;
                     BTT_Role_Sentinel = BTT_SentinelEN;
+                    BTT_Role_Leader = BTT_LeaderFR;
                     BTT_Role_Traveler = BTT_TravelerEN;
                     BTT_Role_Doctor1 = BTT_Doctor1EN;
                     BTT_Role_Cupid = BTT_CupidEN;
@@ -4332,7 +5934,9 @@ namespace ChallengerMod
                     { CrewmatesList.Add("Lawkeeper"); }
                     if ((FakeAdd.getBool() == true) && (rng.Next(1, 101) <= FakeSpawnChance.getFloat()))
                     { CrewmatesList.Add("Fake"); }
-                    
+                    if ((LeaderAdd.getBool() == true) && (rng.Next(1, 101) <= LeaderSpawnChance.getFloat()))
+                    { CrewmatesList.Add("Leader"); }
+
 
                     //SpecialsList
                     if ((JesterAdd.getBool() == true) && (rng.Next(1, 101) <= JesterSpawnChance.getFloat()))
@@ -5480,61 +7084,29 @@ namespace ChallengerMod
                     }
 
                 }
-               /* if (GameObject.Find("SafeArea1"))
-                {
-                    var SA1 = GameObject.Find("SafeArea1");
-                    SA1.transform.localScale = new Vector3(1.7328f, 2.64f, 2);
-                }
-                if (GameObject.Find("SafeArea2"))
-                {
-                    var SA2 = GameObject.Find("SafeArea2");
-                    SA2.transform.localScale = new Vector3(8.1138f, 3.1102f, 2);
-                }
-                if (GameObject.Find("SafeArea3"))
-                {
-                    var SA3 = GameObject.Find("SafeArea3");
-                    SA3.transform.localScale = new Vector3(2.6723f, 1.44f, 2);
-                }
-                if (GameObject.Find("SafeArea4"))
-                {
-                    var SA4 = GameObject.Find("SafeArea4");
-                    SA4.transform.localScale = new Vector3(4.72f, 5.6164f, 2);
-                }*/
+                /* if (GameObject.Find("SafeArea1"))
+                 {
+                     var SA1 = GameObject.Find("SafeArea1");
+                     SA1.transform.localScale = new Vector3(1.7328f, 2.64f, 2);
+                 }
+                 if (GameObject.Find("SafeArea2"))
+                 {
+                     var SA2 = GameObject.Find("SafeArea2");
+                     SA2.transform.localScale = new Vector3(8.1138f, 3.1102f, 2);
+                 }
+                 if (GameObject.Find("SafeArea3"))
+                 {
+                     var SA3 = GameObject.Find("SafeArea3");
+                     SA3.transform.localScale = new Vector3(2.6723f, 1.44f, 2);
+                 }
+                 if (GameObject.Find("SafeArea4"))
+                 {
+                     var SA4 = GameObject.Find("SafeArea4");
+                     SA4.transform.localScale = new Vector3(4.72f, 5.6164f, 2);
+                 }*/
+                
 
-                if (GameObject.Find("BaitArea"))
-                {
-                    var BaitAreaTransform = GameObject.Find("BaitArea");
-                    if (BaitAreaTransform != null)
-                    {
-                        SpriteRenderer BaitAreaTransformSprite = BaitAreaTransform.GetComponent<SpriteRenderer>();
-
-                        if (Bait.BaliseEnable)
-                        {
-
-                            if (BaitAreaTransformSprite.sprite != BaitBaliseArea)
-                            {
-                                BaitAreaTransformSprite.sprite = BaitBaliseArea;
-                            }
-                        }
-                        else
-                        {
-                            if ((Bait.Role != null && PlayerControl.LocalPlayer == Bait.Role)
-                                || (CopyCat.Role != null && PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.copyRole == 13 && CopyCat.CopyStart == true)
-                                || (PlayerControl.LocalPlayer.Data.IsDead)
-                                )
-                            {
-                                if (BaitAreaTransformSprite.sprite != BaitBaliseArea0)
-                                {
-                                    BaitAreaTransformSprite.sprite = BaitBaliseArea0;
-                                }
-
-                            }
-                            
-                        }
-                    }
-                    
-                }
-
+               
 
                 if (GameObject.Find("Cristal 1"))
                 {
@@ -5608,6 +7180,12 @@ namespace ChallengerMod
                     if (GameObject.Find("Main Camera/Hud/PressetButton_3"))
                     {
                         var button = GameObject.Find("Main Camera/Hud/PressetButton_3");
+                        button.transform.localScale = new Vector3(0f, 0f, 0f);
+                    }
+                    else { }
+                    if (GameObject.Find("Main Camera/Hud/RankedButton"))
+                    {
+                        var button = GameObject.Find("Main Camera/Hud/RankedButton");
                         button.transform.localScale = new Vector3(0f, 0f, 0f);
                     }
                     else { }
@@ -6284,7 +7862,6 @@ namespace ChallengerMod
                         STR_P1 = "(";
                         STR_P2 = ")";
 
-                        if (BaitBalise.getBool() == false) { Bait.BaliseUsed = true; }
                     }
                     BaitCount = true;
 
@@ -7670,10 +9247,7 @@ namespace ChallengerMod
                                 }
                             }
                         }
-                        if (CopyCat.copyRole == 13 && CopyCat.CopyStart)
-                        {
-                            if (BaitBalise.getBool() == false) { Bait.BaliseUsed = true; }
-                        }
+                        
 
                         if (Mayor.Role != null)
                         {
@@ -8533,7 +10107,7 @@ namespace ChallengerMod
                 if ((ChallengerMod.Challenger.GameStarted <= 0f) && Challenger.RoleAssigned)
                 {
 
-                    
+
                     //SHERIFF
                     if (Sheriff1.Role != null && RoleTaskAssigned == false && PlayerControl.LocalPlayer == Sheriff1.Role)
                         AssignSheriff1Task(true);
@@ -8696,14 +10270,16 @@ namespace ChallengerMod
                         ChangeVentSprite(true);
 
 
+                    if (ResetIntroCD == false)
+                        ResetIntroCooldown(true);
 
-
-                    if (IntroCD == false)
+                    if (ResetIntroCD == true && IntroCD == false)
                         setIntroCooldown(true);
 
                     if (SendtoGoodloss == false)
                         SendToGoodlossServices(true);
 
+                    
 
 
                     if (AmongUsClient.Instance.AmHost) //Syncro Timers (nuclear + CustomButton)
@@ -8720,18 +10296,40 @@ namespace ChallengerMod
 
 
                                 MessageWriter writer = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SyncTimer, Hazel.SendOption.Reliable);
-                                    writer.Write(ChallengerMod.Challenger.NuclearTimer);
-                                    writer.EndMessage();
-                                    RPCProcedure.syncTimer(ChallengerMod.Challenger.NuclearTimer);
+                                writer.Write(ChallengerMod.Challenger.NuclearTimer);
+                                writer.EndMessage();
+                                RPCProcedure.syncTimer(ChallengerMod.Challenger.NuclearTimer);
                             }
                         }
                     }
-                    
 
-                    
+                    if (PlayerControl.GameOptions.MapId == 2 && LoverEvent && !EventStarted) 
+                    {
+                        var SnowParticles = GameObject.Find("PolusShip(Clone)").transform.FindChild("SnowParticles");
+                        if (SnowParticles != null)
+                        {
+                            UnityEngine.ParticleSystem SnowParticlesRend = SnowParticles.GetComponent<UnityEngine.ParticleSystem>();
+                            SnowParticlesRend.startColor = CupidColor;
+                            EventStarted = true;
+                        }
+                        ColorIDSave_ToCom = 3;
+                        ColorIDSave_ToScrambler = 13;
+                        EventStarted = true;
+
+                        
+                    }
+                    else if (!EventStarted)
+                    {
+                        ColorIDSave_ToCom = 6;
+                        ColorIDSave_ToScrambler = 7;
+                        EventStarted = true;
+                    }
+
+
                 }
                 if (PlayerControl.GameOptions.MapId == 2 && NuclearMap == true)
                 {
+
 
                     if ((NuclearTimer <= 0f))
                     {
@@ -8836,6 +10434,8 @@ namespace ChallengerMod
                                 {
                                     UnityEngine.ParticleSystem SnowParticlesRend = SnowParticles.GetComponent<UnityEngine.ParticleSystem>();
                                     SnowParticlesRend.startColor = blackColor;
+                                    //SnowParticlesRend.startColor = PurpleColor;
+
                                 }
                                 IsMapPolusV2 = true;
                                 EmergencyDestroy = false;
@@ -8858,6 +10458,16 @@ namespace ChallengerMod
                         }
                     }
                 }
+
+               
+               /* var SnowParticles = GameObject.Find("PolusShip(Clone)").transform.FindChild("SnowParticles");
+                if (SnowParticles != null)
+                {
+                    UnityEngine.ParticleSystemRenderer SnowParticlesRend = SnowParticles.GetComponent<UnityEngine.ParticleSystemRenderer>();
+                    SnowParticlesRend.sharedMaterial = Material.;
+                    //SnowParticlesRend.startColor = PurpleColor;
+
+                }*/
 
                 //SAVE NO SAB with nuclear timer
                 if (EmergencyDestroy)
@@ -8957,9 +10567,9 @@ namespace ChallengerMod
 
 
 
-               
 
                 
+
 
 
 
@@ -9021,7 +10631,15 @@ namespace ChallengerMod
                     resetCopyTrack(true);
 
 
+                //BAIT
+                if (Bait.Role != null && Bait.BaliseData == true)
+                    BaitBaliseEnable(true);
+                
+                if (Bait.StunsPlayer)
+                    stunned(true);
 
+                if (Bait.StunsPlayer && Bait.ResetStunsPlayer)
+                    resetstunned(true);
 
                 //CUPID
                 if (Cupid.Role != null && Cupid.Lover1 != null && Cupid.Lover2 != null && !Cupid.Lover1.Data.IsDead && Cupid.Lover2.Data.IsDead && PlayerControl.LocalPlayer == Cupid.Lover1 && Loverdie.getBool() == true)
@@ -9787,19 +11405,27 @@ namespace ChallengerMod
                             Challenger.CirclePosition = CirclePositionC0;
                         }
                     }
-                
-                
+
+
 
                 foreach (PlayerTask task in PlayerControl.LocalPlayer.myTasks)
                 {
-                    if (task.TaskType == TaskTypes.FixComms)
-                    {
-                        Challenger.ComSab = true;
+                    if (task.TaskType == TaskTypes.FixComms) { Challenger.ComSab = true; }
+                    else { Challenger.ComSab = false; }
+
+                    if (task.TaskType == TaskTypes.ResetReactor) 
+                    { 
+                        Challenger.ReactorSab = true;
+                        Challenger.ResetScreenColor = true;
                     }
-                    else
-                    {
-                        Challenger.ComSab = false;
-                    }
+                    else { Challenger.ReactorSab = false; }
+
+                }
+
+                if (IsMapPolusV2 && !ReactorSab && !LobbyTimeStop && !Barghest.Shadow && !Spy.Use && !(PlayerControl.LocalPlayer == Vector.Infected) && ResetScreenColor)
+                {
+                    HudManager.Instance.FullScreen.color = new Color(0, 0f, 0f, 0f);
+                    Challenger.ResetScreenColor = false;
                 }
 
                 if (CommsSabotageAnonymous.getSelection() == 1)
@@ -9828,7 +11454,7 @@ namespace ChallengerMod
                                 }
                                 else
                                 {
-                                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 6, "", "", "", "");
+                                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
                                     players.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
                                 }
                             }
@@ -10107,6 +11733,115 @@ namespace ChallengerMod
                                         }
                             }
 
+                        }
+
+                        //LEADERMARK 
+                        if (Leader.Target != null && Leader.Target2 != null)
+                        {
+                            if (Leader.Target.cosmetics.nameText.text.Contains(B_LeaderMark)) { }
+                            else { Leader.Target.cosmetics.nameText.text += B_LeaderMark; }
+
+                            if (Leader.Target2.cosmetics.nameText.text.Contains(B_LeaderMark)) { }
+                            else { Leader.Target2.cosmetics.nameText.text += B_LeaderMark; }
+
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && Leader.Target.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMark)) { }
+                                        else { player.NameText.text += B_LeaderMark; }
+                                    }
+                                    if (player.NameText.text != null && Leader.Target2.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMark)) { }
+                                        else { player.NameText.text += B_LeaderMark; }
+                                    }
+                                }
+                        }
+                        if (Leader.Role != null && Leader.Target != null && Leader.Target2 == null)
+                        {
+                            if (PlayerControl.LocalPlayer == Leader.Role)
+                            {
+                                if (Leader.Target.cosmetics.nameText.text.Contains(B_LocalLeaderMark)) { }
+                                else { Leader.Target.cosmetics.nameText.text += B_LocalLeaderMark; }
+
+                                if (MeetingHud.Instance != null)
+                                    foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                    {
+                                        if (player.NameText.text != null && Leader.Target.PlayerId == player.TargetPlayerId)
+                                        {
+                                            if (player.NameText.text.Contains(B_LocalLeaderMark)) { }
+                                            else { player.NameText.text += B_LocalLeaderMark; }
+                                        }
+                                    }
+                            }
+                        }
+                        //LEADERMARK COPY
+
+                        if (CopyCat.Target != null && CopyCat.Target2 != null && Leader.Target2 == null)
+                        {
+                            if (CopyCat.Target.cosmetics.nameText.text.Contains(B_LeaderMarkCopy)) { }
+                            else { CopyCat.Target.cosmetics.nameText.text += B_LeaderMarkCopy; }
+
+                            if (CopyCat.Target2.cosmetics.nameText.text.Contains(B_LeaderMarkCopy)) { }
+                            else { CopyCat.Target2.cosmetics.nameText.text += B_LeaderMarkCopy; }
+
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && CopyCat.Target.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMarkCopy)) { }
+                                        else { player.NameText.text += B_LeaderMarkCopy; }
+                                    }
+                                    if (player.NameText.text != null && CopyCat.Target2.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMarkCopy)) { }
+                                        else { player.NameText.text += B_LeaderMarkCopy; }
+                                    }
+                                }
+                        }
+                        if (CopyCat.Target != null && CopyCat.Target2 != null && Leader.Target2 != null)
+                        {
+                            if (CopyCat.Target.cosmetics.nameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                            else { CopyCat.Target.cosmetics.nameText.text += B_LeaderMarkCopyIfExist; }
+
+                            if (CopyCat.Target2.cosmetics.nameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                            else { CopyCat.Target2.cosmetics.nameText.text += B_LeaderMarkCopyIfExist; }
+
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && CopyCat.Target.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                                        else { player.NameText.text += B_LeaderMarkCopyIfExist; }
+                                    }
+                                    if (player.NameText.text != null && CopyCat.Target2.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                                        else { player.NameText.text += B_LeaderMarkCopyIfExist; }
+                                    }
+                                }
+                        }
+                        if (CopyCat.Role != null && CopyCat.Target != null && CopyCat.Target2 == null)
+                        {
+                            if (PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 21)
+                            {
+                                if (CopyCat.Target.cosmetics.nameText.text.Contains(B_LocalLeaderMark)) { }
+                                else { CopyCat.Target.cosmetics.nameText.text += B_LocalLeaderMark; }
+
+                                if (MeetingHud.Instance != null)
+                                    foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                    {
+                                        if (player.NameText.text != null && CopyCat.Target.PlayerId == player.TargetPlayerId)
+                                        {
+                                            if (player.NameText.text.Contains(B_LocalLeaderMark)) { }
+                                            else { player.NameText.text += B_LocalLeaderMark; }
+                                        }
+                                    }
+                            }
                         }
                         //VECTOR INFECTED
                         if (Vector.Role != null && Vector.Infected != null)
@@ -10765,29 +12500,25 @@ namespace ChallengerMod
                     }
 
 
-
-
-                    if (Morphling.Role != null && Morphling.Morph != null && PlayerControl.LocalPlayer == Morphling.Role && Morphling.Morphed == true)
+                    if (IntroScreen)
                     {
-                        PlayerControl.LocalPlayer.cosmetics.nameText.text =
-                                        STR_MyTeam + STR_MORPH + CC + STR_MyCulte + STR_Mylove + STR_MyShield
-                                    + "\n" + Size4 + STR_MyRoleColor + STR_P1 + STR_MyRole + STR_P2 + CC
-                                    + " " + STR_MyTaskColor + STR_Ts1 + STR_Mytask + STR_Ts2 + STR_MyTotaltask + STR_Ts3 + CC + CZ;
+
+                        if (Morphling.Role != null && Morphling.Morph != null && PlayerControl.LocalPlayer == Morphling.Role && Morphling.Morphed == true)
+                        {
+                            PlayerControl.LocalPlayer.cosmetics.nameText.text =
+                                            STR_MyTeam + STR_MORPH + CC + STR_MyCulte + STR_Mylove + STR_MyShield
+                                        + "\n" + Size4 + STR_MyRoleColor + STR_P1 + STR_MyRole + STR_P2 + CC
+                                        + " " + STR_MyTaskColor + STR_Ts1 + STR_Mytask + STR_Ts2 + STR_MyTotaltask + STR_Ts3 + CC + CZ;
+                        }
+                        else
+                        {
+                            PlayerControl.LocalPlayer.cosmetics.nameText.text =
+                                            STR_MyTeam + STR_MyName + CC + STR_MyCulte + STR_Mylove + STR_MyShield
+                                        + "\n" + Size4 + STR_MyRoleColor + STR_P1 + STR_MyRole + STR_P2 + CC
+                                        + " " + STR_MyTaskColor + STR_Ts1 + STR_Mytask + STR_Ts2 + STR_MyTotaltask + STR_Ts3 + CC + CZ;
+                        }
                     }
-                    else
-                    {
-                        PlayerControl.LocalPlayer.cosmetics.nameText.text =
-                                        STR_MyTeam + STR_MyName + CC + STR_MyCulte + STR_Mylove + STR_MyShield
-                                    + "\n" + Size4 + STR_MyRoleColor + STR_P1 + STR_MyRole + STR_P2 + CC
-                                    + " " + STR_MyTaskColor + STR_Ts1 + STR_Mytask + STR_Ts2 + STR_MyTotaltask + STR_Ts3 + CC + CZ;
-                    }
 
-
-
-
-
-
-                          
 
 
                         if (MeetingHud.Instance != null)
@@ -12826,6 +14557,70 @@ namespace ChallengerMod
                                         else { player.NameText.text += B_Tracker; }
                                     }
 
+                        }
+                        //LEADERMARK (ONLY MEETING)
+                        if (Leader.Target != null)
+                        {
+                            if (Leader.Target.cosmetics.nameText.text.Contains(B_LeaderMark)) { }
+                            else { Leader.Target.cosmetics.nameText.text += B_LeaderMark; }
+
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && Leader.Target.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMark)) { }
+                                        else { player.NameText.text += B_LeaderMark; }
+                                    }
+                                }
+                        }
+                        if (Leader.Target2 != null)
+                        {
+                            if (Leader.Target2.cosmetics.nameText.text.Contains(B_LeaderMark)) { }
+                            else { Leader.Target2.cosmetics.nameText.text += B_LeaderMark; }
+
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && Leader.Target2.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMark)) { }
+                                        else { player.NameText.text += B_LeaderMark; }
+                                    }
+                                }
+                        }
+                        //LEADERMARK COPY
+                        if (CopyCat.Target != null)
+                        {
+                            if (CopyCat.Target.cosmetics.nameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                            else { CopyCat.Target.cosmetics.nameText.text += B_LeaderMarkCopyIfExist; }
+
+                            
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && CopyCat.Target.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                                        else { player.NameText.text += B_LeaderMarkCopyIfExist; }
+                                    }
+                                }
+                        }
+                        if (CopyCat.Target2 != null)
+                        {
+                            if (CopyCat.Target2.cosmetics.nameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                            else { CopyCat.Target2.cosmetics.nameText.text += B_LeaderMarkCopyIfExist; }
+
+
+                            if (MeetingHud.Instance != null)
+                                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                                {
+                                    if (player.NameText.text != null && CopyCat.Target2.PlayerId == player.TargetPlayerId)
+                                    {
+                                        if (player.NameText.text.Contains(B_LeaderMarkCopyIfExist)) { }
+                                        else { player.NameText.text += B_LeaderMarkCopyIfExist; }
+                                    }
+                                }
                         }
                         //VECTOR INFECTED
                         if (Vector.Role != null && Vector.Infected != null)
