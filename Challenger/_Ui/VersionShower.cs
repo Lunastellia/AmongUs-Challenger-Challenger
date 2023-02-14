@@ -48,9 +48,8 @@ namespace ChallengerMod
                 __instance.text.text += "<size=0.9> - GoodLoss Developer (GameServer & Account) : <color=#F0EF86>Matux</color></size>\n";
                 __instance.text.text += "<size=0.9> - Graphic Designer : <color=#FF2DE9>Lunastellia</color> & <color=#FBAEFF>Asman</color></size>\n";
                 __instance.text.text += "<size=0.9> - Music Composer : <color=#38EEF7>Noé Guiton</color></size>\n";
-               // __instance.text.text += "<size=2>\n" + KeyboardData + "</size>";
+                //__instance.text.text += "<size=1 ❀♂ ◥ ▶ ☆ ♡ ♥ ❀ ★ ☆ ✿ 』→ ♫「 ♪»【 」⸻】ツ⭑« ッ♬↓《 》—    ☯ ❞ ┆ ☏┊ 〗● † --- ψ § </size>";
             }
-
 
 
 

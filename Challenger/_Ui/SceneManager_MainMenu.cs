@@ -296,11 +296,11 @@ namespace ChallengerMod
                     
                 if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
                 {
-                    bttn.GetComponent<SpriteRenderer>().sprite = StartGame_FR;
+                    bttn.GetComponent<SpriteRenderer>().sprite = UI2_PlayNormalFR;
                 }
                 else
                 {
-                    bttn.GetComponent<SpriteRenderer>().sprite = StartGame;
+                    bttn.GetComponent<SpriteRenderer>().sprite = UI2_PlayNormal;
                 }
                     BoxCollider2D boxNsize = bttn.GetComponent<BoxCollider2D>();
                     boxNsize.size = new Vector2(2.45f, 0.8f);
@@ -320,11 +320,11 @@ namespace ChallengerMod
                 // {
                 if (Challenger.LangGameSet == 2f || (ChallengerMod.Set.Data.Playerlang == "French" && Challenger.LangGameSet == 0f))
                 {
-                    bttn2.GetComponent<SpriteRenderer>().sprite = StartGameR_FR;
+                    bttn2.GetComponent<SpriteRenderer>().sprite = UI2_PlayRankedFR;
                 }
                 else
                 {
-                    bttn2.GetComponent<SpriteRenderer>().sprite = StartGameR;
+                    bttn2.GetComponent<SpriteRenderer>().sprite = UI2_PlayRanked;
                 }
                 
                     boxNRsize.size = new Vector2(2.45f, 0.8f);
@@ -381,6 +381,8 @@ namespace ChallengerMod
 
                 void toClick()
                 {
+
+
                     // ChallengerMod.HarmonyMain.Ranked.SetValue(false);
                     SceneChanger.ChangeScene("MMOnline");
 
@@ -393,8 +395,9 @@ namespace ChallengerMod
                     newbutton.SetActive(false);
                     Challenger.IsrankedGame = false;
                     Challenger.isRankedGame = false;
+                    Challenger.RankedSettings = false;
+                    GLMod.GLMod.step = 0;
 
-                    IsrankedGameSet = 100f;
                     ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
 
                     // ChallengerMod.SteamAPPDLC.appDLC.ISteamUser();
@@ -406,6 +409,8 @@ namespace ChallengerMod
                     {
                         GLMod.GLMod.getRank();
                         GLMod.GLMod.reloadItems();
+                        GoodlossRank = GLMod.GLMod.rank.id;
+                        GoodlossRankValue = GLMod.GLMod.rank.percent;
 
                     }
                     
@@ -504,24 +509,26 @@ namespace ChallengerMod
                 }
                     void goClick()
                 {
-                    //if (MatuxMod.MatuxMod.isLoggedIn() == true)
-                    // {
-                    //ChallengerMod.HarmonyMain.Ranked.SetValue(true);
+                   
                     if (SteamUser.GetSteamID() != null && GLMod.GLMod.isLoggedIn() == true && RankedSeason == true)
                     {
+
+                        
+
                         SteamID = SteamUser.GetSteamID().ToString();
                         GLMod.GLMod.disableService("StartGame");
                         GLMod.GLMod.disableService("EndGame");
                         GLMod.GLMod.setModName("Challenger");
 
-
                         Challenger.IsrankedGame = true;
                         Challenger.isRankedGame = true;
+                        Challenger.RankedSettings = false;
+
                         GLMod.GLMod.getRank();
                         GLMod.GLMod.reloadItems();
                         GoodlossRank = GLMod.GLMod.rank.id;
                         GoodlossRankValue = GLMod.GLMod.rank.percent;
-                        IsrankedGameSet = 0f;
+                        GLMod.GLMod.step = 0;
 
                         ChallengerMod.Utility.Discord.DiscordData.Initialize();
 

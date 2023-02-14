@@ -13,7 +13,7 @@ using ChallengerOS.Utils;
 using static ChallengerOS.Utils.Option.CustomOptionHolder;
 using ChallengerMod.RPC;
 using static ChallengerMod.Set.Data;
-
+using Reactor.Extensions;
 
 namespace ChallengerMod.CustomButton
 {
@@ -50,6 +50,7 @@ namespace ChallengerMod.CustomButton
         private static CustomButton SentinelVentButton;
         private static CustomButton SentinelBodyButton;
         private static CustomButton BaitButton;
+        private static CustomButton LeaderAbilityButton;
 
 
 
@@ -64,7 +65,6 @@ namespace ChallengerMod.CustomButton
         private static CustomButton ArsonistOilAbilityButton;
 
         private static CustomButton CursedBarAbilityButton;
-        //private static CustomButton CursedUpAbilityButton;
         private static CustomButton CursedAbilityButton;
 
         //HYBRID
@@ -163,6 +163,7 @@ namespace ChallengerMod.CustomButton
 
             ChallengerMod.CustomButton.HudManagerStartPatch.DictatorAbilityButton.showButtonText = true;
             ChallengerMod.CustomButton.HudManagerStartPatch.BaitButton.showButtonText = true;
+            ChallengerMod.CustomButton.HudManagerStartPatch.LeaderAbilityButton.showButtonText = true;
 
 
 
@@ -1082,14 +1083,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff1kill(targetId);
-                            Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff1.currentTarget = null;
                             if (Sheriff1.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1098,6 +1091,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff1kill(targetId);
+                            Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff1.currentTarget = null;
+                            
                             return;
                         }
                         
@@ -1124,14 +1126,6 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff1kill(targetId);
-                            Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff1.currentTarget = null;
                             if (Sheriff1.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1140,6 +1134,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff1kill(targetId);
+                            Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff1.currentTarget = null;
+                            
                             return;
                         }
                         else if ((Sheriff1.currentTarget.Data.Role.IsImpostor) ||
@@ -1157,6 +1160,12 @@ namespace ChallengerMod.CustomButton
                              ))
                         {
                             //KILL
+
+                            if (Sheriff1.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (Sheriff1.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = Sheriff1.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -1176,14 +1185,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff1kill(targetId);
-                            Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff1.currentTarget = null;
                             if (Sheriff1.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1192,6 +1193,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff1Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff1kill(targetId);
+                            Sheriff1KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff1.currentTarget = null;
+                            
                             return;
                         }
 
@@ -1252,14 +1262,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff2kill(targetId);
-                            Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff2.currentTarget = null;
                             if (Sheriff2.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1268,6 +1270,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff2kill(targetId);
+                            Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff2.currentTarget = null;
+                            
                             return;
                         }
 
@@ -1294,14 +1305,6 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff2kill(targetId);
-                            Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff2.currentTarget = null;
                             if (Sheriff2.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1310,6 +1313,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff2kill(targetId);
+                            Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff2.currentTarget = null;
+                            
                             return;
                         }
                         else if((Sheriff2.currentTarget.Data.Role.IsImpostor) ||
@@ -1327,6 +1339,12 @@ namespace ChallengerMod.CustomButton
                              ))
                         {
                             //KILL
+
+                            if (Sheriff2.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (Sheriff2.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = Sheriff2.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -1346,14 +1364,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff2kill(targetId);
-                            Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff2.currentTarget = null;
                             if (Sheriff2.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1362,6 +1372,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff2Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff2kill(targetId);
+                            Sheriff2KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff2.currentTarget = null;
+                            
                             return;
                         }
 
@@ -1422,14 +1441,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff3kill(targetId);
-                            Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff3.currentTarget = null;
                             if (Sheriff3.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1438,6 +1449,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff3kill(targetId);
+                            Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff3.currentTarget = null;
+                            
                             return;
                         }
 
@@ -1464,14 +1484,6 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff3kill(targetId);
-                            Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff3.currentTarget = null;
                             if (Sheriff3.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1480,6 +1492,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff3kill(targetId);
+                            Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff3.currentTarget = null;
+                            
                             return;
                         }
                         else if ((Sheriff3.currentTarget.Data.Role.IsImpostor) ||
@@ -1497,6 +1518,13 @@ namespace ChallengerMod.CustomButton
                              ))
                         {
                             //KILL
+
+                            if (Sheriff3.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (Sheriff3.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
+
                             targetId = Sheriff3.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -1516,14 +1544,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.sheriff3kill(targetId);
-                            Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
-                            Sheriff3.currentTarget = null;
                             if (Sheriff3.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1532,6 +1552,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Sheriff3Kill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.sheriff3kill(targetId);
+                            Sheriff3KillButton.Timer = SheriffKillButtonMaxTimer;
+                            Sheriff3.currentTarget = null;
+                            
                             return;
                         }
 
@@ -1591,14 +1620,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.copyCatKill(targetId);
-                            CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
-                            CopyCat.currentTarget = null;
                             if (CopyCat.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1607,6 +1628,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.copyCatKill(targetId);
+                            CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
+                            CopyCat.currentTarget = null;
+                            
                             return;
                         }
 
@@ -1633,14 +1663,6 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.copyCatKill(targetId);
-                            CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
-                            CopyCat.currentTarget = null;
                             if (CopyCat.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1649,6 +1671,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.copyCatKill(targetId);
+                            CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
+                            CopyCat.currentTarget = null;
+                           
                             return;
                         }
                         else if ((CopyCat.currentTarget.Data.Role.IsImpostor) ||
@@ -1665,6 +1696,10 @@ namespace ChallengerMod.CustomButton
                              ))
                         {
                             //KILL
+
+                            if (CopyCat.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = CopyCat.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -1684,14 +1719,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.copyCatKill(targetId);
-                            CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
-                            CopyCat.currentTarget = null;
                             if (CopyCat.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -1700,8 +1727,18 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.copyCatKill(targetId);
+                            CopyCatSheriffButton.Timer = SheriffKillButtonMaxTimer;
+                            CopyCat.currentTarget = null;
+                            
                             return;
-                            return;
+
+
                         }
 
 
@@ -1746,8 +1783,9 @@ namespace ChallengerMod.CustomButton
             GuardianAbilityButton = new CustomButton(
                 () => {
                     MurderAttemptResult murder = Helpers.checkMurderAttempt(Guardian.Role, Guardian.currentTarget);
-                    
-                    
+                   // ChallengerMod.Utility.Utils.SpriteAnimUtils.Test(Unity.PetrifyAnim, Guardian.currentTarget.transform.position, 0.17f, 3f);
+
+
                     if (Mystic.Role != null && Mystic.Role == Guardian.currentTarget)
                     {
                         GuardianAbilityButton.Timer = GuardianAbilityButtonMaxTimer;
@@ -1781,7 +1819,10 @@ namespace ChallengerMod.CustomButton
                         GuardianAbilityButton.actionButton.OverrideText(BTT_EMPTY);
                         SoundManager.Instance.PlaySound(ShieldBuff, false, 100f);
                     }
-                    
+
+                    GuardianAbilityButton.Timer = 2f;
+
+
                 },
                 () => { return Guardian.Role != null && Guardian.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled; },
                 () => {
@@ -1790,9 +1831,24 @@ namespace ChallengerMod.CustomButton
                         GuardianAbilityButton.Sprite = shieldIco;
                         GuardianAbilityButton.actionButton.OverrideText(BTT_Role_Guardian);
                         GuardianAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.GuardianColor);
+
                     }
                     else
                     {
+                        GuardianAbilityButton.actionButton.cooldownTimerText.color = ChallengerMod.ColorTable.nocolor;
+
+                      /*  if (GameObject.Find("Testanim"))
+                        {
+                            GameObject anim = GameObject.Find("Testanim");
+                           if (Guardian.Protected != null)
+                                anim.transform.position = Guardian.Protected.transform.position;
+                           if (Guardian.ProtectedMystic != null)
+                                anim.transform.position = Guardian.ProtectedMystic.transform.position;
+                           if (Guardian.ShieldUsed && GuardianAbilityButton.Timer <= 0)
+                            {
+                                anim.Destroy();
+                            }
+                        }*/
                         GuardianAbilityButton.Sprite = empty;
                         GuardianAbilityButton.actionButton.OverrideText(BTT_EMPTY);
                     }
@@ -2881,19 +2937,21 @@ namespace ChallengerMod.CustomButton
                     writer.EndMessage();
                     RPCProcedure.baitbalise(buff);
                     SoundManager.Instance.PlaySound(Used, false, 100f);
+                    Bait.BaliseCount -= 1f;
+                    Bait.BaliseData = true;
 
 
                 },
                 () => {
-                    return (Bait.Role != null && !Bait.BaliseUsed && Bait.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled)
-                || (CopyCat.Role != null && CopyCat.copyRole == 13 && !Bait.BaliseUsed && CopyCat.CopyStart && CopyCat.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled);
+                    return (Bait.Role != null && !Bait.BaliseEnable && Bait.BaliseCount != 0 && Bait.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled)
+                || (CopyCat.Role != null && CopyCat.copyRole == 13 && Bait.BaliseCount != 0 && CopyCat.CopyStart && CopyCat.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled);
                 },
 
                 () => {
-                    if (!Bait.BaliseUsed)
+                    if (Bait.BaliseCount != 0 && !Bait.BaliseEnable)
                     {
                         BaitButton.Sprite = BaitIco;
-                        BaitButton.actionButton.OverrideText("BALISE");
+                        BaitButton.actionButton.OverrideText(BTT_Role_Bait);
                         BaitButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.RedColor);
                     }
                     else
@@ -2903,7 +2961,7 @@ namespace ChallengerMod.CustomButton
                     }
 
 
-                    return !Bait.BaliseUsed && PlayerControl.LocalPlayer.CanMove;
+                    return Bait.BaliseCount != 0 && !Bait.BaliseEnable && PlayerControl.LocalPlayer.CanMove;
                 },
                 () => {
                     
@@ -2915,7 +2973,63 @@ namespace ChallengerMod.CustomButton
                 KeyCode.F
             );
 
+            // LEADER Target
+            LeaderAbilityButton = new CustomButton(
+                () =>
+                {
+                    if (Leader.Role != null && PlayerControl.LocalPlayer == Leader.Role)
+                    {
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssignTarget1, Hazel.SendOption.Reliable, -1);
+                        writer.Write(Leader.currentTarget.PlayerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.assignTarget1(Leader.currentTarget.PlayerId);
+                        LeaderAbilityButton.Sprite = empty;
+                        LeaderAbilityButton.actionButton.OverrideText(BTT_EMPTY);
+                        SoundManager.Instance.PlaySound(Used, false, 100f);
+                        LeaderAbilityButton.Timer = 0f;
+                        Leader.Used = true;
 
+                    }
+                    if (CopyCat.Role != null && PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 21)
+                    {
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssignCopyTarget1, Hazel.SendOption.Reliable, -1);
+                        writer.Write(CopyCat.currentTarget.PlayerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.assignCopyTarget1(CopyCat.currentTarget.PlayerId);
+                        LeaderAbilityButton.Sprite = empty;
+                        LeaderAbilityButton.actionButton.OverrideText(BTT_EMPTY);
+                        SoundManager.Instance.PlaySound(Used, false, 100f);
+                        LeaderAbilityButton.Timer = 0f;
+                        Leader.Used = true;
+
+                    }
+
+                },
+                () => { return Leader.Role != null && !Leader.Used && Leader.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled
+                    || (CopyCat.Role != null && CopyCat.copyRole == 21 && !Leader.Used && CopyCat.CopyStart && CopyCat.Role == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead && !AbilityDisabled);
+                },
+                () => {
+                    if (!Leader.Used)
+                    {
+                        LeaderAbilityButton.Sprite = LeadIco;
+                        LeaderAbilityButton.actionButton.OverrideText(BTT_Role_Leader);
+                        LeaderAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.LeaderColor);
+
+                    }
+                    else
+                    {
+                        LeaderAbilityButton.actionButton.cooldownTimerText.color = ChallengerMod.ColorTable.nocolor;
+                        LeaderAbilityButton.Sprite = empty;
+                        LeaderAbilityButton.actionButton.OverrideText(BTT_EMPTY);
+                    }
+                    return !Leader.Used && ((Leader.currentTarget && PlayerControl.LocalPlayer == Leader.Role) || (CopyCat.currentTarget && PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 21)) && PlayerControl.LocalPlayer.CanMove;
+                },
+                () => { },
+                LeadIco,
+                new Vector3(-1.9f, 0f, 0),
+                __instance,
+                KeyCode.F
+            );
 
 
             // Jester FakeKill
@@ -2960,62 +3074,11 @@ namespace ChallengerMod.CustomButton
             // Cupid Love
             CupidAbilityButton = new CustomButton(
                 () => {
-                    MurderAttemptResult murder = Helpers.checkMurderAttempt(Cupid.Role, Cupid.currentTarget);
-
-
-                    if (!Cupid.LoveUsed && !Cupid.Fail)
-                    {
-                        if (!Cupid.Love1Used && !Cupid.Love2Used)
-                        {
-                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetLover1, Hazel.SendOption.Reliable, -1);
-                            writer.Write(Cupid.currentTarget.PlayerId);
-                            AmongUsClient.Instance.FinishRpcImmediately(writer);
-                            RPCProcedure.setLover1(Cupid.currentTarget.PlayerId);
-                            Cupid.Love1Used = true;
-                            SoundManager.Instance.PlaySound(Used, false, 100f);
-
-                            CupidAbilityButton.Timer = CupidAbilityButtonMaxTimer;
-                        }
-                        else if (Cupid.Love1Used && !Cupid.Love2Used)
-                        {
-                            if (Cupid.currentTarget == Cupid.Lover1) { Cupid.currentTarget = null; }
-                            else
-                            {
-                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetLover2, Hazel.SendOption.Reliable, -1);
-                                writer.Write(Cupid.currentTarget.PlayerId);
-                                AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.setLover2(Cupid.currentTarget.PlayerId);
-                                Cupid.LoveUsed = true;
-                                Cupid.Love2Used = true;
-                                SoundManager.Instance.PlaySound(Used, false, 100f);
-
-                                CupidAbilityButton.Timer = CupidAbilityButtonMaxTimer;
-                            }
-                        }
-                        else if (Cupid.Love1Used && Cupid.Love2Used) { Cupid.currentTarget = null; }
-
-                    }
-                    else { Cupid.currentTarget = null; }
+                    
                 },
-                () => { return Cupid.Role != null && Cupid.Role == PlayerControl.LocalPlayer; },
+                () => { return Cupid.Role != null && Cupid.Role == PlayerControl.LocalPlayer && Cupid.Lover1 != null && Cupid.Lover2 != null; },
                 () => {
-                    if (!Cupid.Love1Used && !Cupid.Love1Used && !Cupid.Fail) // 0 lovers
-                    {
-                        loverText.text = "" + STR_LOVERS;
-                        loverText.color = WhiteColor;
-                        CupidAbilityButton.Sprite = loveIco;
-                        CupidAbilityButton.actionButton.OverrideText(BTT_Role_Cupid);
-                        CupidAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.CupidColor);
-                    }
-                    else if (Cupid.Love1Used && !Cupid.Love1Used && !Cupid.Fail) // 1 lover
-                    {
-                        loverText.text = "" + STR_LOVERS;
-                        loverText.color = WhiteColor;
-                        CupidAbilityButton.Sprite = love1Ico;
-                        CupidAbilityButton.actionButton.OverrideText(BTT_Role_Cupid);
-                        CupidAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.CupidColor);
-                    }
-                    else if (Cupid.Love1Used && Cupid.Love1Used && !Cupid.Fail) // 2 lover
+                    if (Cupid.Lover1 != null && Cupid.Lover2 != null && !Cupid.Fail) // 2 lover
                     {
                         loverText.text = "" + STR_LOVERS;
                         loverText.color = WhiteColor;
@@ -3023,7 +3086,7 @@ namespace ChallengerMod.CustomButton
                         CupidAbilityButton.actionButton.OverrideText(BTT_Role_Cupid);
                         CupidAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.CupidColor);
                     }
-                    else if (Cupid.Fail) // Fail
+                    else if (Cupid.Lover1 != null && Cupid.Lover2 != null && Cupid.Fail) // 2 lover
                     {
                         loverText.text = "" + STR_LOVERS;
                         loverText.color = RedColor;
@@ -3031,8 +3094,15 @@ namespace ChallengerMod.CustomButton
                         CupidAbilityButton.actionButton.OverrideText(BTT_Role_Cupid);
                         CupidAbilityButton.actionButton.buttonLabelText.SetOutlineColor(ChallengerMod.ColorTable.GreyColor);
                     }
+                    else
+                    {
+                        loverText.text = "";
+                        CupidAbilityButton.Sprite = empty;
+                        CupidAbilityButton.actionButton.OverrideText("");
+                       
+                    }
 
-                    return (Cupid.currentTarget || Cupid.LoveUsed || Cupid.Fail) && PlayerControl.LocalPlayer.CanMove;
+                    return PlayerControl.LocalPlayer == Cupid.Role;
                 },
                 () => { },
                 loveIco,
@@ -3212,8 +3282,7 @@ namespace ChallengerMod.CustomButton
                    if (component != null && !component.Reported)
                    {
 
-
-
+                       Eater.EatTarget = component;
 
                        GameData.PlayerInfo playerInfo = GameData.Instance.GetPlayerById(component.ParentId);
 
@@ -3266,7 +3335,8 @@ namespace ChallengerMod.CustomButton
                     //EAT
                     SoundManager.Instance.PlaySound(Used, false, 100f);
                     PlayerControl.LocalPlayer.moveable = true;
-                    DeadBody component = Eater.deadbodyTarget;
+                    
+                    DeadBody component = Eater.EatTarget;
 
                     if (component != null && !component.Reported)
                     {
@@ -3371,14 +3441,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MercenaryKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.mercenaryKill(targetId);
-                            MercenaryKillButton.Timer = MercenaryKillButtonMaxTimer;
-                            Mercenary.currentTarget = null;
                             if (Mercenary.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -3387,8 +3449,18 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MercenaryKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.mercenaryKill(targetId);
+                            MercenaryKillButton.Timer = MercenaryKillButtonMaxTimer;
+                            Mercenary.currentTarget = null;
+                            
                             return;
-                            return;
+
+
                         }
 
                     }
@@ -3434,6 +3506,12 @@ namespace ChallengerMod.CustomButton
                         {
 
                             //KILL
+
+                            if (Mercenary.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (Mercenary.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = Mercenary.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MercenaryKill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -3876,14 +3954,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.OutlawKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.outlawKill(targetId);
-                            OutlawKillButton.Timer = OutlawKillButtonMaxTimer;
-                            Outlaw.currentTarget = null;
                             if (Outlaw.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -3892,6 +3962,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.OutlawKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.outlawKill(targetId);
+                            OutlawKillButton.Timer = OutlawKillButtonMaxTimer;
+                            Outlaw.currentTarget = null;
+                            
                             return;
                         }
 
@@ -3916,6 +3995,12 @@ namespace ChallengerMod.CustomButton
                         byte targetId = 0;
 
                         //KILL
+
+                        if (Outlaw.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                        { Bait.StunsPlayer = true; }
+                        if (Outlaw.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                        { Bait.StunsPlayer = true; }
+
                         targetId = Outlaw.currentTarget.PlayerId;
                         MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.OutlawKill, Hazel.SendOption.Reliable, -1);
                         messageWriter.Write(targetId);
@@ -4157,6 +4242,7 @@ namespace ChallengerMod.CustomButton
                             if (!AbilityDisabled)
                             {
                                 //INFECT
+
                                 VectorInfectAbilityButton.Timer = VectorInfectAbilityButtonMaxTimer;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetInfectePlayer, Hazel.SendOption.Reliable, -1);
                                 writer.Write(Vector.currentTarget.PlayerId);
@@ -4164,7 +4250,8 @@ namespace ChallengerMod.CustomButton
                                 RPCProcedure.setInfectePlayer(Vector.currentTarget.PlayerId);
                                 Vector.infect = true;
                                 VectorKillButton.Timer = VectorKillButtonMaxTimer;
-                                if (Assassin.TargetBaitArea)
+                                
+                                if (Vector.TargetBaitArea)
                                 {
                                     MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
                                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
@@ -4177,13 +4264,19 @@ namespace ChallengerMod.CustomButton
                             else
                             {
                                 //KILL
+
+                                if (Vector.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                                { Bait.StunsPlayer = true; }
+                                if (Vector.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                                { Bait.StunsPlayer = true; }
+
                                 VectorInfectAbilityButton.Timer = VectorInfectAbilityButtonMaxTimer;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.VectorKill, Hazel.SendOption.Reliable, -1);
                                 writer.Write(Vector.currentTarget.PlayerId);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
                                 RPCProcedure.vectorKill(Vector.currentTarget.PlayerId);
                                 VectorKillButton.Timer = VectorKillButtonMaxTimer;
-                                if (Assassin.TargetBaitArea)
+                                if (Vector.TargetBaitArea)
                                 {
                                     MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
                                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
@@ -4259,10 +4352,14 @@ namespace ChallengerMod.CustomButton
             );
 
 
-            // Vector FakeKill
+            // Vector Kill
             VectorKillButton = new CustomButton(
                 () => {
 
+                    if (Vector.Infected.PlayerId == Bait.Role.PlayerId && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                    { Bait.StunsPlayer = true; }
+                    if (Vector.Infected.PlayerId == CopyCat.Role.PlayerId && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                    { Bait.StunsPlayer = true; }
 
                     VectorKillButton.Timer = VectorKillButtonMaxTimer;
                     MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.KillInfected, Hazel.SendOption.Reliable, -1);
@@ -4911,6 +5008,12 @@ namespace ChallengerMod.CustomButton
                     Sorcerer4AbilityButton.Timer = 0.5f;
                     ChallengerOS.Utils.Helpers.showFlash(new Color(0f / 255f, 0f / 255f, 0f / 255f), 0.5f);
                     SoundManager.Instance.PlaySound(Used, false, 100f);
+
+                    if (Sorcerer.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                    { Bait.StunsPlayer = true; }
+                    if (Sorcerer.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                    { Bait.StunsPlayer = true; }
+
                     if (Sorcerer.TargetBaitArea)
                     {
                         MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -4982,7 +5085,7 @@ namespace ChallengerMod.CustomButton
                     }
                     return !Basilisk.Used && Basilisk.currentTarget && !Basilisk.NullTarget && PlayerControl.LocalPlayer.CanMove && Basilisk.PetrifyCount >= Basilisk.CostParalize;
                 },
-                () => { },
+                () => { BasiliskAbilityButton.Timer = 10f; },
                 PetrifyIco,
                 new Vector3(0f, 2f, 0),
                 __instance,
@@ -5039,7 +5142,7 @@ namespace ChallengerMod.CustomButton
                     }
                     return !Basilisk.Used && Basilisk.currentTarget && !Basilisk.NullTarget && PlayerControl.LocalPlayer.CanMove && Basilisk.PetrifyCount >= Basilisk.CostPetrify;
                 },
-                () => { },
+                () => { BasiliskAbility2Button.Timer = 10f; },
                 Petrify2Ico,
                 new Vector3(-0.9f, 2f, 0),
                 __instance,
@@ -5123,14 +5226,6 @@ namespace ChallengerMod.CustomButton
                      }
                      else //Guardian shield - Reflect
                      {
-                            //SELF-KILL
-                         targetId = PlayerControl.LocalPlayer.PlayerId;
-                         MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssassinKill, Hazel.SendOption.Reliable, -1);
-                         messageWriter.Write(targetId);
-                         AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                         RPCProcedure.assassinKill(targetId);
-                         AssassinKillButton.Timer = AssassinKillButtonMaxTimer;
-                         Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -5139,6 +5234,15 @@ namespace ChallengerMod.CustomButton
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
+                         //SELF-KILL
+                         targetId = PlayerControl.LocalPlayer.PlayerId;
+                         MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssassinKill, Hazel.SendOption.Reliable, -1);
+                         messageWriter.Write(targetId);
+                         AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                         RPCProcedure.assassinKill(targetId);
+                         AssassinKillButton.Timer = AssassinKillButtonMaxTimer;
+                         Assassin.currentTarget = null;
+                         
                          return;
                      }
 
@@ -5176,6 +5280,12 @@ namespace ChallengerMod.CustomButton
                      {
                          //Cancel & Save bonus for CopyCat - CopiedPlayer Ability
                          //KILL
+
+                         if (Assassin.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                         { Bait.StunsPlayer = true; }
+                         if (Assassin.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                         { Bait.StunsPlayer = true; }
+
                          targetId = Assassin.currentTarget.PlayerId;
                          MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssassinKill, Hazel.SendOption.Reliable, -1);
                          messageWriter.Write(targetId);
@@ -5875,6 +5985,12 @@ namespace ChallengerMod.CustomButton
                      else
                      {
                          //KILL Normal
+
+                         if (Assassin.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                         { Bait.StunsPlayer = true; }
+                         if (Assassin.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                         { Bait.StunsPlayer = true; }
+
                          targetId = Assassin.currentTarget.PlayerId;
                          MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssassinKill, Hazel.SendOption.Reliable, -1);
                          messageWriter.Write(targetId);
@@ -5970,14 +6086,6 @@ namespace ChallengerMod.CustomButton
                           }
                           else //Guardian shield - Reflect
                           {
-                              //SELF-KILL
-                              targetId = PlayerControl.LocalPlayer.PlayerId;
-                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor1Kill, Hazel.SendOption.Reliable, -1);
-                              messageWriter.Write(targetId);
-                              AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                              RPCProcedure.impostor1Kill(targetId);
-                              Impostor1KillButton.Timer = ImpostorsKillButtonMaxTimer;
-                              Impostor1.currentTarget = null;
                               if (Impostor1.TargetBaitArea)
                               {
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -5986,6 +6094,15 @@ namespace ChallengerMod.CustomButton
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
+                              //SELF-KILL
+                              targetId = PlayerControl.LocalPlayer.PlayerId;
+                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor1Kill, Hazel.SendOption.Reliable, -1);
+                              messageWriter.Write(targetId);
+                              AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                              RPCProcedure.impostor1Kill(targetId);
+                              Impostor1KillButton.Timer = ImpostorsKillButtonMaxTimer;
+                              Impostor1.currentTarget = null;
+                              
                               return;
                           }
 
@@ -6023,6 +6140,12 @@ namespace ChallengerMod.CustomButton
                           {
 
                               //KILL
+
+                              if (Impostor1.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                              { Bait.StunsPlayer = true; }
+                              if (Impostor1.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                              { Bait.StunsPlayer = true; }
+
                               targetId = Impostor1.currentTarget.PlayerId;
                               MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor1Kill, Hazel.SendOption.Reliable, -1);
                               messageWriter.Write(targetId);
@@ -6098,14 +6221,6 @@ namespace ChallengerMod.CustomButton
                           }
                           else //Guardian shield - Reflect
                           {
-                              //SELF-KILL
-                              targetId = PlayerControl.LocalPlayer.PlayerId;
-                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor2Kill, Hazel.SendOption.Reliable, -1);
-                              messageWriter.Write(targetId);
-                              AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                              RPCProcedure.impostor2Kill(targetId);
-                              Impostor2KillButton.Timer = ImpostorsKillButtonMaxTimer;
-                              Impostor2.currentTarget = null;
                               if (Impostor2.TargetBaitArea)
                               {
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6114,6 +6229,15 @@ namespace ChallengerMod.CustomButton
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
+                              //SELF-KILL
+                              targetId = PlayerControl.LocalPlayer.PlayerId;
+                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor2Kill, Hazel.SendOption.Reliable, -1);
+                              messageWriter.Write(targetId);
+                              AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                              RPCProcedure.impostor2Kill(targetId);
+                              Impostor2KillButton.Timer = ImpostorsKillButtonMaxTimer;
+                              Impostor2.currentTarget = null;
+                              
                               return;
                           }
 
@@ -6150,6 +6274,12 @@ namespace ChallengerMod.CustomButton
                           else
                           {
                               //KILL
+
+                              if (Impostor2.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                              { Bait.StunsPlayer = true; }
+                              if (Impostor2.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                              { Bait.StunsPlayer = true; }
+
                               targetId = Impostor2.currentTarget.PlayerId;
                               MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor2Kill, Hazel.SendOption.Reliable, -1);
                               messageWriter.Write(targetId);
@@ -6228,14 +6358,6 @@ namespace ChallengerMod.CustomButton
                           }
                           else //Guardian shield - Reflect
                           {
-                              //SELF-KILL
-                              targetId = PlayerControl.LocalPlayer.PlayerId;
-                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor3Kill, Hazel.SendOption.Reliable, -1);
-                              messageWriter.Write(targetId);
-                              AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                              RPCProcedure.impostor3Kill(targetId);
-                              Impostor3KillButton.Timer = ImpostorsKillButtonMaxTimer;
-                              Impostor3.currentTarget = null;
                               if (Impostor3.TargetBaitArea)
                               {
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6244,6 +6366,15 @@ namespace ChallengerMod.CustomButton
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
+                              //SELF-KILL
+                              targetId = PlayerControl.LocalPlayer.PlayerId;
+                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor3Kill, Hazel.SendOption.Reliable, -1);
+                              messageWriter.Write(targetId);
+                              AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                              RPCProcedure.impostor3Kill(targetId);
+                              Impostor3KillButton.Timer = ImpostorsKillButtonMaxTimer;
+                              Impostor3.currentTarget = null;
+                              
                               return;
                           }
 
@@ -6280,6 +6411,12 @@ namespace ChallengerMod.CustomButton
                           else
                           {
                               //KILL
+
+                              if (Impostor3.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                              { Bait.StunsPlayer = true; }
+                              if (Impostor3.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                              { Bait.StunsPlayer = true; }
+
                               targetId = Impostor3.currentTarget.PlayerId;
                               MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.Impostor3Kill, Hazel.SendOption.Reliable, -1);
                               messageWriter.Write(targetId);
@@ -6359,14 +6496,6 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
-                             //SELF-KILL
-                             targetId = PlayerControl.LocalPlayer.PlayerId;
-                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MorphlingKill, Hazel.SendOption.Reliable, -1);
-                             messageWriter.Write(targetId);
-                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                             RPCProcedure.morphlingKill(targetId);
-                             MorphlingKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                             Morphling.currentTarget = null;
                              if (Morphling.TargetBaitArea)
                              {
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6375,6 +6504,15 @@ namespace ChallengerMod.CustomButton
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
+                             //SELF-KILL
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
+                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MorphlingKill, Hazel.SendOption.Reliable, -1);
+                             messageWriter.Write(targetId);
+                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                             RPCProcedure.morphlingKill(targetId);
+                             MorphlingKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                             Morphling.currentTarget = null;
+                             
                              return;
                          }
 
@@ -6411,6 +6549,12 @@ namespace ChallengerMod.CustomButton
                          else
                          {
                              //KILL
+
+                             if (Morphling.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+                             if (Morphling.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+
                              targetId = Morphling.currentTarget.PlayerId;
                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MorphlingKill, Hazel.SendOption.Reliable, -1);
                              messageWriter.Write(targetId);
@@ -6486,14 +6630,6 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
-                             //SELF-KILL
-                             targetId = PlayerControl.LocalPlayer.PlayerId;
-                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ScramblerKill, Hazel.SendOption.Reliable, -1);
-                             messageWriter.Write(targetId);
-                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                             RPCProcedure.scramblerKill(targetId);
-                             ScramblerKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                             Scrambler.currentTarget = null;
                              if (Scrambler.TargetBaitArea)
                              {
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6502,6 +6638,15 @@ namespace ChallengerMod.CustomButton
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
+                             //SELF-KILL
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
+                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ScramblerKill, Hazel.SendOption.Reliable, -1);
+                             messageWriter.Write(targetId);
+                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                             RPCProcedure.scramblerKill(targetId);
+                             ScramblerKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                             Scrambler.currentTarget = null;
+                             
                              return;
                          }
 
@@ -6539,6 +6684,12 @@ namespace ChallengerMod.CustomButton
                          else
                          {
                              //KILL
+
+                             if (Scrambler.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+                             if (Scrambler.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+
                              targetId = Scrambler.currentTarget.PlayerId;
                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ScramblerKill, Hazel.SendOption.Reliable, -1);
                              messageWriter.Write(targetId);
@@ -6614,14 +6765,6 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
-                             //SELF-KILL
-                             targetId = PlayerControl.LocalPlayer.PlayerId;
-                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BarghestKill, Hazel.SendOption.Reliable, -1);
-                             messageWriter.Write(targetId);
-                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                             RPCProcedure.barghestKill(targetId);
-                             BarghestKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                             Barghest.currentTarget = null;
                              if (Barghest.TargetBaitArea)
                              {
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6630,6 +6773,15 @@ namespace ChallengerMod.CustomButton
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
+                             //SELF-KILL
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
+                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BarghestKill, Hazel.SendOption.Reliable, -1);
+                             messageWriter.Write(targetId);
+                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                             RPCProcedure.barghestKill(targetId);
+                             BarghestKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                             Barghest.currentTarget = null;
+                             
                              return;
                          }
 
@@ -6666,6 +6818,12 @@ namespace ChallengerMod.CustomButton
                          else
                          {
                              //KILL
+
+                             if (Barghest.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+                             if (Barghest.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+
                              targetId = Barghest.currentTarget.PlayerId;
                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BarghestKill, Hazel.SendOption.Reliable, -1);
                              messageWriter.Write(targetId);
@@ -6744,14 +6902,6 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
-                             //SELF-KILL
-                             targetId = PlayerControl.LocalPlayer.PlayerId;
-                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.GhostKill, Hazel.SendOption.Reliable, -1);
-                             messageWriter.Write(targetId);
-                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                             RPCProcedure.ghostKill(targetId);
-                             GhostKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                             Ghost.currentTarget = null;
                              if (Ghost.TargetBaitArea)
                              {
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6760,6 +6910,15 @@ namespace ChallengerMod.CustomButton
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
+                             //SELF-KILL
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
+                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.GhostKill, Hazel.SendOption.Reliable, -1);
+                             messageWriter.Write(targetId);
+                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                             RPCProcedure.ghostKill(targetId);
+                             GhostKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                             Ghost.currentTarget = null;
+                             
                              return;
                          }
 
@@ -6795,7 +6954,13 @@ namespace ChallengerMod.CustomButton
                          }
                          else
                          {
-                             //KILL
+                            //KILL
+
+                             if (Ghost.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+                             if (Ghost.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+
                              targetId = Ghost.currentTarget.PlayerId;
                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.GhostKill, Hazel.SendOption.Reliable, -1);
                              messageWriter.Write(targetId);
@@ -6871,14 +7036,6 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
-                             //SELF-KILL
-                             targetId = PlayerControl.LocalPlayer.PlayerId;
-                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SorcererKill, Hazel.SendOption.Reliable, -1);
-                             messageWriter.Write(targetId);
-                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                             RPCProcedure.sorcererKill(targetId);
-                             SorcererKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                             Sorcerer.currentTarget = null;
                              if (Sorcerer.TargetBaitArea)
                              {
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -6887,6 +7044,15 @@ namespace ChallengerMod.CustomButton
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
+                             //SELF-KILL
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
+                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SorcererKill, Hazel.SendOption.Reliable, -1);
+                             messageWriter.Write(targetId);
+                             AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                             RPCProcedure.sorcererKill(targetId);
+                             SorcererKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                             Sorcerer.currentTarget = null;
+                             
                              return;
                          }
 
@@ -6923,6 +7089,12 @@ namespace ChallengerMod.CustomButton
                          else
                          {
                              //KILL
+
+                             if (Sorcerer.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+                             if (Sorcerer.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                             { Bait.StunsPlayer = true; }
+
                              targetId = Sorcerer.currentTarget.PlayerId;
                              MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SorcererKill, Hazel.SendOption.Reliable, -1);
                              messageWriter.Write(targetId);
@@ -6999,14 +7171,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                             //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.GuesserKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.guesserKill(targetId);
-                            GuesserKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                            Guesser.currentTarget = null;
                             if (Guesser.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -7015,6 +7179,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.GuesserKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.guesserKill(targetId);
+                            GuesserKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                            Guesser.currentTarget = null;
+                            
                             return;
                         }
 
@@ -7049,7 +7222,13 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
-                             //KILL
+                            //KILL
+
+                            if (Guesser.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (Guesser.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = Guesser.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.GuesserKill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -7125,14 +7304,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BasiliskKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.basiliskKill(targetId);
-                            BasiliskKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                            Basilisk.currentTarget = null;
                             if (Basilisk.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -7141,6 +7312,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BasiliskKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.basiliskKill(targetId);
+                            BasiliskKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                            Basilisk.currentTarget = null;
+                            
                             return;
                         }
 
@@ -7176,6 +7356,12 @@ namespace ChallengerMod.CustomButton
                         else
                         {
                             //KILL
+
+                            if (Basilisk.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (Basilisk.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = Basilisk.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BasiliskKill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);
@@ -7252,14 +7438,6 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
-                            //SELF-KILL
-                            targetId = PlayerControl.LocalPlayer.PlayerId;
-                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
-                            messageWriter.Write(targetId);
-                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
-                            RPCProcedure.copyCatKill(targetId);
-                            CopyCatKillButton.Timer = ImpostorsKillButtonMaxTimer;
-                            CopyCat.currentTarget = null;
                             if (CopyCat.TargetBaitArea)
                             {
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
@@ -7268,6 +7446,15 @@ namespace ChallengerMod.CustomButton
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
+                            //SELF-KILL
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
+                            MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
+                            messageWriter.Write(targetId);
+                            AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                            RPCProcedure.copyCatKill(targetId);
+                            CopyCatKillButton.Timer = ImpostorsKillButtonMaxTimer;
+                            CopyCat.currentTarget = null;
+                            
                             return;
                         }
 
@@ -7303,6 +7490,12 @@ namespace ChallengerMod.CustomButton
                         else
                         {
                             //KILL
+
+                            if (CopyCat.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+                            if (CopyCat.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                            { Bait.StunsPlayer = true; }
+
                             targetId = CopyCat.currentTarget.PlayerId;
                             MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CopyCatKill, Hazel.SendOption.Reliable, -1);
                             messageWriter.Write(targetId);

@@ -17,8 +17,9 @@ namespace ChallengerMod
     public static class Challenger
     {
         //NEVER CLEAR THIS !! 
+        public static bool RankedSettings = false;
+        
 
-   
         public static string debugg = "";
         public static string debugg02 = "";
         public static string debugg03 = "";
@@ -26,11 +27,11 @@ namespace ChallengerMod
         public static KeyCode KeycodeAbility { get; set; }
         public static bool IsrankedGame { get; set; }
         public static string SteamID = "ID";
-        public static float IsrankedGameSet = 100f;
 
         public static List<string> ReadyPlayers = new List<string>();
 
         public static bool RoleAssigned = false;
+        public static bool IntroScreen = false;
         public static float CameraZoom = 3f;
         public static bool UICustom = true;
 
@@ -41,6 +42,12 @@ namespace ChallengerMod
         public static bool NuclearMap = false;
         public static float NuclearTimeMin = 90f;
         public static float NuclearTimeAdd = 0f;
+
+        public static string EventActive = "Normal";
+        public static bool LoverEvent = true;
+        public static bool EventStarted = false;
+        public static int ColorIDSave_ToCom = 6;
+        public static int ColorIDSave_ToScrambler = 7;
 
 
 
@@ -53,6 +60,7 @@ namespace ChallengerMod
         public static bool ReSyncIntro = false;
         public static bool PlayerSafe = false;
         public static bool StartTimer = false;
+        public static bool ResetIntroCD = false;
         public static bool IntroCD = false;
         public static bool IsMapPolusV2 = false;
 
@@ -63,7 +71,9 @@ namespace ChallengerMod
         
         public static bool FirstTurn = true;
         public static bool SecondTurn = false;
-        public static bool SyncButton = false; 
+        public static bool SyncButton = false;
+
+        public static bool ResetScreenColor = false;
 
         //Goodloss Data
         public static string playerToken = "";
@@ -76,13 +86,12 @@ namespace ChallengerMod
 
         //RankedS2
 
-        public static int _Players = 10;
-        public static int _MapID = 0;
-        public static int _SMapID = 0;
-        public static int _IMP = 1;
-        public static int _DUO = 0;
-        public static int _SPE = 0;
-        public static int _CRW = 0;
+        public static int _Players { get; set; }
+        public static int _MapID { get; set; }
+        public static int _IMP { get; set; }
+        public static int _DUO { get; set; }
+        public static int _SPE { get; set; }
+        public static int _CRW { get; set; }
         public static List<string> _Roles = new List<string>();
 
 
@@ -118,11 +127,11 @@ namespace ChallengerMod
         public static List<PlayerControl> Petrifiedplayers = new List<PlayerControl>();
         public static List<PlayerControl> CultePlayers = new List<PlayerControl>();
 
-        public static List<PlayerControl> _Crewmates = new List<PlayerControl>();
-        public static List<PlayerControl> _Impostors = new List<PlayerControl>();
-        public static List<PlayerControl> _Alls = new List<PlayerControl>(); 
-        public static List<PlayerControl> _Specials = new List<PlayerControl>();
-        public static List<PlayerControl> _Cultes = new List<PlayerControl>();
+        public static List<PlayerControl> LeaderList = new List<PlayerControl>();
+        public static List<PlayerControl> LeaderCopyList = new List<PlayerControl>();
+        public static List<PlayerControl> LoversList = new List<PlayerControl>();
+        public static List<PlayerControl> _Alls = new List<PlayerControl>();
+
 
 
         public static List<Vent> ventsToSeal = new List<Vent>();
@@ -205,6 +214,16 @@ namespace ChallengerMod
 
         public static float CircleScale = 1f;
 
+        public static void UpdateEvent()
+        {
+            ChallengerMod.HarmonyMain.EventConfig.Value = ChallengerMod.Challenger.EventActive;
+        }
+        public static void LoadEvent()
+        {
+            ChallengerMod.Challenger.EventActive = ChallengerMod.HarmonyMain.EventConfig.Value;
+        }
+
+        
 
     }
      

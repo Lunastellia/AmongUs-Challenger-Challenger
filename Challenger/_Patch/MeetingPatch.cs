@@ -13,6 +13,9 @@ using ChallengerMod.RPC;
 using ChallengerOS.Utils;
 using ChallengerMod.CustomButton;
 using Reactor.Extensions;
+using Rewired;
+using System.Linq;
+using ChallengerMod.Rnd;
 
 namespace Challenger
 {
@@ -32,7 +35,210 @@ namespace Challenger
                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0 / 255f, 0 / 255f), 4f);
             }
             else { }
-                
+
+            if (Leader.Role != null && Leader.Target != null && Leader.Target2 == null && (Leader.Role.Data.IsDead || LeaderTaskEnd.getBool() == true && Leader.TaskEND == true) && PlayerControl.LocalPlayer == Leader.Role && !Leader.Used2)
+            {
+                //IMPOSTOR
+                if (Leader.Target.Data.Role.IsImpostor)
+                {
+                    foreach (PlayerControl Player in PlayerControl.AllPlayerControls)
+                    {
+                        if (!Player.Data.IsDead && !Player.Data.Role.IsImpostor && Player != Leader.Target && Player != Leader.Role)
+                        {
+                            if (!LeaderList.Contains(Player)) { LeaderList.Add(Player); }
+                        }
+                    }
+                }
+                //NOT_IMPOSTOR
+                else
+                {
+                    foreach (PlayerControl Player in PlayerControl.AllPlayerControls)
+                    {
+                        //SPECIAL+NEUTRE
+                        if ((Jester.Role != null && Player == Jester.Role)
+                                || (Eater.Role != null && Player == Eater.Role)
+                                || (Arsonist.Role != null && Player == Arsonist.Role)
+                                || (Outlaw.Role != null && Player == Outlaw.Role)
+                                || (Cursed.Role != null && Player == Cursed.Role)
+                                || (Cupid.Role != null && Player == Cupid.Role && LeaderAffectCupid.getBool() == true)
+                                || (Survivor.Role != null && Player == Survivor.Role)
+                                )
+                        {
+                            if (!Player.Data.IsDead && Player != Leader.Target && Player != Leader.Role)
+                            {
+                                if (!LeaderList.Contains(Player)) { LeaderList.Add(Player); }
+                            }
+                        }
+                        //CULTE
+                        else if ((Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                )
+                        {
+                            if (!Player.Data.IsDead
+                                && Player != Leader.Target
+                                && Player != Leader.Role
+                                && Player != Cultist.Role
+                                && Player != Cultist.Culte1
+                                && Player != Cultist.Culte2
+                                && Player != Cultist.Culte3)
+                            {
+                                if (!LeaderList.Contains(Player)) { LeaderList.Add(Player); }
+                            }
+                        }
+                        //CREWMATE
+                        else
+                        {
+                            if (!Player.Data.IsDead
+                                && Player != Leader.Target
+                                && Player != Leader.Role
+                                && (Player.Data.Role.IsImpostor
+                                || (Jester.Role != null && Player == Jester.Role)
+                                || (Eater.Role != null && Player == Eater.Role)
+                                || (Arsonist.Role != null && Player == Arsonist.Role)
+                                || (Outlaw.Role != null && Player == Outlaw.Role)
+                                || (Cursed.Role != null && Player == Cursed.Role)
+                                || (Cupid.Role != null && Player == Cupid.Role)
+                                || (Survivor.Role != null && Player == Survivor.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Culte1 != null && Player == Cultist.Culte1)
+                                || (Cultist.Culte2 != null && Player == Cultist.Culte3)
+                                || (Cultist.Culte3 != null && Player == Cultist.Culte2)
+                                ))
+                            {
+                                if (!LeaderList.Contains(Player)) { LeaderList.Add(Player); }
+                            }
+                        }
+                    }
+                }
+
+                if (LeaderList.Count() >= 1) 
+                {
+                    LeaderList.Shuffle();
+                    var rnd = new System.Random();
+                    var randomizedLeaderList = LeaderList.OrderBy(item => rnd.Next());
+
+                    //Check and remove 
+                    LeaderList.RemoveRange(0, LeaderList.Count - 1);
+
+                    if (LeaderList.Count > 0)
+                    {
+                        var PlayerTarget2 = rng.Next(0, LeaderList.Count);
+                        Leader.Target2 = LeaderList[PlayerTarget2];
+                        LeaderList.RemoveAt(PlayerTarget2);
+                        byte playerId = Leader.Target2.PlayerId;
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssignTarget2, Hazel.SendOption.Reliable, -1);
+                        writer.Write(playerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.assignTarget2(playerId);
+                    }
+                }
+            }
+            if (CopyCat.Role != null && CopyCat.Target != null && CopyCat.Target2 == null && (CopyCat.Role.Data.IsDead || LeaderTaskEnd.getBool() == true && CopyCat.TaskEND == true)
+                && PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.CopyStart == true && CopyCat.copyRole == 21 && !CopyCat.Used2)
+            {
+                //IMPOSTOR
+                if (CopyCat.Target.Data.Role.IsImpostor)
+                {
+                    foreach (PlayerControl Player in PlayerControl.AllPlayerControls)
+                    {
+                        if (!Player.Data.IsDead && !Player.Data.Role.IsImpostor && Player != CopyCat.Target && Player != CopyCat.Role)
+                        {
+                            if (!LeaderCopyList.Contains(Player)) { LeaderCopyList.Add(Player); }
+                        }
+                    }
+                }
+                //NOT_IMPOSTOR
+                else
+                {
+                    foreach (PlayerControl Player in PlayerControl.AllPlayerControls)
+                    {
+                        //SPECIAL+NEUTRE
+                        if ((Jester.Role != null && Player == Jester.Role)
+                                || (Eater.Role != null && Player == Eater.Role)
+                                || (Arsonist.Role != null && Player == Arsonist.Role)
+                                || (Outlaw.Role != null && Player == Outlaw.Role)
+                                || (Cursed.Role != null && Player == Cursed.Role)
+                                || (Cupid.Role != null && Player == Cupid.Role && LeaderAffectCupid.getBool() == true)
+                                || (Survivor.Role != null && Player == Survivor.Role)
+                                )
+                        {
+                            if (!Player.Data.IsDead && Player != CopyCat.Target && Player != CopyCat.Role)
+                            {
+                                if (!LeaderCopyList.Contains(Player)) { LeaderCopyList.Add(Player); }
+                            }
+                        }
+                        //CULTE
+                        else if ((Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                )
+                        {
+                            if (!Player.Data.IsDead
+                                && Player != CopyCat.Target
+                                && Player != Leader.Role
+                                && Player != Cultist.Role
+                                && Player != Cultist.Culte1
+                                && Player != Cultist.Culte2
+                                && Player != Cultist.Culte3)
+                            {
+                                if (!LeaderCopyList.Contains(Player)) { LeaderCopyList.Add(Player); }
+                            }
+                        }
+                        //CREWMATE
+                        else
+                        {
+                            if (!Player.Data.IsDead
+                                && Player != CopyCat.Target
+                                && Player != CopyCat.Role
+                                && (Player.Data.Role.IsImpostor
+                                || (Jester.Role != null && Player == Jester.Role)
+                                || (Eater.Role != null && Player == Eater.Role)
+                                || (Arsonist.Role != null && Player == Arsonist.Role)
+                                || (Outlaw.Role != null && Player == Outlaw.Role)
+                                || (Cursed.Role != null && Player == Cursed.Role)
+                                || (Cupid.Role != null && Player == Cupid.Role)
+                                || (Survivor.Role != null && Player == Survivor.Role)
+                                || (Cultist.Role != null && Player == Cultist.Role)
+                                || (Cultist.Culte1 != null && Player == Cultist.Culte1)
+                                || (Cultist.Culte2 != null && Player == Cultist.Culte3)
+                                || (Cultist.Culte3 != null && Player == Cultist.Culte2)
+                                ))
+                            {
+                                if (!LeaderCopyList.Contains(Player)) { LeaderCopyList.Add(Player); }
+                            }
+                        }
+                    }
+                }
+
+                if (LeaderCopyList.Count() >= 1)
+                {
+                    LeaderCopyList.Shuffle();
+                    var rnd = new System.Random();
+                    var randomizedLeaderCopyList = LeaderCopyList.OrderBy(item => rnd.Next());
+
+                    //Check and remove 
+                    LeaderCopyList.RemoveRange(0, LeaderCopyList.Count - 1);
+
+                    if (LeaderCopyList.Count > 0)
+                    {
+                        var PlayerCopyTarget2 = rng.Next(0, LeaderCopyList.Count);
+                        CopyCat.Target2 = LeaderCopyList[PlayerCopyTarget2];
+                        LeaderCopyList.RemoveAt(PlayerCopyTarget2);
+                        byte playerId = CopyCat.Target2.PlayerId;
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssignCopyTarget2, Hazel.SendOption.Reliable, -1);
+                        writer.Write(playerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.assignCopyTarget2(playerId);
+                    }
+                }
+            }
+
+            
+
+
             SetNuclearTimeOn = false;
             SetNuclearSabTimeOn = false;
             StartTimer = true;
@@ -65,13 +271,7 @@ namespace Challenger
                 Vector.Infected = null;
             }
 
-            if (Cupid.Role != null && !ChallengerMod.Challenger.FirstTurn) // Wait 2nd meeting for Check lover
-            {
-                if (!Cupid.LoveUsed)
-                {
-                    Cupid.Fail = true;
-                }
-            }
+            
 
             if ( !ChallengerMod.Challenger.FirstTurn) // Wait 2nd meeting for second turn
             {
@@ -376,7 +576,7 @@ namespace Challenger
                 {
                     if (!PlayerControl.LocalPlayer.Data.IsDead)
                     {
-                        players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), 6, "", "", "", "");
+                        players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
                         players.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
                     }
                 }

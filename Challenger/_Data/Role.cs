@@ -252,10 +252,14 @@ namespace ChallengerMod
             public static List<PlayerControl> bait = new List<PlayerControl>();
             public static bool CanVent = false;
             public static Dictionary<ChallengerOS.Utils.Helpers.DeadPlayer, float> active = new Dictionary<ChallengerOS.Utils.Helpers.DeadPlayer, float>();
+            public static float stunsDelay = 1f;
             public static float reportDelayMin = 1f;
             public static float reportDelayMax = 1f;
-            public static bool BaliseUsed = false;
+            public static float BaliseCount = 3f;
             public static bool BaliseEnable = false;
+            public static bool BaliseData = false;
+            public static bool StunsPlayer = false;
+            public static bool ResetStunsPlayer = false;
 
         }
         public static class Mentalist
@@ -328,7 +332,13 @@ namespace ChallengerMod
         {
             public static PlayerControl Role { get; set; }
             public static PlayerControl Target { get; set; }
+            public static bool Used = false;
+            public static bool Used2 = false;
+            public static bool TaskEND = false;
+            
+
             public static PlayerControl Target2 { get; set; }
+
             public static PlayerControl currentTarget;
 
         }
@@ -386,6 +396,11 @@ namespace ChallengerMod
             public static bool HMActive = false;
             public static int ScanPlayerDie = 0;
             public static bool TargetBaitArea;
+
+            public static PlayerControl Target { get; set; }
+            public static PlayerControl Target2 { get; set; }
+            public static bool Used = false;
+            public static bool Used2 = false;
 
         }
         public static class Survivor
@@ -482,6 +497,8 @@ namespace ChallengerMod
         {
             public static PlayerControl Role { get; set; }
             public static DeadBody deadbodyTarget { get; set; }
+            public static DeadBody EatTarget { get; set; }
+
             public static bool CanVent = false;
             public static bool Win = false;
             public static bool CanDragg = false;

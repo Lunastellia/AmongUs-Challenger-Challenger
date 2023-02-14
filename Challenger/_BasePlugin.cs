@@ -30,10 +30,10 @@ namespace ChallengerMod
     {
         public const int MaxPlayers = 15;
         public const int MaxImpostors = 3;
-        public const string VersionString = "5.1.4";
+        public const string VersionString = "5.2.0";
         public static bool CanStartTheGame = false;
-        public const string UpdateNameString = "The Cursed";
-        public const string UpdateNameStringFR = "Le Maudit";
+        public const string UpdateNameString = "Cupid and Love";
+        public const string UpdateNameStringFR = "Cupidon et amour";
 
         public const string PrefixString = "";
         public const string SufixString = "";
@@ -63,25 +63,14 @@ namespace ChallengerMod
 
         public static System.Version Version = System.Version.Parse(VersionString);
         
-        public const string Id = "Config.Server";
+        public const string Id = "Config.OrianaGames";
         public static HarmonyMain Instance { get { return PluginSingleton<HarmonyMain>.Instance; } }
         public List<_MapItems> AllItems { get; set; }
         public Harmony Harmony { get; } = new Harmony(Id);
+        public static ConfigEntry<string> EventConfig { get; set; }
 
-        public static ConfigFile OPSettings { get; private set; }
 
 
-        public static bool Logging
-        {
-            get
-            {
-                if (OPSettings == null)
-                    return true;
-                return OPSettings.Bind("Settings", "Logging", true).Value;
-            }
-        }
-        
-        
         public void ControlPlayer()
         {
 
@@ -669,6 +658,7 @@ namespace ChallengerMod
 
             ChallengerMod.Keydata.Keyboard.Main();
             AllItems = new List<_MapItems>();
+            EventConfig = Config.Bind("Local-Options", "Event", "Normal");
             //GLMod.GLMod.withUnityExplorer = true;
 
             bundle_char = AssetBundle.LoadFromFile(Directory.GetCurrentDirectory() + "\\Assets\\char");
@@ -680,11 +670,18 @@ namespace ChallengerMod
             bundle_Map0 = AssetBundle.LoadFromFile(Directory.GetCurrentDirectory() + "\\Assets\\Level_sprite");
             bundle_Sprite = AssetBundle.LoadFromFile(Directory.GetCurrentDirectory() + "\\Assets\\sprite");
 
+            _Hat_CC = bundle_char.LoadAsset<Sprite>("lapin.png").DontUnload();
+
             _Hat_CC00 = bundle_char.LoadAsset<Sprite>("CS_H_Stellia.png").DontUnload();
+            _Hat_CC002 = bundle_char.LoadAsset<Sprite>("CS_H_HK.png").DontUnload();
+            _Visor_CC00 = bundle_char.LoadAsset<Sprite>("CS_V_Stellia.png").DontUnload();
             _Hat_CC01 = bundle_char.LoadAsset<Sprite>("CS_H_Noeud.png").DontUnload();
             _Hat_CC02 = bundle_char.LoadAsset<Sprite>("CS_H_Mini.png").DontUnload();
             _Hat_CC03 = bundle_char.LoadAsset<Sprite>("CS_H_Noeud.png").DontUnload();
             _Hat_CC04 = bundle_char.LoadAsset<Sprite>("CS_H_Val.png").DontUnload();
+
+            _Hat_FRA = bundle_char.LoadAsset<Sprite>("CS_H_FRA.png").DontUnload();
+            _Hat_SUB1 = bundle_char.LoadAsset<Sprite>("CS_H_SUB1.png").DontUnload();
 
             _Hat_Alien = bundle_char.LoadAsset<Sprite>("CS_H_Alien.png").DontUnload();
             _Hat_Demon = bundle_char.LoadAsset<Sprite>("CS_H_Demon.png").DontUnload();
@@ -718,6 +715,7 @@ namespace ChallengerMod
             _Hat_Toast = bundle_char.LoadAsset<Sprite>("CS_H_Toast.png").DontUnload();
             _Hat_Cake = bundle_char.LoadAsset<Sprite>("CS_H_Cake.png").DontUnload();
 
+            _Hat_Meringue = bundle_char.LoadAsset<Sprite>("CS_H_Meringue.png").DontUnload();
 
             _Hat_HChar1 = bundle_char.LoadAsset<Sprite>("CS_H_HChar1.png").DontUnload();
             _Hat_HChar2 = bundle_char.LoadAsset<Sprite>("CS_H_HChar2.png").DontUnload();
@@ -749,6 +747,15 @@ namespace ChallengerMod
             _Hat_WHStranger = bundle_char.LoadAsset<Sprite>("CS_H_WHStranger.png").DontUnload();
             _Hat_WHThor = bundle_char.LoadAsset<Sprite>("CS_H_WHThor.png").DontUnload();
 
+            _Hat_SWDark = bundle_char.LoadAsset<Sprite>("CS_H_SWDark.png").DontUnload();
+            _Hat_SWMool = bundle_char.LoadAsset<Sprite>("CS_H_SWMool.png").DontUnload();
+            _Hat_SWLela = bundle_char.LoadAsset<Sprite>("CS_H_SWLela.png").DontUnload();
+            _Hat_SWBaby = bundle_char.LoadAsset<Sprite>("CS_H_SWBaby.png").DontUnload();
+            _Hat_SWShewi = bundle_char.LoadAsset<Sprite>("CS_H_SWShewi.png").DontUnload();
+            _Hat_SWAaya = bundle_char.LoadAsset<Sprite>("CS_H_SWAayla.png").DontUnload();
+            _Hat_SWAhsoka = bundle_char.LoadAsset<Sprite>("CS_H_SWAhsoka.png").DontUnload();
+            _Hat_SWAnak = bundle_char.LoadAsset<Sprite>("CS_H_SWAnak.png").DontUnload();
+
             _Hat_CCamera = bundle_char.LoadAsset<Sprite>("CS_H_CCamera.png").DontUnload();
             _Hat_CPopCorn = bundle_char.LoadAsset<Sprite>("CS_H_CPopCorn.png").DontUnload();
             _Hat_CLight = bundle_char.LoadAsset<Sprite>("CS_H_CLight.png").DontUnload();
@@ -757,9 +764,14 @@ namespace ChallengerMod
 
             _Hat_Cupid = bundle_char.LoadAsset<Sprite>("CS_H_Cupid.png").DontUnload();
             _Hat_Heart = bundle_char.LoadAsset<Sprite>("CS_H_Heart.png").DontUnload();
-            _Hat_Ourfit = bundle_char.LoadAsset<Sprite>("CS_H_Outfit.png").DontUnload();
-            _Hat_Meringue = bundle_char.LoadAsset<Sprite>("CS_H_Meringue.png").DontUnload();
+            _Hat_Timid = bundle_char.LoadAsset<Sprite>("CS_H_Timid.png").DontUnload();
             
+
+            _Hat_Outfit = bundle_char.LoadAsset<Sprite>("CS_H_Outfit.png").DontUnload();
+            _Hat_Crown = bundle_char.LoadAsset<Sprite>("CS_H_Crown.png").DontUnload();
+            _Hat_Ghost = bundle_char.LoadAsset<Sprite>("CS_H_Ghost.png").DontUnload();
+            _Hat_SpeHorn = bundle_char.LoadAsset<Sprite>("CS_H_SpeHorn.png").DontUnload();
+            _Hat_Candle = bundle_char.LoadAsset<Sprite>("CS_H_Candle.png").DontUnload();
 
 
             _Visor_Cred = bundle_char.LoadAsset<Sprite>("CS_V_Cred.png").DontUnload();
@@ -787,18 +799,37 @@ namespace ChallengerMod
             _Visor_HB2 = bundle_char.LoadAsset<Sprite>("CS_V_H4.png").DontUnload();
             _Visor_HB3 = bundle_char.LoadAsset<Sprite>("CS_V_H5.png").DontUnload();
 
+            _Visor_SWSaber1 = bundle_char.LoadAsset<Sprite>("CS_V_SWSaber1.png").DontUnload();
+            _Visor_SWSaber2 = bundle_char.LoadAsset<Sprite>("CS_V_SWSaber2.png").DontUnload();
+            _Visor_SWSaber3 = bundle_char.LoadAsset<Sprite>("CS_V_SWSaber3.png").DontUnload();
+            _Visor_SWSaber4 = bundle_char.LoadAsset<Sprite>("CS_V_SWSaber4.png").DontUnload();
+            _Visor_SWSaber5 = bundle_char.LoadAsset<Sprite>("CS_V_SWSaber5.png").DontUnload();
+
             _Visor_C3D = bundle_char.LoadAsset<Sprite>("CS_V_C3D.png").DontUnload();
 
             _Visor_Love = bundle_char.LoadAsset<Sprite>("CS_V_Loveyou.png").DontUnload();
             _Visor_Baloon = bundle_char.LoadAsset<Sprite>("CS_V_Love.png").DontUnload();
             _Visor_LV1 = bundle_char.LoadAsset<Sprite>("CS_V_LOVE1.png").DontUnload();
             _Visor_LV2 = bundle_char.LoadAsset<Sprite>("CS_V_LOVE2.png").DontUnload();
-           
+
+            _Visor_DBook = bundle_char.LoadAsset<Sprite>("CS_V_DBook.png").DontUnload();
+
+            
+
+            _Plate_SUB1 = bundle_char.LoadAsset<Sprite>("CS_NP_SUB1.png").DontUnload();
+            _Plate_SUB2 = bundle_char.LoadAsset<Sprite>("CS_NP_SUB2.png").DontUnload();
+            _Plate_SUB3 = bundle_char.LoadAsset<Sprite>("CS_NP_SUB3.png").DontUnload();
 
             _Plate_Eater = bundle_char.LoadAsset<Sprite>("CS_P_Eater.png").DontUnload();
             _Plate_Cupid = bundle_char.LoadAsset<Sprite>("CS_P_Cupid.png").DontUnload();
 
             _Plate_Arsonist = bundle_char.LoadAsset<Sprite>("CS_P_Arsonist.png").DontUnload();
+
+            _Plate_SW1 = bundle_char.LoadAsset<Sprite>("CS_NP_SW1.png").DontUnload();
+            _Plate_SW2 = bundle_char.LoadAsset<Sprite>("CS_NP_SW2.png").DontUnload();
+
+
+
             _Plate_CClap = bundle_char.LoadAsset<Sprite>("CS_NP_CClap.png").DontUnload();
             _Plate_CBG = bundle_char.LoadAsset<Sprite>("CS_NP_CBG.png").DontUnload();
             _Plate_CBand = bundle_char.LoadAsset<Sprite>("CS_NP_CBand.png").DontUnload();
@@ -867,55 +898,7 @@ namespace ChallengerMod
             // --------------- Bundle
 
 
-            C0A0V0 = bundle.LoadAsset<Sprite>("C0A0V0.png").DontUnload();
-            C1A0V0 = bundle.LoadAsset<Sprite>("C1A0V0.png").DontUnload();
-            C0A1V0 = bundle.LoadAsset<Sprite>("C0A1V0.png").DontUnload();
-            C0A0V1 = bundle.LoadAsset<Sprite>("C0A0V1.png").DontUnload();
-            C1A1V0 = bundle.LoadAsset<Sprite>("C1A1V0.png").DontUnload();
-            C0A1V1 = bundle.LoadAsset<Sprite>("C0A1V1.png").DontUnload();
-            C1A0V1 = bundle.LoadAsset<Sprite>("C1A0V1.png").DontUnload();
-            C1A1V1 = bundle.LoadAsset<Sprite>("C1A1V1.png").DontUnload();
-            trinity = bundle.LoadAsset<Sprite>("trinity.png").DontUnload();
-            cre0 = bundle.LoadAsset<Sprite>("cr0.png").DontUnload();
-            cre1 = bundle.LoadAsset<Sprite>("cr1.png").DontUnload();
-            cre2 = bundle.LoadAsset<Sprite>("cr2.png").DontUnload();
-            cre3 = bundle.LoadAsset<Sprite>("cr3.png").DontUnload();
-            cre4 = bundle.LoadAsset<Sprite>("cr4.png").DontUnload();
-            cre5 = bundle.LoadAsset<Sprite>("cr5.png").DontUnload();
-            cre6 = bundle.LoadAsset<Sprite>("cr6.png").DontUnload();
-            cre7 = bundle.LoadAsset<Sprite>("cr7.png").DontUnload();
-            cre8 = bundle.LoadAsset<Sprite>("cr8.png").DontUnload();
-            cre9 = bundle.LoadAsset<Sprite>("cr9.png").DontUnload();
-            cre10 = bundle.LoadAsset<Sprite>("cr10.png").DontUnload();
-            cre11 = bundle.LoadAsset<Sprite>("cr11.png").DontUnload();
-            cre12 = bundle.LoadAsset<Sprite>("cr12.png").DontUnload();
-            cre13 = bundle.LoadAsset<Sprite>("cr13.png").DontUnload();
-            cre14 = bundle.LoadAsset<Sprite>("cr14.png").DontUnload();
-            pl3 = bundle.LoadAsset<Sprite>("pl3.png").DontUnload();
-            pl4 = bundle.LoadAsset<Sprite>("pl4.png").DontUnload();
-            pl5 = bundle.LoadAsset<Sprite>("pl5.png").DontUnload();
-            pl6 = bundle.LoadAsset<Sprite>("pl6.png").DontUnload();
-            pl7 = bundle.LoadAsset<Sprite>("pl7.png").DontUnload();
-            pl8 = bundle.LoadAsset<Sprite>("pl8.png").DontUnload();
-            pl9 = bundle.LoadAsset<Sprite>("pl9.png").DontUnload();
-            pl10 = bundle.LoadAsset<Sprite>("pl10.png").DontUnload();
-            pl11 = bundle.LoadAsset<Sprite>("pl11.png").DontUnload();
-            pl12 = bundle.LoadAsset<Sprite>("pl12.png").DontUnload();
-            pl13 = bundle.LoadAsset<Sprite>("pl13.png").DontUnload();
-            pl14 = bundle.LoadAsset<Sprite>("pl14.png").DontUnload();
-            pl15 = bundle.LoadAsset<Sprite>("pl15.png").DontUnload();
-            imp0 = bundle.LoadAsset<Sprite>("imp0.png").DontUnload();
-            imp1 = bundle.LoadAsset<Sprite>("imp1.png").DontUnload();
-            imp2 = bundle.LoadAsset<Sprite>("imp2.png").DontUnload();
-            imp3 = bundle.LoadAsset<Sprite>("imp3.png").DontUnload();
-            imp4 = bundle.LoadAsset<Sprite>("imp4.png").DontUnload();
-            spe0 = bundle.LoadAsset<Sprite>("spe0.png").DontUnload();
-            spe1 = bundle.LoadAsset<Sprite>("spe1.png").DontUnload();
-            spe2 = bundle.LoadAsset<Sprite>("spe2.png").DontUnload();
-            spe3 = bundle.LoadAsset<Sprite>("spe3.png").DontUnload();
-            spe4 = bundle.LoadAsset<Sprite>("spe4.png").DontUnload();
-            spe5 = bundle.LoadAsset<Sprite>("spe5.png").DontUnload();
-            spe6 = bundle.LoadAsset<Sprite>("spe6.png").DontUnload();
+            
 
             // --------------- Anim
             LoginAnim = bundle_Anim.LoadAsset<AnimationClip>("TestA.anim").DontDestroy();
@@ -1019,32 +1002,221 @@ namespace ChallengerMod
             LA6 = bundle_Level.LoadAsset<Sprite>("LA6.png").DontUnload();
             LA7 = bundle_Level.LoadAsset<Sprite>("LA7.png").DontUnload();
 
+            //UI2
+            TB_PLAYER = bundle_Level.LoadAsset<Sprite>("LGLP.png").DontUnload();
+            TB_PLAYER_FR = bundle_Level.LoadAsset<Sprite>("LGLPFR.png").DontUnload();
+            TB_GL0 = bundle_Level.LoadAsset<Sprite>("LGL0.png").DontUnload();
+            TB_GL0_FR = bundle_Level.LoadAsset<Sprite>("LGL0FR.png").DontUnload();
+            TB_GL1 = bundle_Level.LoadAsset<Sprite>("LGL1.png").DontUnload();
+            TB_GL1_FR = bundle_Level.LoadAsset<Sprite>("LGL1FR.png").DontUnload();
+            CLUF = bundle_Level.LoadAsset<Sprite>("CLUF.png").DontUnload();
+            CLUFFR = bundle_Level.LoadAsset<Sprite>("CLUFFR.png").DontUnload();
+            UI2_GLProfil = bundle_Level.LoadAsset<Sprite>("RPMPR.png").DontUnload();
+            TB_MAXPLAYER = bundle_Level.LoadAsset<Sprite>("LGLPLM.png").DontUnload();
+            TB_MAXPLAYER_FR = bundle_Level.LoadAsset<Sprite>("LGLPLMFR.png").DontUnload();
+
+            //MAPTAB
+            EV_0_0 = bundle_Level.LoadAsset<Sprite>("EVENT0.png").DontUnload();
+            EV_0_1 = bundle_Level.LoadAsset<Sprite>("EVENT0.png").DontUnload();
+            EV_1_0 = bundle_Level.LoadAsset<Sprite>("EVENT1.png").DontUnload();
+            EV_1_1 = bundle_Level.LoadAsset<Sprite>("EVENT1.png").DontUnload();
+            EV_TAB = bundle_Level.LoadAsset<Sprite>("EVENTTAB.png").DontUnload();
+
+            //UI2RTAB
+            UI2_BTTN = bundle_Level.LoadAsset<Sprite>("PS4EN.png").DontUnload();
+            UI2_BTTNFR = bundle_Level.LoadAsset<Sprite>("PS4FR.png").DontUnload();
+            UI2_TAB = bundle_Level.LoadAsset<Sprite>("UIS2_RankedTab.png").DontUnload();
+
+            UI2_PM10 = bundle_Level.LoadAsset<Sprite>("QTP10.png").DontUnload();
+            UI2_PM11 = bundle_Level.LoadAsset<Sprite>("QTP11.png").DontUnload();
+            UI2_PM12 = bundle_Level.LoadAsset<Sprite>("QTP12.png").DontUnload();
+            UI2_PM13 = bundle_Level.LoadAsset<Sprite>("QTP13.png").DontUnload();
+            UI2_PM14 = bundle_Level.LoadAsset<Sprite>("QTP14.png").DontUnload();
+            UI2_PM15 = bundle_Level.LoadAsset<Sprite>("QTP15.png").DontUnload();
+
+            UI2_PMADD0 = bundle_Level.LoadAsset<Sprite>("QTADD0.png").DontUnload();
+            UI2_PMADD1 = bundle_Level.LoadAsset<Sprite>("QTADD1.png").DontUnload();
+            UI2_PMREM0 = bundle_Level.LoadAsset<Sprite>("QTREM0.png").DontUnload();
+            UI2_PMREM1 = bundle_Level.LoadAsset<Sprite>("QTREM1.png").DontUnload();
+
+    
+
+            UI2_10P0 = bundle_Level.LoadAsset<Sprite>("P100.png").DontUnload();
+            UI2_10P1 = bundle_Level.LoadAsset<Sprite>("P101.png").DontUnload();
+            UI2_11P0 = bundle_Level.LoadAsset<Sprite>("P110.png").DontUnload();
+            UI2_11P1 = bundle_Level.LoadAsset<Sprite>("P111.png").DontUnload();
+            UI2_12P0 = bundle_Level.LoadAsset<Sprite>("P120.png").DontUnload();
+            UI2_12P1 = bundle_Level.LoadAsset<Sprite>("P121.png").DontUnload();
+            UI2_13P0 = bundle_Level.LoadAsset<Sprite>("P130.png").DontUnload();
+            UI2_13P1 = bundle_Level.LoadAsset<Sprite>("P131.png").DontUnload();
+            UI2_14P0 = bundle_Level.LoadAsset<Sprite>("P140.png").DontUnload();
+            UI2_14P1 = bundle_Level.LoadAsset<Sprite>("P141.png").DontUnload();
+            UI2_15P0 = bundle_Level.LoadAsset<Sprite>("P150.png").DontUnload();
+            UI2_15P1 = bundle_Level.LoadAsset<Sprite>("P151.png").DontUnload();
+
+            UI2_SPE = bundle_Level.LoadAsset<Sprite>("SPE.png").DontUnload();
+            UI2_IMP = bundle_Level.LoadAsset<Sprite>("IMP.png").DontUnload();
+            UI2_DUO = bundle_Level.LoadAsset<Sprite>("DUO.png").DontUnload();
+
+            UI2_0N0 = bundle_Level.LoadAsset<Sprite>("QT00.png").DontUnload();
+            UI2_0N1 = bundle_Level.LoadAsset<Sprite>("QT01.png").DontUnload();
+            UI2_1N0 = bundle_Level.LoadAsset<Sprite>("QT10.png").DontUnload();
+            UI2_1N1 = bundle_Level.LoadAsset<Sprite>("QT11.png").DontUnload();
+            UI2_2N0 = bundle_Level.LoadAsset<Sprite>("QT20.png").DontUnload();
+            UI2_2N1 = bundle_Level.LoadAsset<Sprite>("QT21.png").DontUnload();
+            UI2_3N0 = bundle_Level.LoadAsset<Sprite>("QT30.png").DontUnload();
+            UI2_3N1 = bundle_Level.LoadAsset<Sprite>("QT31.png").DontUnload();
+            UI2_4N0 = bundle_Level.LoadAsset<Sprite>("QT40.png").DontUnload();
+            UI2_4N1 = bundle_Level.LoadAsset<Sprite>("QT41.png").DontUnload();
+            UI2_5N0 = bundle_Level.LoadAsset<Sprite>("QT50.png").DontUnload();
+            UI2_5N1 = bundle_Level.LoadAsset<Sprite>("QT51.png").DontUnload();
+            UI2_6N0 = bundle_Level.LoadAsset<Sprite>("QT60.png").DontUnload();
+            UI2_6N1 = bundle_Level.LoadAsset<Sprite>("QT61.png").DontUnload();
+            UI2_NUMBER_LOCK = bundle_Level.LoadAsset<Sprite>("QTL.png").DontUnload();
+
+
+
+            UI2_Polus0 = bundle_Level.LoadAsset<Sprite>("POLUS0.png").DontUnload();
+            UI2_Polus1 = bundle_Level.LoadAsset<Sprite>("POLUS1.png").DontUnload();
+            UI2_Bpolus0 = bundle_Level.LoadAsset<Sprite>("BPOLUS0.png").DontUnload();
+            UI2_Bpolus1 = bundle_Level.LoadAsset<Sprite>("BPOLUS1.png").DontUnload();
+            UI2_Cpolus0 = bundle_Level.LoadAsset<Sprite>("CPOLUS0.png").DontUnload();
+            UI2_Cpolus1 = bundle_Level.LoadAsset<Sprite>("CPOLUS1.png").DontUnload();
+            UI2_Npolus0 = bundle_Level.LoadAsset<Sprite>("NPOLUS0.png").DontUnload();
+            UI2_Npolus1 = bundle_Level.LoadAsset<Sprite>("NPOLUS1.png").DontUnload();
+            UI2_Skeld0 = bundle_Level.LoadAsset<Sprite>("SKELD0.png").DontUnload();
+            UI2_Skeld1 = bundle_Level.LoadAsset<Sprite>("SKELD1.png").DontUnload();
+            UI2_Csleld0 = bundle_Level.LoadAsset<Sprite>("CSKELD0.png").DontUnload();
+            UI2_Cskeld1 = bundle_Level.LoadAsset<Sprite>("CSKELD1.png").DontUnload();
+            UI2_Mira0 = bundle_Level.LoadAsset<Sprite>("MIRA0.png").DontUnload();
+            UI2_Mira1 = bundle_Level.LoadAsset<Sprite>("MIRA1.png").DontUnload();
+            UI2_Cmira0 = bundle_Level.LoadAsset<Sprite>("CMIRA0.png").DontUnload();
+            UI2_Cmira1 = bundle_Level.LoadAsset<Sprite>("CMIRA1.png").DontUnload();
+            UI2_Airship0 = bundle_Level.LoadAsset<Sprite>("Airship0.png").DontUnload();
+            UI2_Airship1 = bundle_Level.LoadAsset<Sprite>("Airship1.png").DontUnload();
+            UI2_Sub0 = bundle_Level.LoadAsset<Sprite>("SUBMERGED0.png").DontUnload();
+            UI2_Sub1 = bundle_Level.LoadAsset<Sprite>("SUBMERGED1.png").DontUnload();
+
+
+            UI2_ROLE_LOCK = bundle_Level.LoadAsset<Sprite>("RL.png").DontUnload();
+
+            UI2_Sheriff0 = bundle_Level.LoadAsset<Sprite>("Sheriff0.png").DontUnload();
+            UI2_Sheriff1 = bundle_Level.LoadAsset<Sprite>("Sheriff1.png").DontUnload();
+            UI2_Guardian0 = bundle_Level.LoadAsset<Sprite>("Guardian0.png").DontUnload();
+            UI2_Guardian1 = bundle_Level.LoadAsset<Sprite>("Guardian1.png").DontUnload();
+            UI2_Engineer0 = bundle_Level.LoadAsset<Sprite>("Engineer0.png").DontUnload();
+            UI2_Engineer1 = bundle_Level.LoadAsset<Sprite>("Engineer1.png").DontUnload();
+            UI2_Timelord0 = bundle_Level.LoadAsset<Sprite>("Timelord0.png").DontUnload();
+            UI2_Timelord1 = bundle_Level.LoadAsset<Sprite>("Timelord1.png").DontUnload();
+            UI2_Hunter0 = bundle_Level.LoadAsset<Sprite>("Hunter0.png").DontUnload();
+            UI2_Hunter1 = bundle_Level.LoadAsset<Sprite>("Hunter1.png").DontUnload();
+            UI2_Mystic0 = bundle_Level.LoadAsset<Sprite>("Mystic0.png").DontUnload();
+            UI2_Mystic1 = bundle_Level.LoadAsset<Sprite>("Mystic1.png").DontUnload();
+            UI2_Spirit0 = bundle_Level.LoadAsset<Sprite>("Spirit0.png").DontUnload();
+            UI2_Spirit1 = bundle_Level.LoadAsset<Sprite>("Spirit1.png").DontUnload();
+            UI2_Mayor0 = bundle_Level.LoadAsset<Sprite>("Mayor0.png").DontUnload();
+            UI2_Mayor1 = bundle_Level.LoadAsset<Sprite>("Mayor1.png").DontUnload();
+            UI2_Detective0 = bundle_Level.LoadAsset<Sprite>("Detective0.png").DontUnload();
+            UI2_Detective1 = bundle_Level.LoadAsset<Sprite>("Detective1.png").DontUnload();
+            UI2_Nightwatch0 = bundle_Level.LoadAsset<Sprite>("Nightwatch0.png").DontUnload();
+            UI2_Nightwatch1 = bundle_Level.LoadAsset<Sprite>("Nightwatch1.png").DontUnload();
+            UI2_Spy0 = bundle_Level.LoadAsset<Sprite>("Spy0.png").DontUnload();
+            UI2_Spy1 = bundle_Level.LoadAsset<Sprite>("Spy1.png").DontUnload();
+            UI2_Informant0 = bundle_Level.LoadAsset<Sprite>("Informant0.png").DontUnload();
+            UI2_Informant1 = bundle_Level.LoadAsset<Sprite>("Informant1.png").DontUnload();
+            UI2_Bait0 = bundle_Level.LoadAsset<Sprite>("Bait0.png").DontUnload();
+            UI2_Bait1 = bundle_Level.LoadAsset<Sprite>("Bait1.png").DontUnload();
+            UI2_Mentalist0 = bundle_Level.LoadAsset<Sprite>("Mentalist0.png").DontUnload();
+            UI2_Mentalist1 = bundle_Level.LoadAsset<Sprite>("Mentalist1.png").DontUnload();
+            UI2_Builder0 = bundle_Level.LoadAsset<Sprite>("Builder0.png").DontUnload();
+            UI2_Builder1 = bundle_Level.LoadAsset<Sprite>("Builder1.png").DontUnload();
+            UI2_Dictator0 = bundle_Level.LoadAsset<Sprite>("Dictator0.png").DontUnload();
+            UI2_Dictator1 = bundle_Level.LoadAsset<Sprite>("Dictator1.png").DontUnload();
+            UI2_Sentinel0 = bundle_Level.LoadAsset<Sprite>("Sentinel0.png").DontUnload();
+            UI2_Sentinel1 = bundle_Level.LoadAsset<Sprite>("Sentinel1.png").DontUnload();
+            UI2_Teammate0 = bundle_Level.LoadAsset<Sprite>("Teammate0.png").DontUnload();
+            UI2_Teammate1 = bundle_Level.LoadAsset<Sprite>("Teammate1.png").DontUnload();
+            UI2_Lawkeeper0 = bundle_Level.LoadAsset<Sprite>("Lawkeeper0.png").DontUnload();
+            UI2_Lawkeeper1 = bundle_Level.LoadAsset<Sprite>("Lawkeeper1.png").DontUnload();
+            UI2_Fake0 = bundle_Level.LoadAsset<Sprite>("Fake0.png").DontUnload();
+            UI2_Fake1 = bundle_Level.LoadAsset<Sprite>("Fake1.png").DontUnload();
+            UI2_Leader0 = bundle_Level.LoadAsset<Sprite>("Leader0.png").DontUnload();
+            UI2_Leader1 = bundle_Level.LoadAsset<Sprite>("Leader1.png").DontUnload();
+
+            UI2_Mercenary0 = bundle_Level.LoadAsset<Sprite>("Mercenary0.png").DontUnload();
+            UI2_Mercenary1 = bundle_Level.LoadAsset<Sprite>("Mercenary1.png").DontUnload();
+            UI2_CopyCat0 = bundle_Level.LoadAsset<Sprite>("Copycat0.png").DontUnload();
+            UI2_CopyCat1 = bundle_Level.LoadAsset<Sprite>("Copycat1.png").DontUnload();
+            UI2_Revenger0 = bundle_Level.LoadAsset<Sprite>("Revenger0.png").DontUnload();
+            UI2_Revenger1 = bundle_Level.LoadAsset<Sprite>("Revenger1.png").DontUnload();
+            UI2_Survivor0 = bundle_Level.LoadAsset<Sprite>("Survivor0.png").DontUnload();
+            UI2_Survivor1 = bundle_Level.LoadAsset<Sprite>("Survivor1.png").DontUnload();
+
+            UI2_Cupid0 = bundle_Level.LoadAsset<Sprite>("Cupid0.png").DontUnload();
+            UI2_Cupid1 = bundle_Level.LoadAsset<Sprite>("Cupid1.png").DontUnload();
+            UI2_Cultist0 = bundle_Level.LoadAsset<Sprite>("Cultist0.png").DontUnload();
+            UI2_Cultist1 = bundle_Level.LoadAsset<Sprite>("Cultist1.png").DontUnload();
+            UI2_Jester0 = bundle_Level.LoadAsset<Sprite>("Jester0.png").DontUnload();
+            UI2_Jester1 = bundle_Level.LoadAsset<Sprite>("Jester1.png").DontUnload();
+            UI2_Eater0 = bundle_Level.LoadAsset<Sprite>("Eater0.png").DontUnload();
+            UI2_Eater1 = bundle_Level.LoadAsset<Sprite>("Eater1.png").DontUnload();
+            UI2_Outlaw0 = bundle_Level.LoadAsset<Sprite>("Outlaw0.png").DontUnload();
+            UI2_Outlaw1 = bundle_Level.LoadAsset<Sprite>("Outlaw1.png").DontUnload();
+            UI2_Arsonist0 = bundle_Level.LoadAsset<Sprite>("Arsonist0.png").DontUnload();
+            UI2_Arsonist1 = bundle_Level.LoadAsset<Sprite>("Arsonist1.png").DontUnload();
+            UI2_Cursed0 = bundle_Level.LoadAsset<Sprite>("Cursed0.png").DontUnload();
+            UI2_Cursed1 = bundle_Level.LoadAsset<Sprite>("Cursed1.png").DontUnload();
+
+            UI2_Assassin0 = bundle_Level.LoadAsset<Sprite>("Assassin0.png").DontUnload();
+            UI2_Assassin1 = bundle_Level.LoadAsset<Sprite>("Assassin1.png").DontUnload();
+            UI2_Vector0 = bundle_Level.LoadAsset<Sprite>("Vector0.png").DontUnload();
+            UI2_Vector1 = bundle_Level.LoadAsset<Sprite>("Vector1.png").DontUnload();
+            UI2_Morphling0 = bundle_Level.LoadAsset<Sprite>("Morphling0.png").DontUnload();
+            UI2_Morphling1 = bundle_Level.LoadAsset<Sprite>("Morphling1.png").DontUnload();
+            UI2_Scrambler0 = bundle_Level.LoadAsset<Sprite>("Scrambler0.png").DontUnload();
+            UI2_Scrambler1 = bundle_Level.LoadAsset<Sprite>("Scrambler1.png").DontUnload();
+            UI2_Barghest0 = bundle_Level.LoadAsset<Sprite>("Barghest0.png").DontUnload();
+            UI2_Barghest1 = bundle_Level.LoadAsset<Sprite>("Barghest1.png").DontUnload();
+            UI2_Ghost0 = bundle_Level.LoadAsset<Sprite>("Ghost0.png").DontUnload();
+            UI2_Ghost1 = bundle_Level.LoadAsset<Sprite>("Ghost1.png").DontUnload();
+            UI2_Sorcerer0 = bundle_Level.LoadAsset<Sprite>("Sorcerer0.png").DontUnload();
+            UI2_Sorcerer1 = bundle_Level.LoadAsset<Sprite>("Sorcerer1.png").DontUnload();
+            UI2_Guesser0 = bundle_Level.LoadAsset<Sprite>("Guesser0.png").DontUnload();
+            UI2_Guesser1 = bundle_Level.LoadAsset<Sprite>("Guesser1.png").DontUnload();
+            UI2_Basilisk0 = bundle_Level.LoadAsset<Sprite>("Basilisk0.png").DontUnload();
+            UI2_Basilisk1 = bundle_Level.LoadAsset<Sprite>("Basilisk0.png").DontUnload();
+
+
+
+
+
+
             REPLACE_ME1 = bundle_Level.LoadAsset<Sprite>("Replace36095.png").DontUnload();
             REPLACE_ME2 = bundle_Level.LoadAsset<Sprite>("RPM.png").DontUnload();
-            StartGame = bundle_Level.LoadAsset<Sprite>("RPM.png").DontUnload();
-            CreateGame = bundle_Level.LoadAsset<Sprite>("RPM3.png").DontUnload();
-            CreateGameR = bundle_Level.LoadAsset<Sprite>("RPM4.png").DontUnload();
-            BackServer = bundle_Level.LoadAsset<Sprite>("RPM6.png").DontUnload();
-            ValidServer = bundle_Level.LoadAsset<Sprite>("RPM5.png").DontUnload();
-            GameCodeBtt = bundle_Level.LoadAsset<Sprite>("RPM7.png").DontUnload();
-            FindBtt = bundle_Level.LoadAsset<Sprite>("RPM8.png").DontUnload();
-            FindBtt0 = bundle_Level.LoadAsset<Sprite>("RPM80.png").DontUnload();
-            StartGameR = bundle_Level.LoadAsset<Sprite>("RPM2.png").DontUnload();
-            StartGameR0 = bundle_Level.LoadAsset<Sprite>("RPM1.png").DontUnload();
+            UI2_PlayNormal = bundle_Level.LoadAsset<Sprite>("RPM.png").DontUnload();
+            UI2_CreateGame = bundle_Level.LoadAsset<Sprite>("RPM3.png").DontUnload();
+            UI2_CreateCancel = bundle_Level.LoadAsset<Sprite>("RPM4.png").DontUnload();
+            UI2_MainMenu = bundle_Level.LoadAsset<Sprite>("RPM6.png").DontUnload();
+            UI2_CreateConfirm = bundle_Level.LoadAsset<Sprite>("RPM5.png").DontUnload();
+            UI2_EnterCode = bundle_Level.LoadAsset<Sprite>("RPM7.png").DontUnload();
+            UI2_FindGameOn = bundle_Level.LoadAsset<Sprite>("RPM8.png").DontUnload();
+            UI2_FindGameOff = bundle_Level.LoadAsset<Sprite>("RPM80.png").DontUnload();
+            UI2_PlayRanked = bundle_Level.LoadAsset<Sprite>("RPM2.png").DontUnload();
+            UI2_GLLogin = bundle_Level.LoadAsset<Sprite>("RPM1.png").DontUnload();
             DiscordJoin = bundle_Level.LoadAsset<Sprite>("RMP0.png").DontUnload();
-            GLLog0 = bundle_Level.LoadAsset<Sprite>("RPMA0.png").DontUnload();
+            UI2_GLCreate = bundle_Level.LoadAsset<Sprite>("RPMA0.png").DontUnload();
             GLLog1 = bundle_Level.LoadAsset<Sprite>("RPMA1.png").DontUnload();
-            StartGame_FR = bundle_Level.LoadAsset<Sprite>("RPM_FR.png").DontUnload();
-            CreateGame_FR = bundle_Level.LoadAsset<Sprite>("RPM3_FR.png").DontUnload();
-            CreateGameR_FR = bundle_Level.LoadAsset<Sprite>("RPM4_FR.png").DontUnload();
-            BackServer_FR = bundle_Level.LoadAsset<Sprite>("RPM6_FR.png").DontUnload();
-            ValidServer_FR = bundle_Level.LoadAsset<Sprite>("RPM5_FR.png").DontUnload();
-            GameCodeBtt_FR = bundle_Level.LoadAsset<Sprite>("RPM7_FR.png").DontUnload();
-            FindBtt_FR = bundle_Level.LoadAsset<Sprite>("RPM8FR.png").DontUnload();
-            FindBtt0_FR = bundle_Level.LoadAsset<Sprite>("RPM80FR.png").DontUnload();
-            StartGameR_FR = bundle_Level.LoadAsset<Sprite>("RPM2_FR.png").DontUnload();
+            UI2_PlayNormalFR = bundle_Level.LoadAsset<Sprite>("RPM_FR.png").DontUnload();
+            UI2_CreateGameFR = bundle_Level.LoadAsset<Sprite>("RPM3_FR.png").DontUnload();
+            UI2_CreateCancelFR = bundle_Level.LoadAsset<Sprite>("RPM4_FR.png").DontUnload();
+            UI2_MainMenuFR = bundle_Level.LoadAsset<Sprite>("RPM6_FR.png").DontUnload();
+            UI2_CreateConfirmFR = bundle_Level.LoadAsset<Sprite>("RPM5_FR.png").DontUnload();
+            UI2_EnterCodeFR = bundle_Level.LoadAsset<Sprite>("RPM7_FR.png").DontUnload();
+            UI2_FindGameOnFR = bundle_Level.LoadAsset<Sprite>("RPM8FR.png").DontUnload();
+            UI2_FindGameOffFR = bundle_Level.LoadAsset<Sprite>("RPM80FR.png").DontUnload();
+            UI2_PlayRankedFR = bundle_Level.LoadAsset<Sprite>("RPM2_FR.png").DontUnload();
             StartGameR0_FR = bundle_Level.LoadAsset<Sprite>("RPM1_FR.png").DontUnload();
-            GLLog0_FR = bundle_Level.LoadAsset<Sprite>("RPMA0_FR.png").DontUnload();
+            UI2_GLLoginFR = bundle_Level.LoadAsset<Sprite>("RPMA0_FR.png").DontUnload();
             GLLog1_FR = bundle_Level.LoadAsset<Sprite>("RPMA1_FR.png").DontUnload();
             R_Button_FR = bundle_Level.LoadAsset<Sprite>("BTTRFR.png").DontUnload();
             R_Button_EN = bundle_Level.LoadAsset<Sprite>("BTTR.png").DontUnload();
@@ -1136,22 +1308,6 @@ namespace ChallengerMod
             buzz0 = bundle_Sprite.LoadAsset<Sprite>("buzz0.png").DontUnload();
             buzz1 = bundle_Sprite.LoadAsset<Sprite>("buzz1.png").DontUnload();
 
-            T0 = bundle_Sprite.LoadAsset<Sprite>("T0.png").DontUnload();
-            T1 = bundle_Sprite.LoadAsset<Sprite>("T1.png").DontUnload();
-            T2 = bundle_Sprite.LoadAsset<Sprite>("T2.png").DontUnload();
-            T3 = bundle_Sprite.LoadAsset<Sprite>("T3.png").DontUnload();
-            B0 = bundle_Sprite.LoadAsset<Sprite>("B0.png").DontUnload();
-            B1 = bundle_Sprite.LoadAsset<Sprite>("B1.png").DontUnload();
-            B2 = bundle_Sprite.LoadAsset<Sprite>("B2.png").DontUnload();
-            B3 = bundle_Sprite.LoadAsset<Sprite>("B3.png").DontUnload();
-            B4 = bundle_Sprite.LoadAsset<Sprite>("B4.png").DontUnload();
-            B5 = bundle_Sprite.LoadAsset<Sprite>("B5.png").DontUnload();
-            B6 = bundle_Sprite.LoadAsset<Sprite>("B6.png").DontUnload();
-            B7 = bundle_Sprite.LoadAsset<Sprite>("B7.png").DontUnload();
-            B8 = bundle_Sprite.LoadAsset<Sprite>("B8.png").DontUnload();
-            B9 = bundle_Sprite.LoadAsset<Sprite>("B9.png").DontUnload();
-            Bmax = bundle_Sprite.LoadAsset<Sprite>("Bmax.png").DontUnload();
-
             RU1 = bundle_Sprite.LoadAsset<Sprite>("Ru1.png").DontUnload();
             RU2 = bundle_Sprite.LoadAsset<Sprite>("Ru2.png").DontUnload();
             RU3 = bundle_Sprite.LoadAsset<Sprite>("Ru3.png").DontUnload();
@@ -1207,7 +1363,7 @@ namespace ChallengerMod
             love2Ico = bundle_Sprite.LoadAsset<Sprite>("love2.png").DontUnload();
             loveIco = bundle_Sprite.LoadAsset<Sprite>("love0.png").DontUnload();
             noloveIco = bundle_Sprite.LoadAsset<Sprite>("nolove.png").DontUnload();
-            miniloveIco = bundle_Sprite.LoadAsset<Sprite>("minilove.png").DontUnload();
+            miniloveIco = bundle_Sprite.LoadAsset<Sprite>("MakeLover.png").DontUnload();
             fakeIco = bundle_Sprite.LoadAsset<Sprite>("Fakekill.png").DontUnload();
             KillWarlockIco = bundle_Sprite.LoadAsset<Sprite>("war0.png").DontUnload();
 
@@ -1223,9 +1379,9 @@ namespace ChallengerMod
             mysticIco = bundle_Sprite.LoadAsset<Sprite>("Mystic.png").DontUnload();
             sorcererprezIco = bundle_Sprite.LoadAsset<Sprite>("sorcererprez.png").DontUnload();
             KillSorcererIco = bundle_Sprite.LoadAsset<Sprite>("SorcererKill.png").DontUnload();
-            SorcererIco1 = bundle_Sprite.LoadAsset<Sprite>("Sorcerer1.png").DontUnload();
-            SorcererIco2 = bundle_Sprite.LoadAsset<Sprite>("Sorcerer2.png").DontUnload();
-            SorcererIco3 = bundle_Sprite.LoadAsset<Sprite>("Sorcerer3.png").DontUnload();
+            SorcererIco1 = bundle_Sprite.LoadAsset<Sprite>("SSorcerer1.png").DontUnload();
+            SorcererIco2 = bundle_Sprite.LoadAsset<Sprite>("SSorcerer2.png").DontUnload();
+            SorcererIco3 = bundle_Sprite.LoadAsset<Sprite>("SSorcerer3.png").DontUnload();
             NightwatchIco = bundle_Sprite.LoadAsset<Sprite>("light.png").DontUnload();
             MapIco = bundle_Sprite.LoadAsset<Sprite>("MapIco.png").DontUnload();
             SpyIco = bundle_Sprite.LoadAsset<Sprite>("SpyIco.png").DontUnload();
@@ -1348,25 +1504,12 @@ namespace ChallengerMod
 
             BaitBaliseArea = bundle_Sprite.LoadAsset<Sprite>("BaitArea.png").DontUnload();
             BaitBaliseArea0 = bundle_Sprite.LoadAsset<Sprite>("BaitArea0.png").DontUnload();
-
             BaitIco = bundle_Sprite.LoadAsset<Sprite>("BaitIco.png").DontUnload();
-
-            TargetSheriff = bundle_Sprite.LoadAsset<Sprite>("Tshe.png").DontUnload();
-            TargetGuardian = bundle_Sprite.LoadAsset<Sprite>("Tgua.png").DontUnload();
-            TargetHunter = bundle_Sprite.LoadAsset<Sprite>("Thun.png").DontUnload();
-            TargetInfor = bundle_Sprite.LoadAsset<Sprite>("Tinf.png").DontUnload();
-            TargetCupid = bundle_Sprite.LoadAsset<Sprite>("Tcup.png").DontUnload();
-            TargetCultiste = bundle_Sprite.LoadAsset<Sprite>("Tcul.png").DontUnload();
-            TargetOutlaw = bundle_Sprite.LoadAsset<Sprite>("Tout.png").DontUnload();
-            TargetArsonist = bundle_Sprite.LoadAsset<Sprite>("Tars.png").DontUnload();
-            TargetCopyCat = bundle_Sprite.LoadAsset<Sprite>("Tcop.png").DontUnload();
-            TargetMercenary = bundle_Sprite.LoadAsset<Sprite>("Tmer.png").DontUnload();
-            TargetAssassin = bundle_Sprite.LoadAsset<Sprite>("Tass.png").DontUnload();
-            TargetSlayer = bundle_Sprite.LoadAsset<Sprite>("Tsla.png").DontUnload();
-            TargetImpostor = bundle_Sprite.LoadAsset<Sprite>("Timp.png").DontUnload();
-            TargetVenger = bundle_Sprite.LoadAsset<Sprite>("Tven.png").DontUnload();
+            LeadIco = bundle_Sprite.LoadAsset<Sprite>("LeadIco.png").DontUnload();
 
 
+
+            ChallengerMod.Challenger.LoadEvent();
             Harmony.Unpatch(typeof(UdpConnection).GetMethod("HandleSend"), HarmonyPatchType.Prefix,
             ReactorPlugin.Id);
             SpritePatches.Patch();

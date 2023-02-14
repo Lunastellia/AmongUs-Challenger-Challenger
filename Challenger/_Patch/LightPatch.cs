@@ -27,7 +27,6 @@ namespace ChallengerMod
 					if (Challenger.LobbyLightOff == true || Cursed.NightEffect == true) // Shadow On
 					{
 						if (Nightwatch.Role != null && Nightwatch.LightBuff == true && (PlayerControl.LocalPlayer == Nightwatch.Role) // Light Nightwatch enabled
-							|| (Assassin.Role != null && Assassin.StealVision == true && (PlayerControl.LocalPlayer == Assassin.Role)) // Assassin Steal
 						 || (CopyCat.Role != null && CopyCat.copyRole == 10 && Nightwatch.LightBuff == true && CopyCat.CopyStart == true && PlayerControl.LocalPlayer == CopyCat.Role)) // Light Nightwatch enabled
 						{
 							__result = 3.8f;
@@ -47,7 +46,27 @@ namespace ChallengerMod
 							}
 							
 						}
-						else // Light Nightwatch disabled or normal player
+						else if (Assassin.Role != null && Assassin.StealVision == true && (PlayerControl.LocalPlayer == Assassin.Role)) // Assassin Steal
+
+                        {
+                            __result = 5f;
+                            if ((ChallengerOS.Utils.Option.CustomOptionHolder.BarghestCamlight.getBool() == true)) // Enable
+                            {
+                                Challenger.LobbyAdminOff = false;
+                                Challenger.LobbyVitalOff = false;
+                                Challenger.LobbyCamOff = true;
+                                return false;
+                            }
+                            else
+                            {
+                                Challenger.LobbyAdminOff = false;
+                                Challenger.LobbyVitalOff = false;
+                                Challenger.LobbyCamOff = false;
+                                return false;
+                            }
+
+                        }
+                        else // Light Nightwatch disabled or normal player
 						{
 
 							__result = 0.8f;
@@ -74,7 +93,6 @@ namespace ChallengerMod
 					if (Challenger.LobbyLightOff == false) // Shadown Off
 					{
 						if (Nightwatch.Role != null && Nightwatch.LightBuff == true && (PlayerControl.LocalPlayer == Nightwatch.Role) // Light Nightwatch enabled
-							|| (Assassin.Role != null && Assassin.StealVision == true && (PlayerControl.LocalPlayer == Assassin.Role)) // Assassin Steal
 						 || (CopyCat.Role != null && CopyCat.copyRole == 10 && Nightwatch.LightBuff == true && CopyCat.CopyStart == true && PlayerControl.LocalPlayer == CopyCat.Role)) // Light Nightwatch enabled
 						{
 							Challenger.LobbyAdminOff = false;
@@ -83,7 +101,17 @@ namespace ChallengerMod
 							__result = 3.8f;
                             return false;
 						}
-						else
+                        else if (Assassin.Role != null && Assassin.StealVision == true && (PlayerControl.LocalPlayer == Assassin.Role)) // Assassin Steal
+
+                        {
+                            Challenger.LobbyAdminOff = false;
+                            Challenger.LobbyVitalOff = false;
+                            Challenger.LobbyCamOff = false;
+                            __result = 5f;
+                            return false;
+
+                        }
+                        else
 						{
 							Challenger.LobbyAdminOff = false;
 							Challenger.LobbyVitalOff = false;
