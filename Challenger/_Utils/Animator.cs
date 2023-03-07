@@ -58,6 +58,26 @@ namespace ChallengerMod.Utility.Utils
             gameObject.name = "Circle";
             gameObject.layer = 5;
         }
+        public static void StartDrone0(AnimationClip clip, Vector3 position, float scale, float speed = 1f)
+        {
+            GameObject gameObject = new GameObject();
+            gameObject.transform.position = position;
+            gameObject.transform.localScale *= scale;
+            gameObject.AddComponent<SpriteRenderer>();
+            gameObject.AddComponent<SpriteAnim>().Play(clip, speed);
+            gameObject.name = "_SurvDronAnimOff";
+            gameObject.layer = 12;
+        }
+        public static void StartDrone1(AnimationClip clip, Vector3 position, float scale, float speed = 1f)
+        {
+            GameObject gameObject = new GameObject();
+            gameObject.transform.position = position;
+            gameObject.transform.localScale *= scale;
+            gameObject.AddComponent<SpriteRenderer>();
+            gameObject.AddComponent<SpriteAnim>().Play(clip, speed);
+            gameObject.name = "_SurvDronAnimOn";
+            gameObject.layer = 12;
+        }
         public static void Test(AnimationClip clip, Vector3 position, float scale, float speed = 1f)
         {
             GameObject gameObject = new GameObject();

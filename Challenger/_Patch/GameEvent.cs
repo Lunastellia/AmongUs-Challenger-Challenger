@@ -26,7 +26,56 @@ namespace ChallengerMod
     {
         //SetTask
 
+            public static void SurvDrone(bool flag)
+        {
+            if (flag)
+            {
+                
+                if (PlayerControl.GameOptions.MapId == 1 && ChallengerOS.Utils.Option.CustomOptionHolder.BetterMapHQ.getSelection() == 1) //Mirah
+                {
+                    ChallengerMod.Utility.Utils.SpriteAnimUtils.StartDrone0(Unity.Drone0Anim, new Vector3(0f,0f,0f), 5f, 3f);
+                    ChallengerMod.Utility.Utils.SpriteAnimUtils.StartDrone1(Unity.Drone1Anim, new Vector3(0f, 0f, 0f), 5f, 3f);
+                    DroneAnimGen = true;
+                }
+                else { DroneAnimGen = true; }
+                
+            }
+        }
+        public static void SetSurvDrone(bool flag)
+        {
+            if (flag)
+            {
+                
+                if (GameObject.Find("Drone_SurvCamera")) //Mirah
+                {
+                    GameObject SurvDrone = GameObject.Find("Drone_SurvCamera");
 
+                    if (GameObject.Find("_SurvDronAnimOff") && !DroneAnimP1) 
+                    {
+                        GameObject Anim0 = GameObject.Find("_SurvDronAnimOff");
+                        Anim0.transform.parent = SurvDrone.transform;
+                        DroneAnimP1 = true;
+                    }
+                    if (GameObject.Find("_SurvDronAnimOn") && !DroneAnimP2) 
+                    {
+                        GameObject Anim1 = GameObject.Find("_SurvDronAnimOn");
+                        Anim1.transform.parent = SurvDrone.transform;
+                        DroneAnimP1 = true;
+                    }
+                }
+                if (DroneAnimP1 && DroneAnimP2) { DroneAnimGen2 = true; }
+                
+
+
+            }
+        }
+        public static void ResetDroneController(bool flag)
+        {
+            if (flag)
+            {
+                Challenger.DroneController = null;
+            }
+        }
         public static void ChangeVentSprite(bool flag)
         {
             if (flag)
@@ -1524,8 +1573,7 @@ namespace ChallengerMod
                     //SEND STARTED
                     GLMod.GLMod.AddMyPlayer();
 
-                    debugg = "OK";
-                    debugg02 = "\n" + GLMod.GLMod.currentGame.id + "\n" + GLMod.GLMod.currentGame.players.First().playerName + "";
+                    //debugg02 = "\n" + GLMod.GLMod.currentGame.id + "\n" + GLMod.GLMod.currentGame.players.First().playerName + "";
 
 
                     SendtoGoodloss = true;

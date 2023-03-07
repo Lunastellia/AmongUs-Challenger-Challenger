@@ -402,8 +402,22 @@ namespace ChallengerMod
 
                     // ChallengerMod.SteamAPPDLC.appDLC.ISteamUser();
                     ChallengerMod.Utility.Discord.DiscordData.Initialize();
-                    if (ChallengerMod.HarmonyMain.KeyboardData == "0000040C") {  ChallengerMod.Challenger.KeycodeKill = KeyCode.A; }
-                    else  { ChallengerMod.Challenger.KeycodeKill = KeyCode.Q;}
+                    if (ChallengerMod.HarmonyMain.KeyboardData == "0000040C") 
+                    {
+                        ChallengerMod.Challenger.KeycodeKill = KeyCode.A;
+                        ChallengerMod.Challenger.KeycodeDroneDown = KeyCode.S;
+                        ChallengerMod.Challenger.KeycodeDroneUp = KeyCode.Z;
+                        ChallengerMod.Challenger.KeycodeDroneLeft = KeyCode.Q;
+                        ChallengerMod.Challenger.KeycodeDroneRight = KeyCode.D;
+                    }
+                    else  
+                    {
+                        ChallengerMod.Challenger.KeycodeKill = KeyCode.Q;
+                        ChallengerMod.Challenger.KeycodeDroneDown = KeyCode.S;
+                        ChallengerMod.Challenger.KeycodeDroneUp = KeyCode.W;
+                        ChallengerMod.Challenger.KeycodeDroneLeft = KeyCode.A;
+                        ChallengerMod.Challenger.KeycodeDroneRight = KeyCode.D;
+                    }
 
                     if (GLMod.GLMod.isLoggedIn() == true)
                     {
@@ -601,9 +615,22 @@ namespace ChallengerMod
                             ChallengerMod.Set.Data.DR_E = ChallengerMod.Set.Data.DR_EEN;
                             ChallengerMod.Set.Data.DR_M = ChallengerMod.Set.Data.DR_MEN;
                         }
-                        //TEST
-                        if (ChallengerMod.HarmonyMain.KeyboardData == "0000040C") { ChallengerMod.Challenger.KeycodeKill = KeyCode.A; }
-                        else { ChallengerMod.Challenger.KeycodeKill = KeyCode.Q; }
+                        if (ChallengerMod.HarmonyMain.KeyboardData == "0000040C")
+                        {
+                            ChallengerMod.Challenger.KeycodeKill = KeyCode.A;
+                            ChallengerMod.Challenger.KeycodeDroneDown = KeyCode.S;
+                            ChallengerMod.Challenger.KeycodeDroneUp = KeyCode.Z;
+                            ChallengerMod.Challenger.KeycodeDroneLeft = KeyCode.Q;
+                            ChallengerMod.Challenger.KeycodeDroneRight = KeyCode.D;
+                        }
+                        else
+                        {
+                            ChallengerMod.Challenger.KeycodeKill = KeyCode.Q;
+                            ChallengerMod.Challenger.KeycodeDroneDown = KeyCode.S;
+                            ChallengerMod.Challenger.KeycodeDroneUp = KeyCode.W;
+                            ChallengerMod.Challenger.KeycodeDroneLeft = KeyCode.A;
+                            ChallengerMod.Challenger.KeycodeDroneRight = KeyCode.D;
+                        }
 
                         GoodlossRankValue = 0;
                         GoodlossRank = 0;

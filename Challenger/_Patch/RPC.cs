@@ -17,6 +17,7 @@ using ChallengerMod.Rnd;
 using ChallengerOS.Objects;
 using UnityEngine.Networking.Types;
 using static UnityEngine.GraphicsBuffer;
+using ChallengerOS;
 
 namespace ChallengerMod.RPC
 {
@@ -136,7 +137,7 @@ namespace ChallengerMod.RPC
     {
         // Main Controls
         
-        ShareAllRoles = 71,
+        ShareAllRoles = 72,
         ShareNewPLayerSlot,
         ShareNewMapID,
         SyncTimer,
@@ -165,6 +166,10 @@ namespace ChallengerMod.RPC
         //Items
         SpawnItem,
         DestroyItem,
+
+        //MIRA
+        ShareDronePosition,
+        StopDrone,
 
         //sheriff
         Sheriff1Kill,
@@ -224,6 +229,7 @@ namespace ChallengerMod.RPC
         //Bait
         BaitBalise,
         BaitBaliseEnable,
+        AddArrow,
 
         //Mentalist
         MentalistColorOn,
@@ -1038,6 +1044,7 @@ namespace ChallengerMod.RPC
         }
         public static void setWinImpostorBySab()
         {
+            Challenger.debugg = "RPC OK";
             CulteWinthegame = false;
             EaterWinthegame = false;
             OutlawWinthegame = false;
@@ -2326,8 +2333,9 @@ namespace ChallengerMod.RPC
             Mentalist.AdminVisibility = false;
             Mentalist.AdminUsed = true;
         }
-        //BUILDER
        
+        //BUILDER
+
         public static void sealVent(int ventId)
         {
             Vent vent = ShipStatus.Instance.AllVents.FirstOrDefault((x) => x != null && x.Id == ventId);
@@ -3575,18 +3583,68 @@ namespace ChallengerMod.RPC
                 }
             }
             Bait.BaliseData = true;
-            
-            
+
+
         }
-        public static void baitBaliseEnable()
+        public static void baitBaliseEnable(float posX, float posY)
         {
             Bait.BaliseEnable = true;
             GLMod.GLMod.currentGame.addAction("", "", "bait_area");
             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
             SoundManager.Instance.PlaySound(BaitAlerte, false, 100f);
             Bait.BaliseData = true;
-        }
+           
+            int arrowIndex = 0;
 
+            arrowIndex = Challenger.localArrows.Count;
+            Challenger.localArrows.Add(new Arrow(Color.red));
+            Vector3 pos = new Vector3(posX, posY, 1f);
+
+            if (Challenger.localArrows[arrowIndex] != null)
+            {
+                Challenger.localArrows[arrowIndex].arrow.SetActive(true);
+                Challenger.localArrows[arrowIndex].Update(pos, Color.red);
+            }
+
+        }
+        public static void shareDronePosition(float posX, float posY, byte DroneControllerID)
+        {
+
+            if (Challenger.DroneController == null)
+            {
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                {
+                    if (player.PlayerId == DroneControllerID)
+                    {
+                        Challenger.DroneController = player;
+                    }
+
+                }
+            }
+
+            Vector3 pos = new Vector3(posX, posY, -15f);
+
+            if (Challenger.DroneController != null && PlayerControl.LocalPlayer != Challenger.DroneController)
+            {
+                if (GameObject.Find("Drone_SurvCamera"))
+                {
+                    GameObject SurvDrone = GameObject.Find("Drone_SurvCamera");
+                    if (SurvDrone.transform.position != pos)
+                    { SurvDrone.transform.position = pos; }
+                }
+            }
+
+            
+
+        }
+        public static void stopDrone()
+        {
+
+            if (Challenger.DroneController != null)
+            {
+                Challenger.DroneController = null;
+            }
+        }
 
     }
 
@@ -3929,6 +3987,8 @@ namespace ChallengerMod.RPC
                         RPCProcedure.mentalistColorOff();
                         break;
                     }
+               
+
                 //BUILDER
                 case (byte)CustomRPC.SealVent:
                     RPCProcedure.sealVent(reader.ReadPackedInt32());
@@ -4340,7 +4400,22 @@ namespace ChallengerMod.RPC
                     break;
                 case (byte)CustomRPC.BaitBaliseEnable:
                     {
-                        RPCProcedure.baitBaliseEnable();
+                        float posX = reader.ReadSingle();
+                        float posY = reader.ReadSingle();
+                        RPCProcedure.baitBaliseEnable(posX, posY);
+                        break;
+                    }
+                case (byte)CustomRPC.ShareDronePosition:
+                    {
+                        float posX = reader.ReadSingle();
+                        float posY = reader.ReadSingle();
+                        byte ControllerID = reader.ReadByte();
+                        RPCProcedure.shareDronePosition(posX, posY, ControllerID);
+                        break;
+                    }
+                case (byte)CustomRPC.StopDrone:
+                    {
+                        RPCProcedure.stopDrone();
                         break;
                     }
             }

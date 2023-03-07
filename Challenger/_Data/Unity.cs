@@ -39,6 +39,24 @@ namespace ChallengerMod
 
         public static Sprite _Hat_FRA;
         public static Sprite _Hat_SUB1;
+        public static Sprite _Hat_TOI1;
+        public static Sprite _Hat_TOI2;
+        public static Sprite _Hat_TOI3;
+        public static Sprite _Hat_TOI4;
+        public static Sprite _Hat_TOI5;
+        public static Sprite _Hat_TOI6;
+        public static Sprite _Hat_TOI7;
+        public static Sprite _Hat_TOI8;
+
+        public static Sprite _Hat_TOI9;
+        public static Sprite _Hat_TOI10;
+
+        public static Sprite _Hat_TOI11;
+        public static Sprite _Hat_TOI12;
+        public static Sprite _Hat_TOI13;
+        public static Sprite _Hat_TOI14;
+        public static Sprite _Hat_TOI15;
+
 
 
         public static Sprite _Hat_Alien;
@@ -227,6 +245,8 @@ namespace ChallengerMod
         public static Sprite LobbyLevel_room_tunnel1;
         public static Sprite TexBGMira;
         public static Sprite Level_TexHQLab;
+        public static Sprite Level_TexHQCam;
+        public static Sprite Level_TexHQCam2;
         public static Sprite Level_TexHQDS;
         public static Sprite Colliderdebugg;
         public static Sprite Colliderblack;
@@ -240,6 +260,10 @@ namespace ChallengerMod
         public static AnimationClip Logo;
         public static AnimationClip LoginAnimation;
         public static AnimationClip PetrifyAnim;
+        public static AnimationClip Drone0Anim;
+        public static AnimationClip Drone1Anim;
+        public static Sprite Drone0;
+        public static Sprite Drone1;
 
         public static Sprite Level_Tex1;
         public static Sprite Level_Tex2;
@@ -469,9 +493,11 @@ namespace ChallengerMod
         public static Sprite MayorIco;
         public static Sprite EaterIco;
         public static Sprite EaterIco2;
+        public static Sprite ArrowWarn;
         public static Sprite BloodIco;
         public static Sprite DragIco;
         public static Sprite MindIco;
+        public static Sprite MakeVoterIco;
         public static Sprite E0;
         public static Sprite E1;
         public static Sprite E2;

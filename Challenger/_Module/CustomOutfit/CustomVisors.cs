@@ -202,7 +202,7 @@ namespace ChallengerMod.Cosmetics
                 if (!_Book)
                 {
                     VisorID = 506;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_DBook, "[DLC] Dark Book", "Lunastellia", "SH-CUP", null, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_DBook, "[DLC] Dark Book", "Lunastellia", "SH-CLT", null, false));
                     _Book = true;
                 }
 

@@ -476,7 +476,7 @@ namespace ChallengerMod
             if (Challenger.LangGameSet == 2f || (Playerlang == "French" && Challenger.LangGameSet == 0f))
             {
                
-                if (ChallengerMod.Challenger.IsrankedGame)
+                if (ChallengerMod.Challenger.IsrankedGame || ChallengerMod.HarmonyMain.ServerID != "3")
                 {
                     FindGameButton.GetComponent<SpriteRenderer>().sprite = UI2_FindGameOffFR;
                     BoxCollider2D FindGameButtonbox = FindGameButton.GetComponent<BoxCollider2D>();
@@ -495,7 +495,7 @@ namespace ChallengerMod
             {
 
 
-                if (ChallengerMod.Challenger.IsrankedGame)
+                if (ChallengerMod.Challenger.IsrankedGame || ChallengerMod.HarmonyMain.ServerID != "3")
                 {
                     FindGameButton.GetComponent<SpriteRenderer>().sprite = UI2_FindGameOff;
                     BoxCollider2D FindGameButtonbox = FindGameButton.GetComponent<BoxCollider2D>();
@@ -4715,7 +4715,7 @@ namespace ChallengerMod
                         collider2DHBlock39.enabled = true;
                         collider2DHBlock39.isTrigger = false;
 
-                        GameObject HBlock40 = new GameObject("HQ_ColliderTexShadowupOfficeCafe");
+                       /* GameObject HBlock40 = new GameObject("HQ_ColliderTexShadowupOfficeCafe");
                         HBlock40.transform.parent = ChallengerMiraShip.transform;
                         SpriteRenderer rendHBlock40 = HBlock40.AddComponent<SpriteRenderer>();
                         rendHBlock40.sprite = Colliderblack; // Load sprite with asset bundle
@@ -4725,7 +4725,7 @@ namespace ChallengerMod
                         HBlock40.layer = 11;
                         BoxCollider2D collider2DHBlock40 = HBlock40.AddComponent<BoxCollider2D>();
                         collider2DHBlock40.enabled = true;
-                        collider2DHBlock40.isTrigger = false;
+                        collider2DHBlock40.isTrigger = false;*/
 
                         GameObject HBlock41 = new GameObject("HQ_ColliderTexShadowupbotO2panel");
                         HBlock41.transform.parent = ChallengerMiraShip.transform;
@@ -4762,6 +4762,118 @@ namespace ChallengerMod
                         BoxCollider2D collider2DHBlock43 = HBlock43.AddComponent<BoxCollider2D>();
                         collider2DHBlock43.enabled = true;
                         collider2DHBlock43.isTrigger = false;
+
+                        GameObject HBlock44 = new GameObject("HQ_RoomCamera");
+                        HBlock44.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock44 = HBlock44.AddComponent<SpriteRenderer>();
+                        rendHBlock44.sprite = Level_TexHQCam; // Load sprite with asset bundle
+                        HBlock44.transform.localPosition = new Vector3(4.6709f, 17.9146f, 9.99f);
+                        HBlock44.transform.localScale = new Vector3(0.9f, 0.9f, 1f);
+                        HBlock44.layer = 12;
+                        HBlock44.SetActive(true);
+
+                        GameObject HBlock45 = new GameObject("HQ_RoomCameraTunel");
+                        HBlock45.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock45 = HBlock45.AddComponent<SpriteRenderer>();
+                        rendHBlock45.sprite = Level_TexHQCam2; // Load sprite with asset bundle
+                        HBlock45.transform.localPosition = new Vector3(6.7836f, 16.1f, -4.0381f); 
+                        HBlock45.transform.localScale = new Vector3(0.9f, 1.1f, 1f);
+                        HBlock45.layer = 12;
+                        HBlock45.SetActive(true);
+
+                        GameObject HBlock46 = new GameObject("HQ_ColliderTexShadowCamBot");
+                        HBlock46.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock46 = HBlock46.AddComponent<SpriteRenderer>();
+                        rendHBlock46.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock46.transform.localPosition = new Vector3(4.6607f, 16.0949f, 1f);
+                        HBlock46.transform.localScale = new Vector3(5.42f, 1.4964f, 1f);
+                        HBlock46.SetActive(true);
+                        HBlock46.layer = 11;
+                        BoxCollider2D collider2DHBlock46 = HBlock46.AddComponent<BoxCollider2D>();
+                        collider2DHBlock46.enabled = true;
+                        collider2DHBlock46.isTrigger = false;
+
+                        GameObject HBlock47 = new GameObject("HQ_ColliderTexShadowCamTop");
+                        HBlock47.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock47 = HBlock47.AddComponent<SpriteRenderer>();
+                        rendHBlock47.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock47.transform.localPosition = new Vector3(4.6625f, 20.255f, 1f);
+                        HBlock47.transform.localScale = new Vector3(5.4018f, 0.2836f, 1f);
+                        HBlock47.SetActive(true);
+                        HBlock47.layer = 11;
+                        BoxCollider2D collider2DHBlock47 = HBlock47.AddComponent<BoxCollider2D>();
+                        collider2DHBlock47.enabled = true;
+                        collider2DHBlock47.isTrigger = false;
+
+                        GameObject HBlock48 = new GameObject("HQ_ColliderTexShadowCamLeft");
+                        HBlock48.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock48 = HBlock48.AddComponent<SpriteRenderer>();
+                        rendHBlock48.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock48.transform.localPosition = new Vector3(1.6298f, 18.5041f,1f);
+                        HBlock48.transform.localScale = new Vector3(0.2364f, 3.0364f, 1f);
+                        HBlock48.SetActive(true);
+                        HBlock48.layer = 11;
+                        BoxCollider2D collider2DHBlock48 = HBlock48.AddComponent<BoxCollider2D>();
+                        collider2DHBlock48.enabled = true;
+                        collider2DHBlock48.isTrigger = false;
+
+
+                        GameObject HBlock49 = new GameObject("HQ_ColliderTexShadowCamRight");
+                        HBlock49.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock49 = HBlock49.AddComponent<SpriteRenderer>();
+                        rendHBlock49.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock49.transform.localPosition = new Vector3(7.7007f, 18.5041f, 1f);
+                        HBlock49.transform.localScale = new Vector3(0.2509f, 3.4255f, 1f);
+                        HBlock49.SetActive(true);
+                        HBlock49.layer = 11;
+                        BoxCollider2D collider2DHBlock49 = HBlock49.AddComponent<BoxCollider2D>();
+                        collider2DHBlock49.enabled = true;
+                        collider2DHBlock49.isTrigger = false;
+
+                        GameObject HBlock50 = new GameObject("HQ_ColliderTexShadowCamMRigh");
+                        HBlock50.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock50 = HBlock50.AddComponent<SpriteRenderer>();
+                        rendHBlock50.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock50.transform.localPosition = new Vector3(5.7771f, 17.4859f, 1f);
+                        HBlock50.transform.localScale = new Vector3(0.2873f, 1.0509f, 1f);
+                        HBlock50.SetActive(true);
+                        HBlock50.layer = 11;
+                        BoxCollider2D collider2DHBlock50 = HBlock50.AddComponent<BoxCollider2D>();
+                        collider2DHBlock50.enabled = true;
+                        collider2DHBlock50.isTrigger = false;
+
+                        GameObject HBlock51 = new GameObject("HQ_ColliderTexShadowCamMLeft");
+                        HBlock51.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock51 = HBlock51.AddComponent<SpriteRenderer>();
+                        rendHBlock51.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock51.transform.localPosition = new Vector3(4.1709f, 19.331f, -10f);
+                        HBlock51.transform.localScale = new Vector3(0.2873f, 1.6018f, 1f);
+                        HBlock51.SetActive(true);
+                        HBlock51.layer = 11;
+                        BoxCollider2D collider2DHBlock51 = HBlock51.AddComponent<BoxCollider2D>();
+                        collider2DHBlock51.enabled = true;
+                        collider2DHBlock51.isTrigger = false;
+
+                        GameObject HBlock52 = new GameObject("HQ_ColliderTexCamLleft");
+                        HBlock52.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock52 = HBlock52.AddComponent<SpriteRenderer>();
+                        rendHBlock52.sprite = Colliderbox; // Load sprite with asset bundle
+                        HBlock52.transform.localPosition = new Vector3(4.1636f, 18.1291f, 1f); 
+                        HBlock52.transform.localScale = new Vector3(0.2873f, 0.5418f, 1f);
+                        HBlock52.SetActive(true);
+                        HBlock52.layer = 9;
+                        BoxCollider2D collider2DHBlock52 = HBlock52.AddComponent<BoxCollider2D>();
+                        collider2DHBlock52.enabled = true;
+                        collider2DHBlock52.isTrigger = false;
+
+                        GameObject HBlock53 = new GameObject("Drone_SurvCamera");
+                        HBlock53.transform.parent = ChallengerMiraShip.transform;
+                        SpriteRenderer rendHBlock53 = HBlock53.AddComponent<SpriteRenderer>();
+                        rendHBlock53.sprite = Drone0; // Load sprite with asset bundle
+                        HBlock53.transform.localPosition = new Vector3(2.3592f, 18.3058f, -15f);
+                        HBlock53.transform.localScale = new Vector3(1f, 1f, 1f);
+                        HBlock53.layer = 5;
+                        HBlock53.SetActive(true);
 
 
                         //POLUS
@@ -5299,7 +5411,7 @@ namespace ChallengerMod
                             HBlock25 != null && HBlock26 != null && HBlock27 != null && HBlock28 != null && HBlock29 != null &&
                             HBlock30 != null && HBlock31 != null && HBlock32 != null && HBlock33 != null && HBlock34 != null &&
                             HBlock35 != null && HBlock36 != null && HBlock37 != null && HBlock38 != null && HBlock39 != null &&
-                            HBlock40 != null && HBlock41 != null && HBlock42 != null && HBlock43 != null && EE1 != null &&
+                            /*HBlock40 != null &&*/ HBlock41 != null && HBlock42 != null && HBlock43 != null && EE1 != null &&
                             EE2 != null && EE3 != null && EE4 != null && EE5 != null && EE6 != null &&
                             NewTexture != null && Texture1 != null && Texture2 != null && Texture3 != null && Texture4 != null &&
                             block1 != null && block2 != null && block3 != null && block4 != null && block5 != null &&
@@ -7084,6 +7196,7 @@ namespace ChallengerMod
                     }
 
                 }
+
                 /* if (GameObject.Find("SafeArea1"))
                  {
                      var SA1 = GameObject.Find("SafeArea1");
@@ -7950,9 +8063,14 @@ namespace ChallengerMod
                     else
                     { 
                         Dictator_Alive = 1;
-                        if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == true) { Dictator.HMActive = false; }
-                        if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == false) { Dictator.HMActive = true; }
-                        if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == false) { Dictator.HMActive = true; }
+                        if (DictatorAbility.getSelection() != 1)
+                        {
+                            if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == true) { Dictator.HMActive = false; }
+                            if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == false) { Dictator.HMActive = true; }
+                            if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == false) { Dictator.HMActive = true; }
+                        }
+                        else { Dictator.HMActive = false; }
+
                     }
 
                     if (PlayerControl.LocalPlayer == Dictator.Role)
@@ -7972,16 +8090,19 @@ namespace ChallengerMod
                         STR_P1 = "(";
                         STR_P2 = ")";
 
-
-                        if (DictatorMeeting.getSelection() != 0) 
-                        { 
-                            if (DictatorFirstTurn.getBool() == true && FirstTurn == true) { Dictator.NoSkipButton = false; }
-                            else { Dictator.NoSkipButton = true; }
-
-                        }
-                        else 
+                        if (DictatorAbility.getSelection() == 1) { Dictator.NoSkipButton = false; }
+                        else
                         {
-                            Dictator.NoSkipButton = false;
+                            if (DictatorMeeting.getSelection() != 0)
+                            {
+                                if (DictatorFirstTurn.getBool() == true && FirstTurn == true) { Dictator.NoSkipButton = false; }
+                                else { Dictator.NoSkipButton = true; }
+
+                            }
+                            else
+                            {
+                                Dictator.NoSkipButton = false;
+                            }
                         }
                     }
                     DictatorCount = true;
@@ -9155,6 +9276,14 @@ namespace ChallengerMod
                 //CopyCat
                 if (CopyCat.Role != null)
                 {
+
+
+                    
+
+
+
+
+
                     if (CopyCat.Role.Data.IsDead || CopyCat.Role.Data.Disconnected)
                     { 
                         CopyCat_Alive = 0;
@@ -9166,9 +9295,13 @@ namespace ChallengerMod
                         if (CopyCat.isImpostor) { ICopyCat_Alive = 1; CopyCat_Alive = 0; }
                         else { ICopyCat_Alive = 0; CopyCat_Alive = 1; }
 
-                        if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == true) { CopyCat.HMActive = false; }
-                        if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == false) { CopyCat.HMActive = true; }
-                        if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == false) { CopyCat.HMActive = true; }
+                        if (DictatorAbility.getSelection() != 1)
+                        {
+                            if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == true) { CopyCat.HMActive = false; }
+                            if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == false) { CopyCat.HMActive = true; }
+                            if (DictatorMeeting.getSelection() == 0 && DictatorFirstTurn.getBool() == true && FirstTurn == false) { CopyCat.HMActive = true; }
+                        }
+                        else { CopyCat.HMActive = false; }
                     }
 
                     if (CopyCat.TaskEND = true && SuperInfo.getBool() == true && !CopyCat.Role.Data.IsDead && CopyCat.copyRole == 18 && CopyCat.CopyStart)
@@ -9224,6 +9357,21 @@ namespace ChallengerMod
                             STR_Ts3 = "";
                             STR_P1 = "";
                             STR_P2 = "";
+                        }
+
+                        if (DictatorAbility.getSelection() == 1) { Dictator.NoSkipButton = false; }
+                        else
+                        {
+                            if (DictatorMeeting.getSelection() != 0)
+                            {
+                                if (DictatorFirstTurn.getBool() == true && FirstTurn == true) { Dictator.NoSkipButton = false; }
+                                else { Dictator.NoSkipButton = true; }
+
+                            }
+                            else
+                            {
+                                Dictator.NoSkipButton = false;
+                            }
                         }
 
                         if (CopyCat.copyRole == 6 && CopyCat.CopyStart)
@@ -10265,10 +10413,15 @@ namespace ChallengerMod
                         AssignSaboteurTask(true);
 
 
-                    //SHERIFF
+                    //MAP
+                    if (DroneAnimGen == false)
+                        SurvDrone(true);
+                    if (DroneAnimGen == true && DroneAnimGen2 == false)
+                        SetSurvDrone(true);
+
+
                     if (VentSpriteEdited == false)
                         ChangeVentSprite(true);
-
 
                     if (ResetIntroCD == false)
                         ResetIntroCooldown(true);
@@ -10566,16 +10719,17 @@ namespace ChallengerMod
                     GoSafeTimer(true);
 
 
-
-
-                
-
-
+                if (Challenger.DroneController != null && (Challenger.ComSab || Challenger.DroneController.Data.IsDead))
+                    ResetDroneController(true);
 
 
 
-                //GUARDIAN
-                if (Guardian.Protected != null && Guardian.Role == null && CopyCat.Role == null)
+
+
+
+
+                    //GUARDIAN
+                    if (Guardian.Protected != null && Guardian.Role == null && CopyCat.Role == null)
                     breakShield(true);
 
                 if (Jester.Role != null && Jester.Exiled && !Jester.Win)
@@ -11405,8 +11559,36 @@ namespace ChallengerMod
                             Challenger.CirclePosition = CirclePositionC0;
                         }
                     }
+                //MIRA DRONE
+                if (PlayerControl.GameOptions.MapId == 1 && ChallengerOS.Utils.Option.CustomOptionHolder.BetterMapHQ.getSelection() == 1)
+                {
+                    if (GameObject.Find("Drone_SurvCamera")) //Mirah
+                    {
+                        GameObject SrvDrone = GameObject.Find("Drone_SurvCamera");
+                        SpriteRenderer SrvDroneSprite = SrvDrone.GetComponent<SpriteRenderer>();
+                        if (Challenger.DroneController == null)
+                        { SrvDroneSprite.sprite = Drone0; }
+                        else { SrvDroneSprite.sprite = Drone1; }
+                        
+                        if (GameObject.Find("_SurvDronAnimOff"))
+                        {
+                            GameObject Anim0 = GameObject.Find("_SurvDronAnimOff");
+                            if (Challenger.DroneController == null)
+                            { Anim0.transform.localScale = new Vector3(1f, 1f, 1f); }
+                            else { Anim0.transform.localScale = new Vector3(0f, 0f, 0f); }
+                            Anim0.transform.position = SrvDrone.transform.position;
 
-
+                        }
+                        if (GameObject.Find("_SurvDronAnimOn"))
+                        {
+                            GameObject Anim1 = GameObject.Find("_SurvDronAnimOn");
+                            if (Challenger.DroneController == null)
+                            { Anim1.transform.localScale = new Vector3(0f, 0f, 0f); }
+                            else { Anim1.transform.localScale = new Vector3(1f, 1f, 1f); }
+                            Anim1.transform.position = SrvDrone.transform.position;
+                        }
+                    }
+                }
 
                 foreach (PlayerTask task in PlayerControl.LocalPlayer.myTasks)
                 {

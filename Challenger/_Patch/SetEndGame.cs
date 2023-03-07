@@ -7,6 +7,7 @@ using static ChallengerMod.Roles;
 using ChallengerMod.RPC;
 using Hazel;
 using Reactor.Extensions;
+using Cpp2IL.Core.Analysis.Actions.x86.Important;
 
 namespace ChallengerMod.SetEndGame
 {
@@ -681,14 +682,14 @@ namespace ChallengerMod.SetEndGame
                         if (textRenderer.text.Contains("[" + Dictator.Role.Data.PlayerName + "]")) { }
                         else
                         {
-                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Dictator.Role.Data.PlayerName + "]</color> <color=#FF7A7A>(" + Role_Dictator + ")</color> - <color=#00FFFF>[" + DictatorTask + "/" + TotalTask + "]</color> - <color=#00ff00>" + Str_Win + "</color>";
+                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Dictator.Role.Data.PlayerName + "]</color> <color=#C06A6A>(" + Role_Dictator + ")</color> - <color=#00FFFF>[" + DictatorTask + "/" + TotalTask + "]</color> - <color=#00ff00>" + Str_Win + "</color>";
                         }
                     }
                     if (DictatorWin == false)
                     {
                         if (textRenderer.text.Contains("[" + Dictator.Role.Data.PlayerName + " ♥]"))
                         {
-                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Dictator.Role.Data.PlayerName + "]</color> <color=#FF7A7A>(" + Role_Dictator + ")</color> - <color=#00FFFF>[" + DictatorTask + "/" + TotalTask + "]</color> - <color=#00ff00>" + Str_Win + "</color>";
+                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Dictator.Role.Data.PlayerName + "]</color> <color=#C06A6A>(" + Role_Dictator + ")</color> - <color=#00FFFF>[" + DictatorTask + "/" + TotalTask + "]</color> - <color=#00ff00>" + Str_Win + "</color>";
                         }
                         else
                         {
@@ -2045,7 +2046,7 @@ namespace ChallengerMod.SetEndGame
                         if (textRenderer.text.Contains("[" + Dictator.Role.Data.PlayerName + "]")) { }
                         else
                         {
-                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Dictator.Role.Data.PlayerName + "]</color> <color=#FF7A7A>(" + Role_Dictator + ")</color> - <color=#00FFFF>[" + DictatorTask + "/" + TotalTask + "]</color> - <color=#ff0000>" + Str_Loose + "</color>";
+                            textRenderer.text += "\n<color=#FFFFFF>- </color><color=#B4FAFA>[" + Dictator.Role.Data.PlayerName + "]</color> <color=#C06A6A>(" + Role_Dictator + ")</color> - <color=#00FFFF>[" + DictatorTask + "/" + TotalTask + "]</color> - <color=#ff0000>" + Str_Loose + "</color>";
                         }
                     }
                 }
@@ -2617,6 +2618,7 @@ namespace ChallengerMod.SetEndGame
             if (_EaterWin(__instance, _value)) return false;
             if (_CursedWin(__instance, _value)) return false;
             if (_ImpostorsSabotageWin(__instance, _value)) return false;
+            if (_EndGameForSabotage(__instance, _value)) return false;
             if (_CrewmatesTaskWin(__instance, _value)) return false;
             if (_ImpostorWin(__instance, _value)) return false;
             if (_CrewmateWin(__instance, _value)) return false;
@@ -2885,7 +2887,7 @@ namespace ChallengerMod.SetEndGame
                 LifeSuppSystemType lifeSuppSystemType = systemType.TryCast<LifeSuppSystemType>();
                 if (lifeSuppSystemType != null && lifeSuppSystemType.Countdown < 0f)
                 {
-                    EndGameForSabotage(__instance, values);
+                    Challenger.EndGameSab = true;
                     lifeSuppSystemType.Countdown = 10000f;
                     return true;
                 }
@@ -2900,7 +2902,7 @@ namespace ChallengerMod.SetEndGame
                 ICriticalSabotage criticalSystem = systemType2.TryCast<ICriticalSabotage>();
                 if (criticalSystem != null && criticalSystem.Countdown < 0f)
                 {
-                    EndGameForSabotage(__instance, values);
+                    Challenger.EndGameSab = true;
                     criticalSystem.ClearSabotage();
                     return true;
                 }
@@ -3090,40 +3092,44 @@ namespace ChallengerMod.SetEndGame
             //}
         }
 
-        private static void EndGameForSabotage(ShipStatus __instance, PlayerStatistics values)
+        private static bool _EndGameForSabotage(ShipStatus __instance, PlayerStatistics values)
         {
 
-
-
-            if (TotalLoverAlive == 2)
+            if (Challenger.EndGameSab)
             {
-                LoveWinthegame = true;
-                CheckLove(__instance, values);
+
+                if (TotalLoverAlive == 2)
+                {
+                    LoveWinthegame = true;
+                    CheckLove(__instance, values);
 
 
+                }
+                else
+                {
+                    LoveWinthegame = false;
+                    CheckLove(__instance, values);
+                }
+
+                CulteWinthegame = false;
+                EaterWinthegame = false;
+                OutlawWinthegame = false;
+                ArsonistWinthegame = false;
+                JesterWinthegame = false;
+                ImpostorWinthegame = false;
+                ImpostorWinthegameBySab = true;
+                CrewmateWinthegame = false;
+                CrewmateWinthegamebyTask = false;
+                CursedWinthegame = false;
+
+                MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetWinImpostorsBySab, Hazel.SendOption.Reliable, -1);
+                AmongUsClient.Instance.FinishRpcImmediately(Writer);
+                RPCProcedure.setWinImpostorBySab();
+
+                CheckEnd(__instance, values);
+                return true;
             }
-            else
-            {
-                LoveWinthegame = false;
-                CheckLove(__instance, values);
-            }
-
-            CulteWinthegame = false;
-            EaterWinthegame = false;
-            OutlawWinthegame = false;
-            ArsonistWinthegame = false;
-            JesterWinthegame = false;
-            ImpostorWinthegame = false;
-            ImpostorWinthegameBySab = true;
-            CrewmateWinthegame = false;
-            CrewmateWinthegamebyTask = false;
-            CursedWinthegame = false;
-
-            MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetWinImpostorsBySab, Hazel.SendOption.Reliable, -1);
-            AmongUsClient.Instance.FinishRpcImmediately(Writer);
-            RPCProcedure.setWinImpostorBySab();
-
-            CheckEnd(__instance, values);
+            return false;
         }
     }
 

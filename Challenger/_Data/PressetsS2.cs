@@ -7,6 +7,9 @@ using static ChallengerOS.Utils.Option.CustomOptionHolder;
 using static ChallengerMod.Set.Data;
 using static ChallengerMod.HarmonyMain;
 using ChallengerOS.Utils.Option;
+using Steamworks;
+using UnityEngine.Networking.Types;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace ChallengerMod.Pressets
 {
@@ -21,7 +24,7 @@ namespace ChallengerMod.Pressets
             {
 
 
-               if (ChallengerMod.HarmonyMain.EventConfig.Value == "Lover") { ChallengerMod.Challenger.LoverEvent = true; }
+                if (ChallengerMod.HarmonyMain.EventConfig.Value == "Lover") { ChallengerMod.Challenger.LoverEvent = true; }
                else { ChallengerMod.Challenger.LoverEvent = false; }
 
                 if (AmongUsClient.Instance.AmHost)
