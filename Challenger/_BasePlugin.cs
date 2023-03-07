@@ -7,6 +7,7 @@ using System.Linq;
 using Reactor;
 using static ChallengerMod.Unity;
 using static ChallengerMod.Roles;
+using static ChallengerMod.Utility.Server.Server;
 using UnityEngine;
 using System.IO;
 using Reactor.Extensions;
@@ -30,10 +31,10 @@ namespace ChallengerMod
     {
         public const int MaxPlayers = 15;
         public const int MaxImpostors = 3;
-        public const string VersionString = "5.2.0";
+        public const string VersionString = "5.2.1";
         public static bool CanStartTheGame = false;
-        public const string UpdateNameString = "Cupid and Love";
-        public const string UpdateNameStringFR = "Cupidon et amour";
+        public const string UpdateNameString = "Mira Challenger";
+        public const string UpdateNameStringFR = "Mira Challenger";
 
         public const string PrefixString = "";
         public const string SufixString = "";
@@ -44,6 +45,7 @@ namespace ChallengerMod
         public static string STR_myRankname = "x";
         public static string STR_DiscordText = "Lobby";
         public static bool RankedSeason = true;
+        public static string ServerID = "Wait";
         public static int debugMod = 0;
 
         public static bool MDP0 = false;
@@ -683,6 +685,24 @@ namespace ChallengerMod
             _Hat_FRA = bundle_char.LoadAsset<Sprite>("CS_H_FRA.png").DontUnload();
             _Hat_SUB1 = bundle_char.LoadAsset<Sprite>("CS_H_SUB1.png").DontUnload();
 
+            _Hat_TOI1 = bundle_char.LoadAsset<Sprite>("CS_H_Colour.png").DontUnload();
+            _Hat_TOI2 = bundle_char.LoadAsset<Sprite>("CS_H_Egghead.png").DontUnload();
+            _Hat_TOI3 = bundle_char.LoadAsset<Sprite>("CS_H_Sly.png").DontUnload();
+            _Hat_TOI4 = bundle_char.LoadAsset<Sprite>("CS_H_KKshi.png").DontUnload();
+            _Hat_TOI5 = bundle_char.LoadAsset<Sprite>("CS_H_Pirate.png").DontUnload();
+            _Hat_TOI6 = bundle_char.LoadAsset<Sprite>("CS_H_DinoHead.png").DontUnload();
+            _Hat_TOI7 = bundle_char.LoadAsset<Sprite>("CS_H_Strong.png").DontUnload();
+            _Hat_TOI8 = bundle_char.LoadAsset<Sprite>("CS_H_Carpet.png").DontUnload();
+            
+            _Hat_TOI9 = bundle_char.LoadAsset<Sprite>("CS_H_Tag.png").DontUnload();
+            _Hat_TOI10 = bundle_char.LoadAsset<Sprite>("CS_H_Minicrew.png").DontUnload();
+
+            _Hat_TOI11 = bundle_char.LoadAsset<Sprite>("CS_H_Dos.png").DontUnload();
+            _Hat_TOI12 = bundle_char.LoadAsset<Sprite>("CS_H_LN.png").DontUnload();
+            _Hat_TOI13 = bundle_char.LoadAsset<Sprite>("CS_H_Murloc.png").DontUnload();
+            _Hat_TOI14 = bundle_char.LoadAsset<Sprite>("CS_H_Poorcat.png").DontUnload();
+            _Hat_TOI15 = bundle_char.LoadAsset<Sprite>("CS_H_Fox.png").DontUnload();
+
             _Hat_Alien = bundle_char.LoadAsset<Sprite>("CS_H_Alien.png").DontUnload();
             _Hat_Demon = bundle_char.LoadAsset<Sprite>("CS_H_Demon.png").DontUnload();
             _Hat_Angel = bundle_char.LoadAsset<Sprite>("CS_H_Angel.png").DontUnload();
@@ -885,6 +905,9 @@ namespace ChallengerMod
             Level_Tex2 = bundle_Map0.LoadAsset<Sprite>("ALP_sprite2.png").DontUnload();
             TexBGMira = bundle_Map0.LoadAsset<Sprite>("ALM_Bg.png").DontUnload();
             Level_TexHQLab = bundle_Map0.LoadAsset<Sprite>("ALM_Lab.png").DontUnload();
+            Level_TexHQCam = bundle_Map0.LoadAsset<Sprite>("ALM_SCam.png").DontUnload();
+            Level_TexHQCam2 = bundle_Map0.LoadAsset<Sprite>("ALM_SCam2.png").DontUnload();
+
             Level_TexHQDS = bundle_Map0.LoadAsset<Sprite>("ALM_Dropship.png").DontUnload();
 
             EA1 = bundle_Map0.LoadAsset<Sprite>("EA0.png").DontUnload();
@@ -907,8 +930,8 @@ namespace ChallengerMod
             LoginAnimation = bundle_Anim.LoadAsset<AnimationClip>("LoginAnim.anim").DontDestroy();
             PetrifyAnim = bundle_Anim.LoadAsset<AnimationClip>("PetrifySprite.anim").DontDestroy();
             video = bundle_Anim.LoadAsset<VideoClip>("Login.mp4").DontDestroy();
-
-            
+            Drone0Anim = bundle_Anim.LoadAsset<AnimationClip>("DroneSurvoff.anim").DontDestroy();
+            Drone1Anim = bundle_Anim.LoadAsset<AnimationClip>("DroneSurvon.anim").DontDestroy();
 
             // --------------- Sound
             shieldClip = bundle_Sound.LoadAsset<AudioClip>("ShieldSound.wav").DontUnload();
@@ -1364,6 +1387,7 @@ namespace ChallengerMod
             loveIco = bundle_Sprite.LoadAsset<Sprite>("love0.png").DontUnload();
             noloveIco = bundle_Sprite.LoadAsset<Sprite>("nolove.png").DontUnload();
             miniloveIco = bundle_Sprite.LoadAsset<Sprite>("MakeLover.png").DontUnload();
+            MakeVoterIco = bundle_Sprite.LoadAsset<Sprite>("MakeVoter.png").DontUnload();
             fakeIco = bundle_Sprite.LoadAsset<Sprite>("Fakekill.png").DontUnload();
             KillWarlockIco = bundle_Sprite.LoadAsset<Sprite>("war0.png").DontUnload();
 
@@ -1399,6 +1423,7 @@ namespace ChallengerMod
             MayorIco = bundle_Sprite.LoadAsset<Sprite>("buzzer.png").DontUnload();
             EaterIco = bundle_Sprite.LoadAsset<Sprite>("EaterIco.png").DontUnload();
             EaterIco2 = bundle_Sprite.LoadAsset<Sprite>("EaterIco2.png").DontUnload();
+            ArrowWarn = bundle_Sprite.LoadAsset<Sprite>("ArrowWarn.png").DontUnload();
 
             MindIco = bundle_Sprite.LoadAsset<Sprite>("mindIco.png").DontUnload();
             E0 = bundle_Sprite.LoadAsset<Sprite>("E0.png").DontUnload();
@@ -1507,13 +1532,15 @@ namespace ChallengerMod
             BaitIco = bundle_Sprite.LoadAsset<Sprite>("BaitIco.png").DontUnload();
             LeadIco = bundle_Sprite.LoadAsset<Sprite>("LeadIco.png").DontUnload();
 
-
+            Drone0 = bundle_Sprite.LoadAsset<Sprite>("DroneOff.png").DontUnload();
+            Drone1 = bundle_Sprite.LoadAsset<Sprite>("DroneOn.png").DontUnload();
 
             ChallengerMod.Challenger.LoadEvent();
             Harmony.Unpatch(typeof(UdpConnection).GetMethod("HandleSend"), HarmonyPatchType.Prefix,
             ReactorPlugin.Id);
             SpritePatches.Patch();
             ChallengerUI_MMO.Initialize();
+            CheckServer();
             Harmony.PatchAll();
         }
 

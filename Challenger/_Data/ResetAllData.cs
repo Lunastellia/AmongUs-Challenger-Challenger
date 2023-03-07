@@ -4,8 +4,7 @@ using static ChallengerOS.Utils.Option.CustomOptionHolder;
 using static ChallengerMod.Set.Data;
 using static ChallengerMod.Roles;
 using static ChallengerMod.Challenger;
-
-
+using ChallengerOS;
 
 namespace ChallengerMod
 {
@@ -85,6 +84,13 @@ namespace ChallengerMod
             SecondTurn = false;
             ChallengerMod.Set.Data.TotalPlayerOil = 0;
             EndDelay = 1.2f;
+            EndGameSab = false;
+            resetMiraCam = false;
+            DroneController = null;
+            DroneAnimGen = false;
+            DroneAnimGen2 = false;
+            DroneAnimP1 = false;
+            DroneAnimP2 = false;
 
         }
         public static void PlayerListClear()
@@ -102,6 +108,8 @@ namespace ChallengerMod
             Challenger._Alls = new List<PlayerControl>();
             Challenger.LeaderList = new List<PlayerControl>();
             Challenger.LeaderCopyList = new List<PlayerControl>();
+            Challenger.CultePlayers = new List<PlayerControl>();
+            Challenger.localArrows = new List<Arrow>();
 
             ChallengerOS.Objects.Balise.clear();
         }
@@ -277,9 +285,12 @@ namespace ChallengerMod
             Builder.round = false;
 
             //DICTATOR
+            Dictator.VotedFor = null;
             Dictator.HMActive = false;
             Dictator.NoSkipUsed = false;
             Dictator.NoSkipButton = false;
+            Dictator.SuperVote = false;
+            
 
             //SENTINEL
             Sentinel.Scan = false;
@@ -323,6 +334,7 @@ namespace ChallengerMod
             CopyCat.Temp = false;
             CopyCat.Timer = 1.5f;
             CopyCat.HMActive = false;
+            CopyCat.SuperVote = false;
             CopyCat.ScanPlayerDie = 0;
             CopyCat.Suicide = false;
             CopyCat.SuicideShield = false;

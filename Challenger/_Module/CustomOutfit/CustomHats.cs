@@ -11,6 +11,7 @@ namespace ChallengerMod.Cosmetics
 
 
         //0 Personnal
+        private static bool _TEST = false;
         private static bool _Stellia = false;
         private static bool _Stellia2 = false;
         private static bool _Mini = false;
@@ -21,7 +22,15 @@ namespace ChallengerMod.Cosmetics
         //FREE
         private static bool _FRA = false;
         private static bool _SUB1 = false;
-        
+        private static bool _CNO1 = false;
+        private static bool _CNO2 = false;
+        private static bool _CNO3 = false;
+        private static bool _CNO4 = false;
+        private static bool _CNO5 = false;
+        private static bool _CNO6 = false;
+        private static bool _CNO7 = false;
+        private static bool _CNO8 = false;
+
         //EGG
         private static bool _Bee = false;
         private static bool _Cat = false;
@@ -110,6 +119,15 @@ namespace ChallengerMod.Cosmetics
         private static bool _SWP7 = false;
         private static bool _SWP8 = false;
 
+        private static bool _EL1 = false;
+        private static bool _EL2 = false;
+
+        private static bool _TOI11 = false;
+        private static bool _TOI12 = false;
+        private static bool _TOI13 = false;
+        private static bool _TOI14 = false;
+        private static bool _TOI15 = false;
+
         private static bool _C1 = false;
         private static bool _C2 = false;
         private static bool _C3 = false;
@@ -135,11 +153,11 @@ namespace ChallengerMod.Cosmetics
                 var allHats = __instance.allHats;
 
                 //CREATOR
-                /*if (!test)
+                /*if (!_TEST)
                 {
                     HatID = 1;
-                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_CC, "test", "test", "CC-00", null, null, null, false, true, true, true));
-                    test = true;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_CC, "test", "test", "CC-00", null, null, null, false, true, false, true));
+                    _TEST = true;
                 }*/
                 if (!_Stellia)
                 {
@@ -190,6 +208,98 @@ namespace ChallengerMod.Cosmetics
                     allHats.Add(CreateHat(ChallengerMod.Unity._Hat_SUB1, "Submerged Hat 1", "Submerged Team", "SUBMERGED", null, null, null, false, false, true, false));
                     _SUB1 = true;
                 }
+                if (!_CNO1)
+                {
+                    HatID = 110;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI1, "ColorCloud", "Con_No_1", "CN1", null, null, null, false, false, true, false));
+                    _CNO1 = true;
+                }
+                if (!_CNO2)
+                {
+                    HatID = 111;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI2, "Big Egg", "Con_No_1", "CN1", null, null, null, false, false, true, false));
+                    _CNO2 = true;
+                }
+                if (!_CNO3)
+                {
+                    HatID = 112;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI3, "Sly", "Con_No_1", "CN1", null, null, null, false, false, true, false));
+                    _CNO3 = true;
+                }
+                if (!_CNO4)
+                {
+                    HatID = 113;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI4, "K K Shi", "Con_No_1", "CN1", null, null, null, false, false, true, false));
+                    _CNO4 = true;
+                }
+                if (!_CNO5)
+                {
+                    HatID = 114;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI5, "Pirate", "Con_No_1", "CN1", null, null, null, false, false, true, true));
+                    _CNO5 = true;
+                }
+                if (!_CNO6)
+                {
+                    HatID = 115;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI6, "Dinooo", "Con_No_1", "CN1", null, null, null, false, true, true, false));
+                    _CNO6 = true;
+                }
+                if (!_CNO7)
+                {
+                    HatID = 116;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI7, "Strong!", "Con_No_1", "CN1", null, null, null, false, true, true, true));
+                    _CNO7 = true;
+                }
+                if (!_CNO8)
+                {
+                    HatID = 117;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI8, "Flying Carpet", "Con_No_1 & Lunastellia", "CN1", null, null, null, false, true, true, true));
+                    _CNO8 = true;
+                }
+
+                if (!_EL1)
+                {
+                    HatID = 118;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI9, "Painting", "Electricbeez & Lunastellia", "TOI", null, null, null, false, true, true, true));
+                    _EL1 = true;
+                }
+                if (!_EL2)
+                {
+                    HatID = 119;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI10, "MiniCrew", "Electricbeez", "TOI", null, null, null, false, true, true, true));
+                    _EL2 = true;
+                }
+                if (!_TOI11)
+                {
+                    HatID = 120;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI11, "My Friend", "/", "TOI", null, null, null, false, true, true, true));
+                    _TOI11 = true;
+                }
+                if (!_TOI12)
+                {
+                    HatID = 121;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI12, "LN", "/", "TOI", null, null, null, false, false, true, false));
+                    _TOI12 = true;
+                }
+                if (!_TOI13)
+                {
+                    HatID = 122;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI13, "Murloc", "/", "TOI", null, null, null, false, false, true, false));
+                    _TOI13 = true;
+                }
+                if (!_TOI14)
+                {
+                    HatID = 123;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI14, "Poor Cat", "/", "TOI", null, null, null, false, true, true, true));
+                    _TOI14 = true;
+                }
+                if (!_TOI15)
+                {
+                    HatID = 124;
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_TOI15, "Fox", "/", "CN1", null, null, null, false, false, true, false));
+                    _TOI15 = true;
+                }
+
 
                 //LILYPICHOU
                 if (!_Bee)
@@ -401,7 +511,7 @@ namespace ChallengerMod.Cosmetics
                 if (!_Ghost)
                 {
                     HatID = 509;
-                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_Ghost, "[DLC] Crown", "Lunastellia", "SH-CLT", null, null, null, false, true, false, true));
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_Ghost, "[DLC] Ghost", "Lunastellia", "SH-CLT", null, null, null, false, true, false, true));
                     _Ghost = true;
                 }
                 if (!_Crown)
@@ -413,13 +523,13 @@ namespace ChallengerMod.Cosmetics
                 if (!_SpeHorn)
                 {
                     HatID = 511;
-                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_SpeHorn, "[DLC] Crown", "Lunastellia", "SH-CLT", null, null, null, false, false, false, false));
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_SpeHorn, "[DLC] S.Horn", "Lunastellia", "SH-CLT", null, null, null, false, false, false, false));
                     _SpeHorn = true;
                 }
                 if (!_Candle)
                 {
                     HatID = 512;
-                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_Candle, "[DLC] Crown", "Lunastellia", "SH-CLT", null, null, null, false, false, false, false));
+                    allHats.Add(CreateHat(ChallengerMod.Unity._Hat_Candle, "[DLC] Candle", "Lunastellia", "SH-CLT", null, null, null, false, false, false, false));
                     _Candle = true;
                 }
 
@@ -685,7 +795,7 @@ namespace ChallengerMod.Cosmetics
 
             public static int HatID = 0;
             
-            private static HatData CreateHat(Sprite sprite, string spritename, string author, string PID, Sprite climb = null, Sprite floor = null, Sprite leftimage = null, bool bounce = false, bool altshader = false, bool isFree = false, bool Enable = false) {
+            private static HatData CreateHat(Sprite sprite, string spritename, string author, string PID, Sprite climb = null, Sprite floor = null, Sprite leftimage = null, bool bounce = false, bool altshader = false, bool isFree = false, bool blocksVisors = false) {
                 
                 if (MagicShader == null) {
                     Material hatShader = new Material("PlayerMaterial");
@@ -702,13 +812,14 @@ namespace ChallengerMod.Cosmetics
                 newHat.displayOrder = 1000 + HatID;
                 newHat.InFront = true;
                 newHat.NoBounce = bounce;
+                newHat.redeemPopUpColor = 5;
                 newHat.hatViewData.viewData.FloorImage = floor;
                 newHat.hatViewData.viewData.ClimbImage = climb;
                 newHat.hatViewData.viewData.LeftMainImage = leftimage;
                 newHat.ChipOffset = new Vector2(-0.1f, 0.4f);
                 newHat.freeRedeemableCosmetic = false;
                 newHat.Free = isFree;
-                newHat.BlocksVisors = Enable;
+                newHat.BlocksVisors = blocksVisors;
 
                 if (altshader == true) 
                 { 

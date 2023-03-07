@@ -1,8 +1,10 @@
-﻿using HarmonyLib;
+﻿using ChallengerOS;
+using HarmonyLib;
 using Hazel;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static ChallengerOS.Arrow;
 
 
 namespace ChallengerMod
@@ -25,6 +27,10 @@ namespace ChallengerMod
         public static string debugg03 = "";
         public static KeyCode KeycodeKill { get; set; }
         public static KeyCode KeycodeAbility { get; set; }
+        public static KeyCode KeycodeDroneRight { get; set; }
+        public static KeyCode KeycodeDroneLeft { get; set; }
+        public static KeyCode KeycodeDroneUp { get; set; }
+        public static KeyCode KeycodeDroneDown { get; set; }
         public static bool IsrankedGame { get; set; }
         public static string SteamID = "ID";
 
@@ -37,7 +43,8 @@ namespace ChallengerMod
 
         public static float LangGameSet = 0f;
         public static DateTime? EndgameTimer { get; set; }
-        public static float EndDelay = 1.2f;
+        public static float EndDelay = 0.3f;
+        public static bool EndGameSab = false;
         public static float GameStarted = 5f;
         public static bool NuclearMap = false;
         public static float NuclearTimeMin = 90f;
@@ -138,8 +145,16 @@ namespace ChallengerMod
         public static List<Vent> Barghestvent = new List<Vent>();
         public static List<byte> draggers = new List<byte>();
         public static List<int> corpse = new List<int>();
-        public static bool CanUseVent = false;
+        public static List<Arrow> localArrows = new List<Arrow>();
+        public static List<SurvCamera> MiraCam = new List<SurvCamera>();
+        public static bool resetMiraCam = false;
+        public static PlayerControl DroneController = null;
 
+        public static bool CanUseVent = false;
+        public static bool DroneAnimGen = false;
+        public static bool DroneAnimGen2 = false;
+        public static bool DroneAnimP1 = false;
+        public static bool DroneAnimP2 = false;
         public static bool VentSpriteEdited = false;
         public static bool RoleTaskAssigned = false;
         public static bool CulteTaskAssigned = false;

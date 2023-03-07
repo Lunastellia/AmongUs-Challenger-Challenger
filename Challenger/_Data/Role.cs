@@ -10,15 +10,6 @@ namespace ChallengerMod
     {
 
 
-        //GENERAL
-
-        public static class AllPlayers
-        {
-
-
-        }
-      
-
         //ROLES_CREWMATES_VANILLA
         public static class Crewmate1
         {
@@ -283,10 +274,12 @@ namespace ChallengerMod
         public static class Dictator
         {
             public static PlayerControl Role { get; set; }
+            public static PlayerControl VotedFor { get; set; }
             public static bool HMActive = false;
             public static bool NoSkipUsed = false;
             public static bool NoSkipButton = false;
-            
+            public static bool SuperVote = false;
+
 
 
         }
@@ -394,6 +387,8 @@ namespace ChallengerMod
             public static bool Temp = false;
             public static float Timer = 1.5f;
             public static bool HMActive = false;
+            public static bool SuperVote = false;
+            
             public static int ScanPlayerDie = 0;
             public static bool TargetBaitArea;
 

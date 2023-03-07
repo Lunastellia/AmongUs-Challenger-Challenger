@@ -14,6 +14,8 @@ using static ChallengerOS.Utils.Option.CustomOptionHolder;
 using ChallengerMod.RPC;
 using static ChallengerMod.Set.Data;
 using Reactor.Extensions;
+using static UnityEngine.GraphicsBuffer;
+using TMPro;
 
 namespace ChallengerMod.CustomButton
 {
@@ -1083,11 +1085,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff1.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1126,11 +1135,18 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff1.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1175,9 +1191,15 @@ namespace ChallengerMod.CustomButton
                             Sheriff1.currentTarget = null;
                             if (Sheriff1.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1185,11 +1207,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff1.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1262,11 +1291,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff2.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1305,11 +1341,18 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff2.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1354,9 +1397,15 @@ namespace ChallengerMod.CustomButton
                             Sheriff2.currentTarget = null;
                             if (Sheriff2.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1364,11 +1413,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff2.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1441,11 +1497,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff3.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1484,11 +1547,18 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff3.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1534,9 +1604,15 @@ namespace ChallengerMod.CustomButton
                             Sheriff3.currentTarget = null;
                             if (Sheriff3.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1544,11 +1620,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Sheriff3.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1620,11 +1703,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (CopyCat.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1663,11 +1753,18 @@ namespace ChallengerMod.CustomButton
 
                         if (Assassin.Role == Assassin.currentTarget && Assassin.Shielded == true)
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (CopyCat.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1709,9 +1806,15 @@ namespace ChallengerMod.CustomButton
                             CopyCat.currentTarget = null;
                             if (CopyCat.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -1719,11 +1822,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (CopyCat.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -3441,11 +3551,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Mercenary.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -3521,9 +3638,15 @@ namespace ChallengerMod.CustomButton
                             Mercenary.currentTarget = null;
                             if (Mercenary.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -3954,11 +4077,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Outlaw.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -4010,9 +4140,15 @@ namespace ChallengerMod.CustomButton
                         Outlaw.currentTarget = null;
                         if (Outlaw.TargetBaitArea)
                         {
+                            float posX = 0f;
+                            float posY = 0f;
+                            posX = Helpers.playerById(targetId).transform.position.x;
+                            posY = Helpers.playerById(targetId).transform.position.y;
                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                            writer.Write(posX);
+                            writer.Write(posY);
                             AmongUsClient.Instance.FinishRpcImmediately(writer);
-                            RPCProcedure.baitBaliseEnable();
+                            RPCProcedure.baitBaliseEnable(posX, posY);
                             Bait.BaliseEnable = true;
                             ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                         }
@@ -4242,23 +4378,46 @@ namespace ChallengerMod.CustomButton
                             if (!AbilityDisabled)
                             {
                                 //INFECT
+                                if (Bait.Role != null && Vector.currentTarget == Bait.Role && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                                { Bait.StunsPlayer = true; }
+                                if (CopyCat.Role != null && Vector.currentTarget == CopyCat.Role && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                                { Bait.StunsPlayer = true; }
 
-                                VectorInfectAbilityButton.Timer = VectorInfectAbilityButtonMaxTimer;
-                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetInfectePlayer, Hazel.SendOption.Reliable, -1);
-                                writer.Write(Vector.currentTarget.PlayerId);
-                                AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.setInfectePlayer(Vector.currentTarget.PlayerId);
-                                Vector.infect = true;
-                                VectorKillButton.Timer = VectorKillButtonMaxTimer;
+                                
                                 
                                 if (Vector.TargetBaitArea)
                                 {
+                                    VectorInfectAbilityButton.Timer = VectorInfectAbilityButtonMaxTimer;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.VectorKill, Hazel.SendOption.Reliable, -1);
+                                    writer.Write(Vector.currentTarget.PlayerId);
+                                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                    RPCProcedure.vectorKill(Vector.currentTarget.PlayerId);
+                                    VectorKillButton.Timer = VectorKillButtonMaxTimer;
+
+                                    float posX = 0f;
+                                    float posY = 0f;
+                                    posX = Helpers.playerById(Vector.currentTarget.PlayerId).transform.position.x;
+                                    posY = Helpers.playerById(Vector.currentTarget.PlayerId).transform.position.y;
                                     MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                    writer2.Write(posX);
+                                    writer2.Write(posY);
                                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
-                                    RPCProcedure.baitBaliseEnable();
+                                    RPCProcedure.baitBaliseEnable(posX, posY);
                                     Bait.BaliseEnable = true;
                                     ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                                    
                                 }
+                                else //infect
+                                {
+                                    VectorInfectAbilityButton.Timer = VectorInfectAbilityButtonMaxTimer;
+                                    MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SetInfectePlayer, Hazel.SendOption.Reliable, -1);
+                                    writer.Write(Vector.currentTarget.PlayerId);
+                                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                    RPCProcedure.setInfectePlayer(Vector.currentTarget.PlayerId);
+                                    Vector.infect = true;
+                                    VectorKillButton.Timer = VectorKillButtonMaxTimer;
+                                }
+
                                 return;
                             }
                             else
@@ -4276,11 +4435,18 @@ namespace ChallengerMod.CustomButton
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
                                 RPCProcedure.vectorKill(Vector.currentTarget.PlayerId);
                                 VectorKillButton.Timer = VectorKillButtonMaxTimer;
+                                
                                 if (Vector.TargetBaitArea)
                                 {
+                                    float posX = 0f;
+                                    float posY = 0f;
+                                    posX = Helpers.playerById(Vector.currentTarget.PlayerId).transform.position.x;
+                                    posY = Helpers.playerById(Vector.currentTarget.PlayerId).transform.position.y;
                                     MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                    writer2.Write(posX);
+                                    writer2.Write(posY);
                                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
-                                    RPCProcedure.baitBaliseEnable();
+                                    RPCProcedure.baitBaliseEnable(posX, posY);
                                     Bait.BaliseEnable = true;
                                     ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                                 }
@@ -4356,9 +4522,9 @@ namespace ChallengerMod.CustomButton
             VectorKillButton = new CustomButton(
                 () => {
 
-                    if (Vector.Infected.PlayerId == Bait.Role.PlayerId && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                    if (Bait.Role != null && Vector.Infected.PlayerId == Bait.Role.PlayerId && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
                     { Bait.StunsPlayer = true; }
-                    if (Vector.Infected.PlayerId == CopyCat.Role.PlayerId && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
+                    if (CopyCat.Role != null && Vector.Infected.PlayerId == CopyCat.Role.PlayerId && CopyCat.CopyStart && CopyCat.copyRole == 13 && ChallengerOS.Utils.Option.CustomOptionHolder.BaitReport.getSelection() != 1)
                     { Bait.StunsPlayer = true; }
 
                     VectorKillButton.Timer = VectorKillButtonMaxTimer;
@@ -5016,9 +5182,15 @@ namespace ChallengerMod.CustomButton
 
                     if (Sorcerer.TargetBaitArea)
                     {
+                        float posX = 0f;
+                        float posY = 0f;
+                        posX = Helpers.playerById(Sorcerer.currentTarget.PlayerId).transform.position.x;
+                        posY = Helpers.playerById(Sorcerer.currentTarget.PlayerId).transform.position.y;
                         MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                        writer2.Write(posX);
+                        writer2.Write(posY);
                         AmongUsClient.Instance.FinishRpcImmediately(writer2);
-                        RPCProcedure.baitBaliseEnable();
+                        RPCProcedure.baitBaliseEnable(posX, posY);
                         Bait.BaliseEnable = true;
                         ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                     }
@@ -5226,11 +5398,18 @@ namespace ChallengerMod.CustomButton
                      }
                      else //Guardian shield - Reflect
                      {
+                         targetId = PlayerControl.LocalPlayer.PlayerId;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5295,9 +5474,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5317,9 +5502,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5339,9 +5530,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5361,9 +5558,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5383,9 +5586,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5406,9 +5615,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5429,9 +5644,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5452,9 +5673,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5475,9 +5702,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5498,9 +5731,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5522,9 +5761,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5546,9 +5791,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5569,9 +5820,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5591,9 +5848,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5614,9 +5877,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5636,9 +5905,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5659,9 +5934,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5681,9 +5962,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5704,9 +5991,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5726,9 +6019,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5749,9 +6048,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5771,9 +6076,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5794,9 +6105,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5816,9 +6133,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5839,9 +6162,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5861,9 +6190,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5884,9 +6219,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5906,9 +6247,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5929,9 +6276,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5951,9 +6304,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -5973,9 +6332,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -6000,9 +6365,15 @@ namespace ChallengerMod.CustomButton
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
+                             float posX = 0f;
+                             float posY = 0f;
+                             posX = Helpers.playerById(targetId).transform.position.x;
+                             posY = Helpers.playerById(targetId).transform.position.y;
                              MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                             writer.Write(posX);
+                             writer.Write(posY);
                              AmongUsClient.Instance.FinishRpcImmediately(writer);
-                             RPCProcedure.baitBaliseEnable();
+                             RPCProcedure.baitBaliseEnable(posX, posY);
                              Bait.BaliseEnable = true;
                              ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                          }
@@ -6086,11 +6457,18 @@ namespace ChallengerMod.CustomButton
                           }
                           else //Guardian shield - Reflect
                           {
+                              targetId = PlayerControl.LocalPlayer.PlayerId;
                               if (Impostor1.TargetBaitArea)
                               {
+                                  float posX = 0f;
+                                  float posY = 0f;
+                                  posX = Helpers.playerById(targetId).transform.position.x;
+                                  posY = Helpers.playerById(targetId).transform.position.y;
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  writer.Write(posX);
+                                  writer.Write(posY);
                                   AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                  RPCProcedure.baitBaliseEnable();
+                                  RPCProcedure.baitBaliseEnable(posX, posY);
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
@@ -6155,9 +6533,15 @@ namespace ChallengerMod.CustomButton
                               Impostor1.currentTarget = null;
                               if (Impostor1.TargetBaitArea)
                               {
+                                  float posX = 0f;
+                                  float posY = 0f;
+                                  posX = Helpers.playerById(targetId).transform.position.x;
+                                  posY = Helpers.playerById(targetId).transform.position.y;
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  writer.Write(posX);
+                                  writer.Write(posY);
                                   AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                  RPCProcedure.baitBaliseEnable();
+                                  RPCProcedure.baitBaliseEnable(posX, posY);
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
@@ -6221,11 +6605,18 @@ namespace ChallengerMod.CustomButton
                           }
                           else //Guardian shield - Reflect
                           {
+                              targetId = PlayerControl.LocalPlayer.PlayerId;
                               if (Impostor2.TargetBaitArea)
                               {
+                                  float posX = 0f;
+                                  float posY = 0f;
+                                  posX = Helpers.playerById(targetId).transform.position.x;
+                                  posY = Helpers.playerById(targetId).transform.position.y;
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  writer.Write(posX);
+                                  writer.Write(posY);
                                   AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                  RPCProcedure.baitBaliseEnable();
+                                  RPCProcedure.baitBaliseEnable(posX, posY);
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
@@ -6289,9 +6680,15 @@ namespace ChallengerMod.CustomButton
                               Impostor2.currentTarget = null;
                               if (Impostor2.TargetBaitArea)
                               {
+                                  float posX = 0f;
+                                  float posY = 0f;
+                                  posX = Helpers.playerById(targetId).transform.position.x;
+                                  posY = Helpers.playerById(targetId).transform.position.y;
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  writer.Write(posX);
+                                  writer.Write(posY);
                                   AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                  RPCProcedure.baitBaliseEnable();
+                                  RPCProcedure.baitBaliseEnable(posX, posY);
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
@@ -6358,11 +6755,18 @@ namespace ChallengerMod.CustomButton
                           }
                           else //Guardian shield - Reflect
                           {
+                              targetId = PlayerControl.LocalPlayer.PlayerId;
                               if (Impostor3.TargetBaitArea)
                               {
+                                  float posX = 0f;
+                                  float posY = 0f;
+                                  posX = Helpers.playerById(targetId).transform.position.x;
+                                  posY = Helpers.playerById(targetId).transform.position.y;
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  writer.Write(posX);
+                                  writer.Write(posY);
                                   AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                  RPCProcedure.baitBaliseEnable();
+                                  RPCProcedure.baitBaliseEnable(posX, posY);
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
@@ -6426,9 +6830,15 @@ namespace ChallengerMod.CustomButton
                               Impostor3.currentTarget = null;
                               if (Impostor3.TargetBaitArea)
                               {
+                                  float posX = 0f;
+                                  float posY = 0f;
+                                  posX = Helpers.playerById(targetId).transform.position.x;
+                                  posY = Helpers.playerById(targetId).transform.position.y;
                                   MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                  writer.Write(posX);
+                                  writer.Write(posY);
                                   AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                  RPCProcedure.baitBaliseEnable();
+                                  RPCProcedure.baitBaliseEnable(posX, posY);
                                   Bait.BaliseEnable = true;
                                   ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                               }
@@ -6496,11 +6906,18 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
                              if (Morphling.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6564,9 +6981,15 @@ namespace ChallengerMod.CustomButton
                              Morphling.currentTarget = null;
                              if (Morphling.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6630,11 +7053,18 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
                              if (Scrambler.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6699,9 +7129,15 @@ namespace ChallengerMod.CustomButton
                              Scrambler.currentTarget = null;
                              if (Scrambler.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6765,11 +7201,18 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
                              if (Barghest.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6835,9 +7278,15 @@ namespace ChallengerMod.CustomButton
 
                              if (Barghest.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6902,11 +7351,18 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
                              if (Ghost.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -6970,9 +7426,15 @@ namespace ChallengerMod.CustomButton
                              Ghost.currentTarget = null;
                              if (Ghost.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -7036,11 +7498,18 @@ namespace ChallengerMod.CustomButton
                          }
                          else //Guardian shield - Reflect
                          {
+                             targetId = PlayerControl.LocalPlayer.PlayerId;
                              if (Sorcerer.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -7104,9 +7573,15 @@ namespace ChallengerMod.CustomButton
                              Sorcerer.currentTarget = null;
                              if (Sorcerer.TargetBaitArea)
                              {
+                                 float posX = 0f;
+                                 float posY = 0f;
+                                 posX = Helpers.playerById(targetId).transform.position.x;
+                                 posY = Helpers.playerById(targetId).transform.position.y;
                                  MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                 writer.Write(posX);
+                                 writer.Write(posY);
                                  AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                 RPCProcedure.baitBaliseEnable();
+                                 RPCProcedure.baitBaliseEnable(posX, posY);
                                  Bait.BaliseEnable = true;
                                  ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                              }
@@ -7171,11 +7646,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Guesser.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -7238,9 +7720,15 @@ namespace ChallengerMod.CustomButton
                             Guesser.currentTarget = null;
                             if (Guesser.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -7304,11 +7792,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (Basilisk.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -7371,9 +7866,15 @@ namespace ChallengerMod.CustomButton
                             Basilisk.currentTarget = null;
                             if (Basilisk.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -7438,11 +7939,18 @@ namespace ChallengerMod.CustomButton
                         }
                         else //Guardian shield - Reflect
                         {
+                            targetId = PlayerControl.LocalPlayer.PlayerId;
                             if (CopyCat.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }
@@ -7506,9 +8014,15 @@ namespace ChallengerMod.CustomButton
                             
                             if (CopyCat.TargetBaitArea)
                             {
+                                float posX = 0f;
+                                float posY = 0f;
+                                posX = Helpers.playerById(targetId).transform.position.x;
+                                posY = Helpers.playerById(targetId).transform.position.y;
                                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BaitBaliseEnable, Hazel.SendOption.Reliable, -1);
+                                writer.Write(posX);
+                                writer.Write(posY);
                                 AmongUsClient.Instance.FinishRpcImmediately(writer);
-                                RPCProcedure.baitBaliseEnable();
+                                RPCProcedure.baitBaliseEnable(posX, posY);
                                 Bait.BaliseEnable = true;
                                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
                             }

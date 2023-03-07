@@ -46,15 +46,15 @@ namespace ChallengerMod
             public static Color BaitColor = new Color(128f / 255f, 128f / 255f, 128f / 255f, 1);//808080
             public static Color MentalistColor = new Color(169f / 255f, 145f / 255f, 255f / 255f, 1);//A991FF
             public static Color BuilderColor = new Color(255 / 255f, 194f / 255f, 145f / 255f, 1);//FFC291
-            public static Color DictatorColor = new Color(255f / 255f, 77f / 255f, 53f / 255f, 1);//FF4D35
+            public static Color DictatorColor = new Color(192f / 255f, 106f / 255f, 106f / 255f, 1);//C06A6A
             public static Color SentinelColor = new Color(6f / 255f, 173f / 255f, 23f / 255f, 1);//06AD17
             public static Color TeammateColor = new Color(180f / 255f, 251f / 255f, 251f / 255f, 1);//B4FAFA
             public static Color LawkeeperColor = new Color(255 / 255f, 155f / 255f, 155f / 255f, 1);//FF9B9B
             public static Color FakeColor = new Color(255f / 255f, 150f / 255f, 150f / 255f, 1);//FF7A7A
             
             
-            public static Color LeaderColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);//5A7DA5
-            public static Color AngelColor = new Color(25f / 255f, 255f / 255f, 186f / 255f, 1);//19FFBA
+            public static Color AngelColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);//FFFFFF
+            public static Color LeaderColor = new Color(25f / 255f, 255f / 255f, 186f / 255f, 1);//19FFBA
             public static Color DoctorColor = new Color(25f / 255f, 255f / 255f, 186f / 255f, 1);//19FFBA
             public static Color TravelerColor = new Color(175f / 255f, 100f / 255f, 175f / 255f, 1);//AF64AF
 

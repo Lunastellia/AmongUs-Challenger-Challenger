@@ -16,6 +16,8 @@ using Reactor.Extensions;
 using Rewired;
 using System.Linq;
 using ChallengerMod.Rnd;
+using ChallengerOS;
+using static ChallengerOS.Arrow;
 
 namespace Challenger
 {
@@ -29,12 +31,40 @@ namespace Challenger
 
         public static void Postfix(MeetingHud __instance)
         {
+            if (ChallengerMod.Challenger.localArrows.Count() >= 1) 
+            { 
+                foreach (Arrow A in ChallengerMod.Challenger.localArrows)
+                {
+                   UnityEngine.Object.Destroy(A.arrow);
+                }
+                ChallengerMod.Challenger.localArrows = new List<Arrow>(); 
+            }
+            if (ChallengerMod.Challenger.DroneController != null) { ChallengerMod.Challenger.DroneController = null; }
 
             if (Basilisk.Role != null && Basilisk.Petrified != null && !Basilisk.Role.Data.IsDead && PlayerControl.LocalPlayer == Basilisk.Petrified)
             {
                 ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0 / 255f, 0 / 255f), 4f);
             }
             else { }
+
+            if (Cultist.Role != null)
+            {
+                foreach (PlayerControl Player in PlayerControl.AllPlayerControls)
+                {
+                    if (Player.Data.IsDead)
+                    {
+                        if (CultePlayers.Contains(Player)) { CultePlayers.Remove(Player); }
+                    }
+                    else
+                    {
+                        if (Cultist.Role != null && Player == Cultist.Role && !CultePlayers.Contains(Player)) { CultePlayers.Add(Player); }
+                        if (Cultist.Culte1 != null && Player == Cultist.Culte1 && !CultePlayers.Contains(Player)) { CultePlayers.Add(Player); }
+                        if (Cultist.Culte2 != null && Player == Cultist.Culte2 && !CultePlayers.Contains(Player)) { CultePlayers.Add(Player); }
+                        if (Cultist.Culte3 != null && Player == Cultist.Culte3 && !CultePlayers.Contains(Player)) { CultePlayers.Add(Player); }
+                    }
+                }
+            }
+                        
 
             if (Leader.Role != null && Leader.Target != null && Leader.Target2 == null && (Leader.Role.Data.IsDead || LeaderTaskEnd.getBool() == true && Leader.TaskEND == true) && PlayerControl.LocalPlayer == Leader.Role && !Leader.Used2)
             {
@@ -608,29 +638,43 @@ namespace Challenger
 
             if (Dictator.Role != null)
             {
-                if (DictatorMeeting.getSelection() == 0) // passif
+                if (DictatorAbility.getSelection() != 1)
+                {
+                    if (DictatorMeeting.getSelection() == 0) // passif
+                    {
+                        Dictator.NoSkipButton = false;
+                        Dictator.NoSkipUsed = true;
+                        Dictator.HMActive = true;
+                        CopyCat.HMActive = true;
+                    }
+                    if (DictatorMeeting.getSelection() == 1) // round
+                    {
+                        Dictator.NoSkipButton = true;
+                        Dictator.NoSkipUsed = false;
+                        Dictator.HMActive = false;
+                        CopyCat.HMActive = false;
+
+
+                    }
+                    if (DictatorMeeting.getSelection() == 2) // Single
+                    {
+                        Dictator.NoSkipButton = true;
+                        Dictator.HMActive = false;
+                        CopyCat.HMActive = false;
+
+                    }
+                }
+                else
                 {
                     Dictator.NoSkipButton = false;
                     Dictator.NoSkipUsed = true;
-                    Dictator.HMActive = true;
-                    CopyCat.HMActive = true;
-                }
-                if (DictatorMeeting.getSelection() == 1) // round
-                {
-                    Dictator.NoSkipButton = true;
-                    Dictator.NoSkipUsed = false;
                     Dictator.HMActive = false;
                     CopyCat.HMActive = false;
-                   
-
                 }
-                if (DictatorMeeting.getSelection() == 2) // Single
-                {
-                    Dictator.NoSkipButton = true;
-                    Dictator.HMActive = false;
-                    CopyCat.HMActive = false;
-
-                }
+            }
+            if (Dictator.VotedFor != null)
+            {
+                Dictator.VotedFor = null;
             }
 
             if (Sheriff1.Role != null && SherifKillSettings.getSelection() != 2)
@@ -745,9 +789,17 @@ namespace Challenger
     {
         public static void Postfix(PlayerVoteArea __instance, [HarmonyArgument(0)] GameData.PlayerInfo playerInfo)
         {
-            
+            if (ChallengerMod.HarmonyMain.ServerID == "0"|| ChallengerMod.HarmonyMain.ServerID == "1" || ChallengerMod.HarmonyMain.ServerID == "2")
+            {
+                __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().enabled = true;
+                __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().gameObject.SetActive(true);
+            }
+            else
+            {
                 __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().enabled = false;
                 __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().gameObject.SetActive(false);
+            }
+                
             
         }
     }
@@ -757,10 +809,17 @@ namespace Challenger
     {
         public static void Postfix(PlayerVoteArea __instance, [HarmonyArgument(0)] string plateId)
         {
-            
+
+            if (ChallengerMod.HarmonyMain.ServerID == "0" || ChallengerMod.HarmonyMain.ServerID == "1" || ChallengerMod.HarmonyMain.ServerID == "2")
+            {
+                __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().enabled = true;
+                __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().gameObject.SetActive(true);
+            }
+            else
+            {
                 __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().enabled = false;
                 __instance.LevelNumberText.GetComponentInParent<SpriteRenderer>().gameObject.SetActive(false);
-            
+            }
         }
     }
 

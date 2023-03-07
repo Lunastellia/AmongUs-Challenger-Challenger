@@ -151,7 +151,7 @@ namespace ChallengerMod
                     if (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
                     {
                         __instance.text.text +=
-                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF7A7A>(Dictateur " + DictatorSpawnChance.getFloat() + "%)</color></size>";
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#C06A6A>(Dictateur " + DictatorSpawnChance.getFloat() + "%)</color></size>";
                     }
                     if (SentinelSpawnChance.getFloat() > 0 && SentinelAdd.getBool() == true)
                     {
@@ -456,7 +456,7 @@ namespace ChallengerMod
                     if (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
                     {
                         __instance.text.text +=
-                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF7A7A>(Dictator " + DictatorSpawnChance.getFloat() + "%)</color></size>";
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#C06A6A>(Dictator " + DictatorSpawnChance.getFloat() + "%)</color></size>";
                     }
                     if (SentinelSpawnChance.getFloat() > 0 && SentinelAdd.getBool() == true)
                     {
@@ -629,6 +629,7 @@ namespace ChallengerMod
                         __instance.text.text +=
                               "<size=1>\n                                                                                                                                                                                                       " + "<color=#680037>(Mesmer " + MesmerSpawnChance.getFloat() + "%)</color></size>";
                     }*/
+                   // __instance.text.text += "\n-" + Challenger.debugg + ".";
                 }
             }
 

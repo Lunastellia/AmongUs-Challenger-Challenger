@@ -335,7 +335,7 @@ namespace ChallengerMod.Set
         public static string R_BaitColor = "<color=#808080>";
         public static string R_MentalistColor = "<color=#A991FF>";
         public static string R_BuilderColor = "<color=#FFC291>";
-        public static string R_DictatorColor = "<color=#FF7A7A>";
+        public static string R_DictatorColor = "<color=#C06A6A>";
         public static string R_SentinelColor = "<color=#06AD17>";
         public static string R_LawkeeperColor = "<color=#FF9B9B>";
         public static string R_FakeColor = "<color=#FF7A7A>";
@@ -1381,16 +1381,16 @@ namespace ChallengerMod.Set
         public static string Task_Role_Lawkeeper = "<color=#87f7f7>Report a deadbody to get info on the killer.</color>";
 
         public static string Task_FakeFR = "<color=#87f7f7>Les imposteurs pensent que tu es l'un des leurs.</color>";
-        public static string Task_FakeEN = "<color=#87f7f7>Impostors think you're one of them.</color>";
-        public static string Task_Role_Fake = "<color=#87f7f7>Impostors think you're one of them.</color>";
+        public static string Task_FakeEN = "<color=#87f7f7>The Impostors think you're one of them.</color>";
+        public static string Task_Role_Fake = "<color=#87f7f7>The Impostors think you're one of them.</color>";
 
         public static string Task_TravelerFR = "<color=#87f7f7>Utilise ta capacité pour te téléporter.</color>";
         public static string Task_TravelerEN = "<color=#87f7f7>Use your ability to jump into space.</color>";
         public static string Task_Role_Traveler = "<color=#87f7f7>Use your ability to jump into space.</color>";
 
-        public static string Task_LeaderFR = "<color=#87f7f7>Surveille les déplacements des autres joueurs !</color>";
-        public static string Task_LeaderEN = "<color=#87f7f7>Monitor the movements of other players !</color>";
-        public static string Task_Role_Leader = "<color=#87f7f7>Monitor the movements of other players !</color>";
+        public static string Task_LeaderFR = "<color=#87f7f7>Aide ton équipe à débusquer les méchants.</color>";
+        public static string Task_LeaderEN = "<color=#87f7f7>Help your team to find out the bad guys.</color>";
+        public static string Task_Role_Leader = "<color=#87f7f7>Help your team to find out the bad guys.</color>";
 
         public static string Task_DoctorFR = "<color=#87f7f7>Controle l'état de santé de tes patients.</color>";
         public static string Task_DoctorEN = "<color=#87f7f7>Check the health status of your patients.</color>";
@@ -1474,8 +1474,8 @@ namespace ChallengerMod.Set
         public static string Task_Role_Scrambler = "<color=#FFBABA>Confuse others by making everyone anonymous</color>.";
 
         public static string Task_BarghestFR = "<color=#FFBABA>Crée des Vents & Réduit la vision des autres joueurs.</color>";
-        public static string Task_BarghestEN = "<color=#FFBABA>Create Vents & redure other players' vision.</color>";
-        public static string Task_Role_Barghest = "<color=#FFBABA>Create Vents & redure other players' vision.</color>";
+        public static string Task_BarghestEN = "<color=#FFBABA>Create Vents & reduce other players' vision.</color>";
+        public static string Task_Role_Barghest = "<color=#FFBABA>Create Vents & reduce other players' vision.</color>";
 
         public static string Task_GhostFR = "<color=#FFBABA>Deviens temporairement invisible</color>.";
         public static string Task_GhostEN = "<color=#FFBABA>Become temporarily invisible.</color>";
@@ -3455,7 +3455,7 @@ namespace ChallengerMod.Set
                             if (BaitBalise.getFloat() != 0)
                             {
                                 Bait += " Warn Area : <color=#ff00ff>x" + BaitBalise.getFloat() + "</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
-                                BaitFR += " Zone d'alerte : <color=#ff00ff>x\" + BaitBalise.getFloat() + \"</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
+                                BaitFR += " Zone d'alerte : <color=#ff00ff>x" + BaitBalise.getFloat() + "</color>, Cooldown : <color=#00ffff>" + BaitBaliseTime.getFloat() + "s</color>,";
                             }
                             else
                             {
@@ -3621,58 +3621,78 @@ namespace ChallengerMod.Set
                             }
                         }
                         //Dictator
-                        string Dictator = "<size=0.75><color=#FF7A7A>\n> Dictator : </color>";
-                        string DictatorFR = "<size=0.75><color=#FF7A7A>\n> Dictateur : </color>";
+                        string Dictator = "<size=0.75><color=#C06A6A>\n> Dictator : </color>";
+                        string DictatorFR = "<size=0.75><color=#C06A6A>\n> Dictateur : </color>";
 
 
                         if (DictatorSpawnChance.getFloat() > 0)
 
                         {
 
-                            if (DictatorFirstTurn.getBool() == false)
+                            if (DictatorAbility.getSelection() == 1)
                             {
+                                Dictator += "Can Use NoskipVote : <color=#ff0000>No</color>,";
+                                DictatorFR += "Capacité Votez! disponible : <color=#ff0000>Non</color>,";
+                            }
+                            else
+                            {
+                                Dictator += "Can Use NoskipVote : <color=#00ff00>Yes</color>,";
+                                DictatorFR += "Capacité Votez! disponible : <color=#00ff00>Oui</color>,";
+
+                                if (DictatorFirstTurn.getBool() == false)
+                                {
+                                    Dictator += " From the first round : <color=#00ff00>Yes</color>,";
+                                    DictatorFR += " Dés le premier tour : <color=#00ff00>Oui</color>,";
+                                }
+                                else
+                                {
+                                    Dictator += " From the first round : <color=#ff0000>No</color>,";
+                                    DictatorFR += " Dés le premier tour : <color=#ff0000>Non</color>,";
+                                }
+                                
                                 if (DictatorMeeting.getSelection() == 0)
                                 {
-                                    Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Passive</color> - As long as the dictator is alive the ability is activated.";
-                                    DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Passif</color> - Tant que le dictateur est en vie.";
+                                    Dictator += "Mode : <color=#FF00FF>Passive</color> (As long as the dictator is alive).";
+                                    DictatorFR += "Mode : <color=#FF00FF>Passif</color> (Tant que le dictateur est en vie).";
 
                                 }
                                 if (DictatorMeeting.getSelection() == 1)
                                 {
-                                    Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Round</color> - The dictator chooses when he wants to use his Ability.";
-                                    DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Selection</color> - Le dictateur choisie quand il active sont pouvoir.";
+                                    Dictator += "Mode : <color=#FF00FF>Round</color> (The dictator chooses when he wants to use his Ability).";
+                                    DictatorFR += "Mode : <color=#FF00FF>Selection</color> (Le dictateur choisie quand il active la capacité).";
 
                                 }
                                 if (DictatorMeeting.getSelection() == 2)
                                 {
-                                    Dictator += "Can Use Ability at First Round : <color=#00ff00>Yes</color>, Ability Setting : <color=#FF00FF>Single</color> - The dictator chooses when he wants to use his Ability, Only one use per Game.";
-                                    DictatorFR += "Capacité disponible au premier Tour : <color=#00ff00>Oui</color>, Paramètre de la compétence : <color=#FF00FF>Usage Unique</color> - Le dictateur choisie quand il active sont pouvoir.";
+                                    Dictator += "Mode : <color=#FF00FF>Single</color> (Only one use per Game).";
+                                    DictatorFR += "Mode : <color=#FF00FF>Usage Unique</color> (Utilisation 1x par partie).";
 
                                 }
-
                             }
-                            if (DictatorFirstTurn.getBool() == true)
+
+                            if (DictatorAbility.getSelection() == 0)
                             {
-                                if (DictatorMeeting.getSelection() == 0)
-                                {
-                                    Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Passive</color> - As long as the dictator is alive the ability is activated.";
-                                    DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Passif</color> - Tant que le dictateur est en vie.";
-
-                                }
-                                if (DictatorMeeting.getSelection() == 1)
-                                {
-                                    Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Round</color> - The dictator chooses when he wants to use his Ability.";
-                                    DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Selection</color> - Le dictateur choisie quand il active sont pouvoir.";
-
-                                }
-                                if (DictatorMeeting.getSelection() == 2)
-                                {
-                                    Dictator += "Can Use Ability at First Round : <color=#FF0000>No</color>, Ability Setting : <color=#FF00FF>Single</color> - The dictator chooses when he wants to use his Ability, Only one use per Game.";
-                                    DictatorFR += "Capacité disponible au premier Tour : <color=#FF0000>Non</color>, Paramètre de la compétence : <color=#FF00FF>Usage Unique</color> - Le dictateur choisie quand il active sont pouvoir..";
-
-                                }
-
+                                Dictator += "\nCan Use ForcedVote : <color=#ff0000>No</color>,";
+                                DictatorFR += "\nCapacité Force-Vote disponible : <color=#ff0000>Non</color>,";
                             }
+                            else
+                            {
+                                Dictator += "\nCan Use ForcedVote : <color=#00ff00>Yes</color>,";
+                                DictatorFR += "\nCapacité Force-Vote disponible : <color=#00ff00>Oui</color>,";
+
+                                if (DictatorForcedVote.getBool() == true)
+                                {
+                                    Dictator += "Dictator targets himself if an innocent is selected : <color=#00ff00>Yes</color>.";
+                                    DictatorFR += "Le Dictateur se cible lui même si un innocent est selectionner  : <color=#00ff00>Oui</color>.";
+                                }
+                                else
+                                {
+                                    Dictator += "Dictator targets himself if an innocent is selected : <color=#ff0000>No</color>.";
+                                    DictatorFR += "Le Dictateur se cible lui même si un innocent est selectionner  : <color=#ff0000>Non</color>.";
+                                }
+                                
+                            }
+
 
                         }
                         if (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
@@ -4606,9 +4626,9 @@ namespace ChallengerMod.Set
                             }
                             if (BDictator.getBool() == true && DictatorAdd.getBool() == true && (DictatorSpawnChance.getFloat() > 0))
                             {
-                                Assassin += "<color=#FF7A7A>\n--- Dictator</color> (Passif : Can see the colors of the votes)";
+                                Assassin += "<color=#C06A6A>\n--- Dictator</color> (Passif : Can see the colors of the votes)";
 
-                                AssassinFR += "<color=#FF7A7A>\n--- Dictateur</color> (Passif : peut voir les couleurs des votes)";
+                                AssassinFR += "<color=#C06A6A>\n--- Dictateur</color> (Passif : peut voir les couleurs des votes)";
                             }
                             if (BSentinel.getBool() == true && SentinelAdd.getBool() == true && (SentinelSpawnChance.getFloat() > 0))
                             {
