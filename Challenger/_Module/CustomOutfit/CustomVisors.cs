@@ -8,51 +8,11 @@ namespace ChallengerMod.Cosmetics
 {
     class CustomVisors
     {
-        private static bool _VStellia = false;
+        public static Material MagicShader;
 
 
-        private static bool _Gun = false;
-        private static bool _Knife = false;
-        private static bool _Katana = false;
-        private static bool _Vampire_Tooth = false;
-        private static bool _Spiral = false;
-        private static bool _Chain = false;
-        private static bool _Coffee = false;
-
-        private static bool _Cred = false;
-        private static bool _Cpurple = false;
-        private static bool _Cpink = false;
-        private static bool _Cblue = false;
-        private static bool _Cgreen = false;
-        private static bool _Cleef = false;
-        private static bool _Cyellow = false;
-
-        //DLC EATER
-        private static bool _Bloody = false;
-        private static bool _Scythe = false;
-
-        //DLC CUPID
-        private static bool _Inlove = false;
-        private static bool _Baloon = false;
-        private static bool _Dual = false;
-
-        //DLC CULTE
-        private static bool _Book = false;
-
-        private static bool _H1 = false;
-        private static bool _H2 = false;
-        private static bool _H3 = false;
-        private static bool _H4 = false;
-        private static bool _H5 = false;
-
-        private static bool _SW1 = false;
-        private static bool _SW2 = false;
-        private static bool _SW3 = false;
-        private static bool _SW4 = false;
-        private static bool _SW5 = false;
-
-        private static bool _CV1 = false;
-
+        private static bool CreateVisors = false;
+        
 
 
 
@@ -65,226 +25,66 @@ namespace ChallengerMod.Cosmetics
                 var allVisors = __instance.allVisors;
 
 
-                if (!_VStellia)
+                if (!CreateVisors)
                 {
-                    VisorID = 100;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_CC00, "Lunastellia - [For Stellia]", "Lunastellia", "CC-00", null, false));
-                    _VStellia = true;
-                }
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_CC00, "Lunastellia - [For Stellia]", "Lunastellia", "CC-00", 1000, null, false, false));
 
-                //ACHIEVEMENT
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cred, "Visor Red", "Lunastellia", "AC-FREE", 1300, null, false, true));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cpink, "Visor Pink", "Lunastellia", "AC-FREE", 1301, null, false, true));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cblue, "Visor Blue", "Lunastellia", "AC-FREE", 1302, null, false, true));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cgreen, "Visor Green", "Lunastellia", "AC-FREE", 1303, null, false, true));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cleef, "Visor Leef", "Lunastellia", "AC-FREE", 1304, null, false, true));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cyellow, "Visor Yellow", "Lunastellia", "AC-FREE", 1305, null, false, true));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Fish, "Fish", "Asman", "AC-FREE", 1306, null, false, true));
 
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Spiral_1, "[Reward] VisorColored", "Lunastellia", "AC-MENTALIST", 2001, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Gun, "[Reward] Gun", "Lunastellia", "AC-SHERIFF", 2002, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Knife, "[Reward] Knife", "Lunastellia", "AC-OUTLAW", 2003, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Katana, "[Reward] Katana", "Lunastellia", "AC-MERCENARY", 2004, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_GSword, "[Reward] GreatSword", "Lunastellia", "AC-SURVIVOR", 2005, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Axe, "[Reward] Axe", "Lunastellia", "AC-BAIT", 2006, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Mace, "[Reward] Mace", "Lunastellia", "AC-SCRAMBLER", 2007, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Staff, "[Reward] Staff", "Lunastellia", "AC-SORCERER", 2008, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_VampireTooth, "[Reward] VampireTooth", "Lunastellia", "AC-VECTOR", 2009, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Coffee, "[Reward] Coffee", "Lunastellia", "AC-GUESSER", 2010, null, false, false));
 
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Bloody, "[DLC] Blood", "Lunastellia", "SH-EAT", 3101, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Scythe, "[DLC] Scythe", "Lunastellia", "SH-EAT", 3102, null, false, false));
 
-                if (!_Cred)
-                {
-                    VisorID = 193;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cred, "[Reward] Visor Red", "Lunastellia", "AC-V4", null, false));
-                    _Cred = true;
-                }
-                if (!_Cpink)
-                {
-                    VisorID = 194;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cpink, "[Reward] Visor Pink", "Lunastellia", "AC-V5", null, false));
-                    _Cpink = true;
-                }
-                if (!_Cpurple)
-                {
-                    VisorID = 195;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cpurple, "[Reward] Visor Purple", "Lunastellia", "AC-V7", null, false));
-                    _Cpurple = true;
-                }
-                if (!_Cblue)
-                {
-                    VisorID = 196;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cblue, "[Reward] Visor Blue", "Lunastellia", "AC-V4", null, false));
-                    _Cblue = true;
-                }
-                if (!_Cgreen)
-                {
-                    VisorID = 197;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cgreen, "[Reward] Visor Green", "Lunastellia", "AC-V5", null, false));
-                    _Cgreen = true;
-                }
-                if (!_Cleef)
-                {
-                    VisorID = 198;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cleef, "[Reward] Visor Leef", "Lunastellia", "AC-V7", null, false));
-                    _Cleef = true;
-                }
-                if (!_Cyellow)
-                {
-                    VisorID = 199;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Cyellow, "[Reward] Visor Yellow", "Lunastellia", "AC-V10", null, false));
-                    _Cyellow = true;
-                }
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Baloon, "[DLC] Baloon", "Lunastellia", "SH-CUP", 3201, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Love, "[DLC] In Love", "Lunastellia", "SH-CUP", 3202, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_LV2, "[DLC] You and Me", "Lunastellia", "SH-CUP", 3203, ChallengerMod.Unity._Visor_LV1, false ,false));
 
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_DBook, "[DLC] Dark Book", "Lunastellia", "SH-CLT", 3301, null, false, false));
 
-                if (!_Gun)
-                {
-                    VisorID = 201;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Gun, "[Reward] Gun", "Lunastellia", "AC-V1", null, false));
-                    _Gun = true;
-                }
-                if (!_Knife)
-                {
-                    VisorID = 202;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Knife, "[Reward] Knife", "Lunastellia", "AC-V2", null, false));
-                    _Knife = true;
-                }
-                if (!_Katana)
-                {
-                    VisorID = 203;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Katana, "[Reward] Katana", "Lunastellia", "AC-V3", null, false));
-                    _Katana = true;
-                }
-                if (!_Vampire_Tooth)
-                {
-                    VisorID = 206;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_VampireTooth, "[Reward] VampireTooth", "Lunastellia", "AC-V6", null, false));
-                    _Vampire_Tooth = true;
-                }
-                if (!_Spiral)
-                {
-                    VisorID = 208;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Spiral_1, "[Reward] Strange", "Lunastellia", "AC-V8", null, false));
-                    _Spiral = true;
-                }
-                if (!_Chain)
-                {
-                    VisorID = 209;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Fish, "[Reward] Fish", "Asman", "AC-V9", null, false));
-                    _Chain = true;
-                }
-                
-                if (!_Coffee)
-                {
-                    VisorID = 210;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Coffee, "[Reward] Coffee", "Lunastellia", "AC-V11", null, false));
-                    _Coffee = true;
-                }
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_H1, "[PRIME] L.L", "Asman", "PRIME", 4101, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_H2, "[PRIME] S.T", "Asman", "PRIME", 4102, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB1, "[PRIME] Magic Wand 1", "Lunastellia", "PRIME", 4103, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB2, "[PRIME] Magic Wand 2", "Lunastellia", "PRIME", 4104, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB3, "[PRIME] Magic Wand 3", "Lunastellia", "PRIME", 4105, null, false, false));
 
-                //DLS Eater
-                if (!_Bloody)
-                {
-                    VisorID = 501;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Bloody, "[DLC] Blood", "Lunastellia", "SH-EAT", null, false));
-                    _Bloody = true;
-                }
-                if (!_Scythe)
-                {
-                    VisorID = 502;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Scythe, "[DLC] Scythe", "Lunastellia", "SH-EAT", null, false));
-                    _Scythe = true;
-                }
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber1, "[PRIME] Blue LightSaber", "Lunastellia", "PRIME", 4301, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber2, "[PRIME] Green LightSaber", "Lunastellia", "PRIME", 4302, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber3, "[PRIME] Purple LightSaber", "Lunastellia", "PRIME", 4303, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber4, "[PRIME] Gold LightSaber", "Lunastellia", "PRIME", 4304, null, false, false));
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber5, "[PRIME] Red LightSaber", "Lunastellia", "PRIME", 4305, null, false, false));
 
-                //DLC CUPID
-                if (!_Baloon)
-                {
-                    VisorID = 503;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Baloon, "[DLC] Baloon", "Lunastellia", "SH-CUP", null, false));
-                    _Baloon = true;
-                }
-                if (!_Inlove)
-                {
-                    VisorID = 504;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_Love, "[DLC] In Love", "Lunastellia", "SH-CUP", null, false));
-                    _Inlove = true;
-                }
-                if (!_Dual)
-                {
-                    VisorID = 505;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_LV2, "[DLC] You and Me", "Lunastellia", "SH-CUP", ChallengerMod.Unity._Visor_LV1, false));
-                    _Dual = true;
-                }
+                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_C3D, "[PRIME] 3D", "Lunastellia", "PRIME", 4401, null, false, false));
 
-                //DLC CULTE
-                if (!_Book)
-                {
-                    VisorID = 506;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_DBook, "[DLC] Dark Book", "Lunastellia", "SH-CLT", null, false));
-                    _Book = true;
+                    CreateVisors = true;
                 }
-
-
-                //PRIME
-                if (!_H1)
-                {
-                    VisorID = 701;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_H1, "[PRIME] L.L", "Asman", "PRIME", null, false));
-                    _H1 = true;
-                }
-                if (!_H2)
-                {
-                    VisorID = 702;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_H2, "[PRIME] S.T", "Asman", "PRIME", null, false));
-                    _H2 = true;
-                }
-                if (!_H3)
-                {
-                    VisorID = 703;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB1, "[PRIME] Magic Wand 1", "Lunastellia", "PRIME", null, false));
-                    _H3 = true;
-                }
-                if (!_H4)
-                {
-                    VisorID = 704;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB2, "[PRIME] Magic Wand 2", "Lunastellia", "PRIME", null, false));
-                    _H4 = true;
-                }
-                if (!_H5)
-                {
-                    VisorID = 705;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_HB3, "[PRIME] Magic Wand 3", "Lunastellia", "PRIME", null, false));
-                    _H5 = true;
-                }
-
-                if (!_SW1)
-                {
-                    VisorID = 706;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber1, "[PRIME] Blue LightSaber", "Lunastellia", "PRIME", null, false));
-                    _SW1 = true;
-                }
-                if (!_SW2)
-                {
-                    VisorID = 707;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber2, "[PRIME] Green LightSaber", "Lunastellia", "PRIME", null, false));
-                    _SW2 = true;
-                }
-                if (!_SW3)
-                {
-                    VisorID = 708;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber3, "[PRIME] Purple LightSaber", "Lunastellia", "PRIME", null, false));
-                    _SW3 = true;
-                }
-                if (!_SW4)
-                {
-                    VisorID = 709;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber4, "[PRIME] Gold LightSaber", "Lunastellia", "PRIME", null, false));
-                    _SW4 = true;
-                }
-                if (!_SW5)
-                {
-                    VisorID = 710;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_SWSaber5, "[PRIME] Red LightSaber", "Lunastellia", "PRIME", null, false));
-                    _SW5 = true;
-                }
-
-                if (!_CV1)
-                {
-                    VisorID = 711;
-                    allVisors.Add(CreateVisor(ChallengerMod.Unity._Visor_C3D, "[PRIME] 3D", "Lunastellia", "PRIME", null , false));
-                    _CV1 = true;
-                }
-
             }
             
 
-
-            public static int VisorID = 0;
             
-            private static VisorData CreateVisor(Sprite sprite, string spritename, string author, string PID, Sprite leftIdleFrame = null, bool isFree = false)
+            private static VisorData CreateVisor(Sprite sprite, string spritename, string author, string PID,int VisorID, Sprite leftIdleFrame = null, bool altshader = false, bool isFree = false )
             {
+                if (MagicShader == null)
+                {
+                    Material hatShader = new Material("PlayerMaterial");
+                    hatShader.shader = Shader.Find("Unlit/PlayerShader");
+                    MagicShader = hatShader;
+                }
 
                 VisorData newVisor = ScriptableObject.CreateInstance<VisorData>();
                 newVisor.viewData.viewData = ScriptableObject.CreateInstance<VisorViewData>();
@@ -293,12 +93,17 @@ namespace ChallengerMod.Cosmetics
                 newVisor.ProductId = "visor_" + sprite.name.Replace(' ', '_');
                 newVisor.BundleId = PID;
                 newVisor.viewData.viewData.LeftIdleFrame = leftIdleFrame;
-                newVisor.displayOrder = 1000 + VisorID;
+                newVisor.displayOrder = VisorID;
                 newVisor.ChipOffset = new Vector2(0f, 0.2f);
                 newVisor.freeRedeemableCosmetic = false;
                 newVisor.Free = isFree;
 
-                return newVisor;
+                if (altshader == true)
+                {
+                    //newVisor.viewData.viewData.AltShader = MagicShader;
+                }
+
+                    return newVisor;
             }
            
 

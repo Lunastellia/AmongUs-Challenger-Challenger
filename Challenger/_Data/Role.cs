@@ -11,6 +11,12 @@ namespace ChallengerMod
 
 
         //ROLES_CREWMATES_VANILLA
+        public static class SuperCrew
+        {
+            public static PlayerControl Role { get; set; }
+            public static string NewRole = "Wait";
+
+        }
         public static class Crewmate1
         {
             public static PlayerControl Role { get; set; }
@@ -472,6 +478,7 @@ namespace ChallengerMod
         {
             public static PlayerControl Role { get; set; }
             public static PlayerControl currentTarget;
+            public static bool CanVent = false;
             public static bool SuicideShield = false;
             public static bool canKill = false;
             public static bool Win = false;
@@ -485,6 +492,7 @@ namespace ChallengerMod
             public static bool FakeUsed = false;
             public static bool CanFake = false;
             public static bool SingleFake = false;
+            public static bool CanVent = false;
 
 
         }
@@ -581,7 +589,8 @@ namespace ChallengerMod
             public static bool BDictator = false;
             public static bool BSentinel = false;
             public static bool BLawkeeper = false;
-            public static bool BImpo = false;
+            public static float BImpo = 0f;
+            public static float BFake = 0f;
             public static bool TargetBaitArea;
 
 

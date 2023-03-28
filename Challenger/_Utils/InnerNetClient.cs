@@ -12,8 +12,11 @@ namespace ChallengerMod
     {
         static void Postfix()
         {
-            SoundManager.Instance.StopAllSound();
-            SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            if (ChallengerMod.Challenger.IntroSound == "1")
+            {
+                SoundManager.Instance.StopAllSound();
+                SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            }
             ChallengerMod.Utility.Discord.DiscordData.Initialize();
         }
 
@@ -35,8 +38,11 @@ namespace ChallengerMod
     {
         static void Postfix()
         {
-            SoundManager.Instance.StopAllSound();
-            SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            if (ChallengerMod.Challenger.IntroSound == "1")
+            {
+                SoundManager.Instance.StopAllSound();
+                SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            }
             ChallengerMod.Utility.Discord.DiscordData.UpdateDetails(" ");
             ChallengerMod.Utility.Discord.DiscordData.UpdateState(" ");
             if (GLMod.GLMod.isLoggedIn() == true)
@@ -53,8 +59,11 @@ namespace ChallengerMod
     {
         static void Postfix()
         {
-            SoundManager.Instance.StopAllSound();
-            SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            if (ChallengerMod.Challenger.IntroSound == "1")
+            {
+                SoundManager.Instance.StopAllSound();
+                SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            }
             ChallengerMod.Utility.Discord.DiscordData.UpdateDetails(" ");
             ChallengerMod.Utility.Discord.DiscordData.UpdateState(" ");
             if (GLMod.GLMod.isLoggedIn() == true)
@@ -71,8 +80,12 @@ namespace ChallengerMod
     {
         static void Postfix()
         {
-            SoundManager.Instance.StopAllSound();
-            SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            
+            if (ChallengerMod.Challenger.IntroSound == "1")
+            {
+                SoundManager.Instance.StopAllSound();
+                SoundManager.Instance.PlaySound(introOST, true, 0.33f);
+            }
             ChallengerMod.Utility.Discord.DiscordData.UpdateDetails(" ");
             ChallengerMod.Utility.Discord.DiscordData.UpdateState(" ");
             if (GLMod.GLMod.isLoggedIn() == true)

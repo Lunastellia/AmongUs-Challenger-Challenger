@@ -173,7 +173,7 @@ namespace ChallengerMod
 
                     var Lang_Auto = UnityEngine.Object.Instantiate(CustomButton, null);
                     Lang_Auto.transform.name = "ChallengerUI_FlagAUTO";
-                    Lang_Auto.transform.localPosition = new Vector3(-0.6f, -2f, 0f);
+                    Lang_Auto.transform.localPosition = new Vector3(-0.9f, -2f, 0f);
                     Lang_Auto.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     PassiveButton BLang_Auto = Lang_Auto.GetComponent<PassiveButton>();
                     BLang_Auto.OnClick = new Button.ButtonClickedEvent();
@@ -195,7 +195,7 @@ namespace ChallengerMod
 
                     var Lang_FR = UnityEngine.Object.Instantiate(CustomButton, null);
                     Lang_FR.transform.name = "ChallengerUI_FlagFR";
-                    Lang_FR.transform.localPosition = new Vector3(0.6f, -2f, 0f);
+                    Lang_FR.transform.localPosition = new Vector3(0.3f, -2f, 0f);
                     Lang_FR.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     PassiveButton BLang_FR = Lang_FR.GetComponent<PassiveButton>();
                     BLang_FR.OnClick = new Button.ButtonClickedEvent();
@@ -215,8 +215,8 @@ namespace ChallengerMod
 
 
                     var Lang_EN = UnityEngine.Object.Instantiate(CustomButton, null);
-                    Lang_FR.transform.name = "ChallengerUI_FlagEN";
-                    Lang_EN.transform.localPosition = new Vector3(-0f, -2f, 0f);
+                    Lang_EN.transform.name = "ChallengerUI_FlagEN";
+                    Lang_EN.transform.localPosition = new Vector3(-0.3f, -2f, 0f);
                     Lang_EN.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     PassiveButton BLang_EN = Lang_EN.GetComponent<PassiveButton>();
                     BLang_EN.OnClick = new Button.ButtonClickedEvent();
@@ -234,28 +234,103 @@ namespace ChallengerMod
                         BLang_EN_Collider.size = new Vector2(1f, 1f);
                     }
 
-                    void Set_Lang_Auto()
+                    var Lang_ZHCN = UnityEngine.Object.Instantiate(CustomButton, null);
+                    Lang_ZHCN.transform.name = "ChallengerUI_FlagZHCN";
+                    Lang_ZHCN.transform.localPosition = new Vector3(0.9f, -2f, 0f);
+                    Lang_ZHCN.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                    PassiveButton BLang_ZHCN = Lang_ZHCN.GetComponent<PassiveButton>();
+                    BLang_ZHCN.OnClick = new Button.ButtonClickedEvent();
+                    BLang_ZHCN.OnClick.AddListener((UnityEngine.Events.UnityAction)Set_Lang_ZHCN);
+                    BoxCollider2D BLang_ZHCN_Collider = BLang_ZHCN.GetComponent<BoxCollider2D>();
+
+                    if (ChallengerMod.Challenger.LangGameSet == 3f)
                     {
-                        Challenger.LangGameSet = 0f;
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                        ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                        BLang_ZHCN.GetComponent<SpriteRenderer>().sprite = FZHCN1; // 
+                        BLang_ZHCN_Collider.size = new Vector2(1f, 1f);
                     }
+                    else
+                    {
+                    BLang_ZHCN.GetComponent<SpriteRenderer>().sprite = FZHCN0; // 
+                    BLang_ZHCN_Collider.size = new Vector2(1f, 1f);
+                    }
+               
+                    var AUD_BTTN = UnityEngine.Object.Instantiate(CustomButton, null);
+                    AUD_BTTN.transform.name = "ChallengerUI_AUDBTTN";
+                    AUD_BTTN.transform.localPosition = new Vector3(-2f, -2f, 0f);
+                    AUD_BTTN.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                    PassiveButton BAUD_BTTN = AUD_BTTN.GetComponent<PassiveButton>();
+                    BAUD_BTTN.OnClick = new Button.ButtonClickedEvent();
+                    BAUD_BTTN.OnClick.AddListener((UnityEngine.Events.UnityAction)Set_AUD);
+                    BoxCollider2D BAUD_BTTN_Collider = BAUD_BTTN.GetComponent<BoxCollider2D>();
+
+                    if (ChallengerMod.Challenger.IntroSound == "0")
+                    {
+                        BAUD_BTTN.GetComponent<SpriteRenderer>().sprite = MUSIC0; // 
+                        BAUD_BTTN_Collider.size = new Vector2(1f, 1f);
+                    }
+                    else
+                    {
+                        BAUD_BTTN.GetComponent<SpriteRenderer>().sprite = MUSIC1; // 
+                        BAUD_BTTN_Collider.size = new Vector2(1f, 1f);
+                    }
+
+                void Set_Lang_Auto()
+                {
+                    Challenger.LangGameSet = 0f;
+                    ChallengerMod.Challenger.LangGameSTRSet = "AUTO";
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                    ChallengerMod.Challenger.UpdateLang();
+                }
                     void Set_Lang_FR()
+                {
+                    Challenger.LangGameSet = 2f;
+                    ChallengerMod.Challenger.LangGameSTRSet = "FRA";
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                    ChallengerMod.Challenger.UpdateLang();
+                }
+                void Set_Lang_EN()
+                {
+                    Challenger.LangGameSet = 1f;
+                    ChallengerMod.Challenger.LangGameSTRSet = "ENG";
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                    ChallengerMod.Challenger.UpdateLang();
+                }
+                void Set_Lang_ZHCN()
+                {
+                    Challenger.LangGameSet = 3f;
+                    ChallengerMod.Challenger.LangGameSTRSet = "SCH";
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                    ChallengerMod.Challenger.UpdateLang();
+                }
+                void Set_AUD()
+                {
+                    if (ChallengerMod.Challenger.IntroSound == "0")
                     {
-                        Challenger.LangGameSet = 2f;
+                        SoundManager.Instance.StopAllSound();
+                        ChallengerMod.Challenger.IntroSound = "1";
+                        SoundManager.Instance.PlaySound(introOST, true, 0.33f);
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                        ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                        ChallengerMod.Challenger.UpdateSound();
                     }
-                    void Set_Lang_EN()
+                    else
                     {
-                        Challenger.LangGameSet = 1f;
+                        SoundManager.Instance.StopAllSound();
+                        ChallengerMod.Challenger.IntroSound = "0";
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                        ChallengerMod.Set.Data.Playerlang = TranslationController.Instance.currentLanguage.languageID.ToString();
+                        ChallengerMod.Challenger.UpdateSound();
                     }
+                  
+                    
+                    
+                }
 
 
 
-                    var button = UnityEngine.Object.Instantiate(CustomButton, null);
+                var button = UnityEngine.Object.Instantiate(CustomButton, null);
                     var newbuttonR = UnityEngine.Object.Instantiate(CustomButton, null);
                     var newbuttonL = UnityEngine.Object.Instantiate(CustomButton, null);
                     var newbutton = UnityEngine.Object.Instantiate(CustomButton, null);

@@ -3243,8 +3243,25 @@ namespace ChallengerMod.CustomButton
                              || (Cursed.Role == Cultist.currentTarget)
                              ))
                         {
-                            Cultist.CulteTargetFail = true;
-                            CultistAbilityButton.Timer = CultistAbilityButtonMaxTimer;
+                            if (Cultistdie.getSelection() == 2)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CultistFail, Hazel.SendOption.Reliable, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.cultistFail();
+                                Cultist.CulteTargetFail = true;
+                                CultistAbilityButton.Timer = CultistAbilityButtonMaxTimer;
+                            }
+                            if (Cultistdie.getSelection() == 1)
+                            {
+                                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CultistDie, Hazel.SendOption.None, -1);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                                RPCProcedure.cultistDie();
+                            }
+                            if (Cultistdie.getSelection() == 0)
+                            {
+                                CultistAbilityButton.Timer = CultistAbilityButtonMaxTimer;
+                            }
+
                         }
                         else
                         {
@@ -6291,16 +6308,19 @@ namespace ChallengerMod.CustomButton
                          return; ;
                      }
 
-                     else if (Fake.Role != null && Fake.Role == Assassin.currentTarget && Assassin.BImpo == true && !AbilityDisabled)
+                     else if (Fake.Role != null && Fake.Role == Assassin.currentTarget && !AbilityDisabled)
                      {
+                         var NewCD = (AssassinKillButtonMaxTimer + AssassinMalusCD);
+                         AssassinKillButtonMaxTimer = NewCD;
+                         
                          //KILL
                          targetId = Assassin.currentTarget.PlayerId;
                          MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssassinKill, Hazel.SendOption.Reliable, -1);
                          messageWriter.Write(targetId);
                          AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
                          RPCProcedure.assassinKill(targetId);
-                         AssassinKillButton.Timer = (AssassinKillButtonMaxTimer / 2);
-                         ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 0.5f);
+                         AssassinKillButton.Timer = (NewCD);
+                         ChallengerOS.Utils.Helpers.showFlash(new Color(150f / 255f, 0f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)
                          {
@@ -6319,15 +6339,20 @@ namespace ChallengerMod.CustomButton
                          return;
 
                      }
-                     else if (Assassin.currentTarget.Data.Role.IsImpostor && Assassin.BImpo == true && !AbilityDisabled)
+                     else if (Assassin.currentTarget.Data.Role.IsImpostor && !AbilityDisabled)
                      {
+                         var NewCD = (AssassinKillButtonMaxTimer - AssassinBonusCD);
+                         if (NewCD < 10) { NewCD = 10; }
+                             
+                         AssassinKillButtonMaxTimer = NewCD;
+                         
                          //KILL
                          targetId = Assassin.currentTarget.PlayerId;
                          MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.AssassinKill, Hazel.SendOption.Reliable, -1);
                          messageWriter.Write(targetId);
                          AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
                          RPCProcedure.assassinKill(targetId);
-                         AssassinKillButton.Timer = (AssassinKillButtonMaxTimer / 2);
+                         AssassinKillButton.Timer = (NewCD);
                          ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 0.5f);
                          Assassin.currentTarget = null;
                          if (Assassin.TargetBaitArea)

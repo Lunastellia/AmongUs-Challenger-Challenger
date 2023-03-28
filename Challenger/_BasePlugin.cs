@@ -31,7 +31,7 @@ namespace ChallengerMod
     {
         public const int MaxPlayers = 15;
         public const int MaxImpostors = 3;
-        public const string VersionString = "5.2.1";
+        public const string VersionString = "5.2.3";
         public static bool CanStartTheGame = false;
         public const string UpdateNameString = "Mira Challenger";
         public const string UpdateNameStringFR = "Mira Challenger";
@@ -70,7 +70,14 @@ namespace ChallengerMod
         public List<_MapItems> AllItems { get; set; }
         public Harmony Harmony { get; } = new Harmony(Id);
         public static ConfigEntry<string> EventConfig { get; set; }
-
+        public static ConfigEntry<string> LangConfig { get; set; }
+        public static ConfigEntry<string> SoundConfig { get; set; }
+        public static ConfigEntry<string> TBGen { get; set; }
+        public static ConfigEntry<string> TBGame { get; set; }
+        public static ConfigEntry<string> TBCrew { get; set; }
+        public static ConfigEntry<string> TBDuo { get; set; }
+        public static ConfigEntry<string> TBSpe { get; set; }
+        public static ConfigEntry<string> TBImp { get; set; }
 
 
         public void ControlPlayer()
@@ -185,7 +192,7 @@ namespace ChallengerMod
         {
 
             //POLUS
-            new Tuple<byte, Vector3>(2, new Vector3(7.1917f, -7.4608f, 0f)), // reactor gauche
+            new Tuple<byte, Vector3>(2, new Vector3(5.9621f, -7.4608f, 0f)), // reactor gauche
             new Tuple<byte, Vector3>(2, new Vector3(0.7336f, -15.8723f, 0f)),//O2 arbre
             new Tuple<byte, Vector3>(2, new Vector3(0.7272f, -23.7329f, 0f)),//boiler
             new Tuple<byte, Vector3>(2, new Vector3(12.5163f, -15.805f, 0f)),//com
@@ -218,6 +225,14 @@ namespace ChallengerMod
             new Tuple<byte, Vector3>(4, new Vector3(6.3916f, 2.8207f, 0f)),//room
             new Tuple<byte, Vector3>(4, new Vector3(16.8694f, 15.1931f, 0f)),//meeting
             new Tuple<byte, Vector3>(4, new Vector3(39.0316f, 0.1374f, 0f)),//cargobay
+
+            //SUBMERGED LOW
+            new Tuple<byte, Vector3>(5, new Vector3( 13.0681f, -25.3156f, 0f)), //elec haut
+            new Tuple<byte, Vector3>(5, new Vector3( -7.086f, -42.7286f, 0f)), //Balast
+            //SUBMERGED SUP
+            new Tuple<byte, Vector3>(5, new Vector3( -12.3102f, 30.8054f, 0f)), //cafeteria
+            new Tuple<byte, Vector3>(5, new Vector3( 6.0375f, 28.4885f, 0f)), //Medbay
+
 
         };
         public List<Tuple<byte, Vector3>> DefaultItemPositons2 { get; } = new List<Tuple<byte, Vector3>>
@@ -254,6 +269,14 @@ namespace ChallengerMod
             new Tuple<byte, Vector3>(4, new Vector3(29.2975f, -6.4715f, 0f)),//medbay
             new Tuple<byte, Vector3>(4, new Vector3(20.2132f, 11.8975f, 0f)),//record
             
+            //SUBMERGED LOW
+            new Tuple<byte, Vector3>(5, new Vector3( 6.6622f, -39.4895f, 0f)), //lobby
+            new Tuple<byte, Vector3>(5, new Vector3( -15.2442f, -31.649f, 0f)), //engine
+            new Tuple<byte, Vector3>(5, new Vector3( -4.0745f, -33.4192f, 0f)), //Secu
+            //SUBMERGED SUP
+            new Tuple<byte, Vector3>(5, new Vector3( -15.0065f, 17.5585f, 0f)), //observatory
+            new Tuple<byte, Vector3>(5, new Vector3( 7.6471f, 8.7802f, 0f)), //Lobby
+            
         };
         public List<Tuple<byte, Vector3>> DefaultItemPositons3 { get; } = new List<Tuple<byte, Vector3>>
         {
@@ -289,6 +312,13 @@ namespace ChallengerMod
             new Tuple<byte, Vector3>(4, new Vector3(10.3444f, -15.261f, 0f)),//cam
             new Tuple<byte, Vector3>(4, new Vector3(21.3439f, -1.8354f, 0f)),//shower
             new Tuple<byte, Vector3>(4, new Vector3(32.248f, 7.2861f, 1f)),//toilette
+
+            //SUBMERGED LOW
+            new Tuple<byte, Vector3>(5, new Vector3( 12.5041f, -32.0507f, 0f)), //elec bas 
+            new Tuple<byte, Vector3>(5, new Vector3( -8.2761f, -33.3924f, 0f)), //SAStop
+            //SUBMERGED SUP
+            new Tuple<byte, Vector3>(5, new Vector3( -6.5412f, 14.1124f, 0f)), //lounge
+            new Tuple<byte, Vector3>(5, new Vector3( -0.0919f, 33.7736f, 0f)), //recherch
            
         };
         public List<Tuple<byte, Vector3>> DefaultItemPositons4 { get; } = new List<Tuple<byte, Vector3>>
@@ -324,6 +354,15 @@ namespace ChallengerMod
             new Tuple<byte, Vector3>(4, new Vector3(29.2975f, -6.4715f, 0f)),//medbay
             new Tuple<byte, Vector3>(4, new Vector3(20.2132f, 11.8975f, 0f)),//record
 
+            //SUBMERGED LOW
+            new Tuple<byte, Vector3>(5, new Vector3( 7.8031f, -24.1461f, 0f)), //filtration
+            new Tuple<byte, Vector3>(5, new Vector3( 0.1275f, -33.9367f, 0f)), //storage
+            new Tuple<byte, Vector3>(5, new Vector3( -3.1807f, -39.3645f, 0f)), //Sasbot
+            //SUBMERGED SUP
+            new Tuple<byte, Vector3>(5, new Vector3( 1.1018f, 9.9351f, 0f)), //meetingroom
+            new Tuple<byte, Vector3>(5, new Vector3( -100983f, 11.5156f, 0f)), //Admin
+            new Tuple<byte, Vector3>(5, new Vector3( 13.9831f, 24.4129f, 0f)), //Com
+
         };
         public List<Tuple<byte, Vector3>> RefuelPosition1 { get; } = new List<Tuple<byte, Vector3>>
         {
@@ -335,6 +374,9 @@ namespace ChallengerMod
              new Tuple<byte, Vector3>(1, new Vector3(-3.3535f, 4.1112f, 0f)),//Dropship
               //AIRSHIP
             new Tuple<byte, Vector3>(4, new Vector3(-1.8523f, 1.3073f, 0f)),//Engine
+
+            //SUBMERGED
+            new Tuple<byte, Vector3>(5, new Vector3(-14.0916f, 27.069f, 0f)),//Engine
 
         };
         public List<Tuple<byte, Vector3>> RefuelPosition2 { get; } = new List<Tuple<byte, Vector3>>
@@ -359,6 +401,10 @@ namespace ChallengerMod
             new Tuple<byte, Vector3>(4, new Vector3(27.2288f, -5.1918f, 0f)),//Medbay
             new Tuple<byte, Vector3>(4, new Vector3(37.2848f,  1.5967f, 0f)),//Cargo
 
+             //SUBMERGED LOW
+            new Tuple<byte, Vector3>(5, new Vector3(-3.1743f, 38.2214f, 0f)),//SASbot
+            new Tuple<byte, Vector3>(5, new Vector3(3.9817f, -19.8772f, 0f)),//filtration
+
         };
         public List<Tuple<byte, Vector3>> RefuelPosition3 { get; } = new List<Tuple<byte, Vector3>>
         {
@@ -380,6 +426,11 @@ namespace ChallengerMod
             new Tuple<byte, Vector3>(4, new Vector3(19.9468f, 12.2438f, 0f)),//biblio
             new Tuple<byte, Vector3>(4, new Vector3(21.6867f,  .7521f, 0f)),//shower
             new Tuple<byte, Vector3>(4, new Vector3(-9.1563f, 13.2349f, 0f)),//vault
+
+            //SUBMERGED UP
+            new Tuple<byte, Vector3>(5, new Vector3(1.3702f, 12.7445f, 0f)),//meeting
+            new Tuple<byte, Vector3>(5, new Vector3(-2.9281f, 27.2958f, 0f)),//cafete
+
 
         };
         public List<Tuple<byte, Vector3>> SafeAreaPosition1 { get; } = new List<Tuple<byte, Vector3>>
@@ -428,8 +479,15 @@ namespace ChallengerMod
             //AIRSHIP
             new Tuple<byte, Vector3>(4, new Vector3(-14.1008f, -4.7481f, -1f)),//admin 
            
+             //SUBMERGED LOW
+            new Tuple<byte, Vector3>(5, new Vector3( -14.5357f, -34.2341f, 0f)), //enginebas
+            new Tuple<byte, Vector3>(5, new Vector3( -14.0435f, -27.7911f, 0f)), //enginehaut
+            new Tuple<byte, Vector3>(5, new Vector3( 12.6728f, -31.9091f, 0f)), //elec
 
-
+            //SUBMERGED UP
+            new Tuple<byte, Vector3>(5, new Vector3(1.3702f, 12.7445f, 0f)),//meeting
+            new Tuple<byte, Vector3>(5, new Vector3(-2.9281f, 27.2958f, 0f)),//cafete
+            new Tuple<byte, Vector3>(5, new Vector3( -15.0065f, 17.5585f, 0f)), //observatory
 
 
         };
@@ -661,6 +719,15 @@ namespace ChallengerMod
             ChallengerMod.Keydata.Keyboard.Main();
             AllItems = new List<_MapItems>();
             EventConfig = Config.Bind("Local-Options", "Event", "Normal");
+            LangConfig = Config.Bind("Local-Options", "Lang", "AUTO");
+            SoundConfig = Config.Bind("Local-Options", "Sound", "1");
+            TBGen = Config.Bind("TAB-Options", "TABGEN", "1");
+            TBGame = Config.Bind("TAB-Options", "TABGAME", "1");
+            TBCrew = Config.Bind("TAB-Options", "TABCREW", "1");
+            TBSpe = Config.Bind("TAB-Options", "TABSPE", "1");
+            TBDuo = Config.Bind("TAB-Options", "TABDUO", "1");
+            TBImp = Config.Bind("TAB-Options", "TABIMP", "1");
+
             //GLMod.GLMod.withUnityExplorer = true;
 
             bundle_char = AssetBundle.LoadFromFile(Directory.GetCurrentDirectory() + "\\Assets\\char");
@@ -793,6 +860,33 @@ namespace ChallengerMod
             _Hat_SpeHorn = bundle_char.LoadAsset<Sprite>("CS_H_SpeHorn.png").DontUnload();
             _Hat_Candle = bundle_char.LoadAsset<Sprite>("CS_H_Candle.png").DontUnload();
 
+            _Hat_Knight = bundle_char.LoadAsset<Sprite>("CS_H_Knight.png").DontUnload();
+            _Hat_Bowling = bundle_char.LoadAsset<Sprite>("CS_H_Bowling.png").DontUnload();
+            _Hat_Eater = bundle_char.LoadAsset<Sprite>("CS_H_Eater.png").DontUnload();
+            _Hat_Hunt = bundle_char.LoadAsset<Sprite>("CS_H_Hunt.png").DontUnload();
+            _Hat_Mecha = bundle_char.LoadAsset<Sprite>("CS_H_Mecha.png").DontUnload();
+            _Hat_Ninja = bundle_char.LoadAsset<Sprite>("CS_H_Ninja.png").DontUnload();
+            _Hat_Scarab = bundle_char.LoadAsset<Sprite>("CS_H_Sca.png").DontUnload();
+            _Hat_Dalek = bundle_char.LoadAsset<Sprite>("CS_H_Dalek.png").DontUnload();
+            _Hat_Bear = bundle_char.LoadAsset<Sprite>("CS_H_Bear.png").DontUnload();
+            _Hat_Rabbit = bundle_char.LoadAsset<Sprite>("CS_H_Rabbit.png").DontUnload();
+            _Hat_Selfi = bundle_char.LoadAsset<Sprite>("CS_H_Phone.png").DontUnload();
+            _Hat_Snake = bundle_char.LoadAsset<Sprite>("CS_H_Snake.png").DontUnload();
+            _Hat_Curse = bundle_char.LoadAsset<Sprite>("CS_H_Curse.png").DontUnload();
+            _Hat_Joker = bundle_char.LoadAsset<Sprite>("CS_H_Joker.png").DontUnload();
+            _Hat_Drone = bundle_char.LoadAsset<Sprite>("CS_H_Drone.png").DontUnload();
+            _Hat_SpyGlass = bundle_char.LoadAsset<Sprite>("CS_H_SpyGlass.png").DontUnload();
+            _Hat_Loupe = bundle_char.LoadAsset<Sprite>("CS_H_Loupe.png").DontUnload();
+            _Hat_Card = bundle_char.LoadAsset<Sprite>("CS_H_Card.png").DontUnload();
+            _Hat_Read = bundle_char.LoadAsset<Sprite>("CS_H_Read.png").DontUnload();
+            _Hat_Morph = bundle_char.LoadAsset<Sprite>("CS_H_Morph.png").DontUnload();
+
+            _Visor_Axe = bundle_char.LoadAsset<Sprite>("CS_V_Axe.png").DontUnload();
+            _Visor_GSword = bundle_char.LoadAsset<Sprite>("CS_V_GSword.png").DontUnload();
+            _Visor_Staff = bundle_char.LoadAsset<Sprite>("CS_V_Staff.png").DontUnload();
+            _Visor_Mace = bundle_char.LoadAsset<Sprite>("CS_V_Mace.png").DontUnload();
+
+
 
             _Visor_Cred = bundle_char.LoadAsset<Sprite>("CS_V_Cred.png").DontUnload();
             _Visor_Cpurple = bundle_char.LoadAsset<Sprite>("CS_V_Cpurple.png").DontUnload();
@@ -876,6 +970,8 @@ namespace ChallengerMod
             LobbyLevel_MiraMapV1 = bundle_Map0.LoadAsset<Sprite>("mapHQ1.png").DontUnload();
             LobbyLevel_MiraMapV2 = bundle_Map0.LoadAsset<Sprite>("mapHQ2.png").DontUnload();
             LobbyLevel_room_tunnel1 = bundle_Map0.LoadAsset<Sprite>("room_tunnel1.png").DontUnload();
+            
+
             Colliderdebugg = bundle_Map0.LoadAsset<Sprite>("ALP_Debugg.png").DontUnload();
             Colliderblack = bundle_Map0.LoadAsset<Sprite>("ALP_Black.png").DontUnload();
             Colliderbox = bundle_Map0.LoadAsset<Sprite>("ALP_Collider.png").DontUnload();
@@ -909,6 +1005,9 @@ namespace ChallengerMod
             Level_TexHQCam2 = bundle_Map0.LoadAsset<Sprite>("ALM_SCam2.png").DontUnload();
 
             Level_TexHQDS = bundle_Map0.LoadAsset<Sprite>("ALM_Dropship.png").DontUnload();
+            Level_TexHQBal2 = bundle_Map0.LoadAsset<Sprite>("HQBAL.png").DontUnload();
+            Level_TexHQBalTub = bundle_Map0.LoadAsset<Sprite>("HQTUB.png").DontUnload();
+            Level_TexHQSecuTub = bundle_Map0.LoadAsset<Sprite>("TELF.png").DontUnload();
 
             EA1 = bundle_Map0.LoadAsset<Sprite>("EA0.png").DontUnload();
             EA2 = bundle_Map0.LoadAsset<Sprite>("EA1.png").DontUnload();
@@ -986,6 +1085,10 @@ namespace ChallengerMod
             FEN1 = bundle_Level.LoadAsset<Sprite>("FEN1.png").DontUnload();
             FAU0 = bundle_Level.LoadAsset<Sprite>("FAU0.png").DontUnload();
             FAU1 = bundle_Level.LoadAsset<Sprite>("FAU1.png").DontUnload();
+            FZHCN0 = bundle_Level.LoadAsset<Sprite>("FZHCN0.png").DontUnload();
+            FZHCN1 = bundle_Level.LoadAsset<Sprite>("FZHCN1.png").DontUnload();
+            MUSIC0 = bundle_Level.LoadAsset<Sprite>("MUSIC0.png").DontUnload();
+            MUSIC1 = bundle_Level.LoadAsset<Sprite>("MUSIC1.png").DontUnload();
 
             PS1EN0 = bundle_Level.LoadAsset<Sprite>("PS1EN0.png").DontUnload();
             PS1EN1 = bundle_Level.LoadAsset<Sprite>("PS1EN1.png").DontUnload();
@@ -1207,10 +1310,19 @@ namespace ChallengerMod
             UI2_Guesser0 = bundle_Level.LoadAsset<Sprite>("Guesser0.png").DontUnload();
             UI2_Guesser1 = bundle_Level.LoadAsset<Sprite>("Guesser1.png").DontUnload();
             UI2_Basilisk0 = bundle_Level.LoadAsset<Sprite>("Basilisk0.png").DontUnload();
-            UI2_Basilisk1 = bundle_Level.LoadAsset<Sprite>("Basilisk0.png").DontUnload();
+            UI2_Basilisk1 = bundle_Level.LoadAsset<Sprite>("Basilisk1.png").DontUnload();
 
-
-
+            UI2_DIF = bundle_Level.LoadAsset<Sprite>("DIF.png").DontUnload();
+            UI2_DIF11 = bundle_Level.LoadAsset<Sprite>("DIF11.png").DontUnload();
+            UI2_DIF21 = bundle_Level.LoadAsset<Sprite>("DIF21.png").DontUnload();
+            UI2_DIF31 = bundle_Level.LoadAsset<Sprite>("DIF31.png").DontUnload();
+            UI2_DIF41 = bundle_Level.LoadAsset<Sprite>("DIF41.png").DontUnload();
+            UI2_DIF51 = bundle_Level.LoadAsset<Sprite>("DIF51.png").DontUnload();
+            UI2_DIF10 = bundle_Level.LoadAsset<Sprite>("DIF10.png").DontUnload();
+            UI2_DIF20 = bundle_Level.LoadAsset<Sprite>("DIF20.png").DontUnload();
+            UI2_DIF30 = bundle_Level.LoadAsset<Sprite>("DIF30.png").DontUnload();
+            UI2_DIF40 = bundle_Level.LoadAsset<Sprite>("DIF40.png").DontUnload();
+            UI2_DIF50 = bundle_Level.LoadAsset<Sprite>("DIF50.png").DontUnload();
 
 
 
@@ -1287,6 +1399,8 @@ namespace ChallengerMod
 
             ColorLock = bundle_Level.LoadAsset<Sprite>("ColorLock.png").DontUnload();
             ColorUnlock = bundle_Level.LoadAsset<Sprite>("ColorLock2.png").DontUnload();
+            SColorLock = bundle_Level.LoadAsset<Sprite>("ColorLock4.png").DontUnload();
+            SColorUnlock = bundle_Level.LoadAsset<Sprite>("ColorLock3.png").DontUnload();
 
             playbtt = bundle_Level.LoadAsset<Sprite>("play.png").DontUnload();
             serverbtt = bundle_Level.LoadAsset<Sprite>("server.png").DontUnload();
@@ -1536,6 +1650,9 @@ namespace ChallengerMod
             Drone1 = bundle_Sprite.LoadAsset<Sprite>("DroneOn.png").DontUnload();
 
             ChallengerMod.Challenger.LoadEvent();
+            ChallengerMod.Challenger.LoadLang();
+            ChallengerMod.Challenger.LoadSound();
+            ChallengerMod.Challenger.LoadTABS();
             Harmony.Unpatch(typeof(UdpConnection).GetMethod("HandleSend"), HarmonyPatchType.Prefix,
             ReactorPlugin.Id);
             SpritePatches.Patch();

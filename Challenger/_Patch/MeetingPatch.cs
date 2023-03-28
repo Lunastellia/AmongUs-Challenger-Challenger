@@ -31,6 +31,7 @@ namespace Challenger
 
         public static void Postfix(MeetingHud __instance)
         {
+
             if (ChallengerMod.Challenger.localArrows.Count() >= 1) 
             { 
                 foreach (Arrow A in ChallengerMod.Challenger.localArrows)
@@ -39,7 +40,12 @@ namespace Challenger
                 }
                 ChallengerMod.Challenger.localArrows = new List<Arrow>(); 
             }
-            if (ChallengerMod.Challenger.DroneController != null) { ChallengerMod.Challenger.DroneController = null; }
+            //CULTIST DIE OR NOT
+            
+            if (ChallengerMod.Challenger.DroneController != null) 
+            { 
+                ChallengerMod.Challenger.DroneController = null;
+            }
 
             if (Basilisk.Role != null && Basilisk.Petrified != null && !Basilisk.Role.Data.IsDead && PlayerControl.LocalPlayer == Basilisk.Petrified)
             {
@@ -64,7 +70,12 @@ namespace Challenger
                     }
                 }
             }
-                        
+
+            
+                
+            
+
+
 
             if (Leader.Role != null && Leader.Target != null && Leader.Target2 == null && (Leader.Role.Data.IsDead || LeaderTaskEnd.getBool() == true && Leader.TaskEND == true) && PlayerControl.LocalPlayer == Leader.Role && !Leader.Used2)
             {
@@ -401,14 +412,7 @@ namespace Challenger
             
          
 
-            //CULTIST DIE OR NOT
-            if (Cultist.Role != null && Cultist.CulteTargetFail && Cultistdie.getSelection() == 2 && (PlayerControl.LocalPlayer == Cultist.Role) && !Cultist.Role.Data.IsDead)
-            {
-                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CultistDie, Hazel.SendOption.None, -1);
-                AmongUsClient.Instance.FinishRpcImmediately(writer);
-                RPCProcedure.cultistDie();
-                GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, "", "cultist_die");
-            }
+           
                         
         }
     }
@@ -782,6 +786,11 @@ namespace Challenger
             {
                 body.gameObject.Destroy();
             }
+
+            Camera.main.GetComponent<FollowerCamera>().transform.position = PlayerControl.LocalPlayer.transform.position;
+            Camera.main.GetComponent<FollowerCamera>().Target = PlayerControl.LocalPlayer;
+            PlayerControl.LocalPlayer.myLight.transform.position = PlayerControl.LocalPlayer.transform.position;
+
         }
     }
     [HarmonyPatch(typeof(PlayerVoteArea), nameof(PlayerVoteArea.SetCosmetics))]

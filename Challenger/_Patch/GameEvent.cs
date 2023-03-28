@@ -1873,11 +1873,7 @@ namespace ChallengerMod
         {
             if (flag)
             {
-                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CultistDie, Hazel.SendOption.None, -1);
-                AmongUsClient.Instance.FinishRpcImmediately(writer);
-                RPCProcedure.cultistDie();
-                GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, "", "cultist_die");
-
+                
             }
         }
 
@@ -2166,5 +2162,9 @@ namespace ChallengerMod
 
             }
         }
+        
+
+        
+
     }
 }

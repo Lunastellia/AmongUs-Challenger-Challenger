@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using HarmonyLib;
 using InnerNet;
 using Object = UnityEngine.Object;
@@ -198,45 +198,7 @@ namespace ChallengerMod.Sabotages
                 }
                 else
                 {
-                    foreach (PlayerControl player in PlayerControl.AllPlayerControls)
-                    {
-                        if (Barghest.Role != null)
-                        {
-                            if (Barghest.Shadow == true)
-                            {
-                                if (Bait.StunsPlayer == true) 
-                                { 
-                                    player.MyPhysics.Speed = 0.85f;
-                                }
-                                else
-                                {
-                                    player.MyPhysics.Speed = 1.85f;
-                                }
-                            }
-                            else
-                            {
-                                if (Bait.StunsPlayer == true)
-                                {
-                                    player.MyPhysics.Speed = 0.85f;
-                                }
-                                else
-                                {
-                                    player.MyPhysics.Speed = 2.5f;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (Bait.StunsPlayer == true)
-                            {
-                                player.MyPhysics.Speed = 0.85f;
-                            }
-                            else
-                            {
-                                player.MyPhysics.Speed = 2.5f;
-                            }
-                        }
-                    }
+                    
                 }
             }
 
@@ -245,3 +207,4 @@ namespace ChallengerMod.Sabotages
         }
     }
 }
+*/
