@@ -32,6 +32,25 @@ namespace ChallengerMod
                 __instance.text.text += "<size=0.9> - graphiste : <color=#FF2DE9>Lunastellia</color> & <color=#FBAEFF>Asman</color></size>\n";
                 __instance.text.text += "<size=0.9> - Compositeur Audio : <color=#38EEF7>Noé Guiton</color></size>\n";
             }
+            else if (Challenger.LangGameSet == 3f || (ChallengerMod.Set.Data.Playerlang == "SChinese" && Challenger.LangGameSet == 0f))
+            {
+                __instance.text.text += "<size=1>\n\n\n\n\n\n</size>\n<size=2>Among Us <color=#DE6C13>挑战者</size></color> <size=2><color=#0089EE>版本 : (" + PrefixString + VersionString + SufixString + ")</color> <color=#6E40BB>''" + UpdateNameString + "''</color></size>\n";
+
+                __instance.text.text += "<size=0.2>\n</size><size=0.7><i>此模组不隶属于Among Us或Innersloth LLC，其中包含的内容不被Innersloth LLC的认可或以其他方式赞助。这里包含的部分材料是Innersloth LLC的财产。©Innersloth LLC.</i></size>\n";
+                __instance.text.text += "<size=0.7><color=#ffffff><i>此模组的源代码的某些部分受版权保护，未经这些所有者的事先同意，禁止任何复制或误用。受保护的内容属于Oriana®.\n";
+                __instance.text.text += "BepInEx和Reactor根据LGPL-3.0许可证进行分发。潜艇地图根据定制许可证进行发布(https://github.com/SubmergedAmongUs/Submerged). ";
+                __instance.text.text += "更多关于署名/许可证和制作者的信息，请参阅Github.</i></color></size>\n";
+
+                __instance.text.text += "<size=0.5>\n</size>";
+
+                __instance.text.text += "<size=0.9> - 创始人/游戏设计师和开发者 : <color=#FF2DE9>Lunastellia</color></size>\n";
+                __instance.text.text += "<size=0.9> - 由 <color=#4AB1DE>Oriana®</color> 和 <color=#4DA777>ModManager</color>分发</size>\n";
+                __instance.text.text += "<size=0.9> - GoodLoss开发者 (游戏服务器 & 账户) : <color=#F0EF86>Matux</color></size>\n";
+                __instance.text.text += "<size=0.9> - 美工 : <color=#FF2DE9>Lunastellia</color> 和 <color=#FBAEFF>Asman</color></size>\n";
+                __instance.text.text += "<size=0.9> - 音乐制作人 : <color=#38EEF7>Noé Guiton</color></size>\n";
+                __instance.text.text += "<size=0.9> - 简体中文翻译 : <color=#770000>四个憨批汉化组 (https://amonguscn.club)</color></size>\n";
+
+            }
             else
             {
                 __instance.text.text += "<size=1>\n\n\n\n</size>\n<size=2>Among Us <color=#DE6C13>CHALLENGER</size></color> <size=2><color=#0089EE>Version : (" + PrefixString + VersionString + SufixString + ")</color> <color=#6E40BB>''" + UpdateNameString + "''</color></size>\n";

@@ -2924,6 +2924,12 @@ namespace ChallengerMod
             {
                 var TaskData = __instance.Data.Tasks.ToArray();
                 var tasksFinish = TaskData.Count(x => x.Complete);
+                
+                if (Mercenary.isImpostor && TaskData.Count() != 0)
+                {
+                    ChallengerOS.Utils.Helpers.clearAllTasks(Mercenary.Role);
+                }
+                
                 if (tasksFinish == 0)
                 {
                     MercenaryTask = 0f;
@@ -2995,6 +3001,11 @@ namespace ChallengerMod
                 var TaskData = __instance.Data.Tasks.ToArray();
                 var tasksFinish = TaskData.Count(x => x.Complete);
                 var tasksLeft = TaskData.Count(x => !x.Complete);
+
+                if (CopyCat.isImpostor && TaskData.Count() != 0)
+                {
+                    ChallengerOS.Utils.Helpers.clearAllTasks(Mercenary.Role);
+                }
 
                 if (tasksLeft == 0)
                 {

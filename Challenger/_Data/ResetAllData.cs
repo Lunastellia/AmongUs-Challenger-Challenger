@@ -49,7 +49,10 @@ namespace ChallengerMod
             PlayerSafe = false;
             IsMapPolusV2 = false;
             GameStarted = 5f;
+            IMPVisionSab = false;
+            IMPVision = false;
             ComSab = false;
+            LightSab = false;
             OxySab = false;
             ReactorSab = false;
             StartComSabUnk = false;
@@ -160,7 +163,10 @@ namespace ChallengerMod
             Crewmate12.Role = null;
             Crewmate13.Role = null;
             Crewmate14.Role = null;
-           
+
+            SuperCrew.Role = null;
+            SuperCrew.NewRole = "Wait";
+
             //SPECIAL ROLE
             Cupid.Role = null;
             Cultist.Role = null;

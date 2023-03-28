@@ -11,58 +11,96 @@ namespace ChallengerMod.Cosmetiques
         // ----- ACHIEVEMENT
 
         //COLOR
-        public static bool Color_Bloody = false; //AC_C1
-        public static bool Color_Earth = false; //AC_C2
-        public static bool Color_Chedard = false; //AC_C3
-        public static bool Color_Sun = false; //AC_C4
-        public static bool Color_Leef = false; //AC_C5
-        public static bool Color_Radian = false; //AC_C6
-        public static bool Color_Swamp = false; //AC_C7
-        public static bool Color_Ice = false; //AC_C8
-        public static bool Color_Lagoon = false; //AC_C9
-        public static bool Color_Ocean = false; //AC_C10
-        public static bool Color_Night = false; //AC_C11
-        public static bool Color_Dawn = false; //AC_C12
-        public static bool Color_Candy = false; //AC_C13
-        public static bool Color_Galaxy = false; //AC_C14
-        public static bool Color_Snow = false; //AC_C15
-        public static bool Color_Cender = false; //AC_C16
-        public static bool Color_Dark = false; //AC_C17
-        public static bool Color_Rainbow = false; //AC_C18
+        public static bool Color_Bloody = false; 
+        public static bool Color_Earth = false; 
+        public static bool Color_Chedard = false; 
+        public static bool Color_Sun = false; 
+        public static bool Color_Leef = false; 
+        public static bool Color_Radian = false; 
+        public static bool Color_Swamp = false; 
+        public static bool Color_Ice = false; 
+        public static bool Color_Lagoon = false; 
+        public static bool Color_Ocean = false; 
+        public static bool Color_Night = false; 
+        public static bool Color_Dawn = false; 
+        public static bool Color_Candy = false; 
+        public static bool Color_Galaxy = false; 
+        public static bool Color_Snow = false; 
+        public static bool Color_Cender = false; 
+        public static bool Color_Dark = false; 
+        public static bool Color_Rainbow = false; 
 
-
-        //HAT
-        public static bool Hat_Demon = false; //AC_H1
-        public static bool Hat_Angel = false; //AC_H2
-        public static bool Hat_Vampire = false; //AC_H3
-        public static bool Hat_Kawaii = false; //AC_H4
-        public static bool Hat_Angry = false; //AC_H5
-        public static bool Hat_Cat = false; //AC_H6
-        public static bool Hat_Knight = false; //AC_H7
-        public static bool Hat_Crazy = false; //AC_H8
-        public static bool Hat_FireFighter = false; //AC_H9
-        public static bool Hat_Ninja = false; //AC_H10
-        public static bool Hat_Alien = false; //AC_H11
-        public static bool Hat_Barghest = false; //AC_H12
-        public static bool Hat_Bomber = false; //AC_H13
-        public static bool Hat_Dragon = false; //AC_H14
-
-
-        //VISOR
-        public static bool Visor_Gun = false; //AC_V1
-        public static bool Visor_Knifte = false; //AC_V2
-        public static bool Visor_Katana = false; //AC_V3
-        public static bool Visor_Orbe = false; //AC_V4
-        public static bool Visor_Cube = false; //AC_V5
-        public static bool Visor_VampireTooth = false; //AC_V6
-        public static bool Visor_Axe = false; //AC_V7
-        public static bool Visor_DNA = false; //AC_V8
-        public static bool Visor_Chain = false; //AC_V9
-        public static bool Visor_MagicWand = false; //AC_V10
-        public static bool Visor_FireBall = false; //AC_V11
+        public static bool Color_Ruby = false; 
+        public static bool Color_Amber = false; 
+        public static bool Color_Emerald = false; 
+        public static bool Color_Larimar = false; 
+        public static bool Color_Sapphir = false; 
+        public static bool Color_Quartz = false;
 
 
         
+
+       
+        public static bool __Impostors = false; //Impostors
+        public static bool __Assassin = false; //Assassin
+        public static bool __Vector = false; //Vector
+        public static bool __Morphling = false; //Morphling
+        public static bool __Scrambler = false; //Scrambler
+        public static bool __Barghest = false; //Barghest
+        public static bool __Ghost = false; //Ghost
+        public static bool __Sorcerer = false; //Sorcerer
+        public static bool __Guesser = false; //Guesser
+        public static bool __Basilisk = false; //Basilisk
+        public static bool __Reaper = false; //Reaper
+        public static bool __Mesmer = false; //Mesmer
+
+
+        public static bool __Cupid = false; //Cupid*
+        public static bool __Cultist = false; //Cultist*
+        public static bool __Jester = false; //Jester
+        public static bool __Eater = false; //Eater
+        public static bool __Outlaw = false; //Outlaw
+        public static bool __Arsonist = false; //Arsonist
+        public static bool __Cursed = false; //Cursed
+
+        public static bool __Mercenary = false; //Mercenary
+        public static bool __Copycat = false; //CopyCat
+        public static bool __Survivor = false; //Survivor
+        public static bool __Revenger = false; //Revenger-
+        public static bool __Slave = false; //Slave
+
+
+        public static bool __Crewmates = false; //Crewmates
+        public static bool __Sheriff = false; //Sheriff*
+        public static bool __Guardian = false; //Guardian*
+        public static bool __Engineer = false; //Engineer
+        public static bool __Timelord = false; //Timelord
+        public static bool __Hunter = false; //Hunter
+        public static bool __Mystic = false; //Mystic*
+        public static bool __Spirit = false; //Spirit
+        public static bool __Mayor = false; //Mayor
+        public static bool __Detective = false; //Detective*
+        public static bool __Nightwatch = false; //Nightwatch
+        public static bool __Spy = false; //Spy*
+        public static bool __Informant = false; //Informant
+        public static bool __Bait = false; //Bait
+        public static bool __Mentalist = false; //Mentalist
+        public static bool __Builder = false; //Builder
+        public static bool __Dictator = false; //Dictator
+        public static bool __Sentinel = false; //Sentinel*
+        public static bool __Teammate = false; //Teammate
+        public static bool __Lawkeeper = false; //Lawkeeper
+        public static bool __Fake = false; //Fake
+        public static bool __Leader = false; //Leader
+        public static bool __Angel = false; //Angel
+        public static bool __Traveler = false; //Traveler
+        public static bool __Doctor = false; //Doctor
+
+
+
+
+
+
     }
     public static class Cosmetics_Ranked
     {
@@ -98,7 +136,6 @@ namespace ChallengerMod.Cosmetiques
 
         //EATER BUNDLE
         public static bool Bundle_Eater = false; // Octobre-Novembre 2022
-
 
         public static bool Bundle_Cultist = false; // Decembre-Janvier 2023
         public static bool Bundle_Cupid = false; // Fevrier-Mars 2023

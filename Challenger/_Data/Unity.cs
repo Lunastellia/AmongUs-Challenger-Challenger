@@ -36,8 +36,9 @@ namespace ChallengerMod
         public static Sprite _Hat_CC02;
         public static Sprite _Hat_CC03;
         public static Sprite _Hat_CC04;
-
+        public static Material PlayerShader;
         public static Sprite _Hat_FRA;
+
         public static Sprite _Hat_SUB1;
         public static Sprite _Hat_TOI1;
         public static Sprite _Hat_TOI2;
@@ -160,6 +161,32 @@ namespace ChallengerMod
         public static Sprite _Hat_SpeHorn;
         public static Sprite _Hat_Candle;
 
+        public static Sprite _Hat_Knight;
+        public static Sprite _Hat_Bowling;
+        public static Sprite _Hat_Eater;
+        public static Sprite _Hat_Hunt;
+        public static Sprite _Hat_Mecha;
+        public static Sprite _Hat_Ninja;
+        public static Sprite _Hat_Scarab;
+        public static Sprite _Hat_Dalek;
+
+        public static Sprite _Hat_Bear;
+        public static Sprite _Hat_Rabbit;
+        public static Sprite _Hat_Selfi;
+        public static Sprite _Hat_Snake;
+        public static Sprite _Hat_Curse;
+        public static Sprite _Hat_Joker;
+        public static Sprite _Hat_Loupe;
+        public static Sprite _Hat_SpyGlass;
+        public static Sprite _Hat_Drone;
+        public static Sprite _Hat_Card;
+        public static Sprite _Hat_Read;
+        public static Sprite _Hat_Morph;
+
+        public static Sprite _Visor_Axe;
+        public static Sprite _Visor_GSword;
+        public static Sprite _Visor_Staff;
+        public static Sprite _Visor_Mace;
 
         public static Sprite _Visor_Gun;
         public static Sprite _Visor_Knife;
@@ -248,12 +275,17 @@ namespace ChallengerMod
         public static Sprite Level_TexHQCam;
         public static Sprite Level_TexHQCam2;
         public static Sprite Level_TexHQDS;
+        public static Sprite Level_TexHQBal2;
+        public static Sprite Level_TexHQBalTub;
+        public static Sprite Level_TexHQSecuTub;
         public static Sprite Colliderdebugg;
         public static Sprite Colliderblack;
         public static Sprite Colliderbox;
 
         public static Sprite ColorLock;
         public static Sprite ColorUnlock;
+        public static Sprite SColorLock;
+        public static Sprite SColorUnlock;
 
         public static AnimationClip CircleAnim;
         public static AnimationClip LoginAnim;
@@ -281,6 +313,8 @@ namespace ChallengerMod
         public static Sprite Level_TexP1;
         public static Sprite Level_TexP2;
         public static Sprite Level_TexP3;
+        
+            
 
         public static Sprite SA1;
         public static Sprite SA2;
@@ -303,6 +337,10 @@ namespace ChallengerMod
         public static Sprite FEN1;
         public static Sprite FAU0;
         public static Sprite FAU1;
+        public static Sprite FZHCN0;
+        public static Sprite FZHCN1;
+        public static Sprite MUSIC0;
+        public static Sprite MUSIC1;
 
 
         public static Sprite PS1EN0;
@@ -918,7 +956,17 @@ namespace ChallengerMod
         public static Sprite UI2_Basilisk0;
         public static Sprite UI2_Basilisk1;
 
-
+        public static Sprite UI2_DIF;
+        public static Sprite UI2_DIF11;
+        public static Sprite UI2_DIF21;
+        public static Sprite UI2_DIF31;
+        public static Sprite UI2_DIF41;
+        public static Sprite UI2_DIF51;
+        public static Sprite UI2_DIF10;
+        public static Sprite UI2_DIF20;
+        public static Sprite UI2_DIF30;
+        public static Sprite UI2_DIF40;
+        public static Sprite UI2_DIF50;
 
 
         public static Sprite getAnimatedVentSealedSpritebar()

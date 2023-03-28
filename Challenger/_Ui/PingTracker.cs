@@ -22,16 +22,16 @@ namespace ChallengerMod
             {
                 if (Challenger.IsrankedGame == true)
                 {
-                        __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Partie Classé</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
-                    
+                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Partie Classé</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
+
                 }
                 else
                 {
                     __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>Par <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Partie Normal</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
-                    
+
                 }
 
-                
+
 
 
 
@@ -326,19 +326,325 @@ namespace ChallengerMod
                 }
 
             }
+            else if (Challenger.LangGameSet == 3f || (ChallengerMod.Set.Data.Playerlang == "SChinese" && Challenger.LangGameSet == 0f))
+            {
+                if (Challenger.IsrankedGame == true)
+                {
+                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Game Ranked</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
+
+                }
+                else
+                {
+                    __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Normal Game</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
+
+                }
+
+
+                __instance.text.text += "<size=1>\n\n\n</size>";
+                if (((QTCrew.getFloat() != 0) &&
+                    ((SherifSpawnChance.getFloat() > 0 && SherifAdd.getBool() == true)
+                    || (Sherif2SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true)
+                    || (Sherif3SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true)
+                    || (GuardianSpawnChance.getFloat() > 0 && GuardianAdd.getBool() == true)
+                    || (engineerSpawnChance.getFloat() > 0 && engineerAdd.getBool() == true)
+                    || (HunterSpawnChance.getFloat() > 0 && HunterAdd.getBool() == true)
+                    || (TimeLordSpawnChance.getFloat() > 0 && TimeLordAdd.getBool() == true)
+                    || (MysticSpawnChance.getFloat() > 0 && MysticAdd.getBool() == true)
+                    || (SpiritSpawnChance.getFloat() > 0 && SpiritAdd.getBool() == true)
+                    || (MayorSpawnChance.getFloat() > 0 && MayorAdd.getBool() == true)
+                    || (DetectiveSpawnChance.getFloat() > 0 && DetectiveAdd.getBool() == true)
+                    || (NightwatcherSpawnChance.getFloat() > 0 && NightwatcherAdd.getBool() == true)
+                    || (SpySpawnChance.getFloat() > 0 && SpyAdd.getBool() == true)
+                    || (InforSpawnChance.getFloat() > 0 && InforAdd.getBool() == true)
+                    || (BaitSpawnChance.getFloat() > 0 && BaitAdd.getBool() == true)
+                    || (MentalistSpawnChance.getFloat() > 0 && MentalistAdd.getBool() == true)
+                    || (BuilderSpawnChance.getFloat() > 0 && BuilderAdd.getBool() == true)
+                    || (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
+                    || (SentinelSpawnChance.getFloat() > 0 && SentinelAdd.getBool() == true)
+                    || (LawkeeperSpawnChance.getFloat() > 0 && LawkeeperAdd.getBool() == true)
+                    || (MateSpawnChance.getFloat() > 0 && MateAdd.getBool() == true)
+                    || (FakeSpawnChance.getFloat() > 0 && FakeAdd.getBool() == true)
+                    || (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
+                    )))
+                {
+                    __instance.text.text += "<size=1><color=#189FEC>\n\n                                                                                                                                                                                                       </size><size=1.5>[" + (0 + QTCrew.getFloat()) + "] 船员</color></size>";
+                    if (SherifSpawnChance.getFloat() > 0 && SherifAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFFF00>(警长 " + SherifSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (Sherif2SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFFF00>(警长 " + Sherif2SpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (Sherif3SpawnChance.getFloat() > 0 && SherifAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFFF00>(警长 " + Sherif3SpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (GuardianSpawnChance.getFloat() > 0 && GuardianAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#00FFFF>(守护者 " + GuardianSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (engineerSpawnChance.getFloat() > 0 && engineerAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFA100>(工程师 " + engineerSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (TimeLordSpawnChance.getFloat() > 0 && TimeLordAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#007FFF>(时间领主 " + TimeLordSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (HunterSpawnChance.getFloat() > 0 && HunterAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#00FF00>(猎人 " + HunterSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (MysticSpawnChance.getFloat() > 0 && MysticAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                            "<size=1>\n                                                                                                                                                                                                       " + "<color=#F9FFB2>(神秘人 " + MysticSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (SpiritSpawnChance.getFloat() > 0 && SpiritAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#A1FF00>(精灵 " + SpiritSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (MayorSpawnChance.getFloat() > 0 && MayorAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#AF8269>(市长 " + MayorSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (DetectiveSpawnChance.getFloat() > 0 && DetectiveAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#BCFFBA>(侦探 " + DetectiveSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (NightwatcherSpawnChance.getFloat() > 0 && NightwatcherAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#9EB3FF>(执灯人 " + NightwatcherSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (SpySpawnChance.getFloat() > 0 && SpyAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#9EE1FF>(特工 " + SpySpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (InforSpawnChance.getFloat() > 0 && InforAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#ADFFEA>(线人 " + InforSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (BaitSpawnChance.getFloat() > 0 && BaitAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#808080>(诱饵 " + BaitSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (MentalistSpawnChance.getFloat() > 0 && MentalistAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#A991FF>(心理医生 " + MentalistSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (BuilderSpawnChance.getFloat() > 0 && BuilderAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFC291>(保安 " + BuilderSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (DictatorSpawnChance.getFloat() > 0 && DictatorAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#C06A6A>(独裁者 " + DictatorSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (SentinelSpawnChance.getFloat() > 0 && SentinelAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#06AD17>(哨兵 " + SentinelSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (MateSpawnChance.getFloat() > 0 && MateAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#B4FAFA>(队友 " + MateSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (LawkeeperSpawnChance.getFloat() > 0 && LawkeeperAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF9b9b>(验尸官 " + LawkeeperSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (FakeSpawnChance.getFloat() > 0 && FakeAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF4D35>(卧底 " + FakeSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (LeaderSpawnChance.getFloat() > 0 && LeaderAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                             "<size=1>\n                                                                                                                                                                                                       " + "<color=#5A7DA5>(领袖 " + LeaderSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                }
+                if (((QTSpe.getFloat() != 0) &&
+                ((JesterSpawnChance.getFloat() > 0 && JesterAdd.getBool() == true)
+                || (EaterSpawnChance.getFloat() > 0 && EaterAdd.getBool() == true)
+                || (CursedSpawnChance.getFloat() > 0 && CursedAdd.getBool() == true)
+                || (CupidSpawnChance.getFloat() > 0 && CupidAdd.getBool() == true)
+                || (CultisteSpawnChance.getFloat() > 0 && CultisteAdd.getBool() == true)
+                || (ArsonistSpawnChance.getFloat() > 0 && ArsonistAdd.getBool() == true)
+                || (OutlawSpawnChance.getFloat() > 0 && OutlawAdd.getBool() == true)
+
+                )))
+                {
+                    __instance.text.text += "<size=1><color=#B218EC>\n\n                                                                                                                                                                                                      </size><size=1.5> [" + (0 + QTSpe.getFloat()) + "] 特殊</color></size>";
+                    if (JesterSpawnChance.getFloat() > 0 && JesterAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                               "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF0A88>(小丑 " + JesterSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (CupidSpawnChance.getFloat() > 0 && CupidAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFAFFF>(丘比特 " + CupidSpawnChance.getFloat() + "%)</color></size>";
+                    }
+
+
+                    if (EaterSpawnChance.getFloat() > 0 && EaterAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                               "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF6E00>(秃鹫 " + EaterSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (CultisteSpawnChance.getFloat() > 0 && CultisteAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#8300FF>(教主 " + CultisteSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (OutlawSpawnChance.getFloat() > 0 && OutlawAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#0033FF>(亡命徒 " + OutlawSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (ArsonistSpawnChance.getFloat() > 0 && ArsonistAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#FFC800>(纵火犯 " + ArsonistSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (CursedSpawnChance.getFloat() > 0 && CursedAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#3F683B>(被诅咒者 " + CursedSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                }
+                if (((QTDuo.getFloat() != 0) &&
+               ((MercenarySpawnChance.getFloat() > 0 && MercenaryAdd.getBool() == true)
+                || (CopyCatSpawnChance.getFloat() > 0 && CopyCatAdd.getBool() == true)
+                || (SorcererSpawnChance.getFloat() > 0 && SorcererAdd.getBool() == true)
+                || (RevengerSpawnChance.getFloat() > 0 && RevengerAdd.getBool() == true)
+                )))
+                {
+                    __instance.text.text += "<size=1><color=#B270E8>\n\n                                                                                                                                                                                                      </size><size=1.5> [" + (0 + QTDuo.getFloat()) + "] 混合职</color></size>";
+                    if (MercenarySpawnChance.getFloat() > 0 && MercenaryAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#FF49E6>(雇佣兵 " + MercenarySpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (CopyCatSpawnChance.getFloat() > 0 && CopyCatAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#64E6B4>(失忆者 " + CopyCatSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (SorcererSpawnChance.getFloat() > 0 && SorcererAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#7F5E4C>(幸存者 " + SorcererSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (RevengerSpawnChance.getFloat() > 0 && RevengerAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#D9C27E>(复仇者 " + RevengerSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                }
+                if (((QTImp.getFloat() != 0) &&
+                ((AssassinSpawnChance.getFloat() > 0 && AssassinAdd.getBool() == true)
+                || (VectorSpawnChance.getFloat() > 0 && VectorAdd.getBool() == true)
+                || (MorphlingSpawnChance.getFloat() > 0 && MorphlingAdd.getBool() == true)
+                || (CamoSpawnChance.getFloat() > 0 && CamoAdd.getBool() == true)
+                || (BarghestSpawnChance.getFloat() > 0 && BarghestAdd.getBool() == true)
+                || (WarSpawnChance.getFloat() > 0 && WarAdd.getBool() == true)
+                || (GuesserSpawnChance.getFloat() > 0 && GuesserAdd.getBool() == true)
+                || (GhostSpawnChance.getFloat() > 0 && GhostAdd.getBool() == true)
+                || (BasiliskSpawnChance.getFloat() > 0 && BasiliskAdd.getBool() == true)
+                //|| (MesmerSpawnChance.getFloat() > 0 && MesmerAdd.getBool() == true)
+
+                )))
+                {
+                    __instance.text.text += "<size=1><color=#FF0000>\n\n                                                                                                                                                                                                       </size><size=1.5>[" + (0 + QTImp.getFloat()) + "] 内鬼</color></size>";
+                    if (AssassinSpawnChance.getFloat() > 0 && AssassinAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#005106>(刺客 " + AssassinSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (VectorSpawnChance.getFloat() > 0 && VectorAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#8C1919>(染控者 " + VectorSpawnChance.getFloat() + "%)</color></size>";
+                    }
+
+                    if (MorphlingSpawnChance.getFloat() > 0 && MorphlingAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#430054>(化形者 " + MorphlingSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (CamoSpawnChance.getFloat() > 0 && CamoAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#544700>(隐蔽者 " + CamoSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (BarghestSpawnChance.getFloat() > 0 && BarghestAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#000569>(犬魔 " + BarghestSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (GhostSpawnChance.getFloat() > 0 && GhostAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#404040>(隐身人 " + GhostSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (WarSpawnChance.getFloat() > 0 && WarAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#542B00>(法师 " + WarSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (GuesserSpawnChance.getFloat() > 0 && GuesserAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#003954>(赌怪 " + GuesserSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    if (BasiliskSpawnChance.getFloat() > 0 && BasiliskAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#5B466B>(蛇怪 " + BasiliskSpawnChance.getFloat() + "%)</color></size>";
+                    }
+                    /*if (MesmerSpawnChance.getFloat() > 0 && MesmerAdd.getBool() == true)
+                    {
+                        __instance.text.text +=
+                              "<size=1>\n                                                                                                                                                                                                       " + "<color=#680037>(Mesmer " + MesmerSpawnChance.getFloat() + "%)</color></size>";
+                    }*/
+                }
+            }
+
             else
             {
                 if (Challenger.IsrankedGame == true)
                 {
                     __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FF00FF>★ Game Ranked</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
-                    
+
                 }
                 else
                 {
                     __instance.text.text += "\n\n<color=#DE6C13><size=3.6>Challenger</size></color><color=#0089EE> <size=1.8>(" + PrefixString + VersionString + SufixString + ")</size></color>\n<size=2.4>By <color=#FF2DE9>Lunastellia</size></color><size=1>\n\n</size><size=2><color=#FFFF00>★ Normal Game</color><color=#252525> </color>" + RT_ACTIF + "\n\n</size>";
-                   
+
                 }
-                
+
 
                 __instance.text.text += "<size=1>\n\n\n</size>";
                 if (((QTCrew.getFloat() != 0) &&
@@ -629,7 +935,7 @@ namespace ChallengerMod
                         __instance.text.text +=
                               "<size=1>\n                                                                                                                                                                                                       " + "<color=#680037>(Mesmer " + MesmerSpawnChance.getFloat() + "%)</color></size>";
                     }*/
-                   // __instance.text.text += "\n-" + Challenger.debugg + ".";
+                    
                 }
             }
 

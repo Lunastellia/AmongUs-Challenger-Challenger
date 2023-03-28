@@ -1,5 +1,9 @@
 using HarmonyLib;
+using UnityEngine.UI;
 using static ChallengerMod.Roles;
+using System;
+using System.Linq;
+using UnityEngine;
 
 
 namespace ChallengerMod
@@ -22,7 +26,7 @@ namespace ChallengerMod
 					__result = 0f;
                     return false;
 				}
-				if (Challenger.LobbyTimeStop == false) // Time Normal
+				else // Time Normal
 				{
 					if (Challenger.DroneController != null && PlayerControl.LocalPlayer == Challenger.DroneController) //Fix Light to SurvDrone
                     {
@@ -31,6 +35,12 @@ namespace ChallengerMod
                     }
 					else
 					{
+
+
+						// If player is a role which has Impostor vision
+						
+
+
 
 
 						if (Challenger.LobbyLightOff == true || Cursed.NightEffect == true) // Shadow On
@@ -78,6 +88,7 @@ namespace ChallengerMod
 							else // Light Nightwatch disabled or normal player
 							{
 
+
 								__result = 0.8f;
 
 								if ((ChallengerOS.Utils.Option.CustomOptionHolder.BarghestCamlight.getBool() == true)) // disabled
@@ -122,30 +133,35 @@ namespace ChallengerMod
 							}
 							else
 							{
-								Challenger.LobbyAdminOff = false;
-								Challenger.LobbyVitalOff = false;
-								Challenger.LobbyCamOff = false;
-								return true; // Normal Radius
+								if (Challenger.IMPVision && (!Challenger.LightSab || Challenger.LightSab && Challenger.IMPVisionSab))
+								{
+									__result = __instance.MaxLightRadius * PlayerControl.GameOptions.ImpostorLightMod;
+                                    Challenger.LobbyAdminOff = false;
+                                    Challenger.LobbyVitalOff = false;
+                                    Challenger.LobbyCamOff = false;
+                                    return false; // Normal Radius
+                                }
+								else
+								{
+                                    Challenger.LobbyAdminOff = false;
+                                    Challenger.LobbyVitalOff = false;
+                                    Challenger.LobbyCamOff = false;
+                                    return true; // Normal Radius
+                                }
+                                   
 							}
 						}
 					}
 				}
-				else
-				{
-					Challenger.LobbyAdminOff = false;
-					Challenger.LobbyVitalOff = false;
-					Challenger.LobbyCamOff = false;
-					return true; // Normal Radius
-				}
-
-
+				
 				Challenger.LobbyAdminOff = false;
 				Challenger.LobbyVitalOff = false;
 				Challenger.LobbyCamOff = false;
 				return true;
 			}
+            
 
-		}
+        }
 		[HarmonyPostfix]
 		[HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.IsGameOverDueToDeath))]
 		public static void Postfix(ShipStatus __instance, ref bool __result)

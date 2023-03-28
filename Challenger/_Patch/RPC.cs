@@ -18,6 +18,8 @@ using ChallengerOS.Objects;
 using UnityEngine.Networking.Types;
 using static UnityEngine.GraphicsBuffer;
 using ChallengerOS;
+using GLMod;
+using static Il2CppSystem.Xml.Schema.FacetsChecker.FacetsCompiler;
 
 namespace ChallengerMod.RPC
 {
@@ -137,7 +139,7 @@ namespace ChallengerMod.RPC
     {
         // Main Controls
         
-        ShareAllRoles = 72,
+        ShareAllRoles = 73,
         ShareNewPLayerSlot,
         ShareNewMapID,
         SyncTimer,
@@ -147,7 +149,7 @@ namespace ChallengerMod.RPC
         RemoveAllBodies,
         SetLocalPlayers,
         SetRole,
-        SetVisorColor,
+        
 
         //winner
         SetWinLove,
@@ -268,6 +270,8 @@ namespace ChallengerMod.RPC
         SetCulte2Player,
         SetCulte3Player,
         CultistDie,
+        CultistDieMeeting,
+        CultistFail,
 
         //Eater
         DraggBody,
@@ -376,7 +380,7 @@ namespace ChallengerMod.RPC
                 {
                     switch ((SetRoleID)roleId)
                     {
-                       
+
                         case SetRoleID.SetSheriff1:
                             Sheriff1.Role = player;
                             break;
@@ -582,105 +586,7 @@ namespace ChallengerMod.RPC
                 }
         }
         // Main Controls
-        public static void setVisorColor(byte PlayerColor, int ColorID)
-        {
-            int _ColorID = 0;
-            _ColorID = ColorID;
-            PlayerControl _Player = Helpers.playerById(PlayerColor);
-            
-            int _Player_ColorID = _Player.Data.DefaultOutfit.ColorId;
 
-            if (_Player_ColorID == 18)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Bloody.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 19)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Earth.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 21)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Chedard.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 22)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Sun.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 23)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Leef.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 24)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Radian.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 25)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Swamp.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 26)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Ice.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 27)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Lagoon.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 28)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Ocean.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 29)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Night.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 30)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Dawn.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 31)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Candy.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 32)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Galaxy.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 33)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Snow.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 33)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Cender.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 34)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Dark.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-            if (_Player_ColorID == 35)
-            {
-                ChallengerOS.Utils.Option.CustomOptionHolder.Color_Rainbow.updateSelection(_ColorID);
-                ChallengerOS.Utils.Option.CustomOption.ShareOptionSelections();
-            }
-        }
 
         public static void shareNewPLayerSlot(int Value)
         {
@@ -692,42 +598,89 @@ namespace ChallengerMod.RPC
         }
         public static void syncTimer(float TimerSyncro)
         {
-            Challenger.NuclearTimer = TimerSyncro + 2f;
-            //ChallengerMod.CustomButton.HudManagerStartPatch.setCustomButtonCooldowns();
-            ReSyncIntro = true;
+            try
+            {
+                Challenger.NuclearTimer = TimerSyncro + 2f;
+                ReSyncIntro = true;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] syncTimer " + e.Message);
+                return;
+            }
 
         }
         public static void syncMap()
         {
-            ChallengerMod.Challenger.NuclearMap = true;
+            try
+            {
+                ChallengerMod.Challenger.NuclearMap = true;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] syncMap " + e.Message);
+                return;
+            }
+
 
         }
 
-        
+
         public static void syncDie(byte Player)
         {
-            PlayerControl PlayerDie = Helpers.playerById(Player);
-            if (PlayerDie != null)
+            try
             {
-                PlayerDie.Die(DeathReason.Kill);
-                PlayerDie.Data.IsDead = true;
+                PlayerControl PlayerDie = Helpers.playerById(Player);
+                if (PlayerDie != null)
+                {
+                    PlayerDie.Die(DeathReason.Kill);
+                    PlayerDie.Data.IsDead = true;
+                }
+
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] syncDie " + e.Message);
+                return;
+            }
+
+
         }
         public static void syncEmergency(int Emergency)
         {
-            Challenger.QTEmergency = Emergency;
-            PlayerControl.LocalPlayer.RemainingEmergencies = Emergency;
+            try
+            {
+                Challenger.QTEmergency = Emergency;
+                PlayerControl.LocalPlayer.RemainingEmergencies = Emergency;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] syncEmergency " + e.Message);
+                return;
+            }
+
         }
-        
-        
-       
-       
-        
+
+
+
+
+
         public static void shareAllRoles()
         {
-            RoleAssigned = true;
-            Challenger._Alls = PlayerControl.AllPlayerControls.ToArray().ToList().OrderBy(x => Guid.NewGuid()).ToList();
-            return;
+
+            try
+            {
+                RoleAssigned = true;
+                ChallengerMod.HarmonyMain.CanStartTheGame = false; //prev next game
+                Challenger._Alls = PlayerControl.AllPlayerControls.ToArray().ToList().OrderBy(x => Guid.NewGuid()).ToList();
+                return;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] shareAllRoles " + e.Message);
+                return;
+            }
+
         }
 
 
@@ -1742,1130 +1695,1683 @@ namespace ChallengerMod.RPC
         //SHERIFF
         public static void sheriff1kill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Sheriff1.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Sheriff1.Suicide = true;
-                   GLMod.GLMod.currentGame.addAction(Sheriff1.Role.Data.PlayerName, "", "suicide_sheriff");
-                }
-                if (player.PlayerId == targetId)
-                {
-                    
-                    Sheriff1.Role.MurderPlayer(player);
-                    Sheriff1.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Sheriff1.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
+                    if (targetId == Sheriff1.Role.PlayerId)
+                    {
+                        Sheriff1.Suicide = true;
+                        GLMod.GLMod.currentGame.addAction(Sheriff1.Role.Data.PlayerName, "", "suicide_sheriff");
+                    }
+                    if (player.PlayerId == targetId)
+                    {
 
-                    return;
+                        Sheriff1.Role.MurderPlayer(player);
+                        Sheriff1.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Sheriff1.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
+
+                        return;
+                    }
+
                 }
-                
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] sheriff1kill " + e.Message);
+                return;
+            }
+
+
         }
         public static void sheriff2kill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Sheriff2.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Sheriff2.Suicide = true;
-                    GLMod.GLMod.currentGame.addAction(Sheriff2.Role.Data.PlayerName, "", "suicide_sheriff");
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Sheriff2.Role.MurderPlayer(player);
-                    Sheriff2.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Sheriff2.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
+                    if (targetId == Sheriff2.Role.PlayerId)
+                    {
+                        Sheriff2.Suicide = true;
+                        GLMod.GLMod.currentGame.addAction(Sheriff2.Role.Data.PlayerName, "", "suicide_sheriff");
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Sheriff2.Role.MurderPlayer(player);
+                        Sheriff2.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Sheriff2.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] sheriff2kill " + e.Message);
+                return;
+            }
+
         }
         public static void sheriff3kill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Sheriff3.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Sheriff3.Suicide = true;
-                    GLMod.GLMod.currentGame.addAction(Sheriff3.Role.Data.PlayerName, "", "suicide_sheriff");
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Sheriff3.Role.MurderPlayer(player);
-                    Sheriff3.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Sheriff3.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
+                    if (targetId == Sheriff3.Role.PlayerId)
+                    {
+                        Sheriff3.Suicide = true;
+                        GLMod.GLMod.currentGame.addAction(Sheriff3.Role.Data.PlayerName, "", "suicide_sheriff");
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Sheriff3.Role.MurderPlayer(player);
+                        Sheriff3.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Sheriff3.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] XXX " + e.Message);
+                return;
+            }
+
         }
-       
+
 
         public static void setProtectedPlayer(byte protectedId)
         {
-           
-            Guardian.ShieldUsed = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == protectedId)
+                Guardian.ShieldUsed = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Guardian.Protected = player;
-                    if (!Guardian.Role.Data.IsDead)
+                    if (player.PlayerId == protectedId)
                     {
-                        GLMod.GLMod.currentGame.addAction(Guardian.Role.Data.PlayerName, player.Data.PlayerName, "player_shielded");
+                        Guardian.Protected = player;
+                        if (!Guardian.Role.Data.IsDead)
+                        {
+                            GLMod.GLMod.currentGame.addAction(Guardian.Role.Data.PlayerName, player.Data.PlayerName, "player_shielded");
+                        }
+                        if (Guardian.Role.Data.IsDead)
+                        {
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "player_shielded");
+                        }
                     }
-                    if (Guardian.Role.Data.IsDead)
-                    {
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "player_shielded");
-                    }
-                }
 
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setProtectedPlayer " + e.Message);
+                return;
+            }
+
         }
         public static void setProtectedMystic(byte protectedmysticId)
         {
-            Guardian.ShieldUsed = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == protectedmysticId)
+                Guardian.ShieldUsed = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Guardian.ProtectedMystic = player;
-                    Mystic.DoubleShield = true;
-                    Guardian.Protected = player;
-                    
-                    if (!Guardian.Role.Data.IsDead)
+                    if (player.PlayerId == protectedmysticId)
                     {
-                        GLMod.GLMod.currentGame.addAction(Guardian.Role.Data.PlayerName, player.Data.PlayerName, "player_supershielded");
-                    }
-                    if (Guardian.Role.Data.IsDead)
-                    {
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "player_supershielded");
+                        Guardian.ProtectedMystic = player;
+                        Mystic.DoubleShield = true;
+                        Guardian.Protected = player;
+
+                        if (!Guardian.Role.Data.IsDead)
+                        {
+                            GLMod.GLMod.currentGame.addAction(Guardian.Role.Data.PlayerName, player.Data.PlayerName, "player_supershielded");
+                        }
+                        if (Guardian.Role.Data.IsDead)
+                        {
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "player_supershielded");
+                        }
                     }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setProtectedMystic " + e.Message);
+                return;
+            }
+
         }
         public static void setProtectedCopyMystic()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == CopyCat.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Guardian.ProtectedMystic = player;
-                    Mystic.DoubleShield = true;
-                    Mystic.selfShield = true;
+                    if (player.PlayerId == CopyCat.Role.PlayerId)
+                    {
+                        Guardian.ProtectedMystic = player;
+                        Mystic.DoubleShield = true;
+                        Mystic.selfShield = true;
 
-                    
-                    GLMod.GLMod.currentGame.addAction(Guardian.Role.Data.PlayerName, player.Data.PlayerName, "player_supershielded");
-                    
+
+                        GLMod.GLMod.currentGame.addAction(Guardian.Role.Data.PlayerName, player.Data.PlayerName, "player_supershielded");
+
+                    }
+
                 }
-                    
             }
-                
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setProtectedCopyMystic " + e.Message);
+                return;
+            }
+
+
         }
 
         //ENGINEER
         public static void engineerRepair()
         {
-            Engineer.RepairUsed = true;
-            GLMod.GLMod.currentGame.addAction(Engineer.Role.Data.PlayerName, "", "sabotage_repair");
+            try
+            {
+                Engineer.RepairUsed = true;
+                GLMod.GLMod.currentGame.addAction(Engineer.Role.Data.PlayerName, "", "sabotage_repair");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] engineerRepair " + e.Message);
+                return;
+            }
+
 
         }
 
         public static void engineerFixLight()
         {
-            SwitchSystem switchSystem = ShipStatus.Instance.Systems[SystemTypes.Electrical].Cast<SwitchSystem>();
-            switchSystem.ActualSwitches = switchSystem.ExpectedSwitches;
+            try
+            {
+                SwitchSystem switchSystem = ShipStatus.Instance.Systems[SystemTypes.Electrical].Cast<SwitchSystem>();
+                switchSystem.ActualSwitches = switchSystem.ExpectedSwitches;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] engineerFixLight " + e.Message);
+                return;
+            }
+
         }
 
         //TIMELORD
 
         public static void timeStop_Start(int WhoStopTime)
         {
-            HudManager.Instance.FullScreen.gameObject.SetActive(true);
-            HudManager.Instance.FullScreen.enabled = true;
-            HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0.8f, 0.3f);
-            SoundManager.Instance.PlaySound(breakClip, false, 100f);
-            SoundManager.Instance.PlaySound(Tic, true, 100f);
-            Timelord.TimeStopped = true;
 
-            if (WhoStopTime == 1)
+            try
             {
-                Timelord.TimeLordStopTime = true;
-                GLMod.GLMod.currentGame.addAction(Timelord.Role.Data.PlayerName, "", "timestopped");
-            }
-            if (WhoStopTime == 2)
-            {
-                Timelord.CopyCatStopTime = true;
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "timestopped");
-            }
-            if (WhoStopTime == 3)
-            {
-                Timelord.AssassinStopTime = true;
-                GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, "", "timestopped");
-            }
+                HudManager.Instance.FullScreen.gameObject.SetActive(true);
+                HudManager.Instance.FullScreen.enabled = true;
+                HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0.8f, 0.3f);
+                SoundManager.Instance.PlaySound(breakClip, false, 100f);
+                SoundManager.Instance.PlaySound(Tic, true, 100f);
+                Timelord.TimeStopped = true;
+
+                if (WhoStopTime == 1)
+                {
+                    Timelord.TimeLordStopTime = true;
+                    GLMod.GLMod.currentGame.addAction(Timelord.Role.Data.PlayerName, "", "timestopped");
+                }
+                if (WhoStopTime == 2)
+                {
+                    Timelord.CopyCatStopTime = true;
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "timestopped");
+                }
+                if (WhoStopTime == 3)
+                {
+                    Timelord.AssassinStopTime = true;
+                    GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, "", "timestopped");
+                }
 
 
-            if (Timelord.Role != null && (PlayerControl.LocalPlayer == Timelord.Role)
-                || (Timelord.Role.Data.IsDead && CopyCat.Role != null && CopyCat.copyRole == 4 && (PlayerControl.LocalPlayer == CopyCat.Role) && CopyCat.CopyStart == true)
-                || (Assassin.Role != null && Assassin.StealTime == true && PlayerControl.LocalPlayer == Assassin.Role))
-            {
-                PlayerControl.LocalPlayer.moveable = true;
-            }
-            else
-            {
-                if (PlayerControl.LocalPlayer.Data.IsDead)
+                if (Timelord.Role != null && (PlayerControl.LocalPlayer == Timelord.Role)
+                    || (Timelord.Role.Data.IsDead && CopyCat.Role != null && CopyCat.copyRole == 4 && (PlayerControl.LocalPlayer == CopyCat.Role) && CopyCat.CopyStart == true)
+                    || (Assassin.Role != null && Assassin.StealTime == true && PlayerControl.LocalPlayer == Assassin.Role))
                 {
                     PlayerControl.LocalPlayer.moveable = true;
                 }
                 else
                 {
-                    PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
-                    if (Minigame.Instance)
+                    if (PlayerControl.LocalPlayer.Data.IsDead)
                     {
-                        Minigame.Instance.enabled = false;
-                        if (VitalsMinigame.Instance.isActiveAndEnabled)
-                        { VitalsMinigame.Instance.Close(); }
-                        if (PlanetSurveillanceMinigame.Instance.isActiveAndEnabled)
-                        { PlanetSurveillanceMinigame.Instance.Close(); }
-                        PlayerControl.LocalPlayer.moveable = false;
-                        Challenger.LobbyTimeStop = true;
+                        PlayerControl.LocalPlayer.moveable = true;
                     }
-
                     else
                     {
-                        if (PlayerControl.LocalPlayer.inVent)
+                        PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                        if (Minigame.Instance)
                         {
-                            PlayerControl.LocalPlayer.inVent = false;
-                            Challenger.InVent = true;
-                            Challenger.LobbyTimeStop = true;
+                            Minigame.Instance.enabled = false;
+                            if (VitalsMinigame.Instance.isActiveAndEnabled)
+                            { VitalsMinigame.Instance.Close(); }
+                            if (PlanetSurveillanceMinigame.Instance.isActiveAndEnabled)
+                            { PlanetSurveillanceMinigame.Instance.Close(); }
                             PlayerControl.LocalPlayer.moveable = false;
+                            Challenger.LobbyTimeStop = true;
                         }
+
                         else
                         {
-                            Challenger.LobbyTimeStop = true;
-                            PlayerControl.LocalPlayer.moveable = false;
+                            if (PlayerControl.LocalPlayer.inVent)
+                            {
+                                PlayerControl.LocalPlayer.inVent = false;
+                                Challenger.InVent = true;
+                                Challenger.LobbyTimeStop = true;
+                                PlayerControl.LocalPlayer.moveable = false;
+                            }
+                            else
+                            {
+                                Challenger.LobbyTimeStop = true;
+                                PlayerControl.LocalPlayer.moveable = false;
+                            }
                         }
+
+
                     }
-
-
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] timeStop_Start " + e.Message);
+                return;
+            }
+
         }
 
         public static void timeStop_End()
         {
 
-            
-
-            if (Barghest.Shadow)
+            try
             {
-                HudManager.Instance.FullScreen.gameObject.SetActive(true);
-                HudManager.Instance.FullScreen.enabled = true;
-                HudManager.Instance.FullScreen.color = new Color(0.2f, 0.2f, 0.4f, 0.3f);
-            }
-            else
-            {
-                HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0f, 0f);
-            }
-
-            SoundManager.Instance.PlaySound(timeoff, false, 100f);
-            SoundManager.Instance.StopSound(Tic);
-            Timelord.TimeLordStopTime = false;
-            Timelord.CopyCatStopTime = false;
-            Timelord.AssassinStopTime = false;
-            Timelord.TimeStopped = false;
-
-            if (Minigame.Instance)
-            {
-                Minigame.Instance.enabled = true;
-                PlayerControl.LocalPlayer.moveable = true;
-                Challenger.LobbyTimeStop = false;
-            }
-            else
-            {
-                if (Challenger.InVent == true)
+                if (Barghest.Shadow)
                 {
-                    PlayerControl.LocalPlayer.inVent = true;
-                    Challenger.InVent = false;
-                    PlayerControl.LocalPlayer.moveable = false;
+                    HudManager.Instance.FullScreen.gameObject.SetActive(true);
+                    HudManager.Instance.FullScreen.enabled = true;
+                    HudManager.Instance.FullScreen.color = new Color(0.2f, 0.2f, 0.4f, 0.3f);
+                }
+                else
+                {
+                    HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0f, 0f);
+                }
+
+                SoundManager.Instance.PlaySound(timeoff, false, 100f);
+                SoundManager.Instance.StopSound(Tic);
+                Timelord.TimeLordStopTime = false;
+                Timelord.CopyCatStopTime = false;
+                Timelord.AssassinStopTime = false;
+                Timelord.TimeStopped = false;
+
+                if (Minigame.Instance)
+                {
+                    Minigame.Instance.enabled = true;
+                    PlayerControl.LocalPlayer.moveable = true;
                     Challenger.LobbyTimeStop = false;
                 }
                 else
                 {
-                    if (Spy.Role != null && PlayerControl.LocalPlayer == Spy.Role)
+                    if (Challenger.InVent == true)
                     {
-                        if (Spy.Use == true)
+                        PlayerControl.LocalPlayer.inVent = true;
+                        Challenger.InVent = false;
+                        PlayerControl.LocalPlayer.moveable = false;
+                        Challenger.LobbyTimeStop = false;
+                    }
+                    else
+                    {
+                        if (Spy.Role != null && PlayerControl.LocalPlayer == Spy.Role)
                         {
-                            Challenger.LobbyTimeStop = false;
+                            if (Spy.Use == true)
+                            {
+                                Challenger.LobbyTimeStop = false;
+                            }
+                            else
+                            {
+                                PlayerControl.LocalPlayer.moveable = true;
+                                Challenger.LobbyTimeStop = false;
+                            }
                         }
                         else
                         {
                             PlayerControl.LocalPlayer.moveable = true;
                             Challenger.LobbyTimeStop = false;
                         }
-                    }
-                    else
-                    {
-                        PlayerControl.LocalPlayer.moveable = true;
-                        Challenger.LobbyTimeStop = false;
-                    }
 
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] timeStop_End " + e.Message);
+                return;
+            }
+
+
 
         }
         //HUNTER
         public static void setTrackedPlayer(byte TrackedId)
         {
-            Hunter.TrackUsed = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == TrackedId)
+                Hunter.TrackUsed = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Hunter.Tracked = player;
-                    GLMod.GLMod.currentGame.addAction(Hunter.Role.Data.PlayerName, player.Data.PlayerName, "player_tracked");
+                    if (player.PlayerId == TrackedId)
+                    {
+                        Hunter.Tracked = player;
+                        GLMod.GLMod.currentGame.addAction(Hunter.Role.Data.PlayerName, player.Data.PlayerName, "player_tracked");
+                    }
                 }
             }
-                
-                   
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setTrackedPlayer " + e.Message);
+                return;
+            }
+
+
+
         }
         public static void hunterTrackedDie()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Hunter.Tracked)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    player.Die(DeathReason.Exile);
-                    
+                    if (player == Hunter.Tracked)
+                    {
+                        player.Die(DeathReason.Exile);
+
+                    }
+                    Hunter.Role.Data.IsDead = true;
+                    Hunter.Tracked.Data.IsDead = true;
                 }
-                Hunter.Role.Data.IsDead = true;
-                Hunter.Tracked.Data.IsDead = true;
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] hunterTrackedDie " + e.Message);
+                return;
+            }
+
         }
         public static void hunterTrackedKill()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Hunter.Tracked)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Hunter.KilledByHunter = true;
-                    Hunter.Tracked.MurderPlayer(Hunter.Tracked);
-                    
+                    if (player == Hunter.Tracked)
+                    {
+                        Hunter.KilledByHunter = true;
+                        Hunter.Tracked.MurderPlayer(Hunter.Tracked);
+
+
+                    }
+                    Hunter.Role.Data.IsDead = true;
+                    Hunter.Tracked.Data.IsDead = true;
 
                 }
-                Hunter.Role.Data.IsDead = true;
-                Hunter.Tracked.Data.IsDead = true;
-
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] hunterTrackedkill " + e.Message);
+                return;
+            }
+
         }
         public static void setCopyTrackedPlayer(byte CopyTrackedId)
         {
-            Hunter.CopyTrackUsed = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == CopyTrackedId)
+                Hunter.CopyTrackUsed = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Hunter.CopyTracked = player;
-                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "player_tracked");
+                    if (player.PlayerId == CopyTrackedId)
+                    {
+                        Hunter.CopyTracked = player;
+                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "player_tracked");
+
+                    }
 
                 }
-
             }
-                
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setCopyTrackedPlayer " + e.Message);
+                return;
+            }
+
+
         }
         public static void hunterCopyTrackedDie()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Hunter.CopyTracked)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    player.Die(DeathReason.Exile);
-                   
+                    if (player == Hunter.CopyTracked)
+                    {
+                        player.Die(DeathReason.Exile);
 
+
+                    }
+                    CopyCat.Role.Data.IsDead = true;
+                    Hunter.CopyTracked.Data.IsDead = true;
                 }
-                CopyCat.Role.Data.IsDead = true;
-                Hunter.CopyTracked.Data.IsDead = true;
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] hunterCopyTrackedDie " + e.Message);
+                return;
+            }
+
         }
         public static void hunterCopyTrackedKill()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Hunter.CopyTracked)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Hunter.KilledByCopyHunter = true;
-                    Hunter.CopyTracked.MurderPlayer(Hunter.CopyTracked);
-                   
+                    if (player == Hunter.CopyTracked)
+                    {
+                        Hunter.KilledByCopyHunter = true;
+                        Hunter.CopyTracked.MurderPlayer(Hunter.CopyTracked);
+
+
+                    }
+                    CopyCat.Role.Data.IsDead = true;
+                    Hunter.CopyTracked.Data.IsDead = true;
 
                 }
-                CopyCat.Role.Data.IsDead = true;
-                Hunter.CopyTracked.Data.IsDead = true;
-
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] hunterCopyTrackedkill " + e.Message);
+                return;
+            }
+
         }
 
         //MYSTIC 
 
         public static void mysticShieldOn()
         {
-            Mystic.selfShield = true;
-            
-            
-            if (Mystic.Role.Data.IsDead && CopyCat.Role != null)
+
+            try
             {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "mysticshield");
+                Mystic.selfShield = true;
+
+
+                if (Mystic.Role.Data.IsDead && CopyCat.Role != null)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "mysticshield");
+                }
+                else
+                {
+                    GLMod.GLMod.currentGame.addAction(Mystic.Role.Data.PlayerName, "", "mysticshield");
+                }
             }
-            else
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(Mystic.Role.Data.PlayerName, "", "mysticshield");
+                GLMod.GLMod.logError("[RPC] mysticShieldOn " + e.Message);
+                return;
             }
+
         }
         public static void mysticShieldOff()
         {
-            Mystic.selfShield = false;
+            try
+            {
+                Mystic.selfShield = false;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] mysticShieldOff " + e.Message);
+                return;
+            }
+
         }
 
 
         //SPIRIT
         public static void spiritRevive()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                //Spirit Cancel Exile
-                if (player == Spirit.Role)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    player.Revive();
-                    player.Data.IsDead = false;
-                    Spirit.Role.Data.IsDead = false;
+                    //Spirit Cancel Exile
+                    if (player == Spirit.Role)
+                    {
+                        player.Revive();
+                        player.Data.IsDead = false;
+                        Spirit.Role.Data.IsDead = false;
+                    }
+                    else if (player != Spirit.Role)
+                    {
+                        Spirit.Role.Data.IsDead = false;
+                    }
                 }
-                else if (player != Spirit.Role)
-                {
-                    Spirit.Role.Data.IsDead = false;
-                }
+                Spirit.Role.Data.IsDead = false;
             }
-            Spirit.Role.Data.IsDead = false;
-            
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] spiritRevive " + e.Message);
+                return;
+            }
+
+
 
         }
         public static void copyCatRevive()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                //Spirit Cancel Exile
-                if (player == CopyCat.Role)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    player.Revive();
-                    player.Data.IsDead = false;
-                    CopyCat.Role.Data.IsDead = false;
+                    //Spirit Cancel Exile
+                    if (player == CopyCat.Role)
+                    {
+                        player.Revive();
+                        player.Data.IsDead = false;
+                        CopyCat.Role.Data.IsDead = false;
+                    }
+                    else if (player != CopyCat.Role)
+                    {
+                        CopyCat.Role.Data.IsDead = false;
+                    }
                 }
-                else if (player != CopyCat.Role)
-                {
-                    CopyCat.Role.Data.IsDead = false;
-                }
+                CopyCat.Role.Data.IsDead = false;
             }
-            CopyCat.Role.Data.IsDead = false;
-           
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] copyCatRevive " + e.Message);
+                return;
+            }
+
+
         }
         //MAYOR
         public static void mayorBuzz()
         {
-            if (AmongUsClient.Instance.AmHost)
+            try
             {
-                if (!Mayor.Role.Data.IsDead)
+                if (AmongUsClient.Instance.AmHost)
                 {
-                    MeetingRoomManager.Instance.reporter = Mayor.Role;
-                    MeetingRoomManager.Instance.target = null;
-                    DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(Mayor.Role);
-                    Mayor.Role.RpcStartMeeting(null);
-                    Mayor.BuzzUsed = true;
-                    GLMod.GLMod.currentGame.addAction(Mayor.Role.Data.PlayerName, "", "buzz_used");
-                }
-                else
-                {
-                    MeetingRoomManager.Instance.reporter = CopyCat.Role;
-                    MeetingRoomManager.Instance.target = null;
-                    DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(CopyCat.Role);
-                    CopyCat.Role.RpcStartMeeting(null);
-                    Mayor.BuzzUsed = true;
-                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "buzz_used");
+                    if (!Mayor.Role.Data.IsDead)
+                    {
+                        MeetingRoomManager.Instance.reporter = Mayor.Role;
+                        MeetingRoomManager.Instance.target = null;
+                        DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(Mayor.Role);
+                        Mayor.Role.RpcStartMeeting(null);
+                        Mayor.BuzzUsed = true;
+                        GLMod.GLMod.currentGame.addAction(Mayor.Role.Data.PlayerName, "", "buzz_used");
+                    }
+                    else
+                    {
+                        MeetingRoomManager.Instance.reporter = CopyCat.Role;
+                        MeetingRoomManager.Instance.target = null;
+                        DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(CopyCat.Role);
+                        CopyCat.Role.RpcStartMeeting(null);
+                        Mayor.BuzzUsed = true;
+                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "buzz_used");
 
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] mayorBuzz " + e.Message);
+                return;
+            }
+
         }
         //DETECTIVE
         public static void detectiveFindFPOn()
         {
-            Detective.FindFP = true;
-            if (!Detective.Role.Data.IsDead)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Detective.Role.Data.PlayerName, "", "find_footprint");
+                Detective.FindFP = true;
+                if (!Detective.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Detective.Role.Data.PlayerName, "", "find_footprint");
+                }
+                if (Detective.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "find_footprint");
+                }
             }
-            if (Detective.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "find_footprint");
+                GLMod.GLMod.logError("[RPC] detectiveFindFPOn " + e.Message);
+                return;
             }
+
 
         }
         public static void detectiveFindFPOff()
         {
-            Detective.FindFP = false;
+            try
+            {
+                Detective.FindFP = false;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] DetectiveFindFPOff " + e.Message);
+                return;
+            }
+
         }
         //NIGHTWATCH
         public static void nightwatchLightOn()
         {
-            
-            Nightwatch.LightBuff = true;
-            
-            if (!Nightwatch.Role.Data.IsDead)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Nightwatch.Role.Data.PlayerName, "", "light_used");
+                Nightwatch.LightBuff = true;
+
+                if (!Nightwatch.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Nightwatch.Role.Data.PlayerName, "", "light_used");
+                }
+                if (Nightwatch.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "light_used");
+                }
+
             }
-            if (Nightwatch.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "light_used");
+                GLMod.GLMod.logError("[RPC] nightwatchLightOn " + e.Message);
+                return;
             }
+
         }
         public static void nightwatchLightOff()
         {
-            Nightwatch.LightBuff = false;
+            try
+            {
+                Nightwatch.LightBuff = false;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] nightwatchLightOff " + e.Message);
+                return;
+            }
+
         }
         //SPY
         public static void spyOn()
         {
-            if (PlayerControl.LocalPlayer == Spy.Role || PlayerControl.LocalPlayer == CopyCat.Role && Spy.Role.Data.IsDead && CopyCat.copyRole == 11 && CopyCat.CopyStart)
+            try
             {
-                Camera.main.orthographicSize = Spy.Range;
-                DestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(false);
-                SoundManager.Instance.PlaySound(Used, false, 100f);
-                PlayerControl.LocalPlayer.moveable = false;
-                PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
-                Spy.Use = true;
+                if (PlayerControl.LocalPlayer == Spy.Role || PlayerControl.LocalPlayer == CopyCat.Role && Spy.Role.Data.IsDead && CopyCat.copyRole == 11 && CopyCat.CopyStart)
+                {
+                    Camera.main.orthographicSize = Spy.Range;
+                    DestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(false);
+                    SoundManager.Instance.PlaySound(Used, false, 100f);
+                    PlayerControl.LocalPlayer.moveable = false;
+                    PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                    Spy.Use = true;
+                }
+                else
+                {
+                    Spy.Use = true;
+                }
+
+                if (!Spy.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Spy.Role.Data.PlayerName, "", "spy_used");
+                }
+                if (Spy.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "spy_used");
+                }
             }
-            else 
-            { 
-                Spy.Use = true;
-            }
-            
-            if (!Spy.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(Spy.Role.Data.PlayerName, "", "spy_used");
+                GLMod.GLMod.logError("[RPC] spyOn " + e.Message);
+                return;
             }
-            if (Spy.Role.Data.IsDead)
-            {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "spy_used");
-            }
+
         }
         public static void spyOff()
         {
-            if (PlayerControl.LocalPlayer == Spy.Role || PlayerControl.LocalPlayer == CopyCat.Role && Spy.Role.Data.IsDead && CopyCat.copyRole == 11 && CopyCat.CopyStart)
+            try
             {
-                Camera.main.orthographicSize = 3f;
-                DestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead);
-                SoundManager.Instance.PlaySound(Used, false, 100f);
-
-                Spy.Use = false;
-                Spy.SpyUsed = true;
-                if (Challenger.LobbyTimeStop == true)
+                if (PlayerControl.LocalPlayer == Spy.Role || PlayerControl.LocalPlayer == CopyCat.Role && Spy.Role.Data.IsDead && CopyCat.copyRole == 11 && CopyCat.CopyStart)
                 {
+                    Camera.main.orthographicSize = 3f;
+                    DestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead);
+                    SoundManager.Instance.PlaySound(Used, false, 100f);
+
+                    Spy.Use = false;
+                    Spy.SpyUsed = true;
+                    if (Challenger.LobbyTimeStop == true)
+                    {
+
+                    }
+                    else
+                    {
+                        PlayerControl.LocalPlayer.moveable = true;
+
+
+                    }
 
                 }
                 else
                 {
-                    PlayerControl.LocalPlayer.moveable = true;
-                    
-
+                    Spy.Use = false;
+                    Spy.SpyUsed = true;
                 }
-
             }
-            else
+            catch (Exception e)
             {
-                Spy.Use = false;
-                Spy.SpyUsed = true;
+                GLMod.GLMod.logError("[RPC] spyOff " + e.Message);
+                return;
             }
 
-            
+
+
 
         }
 
         //INFORMANT
         public static void setInfoPlayer(byte infoId)
         {
-            if (InforAnalyseMod.getSelection() != 2)
+            try
             {
-                Informant.Used = true;
-            }
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
-            {
-                if (player.PlayerId == infoId)
+                if (InforAnalyseMod.getSelection() != 2)
                 {
-                    Informant.Informed = player;
-                    
-                    if (!Informant.Role.Data.IsDead)
+                    Informant.Used = true;
+                }
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                {
+                    if (player.PlayerId == infoId)
                     {
-                        GLMod.GLMod.currentGame.addAction(Informant.Role.Data.PlayerName, player.Data.PlayerName, "check_byinformant");
-                    }
-                    if (Informant.Role.Data.IsDead)
-                    {
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "check_byinformant");
+                        Informant.Informed = player;
+
+                        if (!Informant.Role.Data.IsDead)
+                        {
+                            GLMod.GLMod.currentGame.addAction(Informant.Role.Data.PlayerName, player.Data.PlayerName, "check_byinformant");
+                        }
+                        if (Informant.Role.Data.IsDead)
+                        {
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "check_byinformant");
+                        }
+
                     }
 
                 }
-
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setInfoPlayer " + e.Message);
+                return;
+            }
+
 
         }
         //MENTALIST
         public static void mentalistColorOn()
         {
-            Mentalist.AdminVisibility = true;
-            
-            if (!Mentalist.Role.Data.IsDead)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Mentalist.Role.Data.PlayerName, "", "admincolor_used");
+                Mentalist.AdminVisibility = true;
+
+                if (!Mentalist.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Mentalist.Role.Data.PlayerName, "", "admincolor_used");
+                }
+                if (Mentalist.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "admincolor_used");
+                }
             }
-            if (Mentalist.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "admincolor_used");
+                GLMod.GLMod.logError("[RPC] mentalistColorOn " + e.Message);
+                return;
             }
+
         }
         public static void mentalistColorOff()
         {
-            Mentalist.AdminVisibility = false;
-            Mentalist.AdminUsed = true;
+            try
+            {
+                Mentalist.AdminVisibility = false;
+                Mentalist.AdminUsed = true;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] mentalistColorOff " + e.Message);
+                return;
+            }
+
         }
-       
+
         //BUILDER
 
         public static void sealVent(int ventId)
         {
-            Vent vent = ShipStatus.Instance.AllVents.FirstOrDefault((x) => x != null && x.Id == ventId);
-            if (vent == null) return;
+            try
+            {
+                Vent vent = ShipStatus.Instance.AllVents.FirstOrDefault((x) => x != null && x.Id == ventId);
+                if (vent == null) return;
 
 
-            if (PlayerControl.LocalPlayer == Builder.Role || PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.copyRole == 15 && CopyCat.CopyStart)
-            {
-                PowerTools.SpriteAnim animator = vent.GetComponent<PowerTools.SpriteAnim>();
-                animator?.Stop();
-                vent.EnterVentAnim = vent.ExitVentAnim = null;
-                vent.myRend.sprite = animator == null ? ChallengerMod.Unity.getStaticVentSealedSpriteuse() : ChallengerMod.Unity.getAnimatedVentSealedSpriteuse();
-                //if (SubmergedCompatibility.IsSubmerged && vent.Id == 0) vent.myRend.sprite = SecurityGuard.getSubmergedCentralUpperSealedSprite();
-                //if (SubmergedCompatibility.IsSubmerged && vent.Id == 14) vent.myRend.sprite = SecurityGuard.getSubmergedCentralLowerSealedSprite();
-                vent.myRend.color = new Color(1f, 1f, 1f, 0.5f);
-                vent.name = "LockedVent_" + vent.name;
+                if (PlayerControl.LocalPlayer == Builder.Role || PlayerControl.LocalPlayer == CopyCat.Role && CopyCat.copyRole == 15 && CopyCat.CopyStart)
+                {
+                    PowerTools.SpriteAnim animator = vent.GetComponent<PowerTools.SpriteAnim>();
+                    animator?.Stop();
+                    vent.EnterVentAnim = vent.ExitVentAnim = null;
+                    vent.myRend.sprite = animator == null ? ChallengerMod.Unity.getStaticVentSealedSpriteuse() : ChallengerMod.Unity.getAnimatedVentSealedSpriteuse();
+                    //if (SubmergedCompatibility.IsSubmerged && vent.Id == 0) vent.myRend.sprite = SecurityGuard.getSubmergedCentralUpperSealedSprite();
+                    //if (SubmergedCompatibility.IsSubmerged && vent.Id == 14) vent.myRend.sprite = SecurityGuard.getSubmergedCentralLowerSealedSprite();
+                    vent.myRend.color = new Color(1f, 1f, 1f, 0.5f);
+                    vent.name = "LockedVent_" + vent.name;
+                }
+
+                if (!Builder.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Builder.Role.Data.PlayerName, "", "vent_sealed");
+                }
+                if (Builder.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "vent_sealed");
+                }
+
+                ventsToSeal.Add(vent);
             }
-            
-            if (!Builder.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(Builder.Role.Data.PlayerName, "", "vent_sealed");
-            }
-            if (Builder.Role.Data.IsDead)
-            {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "vent_sealed");
+                GLMod.GLMod.logError("[RPC] sealVent " + e.Message);
+                return;
             }
 
-            ventsToSeal.Add(vent);
 
         }
         //DICTATOR
         public static void dictatorNoSkipVote()
         {
-            Dictator.HMActive = true;
-            CopyCat.HMActive = true;
-           
-            if (!Dictator.Role.Data.IsDead)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Dictator.Role.Data.PlayerName, "", "noskipvote_used");
+                Dictator.HMActive = true;
+                CopyCat.HMActive = true;
+
+                if (!Dictator.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Dictator.Role.Data.PlayerName, "", "noskipvote_used");
+                }
+                if (Dictator.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "noskipvote_used");
+                }
             }
-            if (Dictator.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "noskipvote_used");
+                GLMod.GLMod.logError("[RPC] dictatorNoSkipVote " + e.Message);
+                return;
             }
+
         }
         //SENTINEL
         public static void sentinelScanOn()
         {
-           
+            try
+            {
                 Sentinel.Scan = true;
-            if (!Sentinel.Role.Data.IsDead)
-            {
-                GLMod.GLMod.currentGame.addAction(Sentinel.Role.Data.PlayerName, "", "scanmap_start");
+                if (!Sentinel.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(Sentinel.Role.Data.PlayerName, "", "scanmap_start");
+                }
+                if (Sentinel.Role.Data.IsDead)
+                {
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "scanmap_start");
+                }
             }
-            if (Sentinel.Role.Data.IsDead)
+            catch (Exception e)
             {
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "scanmap_start");
+                GLMod.GLMod.logError("[RPC] sentinelScanOn " + e.Message);
+                return;
             }
+
         }
         public static void sentinelScanOff()
         {
-            
+            try
+            {
                 Sentinel.Scan = false;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] sentinelScanOff " + e.Message);
+                return;
+            }
+
         }
         //LEADER
         public static void assignTarget1(byte target1Id)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == target1Id)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Leader.Target = player;
-                    GLMod.GLMod.currentGame.addAction(Leader.Role.Data.PlayerName, player.Data.PlayerName, "leader_target");
+                    if (player.PlayerId == target1Id)
+                    {
+                        Leader.Target = player;
+                        GLMod.GLMod.currentGame.addAction(Leader.Role.Data.PlayerName, player.Data.PlayerName, "leader_target");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] assignTarget1 " + e.Message);
+                return;
+            }
+
         }
         public static void assignTarget2(byte target1Id)
         {
-            Leader.Used2 = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == target1Id)
+                Leader.Used2 = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                   Leader.Target2 = player;
-                   GLMod.GLMod.currentGame.addAction(Leader.Role.Data.PlayerName, player.Data.PlayerName, "leader_target2");
-                   GLMod.GLMod.currentGame.addAction("", "", "leader_start");
+                    if (player.PlayerId == target1Id)
+                    {
+                        Leader.Target2 = player;
+                        GLMod.GLMod.currentGame.addAction(Leader.Role.Data.PlayerName, player.Data.PlayerName, "leader_target2");
+                        GLMod.GLMod.currentGame.addAction("", "", "leader_start");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] assignTarget2 " + e.Message);
+                return;
+            }
+
         }
         public static void assignCopyTarget1(byte target1Id)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == target1Id)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    CopyCat.Target = player;
-                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "leader_target");
+                    if (player.PlayerId == target1Id)
+                    {
+                        CopyCat.Target = player;
+                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "leader_target");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] assignCopyTarget1 " + e.Message);
+                return;
+            }
+
         }
         public static void assignCopyTarget2(byte target1Id)
         {
-            CopyCat.Used2 = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == target1Id)
+                CopyCat.Used2 = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    CopyCat.Target2 = player;
-                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "leader_target2");
-                    GLMod.GLMod.currentGame.addAction("", "", "leader_start");
+                    if (player.PlayerId == target1Id)
+                    {
+                        CopyCat.Target2 = player;
+                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "leader_target2");
+                        GLMod.GLMod.currentGame.addAction("", "", "leader_start");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] assignCopyTarget2 " + e.Message);
+                return;
+            }
+
         }
 
         //JESTER
         public static void jesterFakeKill()
         {
-            if (PlayerControl.LocalPlayer.Data.IsDead)
+            try
             {
+                if (PlayerControl.LocalPlayer.Data.IsDead)
+                {
 
+                }
+
+                else
+                {
+                    PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                    SoundManager.Instance.PlaySound(jesterkill, false, 100f);
+                    HudManager.Instance.KillOverlay.ShowKillAnimation(PlayerControl.LocalPlayer.Data, PlayerControl.LocalPlayer.Data);
+                }
+                GLMod.GLMod.currentGame.addAction(Jester.Role.Data.PlayerName, "", "fakekill_used");
             }
-            
-            else
+            catch (Exception e)
             {
-                PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
-                SoundManager.Instance.PlaySound(jesterkill, false, 100f);
-                HudManager.Instance.KillOverlay.ShowKillAnimation(PlayerControl.LocalPlayer.Data, PlayerControl.LocalPlayer.Data);
+                GLMod.GLMod.logError("[RPC] jesterFakeKill " + e.Message);
+                return;
             }
-            GLMod.GLMod.currentGame.addAction(Jester.Role.Data.PlayerName, "", "fakekill_used");
+
 
         }
         public static void jesterWin()
         {
-            Jester.Exiled = true;
-            SoundManager.Instance.PlaySound(JesterWinSound, false, 100f);
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                //Spirit Cancel Exile
-                if (player == Jester.Role)
+                Jester.Exiled = true;
+                SoundManager.Instance.PlaySound(JesterWinSound, false, 100f);
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    player.Revive();
-                    player.Data.IsDead = false;
-                    Jester.Role.Data.IsDead = false;
-                }
-                else if (player != Jester.Role)
-                {
-                    Jester.Role.Data.IsDead = false;
+                    //Spirit Cancel Exile
+                    if (player == Jester.Role)
+                    {
+                        player.Revive();
+                        player.Data.IsDead = false;
+                        Jester.Role.Data.IsDead = false;
+                    }
+                    else if (player != Jester.Role)
+                    {
+                        Jester.Role.Data.IsDead = false;
 
+                    }
                 }
+                Jester.Role.Data.IsDead = false;
             }
-            Jester.Role.Data.IsDead = false;
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] jesterWin " + e.Message);
+                return;
+            }
+
         }
-        
+
         //EATER
         public static void cleanBody(byte playerId)
         {
-            DeadBody[] array = UnityEngine.Object.FindObjectsOfType<DeadBody>();
-            for (int i = 0; i < array.Length; i++)
+            try
             {
-                if (GameData.Instance.GetPlayerById(array[i].ParentId).PlayerId == playerId)
+                DeadBody[] array = UnityEngine.Object.FindObjectsOfType<DeadBody>();
+                for (int i = 0; i < array.Length; i++)
                 {
-                    UnityEngine.Object.Destroy(array[i].gameObject);
-                    ChallengerMod.Set.Data.EaterTask += 1;
-                    new ChallengerOS.EaterMark(999f, Eater.Role);
-                    GLMod.GLMod.currentGame.addAction(Eater.Role.Data.PlayerName, "", "player_eated");
-
-                }
-            }
-        }
-
-       //CUPID
-
-        public static void loversExiled()
-        {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
-            {
-                if (Cupid.Lover1 != null && Cupid.Lover2 != null)
-                {
-                    if (player == Cupid.Lover1 || player == Cupid.Lover2)
+                    if (GameData.Instance.GetPlayerById(array[i].ParentId).PlayerId == playerId)
                     {
-                        if (Loverdie.getBool() == true)
-                        {
-                            player.Die(DeathReason.Exile);
-                            Cupid.Lover1.Data.IsDead = true;
-                            Cupid.Lover2.Data.IsDead = true;
-                            
-
-
-                        }
-                        else
-                        {
-                            Cupid.Fail = true;
-                        }
+                        UnityEngine.Object.Destroy(array[i].gameObject);
+                        ChallengerMod.Set.Data.EaterTask += 1;
+                        new ChallengerOS.EaterMark(999f, Eater.Role);
+                        GLMod.GLMod.currentGame.addAction(Eater.Role.Data.PlayerName, "", "player_eated");
 
                     }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] cleanBody " + e.Message);
+                return;
+            }
+
+        }
+
+        //CUPID
+
+        public static void loversExiled()
+        {
+            try
+            {
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                {
+                    if (Cupid.Lover1 != null && Cupid.Lover2 != null)
+                    {
+                        if (player == Cupid.Lover1 || player == Cupid.Lover2)
+                        {
+                            if (Loverdie.getBool() == true)
+                            {
+                                player.Die(DeathReason.Exile);
+                                Cupid.Lover1.Data.IsDead = true;
+                                Cupid.Lover2.Data.IsDead = true;
+
+
+
+                            }
+                            else
+                            {
+                                Cupid.Fail = true;
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] loversExiled " + e.Message);
+                return;
+            }
+
         }
         public static void killLover1()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Cupid.Lover1)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
+                    if (player == Cupid.Lover1)
+                    {
 
-                    Cupid.lover1Suicide = true;
-                    Cupid.Lover1.MurderPlayer(Cupid.Lover1);
-                   
+                        Cupid.lover1Suicide = true;
+                        Cupid.Lover1.MurderPlayer(Cupid.Lover1);
+
+
+                    }
+                    Cupid.Lover1.Data.IsDead = true;
+                    Cupid.Lover2.Data.IsDead = true;
+                    Cupid.Fail = true;
 
                 }
-                Cupid.Lover1.Data.IsDead = true;
-                Cupid.Lover2.Data.IsDead = true;
-                Cupid.Fail = true;
-
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] killLover1 " + e.Message);
+                return;
+            }
+
         }
         public static void killLover2()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Cupid.Lover1)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
+                    if (player == Cupid.Lover1)
+                    {
 
-                    Cupid.lover2Suicide = true;
-                    Cupid.Lover2.MurderPlayer(Cupid.Lover2);
-                    
+                        Cupid.lover2Suicide = true;
+                        Cupid.Lover2.MurderPlayer(Cupid.Lover2);
 
+
+                    }
+                    Cupid.Lover1.Data.IsDead = true;
+                    Cupid.Lover2.Data.IsDead = true;
+                    Cupid.Fail = true;
                 }
-                Cupid.Lover1.Data.IsDead = true;
-                Cupid.Lover2.Data.IsDead = true;
-                Cupid.Fail = true;
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] killLover2 " + e.Message);
+                return;
+            }
+
         }
 
         //CULTIST
         public static void setCulte1Player(byte culted1Id)
         {
-            Cultist.Culte1Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == culted1Id)
+                Cultist.Culte1Used = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Cultist.Culte1 = player;
-                    GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, player.Data.PlayerName, "add_cultemember");
+                    if (player.PlayerId == culted1Id)
+                    {
+                        Cultist.Culte1 = player;
+                        GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, player.Data.PlayerName, "add_cultemember");
 
+                    }
+                }
+
+                if (ChallengerOS.Utils.Option.CustomOptionHolder.CulteMember.getFloat() <= 1)
+                {
+                    Cultist.CulteUsed = true;
                 }
             }
-                    
-            if (ChallengerOS.Utils.Option.CustomOptionHolder.CulteMember.getFloat() <= 1)
+            catch (Exception e)
             {
-                Cultist.CulteUsed = true;
+                GLMod.GLMod.logError("[RPC] setCulte1Player " + e.Message);
+                return;
             }
+
         }
         public static void setCulte2Player(byte culted2Id)
         {
-            Cultist.Culte1Used = true;
-            Cultist.Culte2Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == culted2Id)
+                Cultist.Culte1Used = true;
+                Cultist.Culte2Used = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Cultist.Culte2 = player;
-                    GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, player.Data.PlayerName, "add_cultemember");
+                    if (player.PlayerId == culted2Id)
+                    {
+                        Cultist.Culte2 = player;
+                        GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, player.Data.PlayerName, "add_cultemember");
+                    }
+                }
+
+
+                if (ChallengerOS.Utils.Option.CustomOptionHolder.CulteMember.getFloat() <= 2)
+                {
+                    Cultist.CulteUsed = true;
                 }
             }
-            
-                    
-            if (ChallengerOS.Utils.Option.CustomOptionHolder.CulteMember.getFloat() <= 2)
+            catch (Exception e)
             {
-                Cultist.CulteUsed = true;
+                GLMod.GLMod.logError("[RPC] setCulte2Player " + e.Message);
+                return;
             }
+
         }
         public static void setCulte3Player(byte culted3Id)
         {
-            Cultist.Culte1Used = true;
-            Cultist.Culte2Used = true;
-            Cultist.Culte3Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == culted3Id)
+                Cultist.Culte1Used = true;
+                Cultist.Culte2Used = true;
+                Cultist.Culte3Used = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Cultist.Culte3 = player;
-                    GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, player.Data.PlayerName, "add_cultemember");
+                    if (player.PlayerId == culted3Id)
+                    {
+                        Cultist.Culte3 = player;
+                        GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, player.Data.PlayerName, "add_cultemember");
 
+                    }
+                }
+
+
+                if (ChallengerOS.Utils.Option.CustomOptionHolder.CulteMember.getFloat() <= 3)
+                {
+                    Cultist.CulteUsed = true;
                 }
             }
-                
-                 
-            if (ChallengerOS.Utils.Option.CustomOptionHolder.CulteMember.getFloat() <= 3)
+            catch (Exception e)
             {
-                Cultist.CulteUsed = true;
+                GLMod.GLMod.logError("[RPC] setCulte3Player " + e.Message);
+                return;
             }
+
         }
         public static void cultistDie()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == Cultist.Role)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    if (PlayerControl.LocalPlayer == Cultist.Role)
+                    if (player == Cultist.Role)
                     {
-                        Cultist.Die = true;
+                        Cultist.Role.MurderPlayer(Cultist.Role);
                     }
-                    Cultist.Role.MurderPlayer(Cultist.Role);
-                }
-                Cultist.Role.Data.IsDead = true;
-                
-                Cultist.Suicide = true;
+                    Cultist.Role.Data.IsDead = true;
+                    Cultist.Suicide = true;
+                    GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, "", "cultist_die");
 
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] cultistDie " + e.Message);
+                return;
+            }
+
+        }
+
+        public static void cultistFail()
+        {
+            try
+            {
+                Cultist.CulteTargetFail = true;
+                GLMod.GLMod.currentGame.addAction(Cultist.Role.Data.PlayerName, "", "cultist_fail");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] cultistFail " + e.Message);
+                return;
+            }
+
         }
 
         //EATER
         public static void draggBody(int Get)
         {
-            var body = ChallengerOS.Utils.Helpers.GetDeadBody(Get);
-            if (body != null)
+            try
             {
-                ChallengerMod.Challenger.draggers.Add(Eater.Role.PlayerId);
-                ChallengerMod.Challenger.corpse.Add(body.ParentId);
-                MoveBody(body.ParentId);
+                var body = ChallengerOS.Utils.Helpers.GetDeadBody(Get);
+                if (body != null)
+                {
+                    ChallengerMod.Challenger.draggers.Add(Eater.Role.PlayerId);
+                    ChallengerMod.Challenger.corpse.Add(body.ParentId);
+                    MoveBody(body.ParentId);
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] draggBody " + e.Message);
+                return;
+            }
+
         }
         public static void dropBody(int Get)
         {
-            ChallengerMod.Challenger.corpse.Remove(ChallengerMod.Challenger.corpse[ChallengerMod.Challenger.draggers.IndexOf(Eater.Role.PlayerId)]);
-            ChallengerMod.Challenger.draggers.Remove(Eater.Role.PlayerId);
+            try
+            {
+                ChallengerMod.Challenger.corpse.Remove(ChallengerMod.Challenger.corpse[ChallengerMod.Challenger.draggers.IndexOf(Eater.Role.PlayerId)]);
+                ChallengerMod.Challenger.draggers.Remove(Eater.Role.PlayerId);
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] dropBody " + e.Message);
+                return;
+            }
+
         }
         public static void MoveBody(int bodyid)
         {
-            if (Eater.Role.transform == null) return;
-            if (draggers.Contains(Eater.Role.PlayerId))
+            try
             {
-                var body = ChallengerOS.Utils.Helpers.GetDeadBody(bodyid);
-                if (body == null) return;
-                if (!Eater.Role.inVent)
+                if (Eater.Role.transform == null) return;
+                if (draggers.Contains(Eater.Role.PlayerId))
                 {
-                    var pos = Eater.Role.transform.position;
-                    pos.Set(pos.x, pos.y, pos.z + .001f);
-                    body.transform.position = (Vector3.Lerp(ChallengerOS.Utils.Helpers.GetDeadBody(corpse[(draggers.IndexOf(Eater.Role.PlayerId))]).transform.position, pos, Time.deltaTime + 0.05f));
+                    var body = ChallengerOS.Utils.Helpers.GetDeadBody(bodyid);
+                    if (body == null) return;
+                    if (!Eater.Role.inVent)
+                    {
+                        var pos = Eater.Role.transform.position;
+                        pos.Set(pos.x, pos.y, pos.z + .001f);
+                        body.transform.position = (Vector3.Lerp(ChallengerOS.Utils.Helpers.GetDeadBody(corpse[(draggers.IndexOf(Eater.Role.PlayerId))]).transform.position, pos, Time.deltaTime + 0.05f));
+                    }
+                    else
+                        body.transform.position = (Eater.Role.transform.position);
+                    return;
                 }
-                else
-                    body.transform.position = (Eater.Role.transform.position);
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] MoveBody " + e.Message);
                 return;
             }
+
         }
 
 
         //COPYCAT
         public static void setCopyPlayer(byte TargerID, int CopyID)
         {
-            CopyCat.CopyUsed = true;
-            CopyCat.copyRole = CopyID;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == TargerID)
+                CopyCat.CopyUsed = true;
+                CopyCat.copyRole = CopyID;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    CopyCat.CopiedPlayer = player;
-                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "try_copyplayer");
+                    if (player.PlayerId == TargerID)
+                    {
+                        CopyCat.CopiedPlayer = player;
+                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "try_copyplayer");
 
+                    }
                 }
             }
-               
-                    
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setCopyPlayer " + e.Message);
+                return;
+            }
 
         }
         public static void copyCatDie()
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player == CopyCat.Role)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    CopyCat.Role.MurderPlayer(CopyCat.Role);
-                }
-                CopyCat.Role.Data.IsDead = true;
-                GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "copycat_failandsuicide");
+                    if (player == CopyCat.Role)
+                    {
+                        CopyCat.Role.MurderPlayer(CopyCat.Role);
+                    }
+                    CopyCat.Role.Data.IsDead = true;
+                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "copycat_failandsuicide");
 
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] copyCatDie " + e.Message);
+                return;
+            }
+
         }
         public static void copyCatKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == CopyCat.Role.PlayerId)
-
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    if (CopyCat.Role.Data.Role.IsImpostor)
-                    {
-                        CopyCat.SuicideShield = true;
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "suicide_byshield");
-                    }
-                    if (!CopyCat.Role.Data.Role.IsImpostor)
-                    {
-                        CopyCat.Suicide = true;
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "suicide_sheriff");
-                    }
-                        
-                }
-                if (player.PlayerId == targetId)
-                {
+                    if (targetId == CopyCat.Role.PlayerId)
 
-                    CopyCat.Role.MurderPlayer(player);
-                    CopyCat.Role.transform.position = player.transform.position;
-                    if (CopyCat.Role.Data.Role.IsImpostor)
                     {
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                        if (CopyCat.Role.Data.Role.IsImpostor)
+                        {
+                            CopyCat.SuicideShield = true;
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "suicide_byshield");
+                        }
+                        if (!CopyCat.Role.Data.Role.IsImpostor)
+                        {
+                            CopyCat.Suicide = true;
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "suicide_sheriff");
+                        }
+
                     }
-                    if (!CopyCat.Role.Data.Role.IsImpostor)
+                    if (player.PlayerId == targetId)
                     {
-                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
-                    }
+
+                        CopyCat.Role.MurderPlayer(player);
+                        CopyCat.Role.transform.position = player.transform.position;
+                        if (CopyCat.Role.Data.Role.IsImpostor)
+                        {
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                        }
+                        if (!CopyCat.Role.Data.Role.IsImpostor)
+                        {
+                            GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, player.Data.PlayerName, "kill_sheriff");
+                        }
 
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] copyCatKill " + e.Message);
+                return;
+            }
+
         }
         //OUTLAW
         public static void outlawKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-
-                if (targetId == Outlaw.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Outlaw.Role.Data.PlayerName, "", "suicide_byshield");
-                    Outlaw.SuicideShield = true;
 
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Outlaw.Role.MurderPlayer(player);
-                    Outlaw.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Outlaw.Role.Data.PlayerName, player.Data.PlayerName, "kill_outlaw");
+                    if (targetId == Outlaw.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Outlaw.Role.Data.PlayerName, "", "suicide_byshield");
+                        Outlaw.SuicideShield = true;
 
-                    return;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Outlaw.Role.MurderPlayer(player);
+                        Outlaw.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Outlaw.Role.Data.PlayerName, player.Data.PlayerName, "kill_outlaw");
+
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] outlawKill " + e.Message);
+                return;
+            }
+
         }
 
         //ARSONIST
         public static void arsonistWin()
         {
-
-            ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 200f / 255f, 0f / 255f), 1f);
-            SoundManager.Instance.PlaySound(Burned, false, 100f);
-            Arsonist.Win = true;
-            GLMod.GLMod.currentGame.addAction(Arsonist.Role.Data.PlayerName, "", "burn_allplayer");
-            if (!PlayerControl.LocalPlayer.Data.IsDead)
+            try
             {
-                PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
-                PlayerControl.LocalPlayer.moveable = false;
+                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 200f / 255f, 0f / 255f), 1f);
+                SoundManager.Instance.PlaySound(Burned, false, 100f);
+                Arsonist.Win = true;
+                GLMod.GLMod.currentGame.addAction(Arsonist.Role.Data.PlayerName, "", "burn_allplayer");
+                if (!PlayerControl.LocalPlayer.Data.IsDead)
+                {
+                    PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                    PlayerControl.LocalPlayer.moveable = false;
+                }
             }
-            
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] arsonistWin " + e.Message);
+                return;
+            }
+
+
 
         }
         public static void arsonistAddOil(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == targetId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Arsonist.Oiled = player;
-                    GLMod.GLMod.currentGame.addAction(Arsonist.Role.Data.PlayerName, player.Data.PlayerName, "oil_player");
-
-                    if (!OiledPlayers.Contains(player))
+                    if (player.PlayerId == targetId)
                     {
-                        OiledPlayers.Add(player);
+                        Arsonist.Oiled = player;
+                        GLMod.GLMod.currentGame.addAction(Arsonist.Role.Data.PlayerName, player.Data.PlayerName, "oil_player");
+
+                        if (!OiledPlayers.Contains(player))
+                        {
+                            OiledPlayers.Add(player);
+                        }
                     }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] arsonistAddOil " + e.Message);
+                return;
+            }
+
         }
         //CURSE
         public static void cursedWin()
         {
-
-            ChallengerOS.Utils.Helpers.showFlash(new Color(50f / 255f, 150f / 255f, 50f / 255f), 1f);
-            SoundManager.Instance.PlaySound(PoisonClip, false, 100f);
-            Cursed.Win = true;
-            GLMod.GLMod.currentGame.addAction(Cursed.Role.Data.PlayerName, "", "fullcurse");
-            
-            if (!PlayerControl.LocalPlayer.Data.IsDead)
+            try
             {
-                PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
-                PlayerControl.LocalPlayer.moveable = false;
+                ChallengerOS.Utils.Helpers.showFlash(new Color(50f / 255f, 150f / 255f, 50f / 255f), 1f);
+                SoundManager.Instance.PlaySound(PoisonClip, false, 100f);
+                Cursed.Win = true;
+                GLMod.GLMod.currentGame.addAction(Cursed.Role.Data.PlayerName, "", "fullcurse");
+
+                if (!PlayerControl.LocalPlayer.Data.IsDead)
+                {
+                    PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                    PlayerControl.LocalPlayer.moveable = false;
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] cursedWin " + e.Message);
+                return;
+            }
+
 
 
         }
         public static void curseSync(int percentValue)
         {
-            Cursed.CursePercent = percentValue;
+            try
+            {
+                Cursed.CursePercent = percentValue;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] curseSync " + e.Message);
+                return;
+            }
+
         }
 
         //MERCENARY
         public static void mercenaryKill(byte targetId)
         {
-            if (!Mercenary.Role.Data.Role.IsImpostor)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "mercenary_impostor");
-            }
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
-            {
-                if (targetId == Mercenary.Role.PlayerId)
+                if (!Mercenary.Role.Data.Role.IsImpostor)
                 {
-                    GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "suicide_byshield");
-                    Mercenary.SuicideShield = true;
+                    GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "mercenary_impostor");
                 }
-                if (player.PlayerId == targetId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Mercenary.Role.MurderPlayer(player);
-                    Mercenary.Role.transform.position = player.transform.position;
-                    Mercenary.Temp = true;
-                    Mercenary.isImpostor = true;
-                    GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Mercenary.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "suicide_byshield");
+                        Mercenary.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Mercenary.Role.MurderPlayer(player);
+                        Mercenary.Role.transform.position = player.transform.position;
+                        Mercenary.Temp = true;
+                        Mercenary.isImpostor = true;
+                        GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] mercenaryKill " + e.Message);
+                return;
+            }
+
         }
         public static void mercenaryTryKill()
         {
-            
-            if (!Mercenary.Role.Data.Role.IsImpostor)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "mercenary_impostor");
-                GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "fail_kill");
+                if (!Mercenary.Role.Data.Role.IsImpostor)
+                {
+                    GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "mercenary_impostor");
+                    GLMod.GLMod.currentGame.addAction(Mercenary.Role.Data.PlayerName, "", "fail_kill");
+                }
+                Mercenary.Temp = true;
+                Mercenary.isImpostor = true;
             }
-            Mercenary.Temp = true;
-            Mercenary.isImpostor = true;
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] mercenaryTryKill " + e.Message);
+                return;
+            }
+
 
 
         }
@@ -2873,52 +3379,82 @@ namespace ChallengerMod.RPC
 
         public static void setEMP1Player(byte EMP1Id)
         {
-            Revenger.EMP1_Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == EMP1Id)
+                Revenger.EMP1_Used = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Revenger.EMP1 = player;
-                    GLMod.GLMod.currentGame.addAction(Revenger.Role.Data.PlayerName, player.Data.PlayerName, "emp_target");
+                    if (player.PlayerId == EMP1Id)
+                    {
+                        Revenger.EMP1 = player;
+                        GLMod.GLMod.currentGame.addAction(Revenger.Role.Data.PlayerName, player.Data.PlayerName, "emp_target");
+                    }
                 }
             }
-                
-                    
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setEMP1Player " + e.Message);
+                return;
+            }
+
         }
         public static void setEMP2Player(byte EMP2Id)
         {
-            Revenger.EMP2_Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == EMP2Id)
+                Revenger.EMP2_Used = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Revenger.EMP2 = player;
-                    GLMod.GLMod.currentGame.addAction(Revenger.Role.Data.PlayerName, player.Data.PlayerName, "emp_target");
+                    if (player.PlayerId == EMP2Id)
+                    {
+                        Revenger.EMP2 = player;
+                        GLMod.GLMod.currentGame.addAction(Revenger.Role.Data.PlayerName, player.Data.PlayerName, "emp_target");
+                    }
+
                 }
-                   
             }
-                
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setEMP2Player " + e.Message);
+                return;
+            }
 
         }
         public static void setEMP3Player(byte EMP3Id)
         {
-            Revenger.EMP3_Used = true;
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == EMP3Id)
+                Revenger.EMP3_Used = true;
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Revenger.EMP3 = player;
-                    GLMod.GLMod.currentGame.addAction(Revenger.Role.Data.PlayerName, player.Data.PlayerName, "emp_target");
+                    if (player.PlayerId == EMP3Id)
+                    {
+                        Revenger.EMP3 = player;
+                        GLMod.GLMod.currentGame.addAction(Revenger.Role.Data.PlayerName, player.Data.PlayerName, "emp_target");
+                    }
                 }
             }
-           
-                    
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setEMP3Player " + e.Message);
+                return;
+            }
+
 
         }
         public static void sabAdmin()
         {
-            Sorcerer.AdminSab = true;
-            GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "destroy_admin");
+            try
+            {
+                Sorcerer.AdminSab = true;
+                GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "destroy_admin");
+
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] sabAdmin " + e.Message);
+                return;
+            }
 
         }
 
@@ -2926,367 +3462,556 @@ namespace ChallengerMod.RPC
 
         public static void setScan1Player(byte Scan1Id)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                {
 
-                if (player.PlayerId == Scan1Id)
-                { 
-                    Sorcerer.Scan1 = player;
-                    GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "getrole_player");
+                    if (player.PlayerId == Scan1Id)
+                    {
+                        Sorcerer.Scan1 = player;
+                        GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "getrole_player");
 
+                    }
                 }
             }
-                    
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setScan1Player " + e.Message);
+                return;
+            }
+
+
         }
         public static void setScan2Player(byte Scan2Id)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-
-                if (player.PlayerId == Scan2Id)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Sorcerer.Scan2 = player;
-                    GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "getrole_player");
+
+                    if (player.PlayerId == Scan2Id)
+                    {
+                        Sorcerer.Scan2 = player;
+                        GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "getrole_player");
 
 
+                    }
                 }
             }
-                   
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setScan2Player " + e.Message);
+                return;
+            }
+
+
         }
         public static void setExtPlayer(byte Scan3Id)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == Scan3Id)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Sorcerer.Exterminated = player;
-                    GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "destroy_player");
+                    if (player.PlayerId == Scan3Id)
+                    {
+                        Sorcerer.Exterminated = player;
+                        GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "destroy_player");
+                    }
                 }
             }
-                
-                    
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setExtPlayer " + e.Message);
+                return;
+            }
+
+
+
         }
 
         //VECTOR
         public static void setInfectePlayer(byte InfectId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == InfectId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Vector.Infected = player;
-                    GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, player.Data.PlayerName, "infect");
+                    if (player.PlayerId == InfectId)
+                    {
+                        Vector.Infected = player;
+                        GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, player.Data.PlayerName, "infect");
+
+                    }
 
                 }
-
             }
-               
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setInfectePlayer " + e.Message);
+                return;
+            }
+
+
         }
         public static void createVent(byte[] buff)
         {
-            Vector3 position = Vector3.zero;
-            position.x = BitConverter.ToSingle(buff, 0 * sizeof(float));
-            position.y = BitConverter.ToSingle(buff, 1 * sizeof(float));
-            new BarghestVentObject(position);
-            GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, "", "vent_create");
+            try
+            {
+                Vector3 position = Vector3.zero;
+                position.x = BitConverter.ToSingle(buff, 0 * sizeof(float));
+                position.y = BitConverter.ToSingle(buff, 1 * sizeof(float));
+                new BarghestVentObject(position);
+                GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, "", "vent_create");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] createVent " + e.Message);
+                return;
+            }
+
         }
         public static void killInfected()
         {
-            GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, Vector.Infected.Data.PlayerName, "kill_infected");
-
-            if (PlayerControl.LocalPlayer == Vector.Infected)
+            try
             {
-                PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
-                Vector.Role.MurderPlayer(Vector.Infected);
-                SoundManager.Instance.PlaySound(agony, false, 100f);
-                
-                if (!Challenger.Vectorkill.Contains(Vector.Infected))
+                GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, Vector.Infected.Data.PlayerName, "kill_infected");
+
+                if (PlayerControl.LocalPlayer == Vector.Infected)
                 {
-                    Challenger.Vectorkill.Add(Vector.Infected);
+                    PlayerControl.LocalPlayer.MyPhysics.body.velocity = Vector2.zero;
+                    Vector.Role.MurderPlayer(Vector.Infected);
+                    SoundManager.Instance.PlaySound(agony, false, 100f);
+
+                    if (!Challenger.Vectorkill.Contains(Vector.Infected))
+                    {
+                        Challenger.Vectorkill.Add(Vector.Infected);
+                    }
+
+                }
+                else
+                {
+                    Vector.Infected.MurderPlayer(Vector.Infected);
+                    SoundManager.Instance.PlaySound(agony, false, 100f);
+
+                    if (!Challenger.Vectorkill.Contains(Vector.Infected))
+                    {
+                        Challenger.Vectorkill.Add(Vector.Infected);
+                    }
                 }
 
-            }
-            else
-            {
-                 Vector.Infected.MurderPlayer(Vector.Infected);
-                 SoundManager.Instance.PlaySound(agony, false, 100f);
-               
-                if (!Challenger.Vectorkill.Contains(Vector.Infected))
+
+
+                if (Bait.Role != null && Bait.Role.PlayerId == Vector.Infected.PlayerId)
                 {
-                    Challenger.Vectorkill.Add(Vector.Infected);
+                    Vector.KillBait = true;
                 }
             }
-           
-
-
-            if (Bait.Role != null && Bait.Role.PlayerId == Vector.Infected.PlayerId)
+            catch (Exception e)
             {
-                Vector.KillBait = true;
+                GLMod.GLMod.logError("[RPC] killInfected " + e.Message);
+                return;
             }
+
         }
         //MORPHLING
 
         public static void setMorphPlayer(byte ScanId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == ScanId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    Morphling.Morph = player;
-                    GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, player.Data.PlayerName, "setmorph");
+                    if (player.PlayerId == ScanId)
+                    {
+                        Morphling.Morph = player;
+                        GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, player.Data.PlayerName, "setmorph");
+
+                    }
 
                 }
-
             }
-                
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setMorphPlayer " + e.Message);
+                return;
+            }
+
+
         }
         public static void morphOn()
         {
-            Morphling.Morphed = true;
-            GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, Morphling.Morph.Data.PlayerName, "morph_toplayer");
+            try
+            {
+                Morphling.Morphed = true;
+                GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, Morphling.Morph.Data.PlayerName, "morph_toplayer");
 
-            if (ComSab && StartComSabUnk)
-            {
-                if (Scrambler.Role != null && Scrambler.Camo)
+                if (ComSab && StartComSabUnk)
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    if (Scrambler.Role != null && Scrambler.Camo)
+                    {
+                        Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    }
+                    else
+                    {
+                        Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
+                    }
                 }
-                else
+                if (!ComSab || (ComSab && !StartComSabUnk))
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
+                    if (Scrambler.Role != null && Scrambler.Camo)
+                    {
+                        Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    }
+                    else
+                    {
+                        Morphling.Role.setLook(Morphling.Morph.Data.PlayerName, Morphling.Morph.Data.DefaultOutfit.ColorId, Morphling.Morph.Data.DefaultOutfit.HatId, Morphling.Morph.Data.DefaultOutfit.VisorId, Morphling.Morph.Data.DefaultOutfit.SkinId, Morphling.Morph.Data.DefaultOutfit.PetId);
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    }
                 }
             }
-            if (!ComSab || (ComSab && !StartComSabUnk))
+            catch (Exception e)
             {
-                if (Scrambler.Role != null && Scrambler.Camo)
-                {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                }
-                else
-                {
-                    Morphling.Role.setLook(Morphling.Morph.Data.PlayerName, Morphling.Morph.Data.DefaultOutfit.ColorId, Morphling.Morph.Data.DefaultOutfit.HatId, Morphling.Morph.Data.DefaultOutfit.VisorId, Morphling.Morph.Data.DefaultOutfit.SkinId, Morphling.Morph.Data.DefaultOutfit.PetId);
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                }
+                GLMod.GLMod.logError("[RPC] morphOn " + e.Message);
+                return;
             }
+
         }
         public static void morphOff()
         {
-            Morphling.Morphed = false;
+            try
+            {
+                Morphling.Morphed = false;
 
-            if (ComSab && StartComSabUnk)
-            {
-                if (Scrambler.Role != null && Scrambler.Camo)
+                if (ComSab && StartComSabUnk)
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    if (Scrambler.Role != null && Scrambler.Camo)
+                    {
+                        Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    }
+                    else
+                    {
+                        Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
+                    }
                 }
-                else
+                if (!ComSab || (ComSab && !StartComSabUnk))
                 {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
+                    if (Scrambler.Role != null && Scrambler.Camo)
+                    {
+                        Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    }
+                    else
+                    {
+                        Morphling.Role.setDefaultLook();
+                        Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                    }
                 }
             }
-            if (!ComSab || (ComSab && !StartComSabUnk))
+            catch (Exception e)
             {
-                if (Scrambler.Role != null && Scrambler.Camo)
-                {
-                    Morphling.Role.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                }
-                else
-                {
-                    Morphling.Role.setDefaultLook();
-                    Morphling.Role.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                }
+                GLMod.GLMod.logError("[RPC] morphOff " + e.Message);
+                return;
             }
+
         }
         //SCRAMBLER
         public static void camoOn()
         {
-            Scrambler.Camo = true;
-            SoundManager.Instance.PlaySound(ScramblerOn, false, 100f);
-
-            GLMod.GLMod.currentGame.addAction(Scrambler.Role.Data.PlayerName, "", "camo_used");
-
-            foreach (PlayerControl players in PlayerControl.AllPlayerControls)
+            try
             {
-                if (!PlayerControl.LocalPlayer.Data.IsDead)
+                Scrambler.Camo = true;
+                SoundManager.Instance.PlaySound(ScramblerOn, false, 100f);
+
+                GLMod.GLMod.currentGame.addAction(Scrambler.Role.Data.PlayerName, "", "camo_used");
+
+                foreach (PlayerControl players in PlayerControl.AllPlayerControls)
                 {
-                    players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
+                    if (!PlayerControl.LocalPlayer.Data.IsDead)
+                    {
+                        players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                        players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToScrambler, "", "", "", "");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] camoOn " + e.Message);
+                return;
+            }
+
         }
         public static void camoOff()
         {
-            Scrambler.Camo = false;
-            SoundManager.Instance.PlaySound(ScramblerOff, false, 100f);
-            foreach (PlayerControl players in PlayerControl.AllPlayerControls)
+            try
             {
-                if (ComSab && CommsSabotageAnonymous.getSelection() == 1)
+                Scrambler.Camo = false;
+                SoundManager.Instance.PlaySound(ScramblerOff, false, 100f);
+                foreach (PlayerControl players in PlayerControl.AllPlayerControls)
                 {
-                    players.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
-                    players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
-                }
-                else
-                {
-                    if (Morphling.Role != null && Morphling.Morph != null && players.PlayerId == Morphling.Role.PlayerId && Morphling.Morphed)
+                    if (ComSab && CommsSabotageAnonymous.getSelection() == 1)
                     {
-                        players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                        players.setLook(Morphling.Morph.Data.PlayerName, Morphling.Morph.Data.DefaultOutfit.ColorId, Morphling.Morph.Data.DefaultOutfit.HatId, Morphling.Morph.Data.DefaultOutfit.VisorId, Morphling.Morph.Data.DefaultOutfit.SkinId, Morphling.Morph.Data.DefaultOutfit.PetId);
+                        players.cosmetics.currentBodySprite.BodySprite.color = Palette.DisabledClear;
+                        players.setLook(ChallengerOS.Utils.Helpers.cs(ChallengerMod.ColorTable.nocolor, "x"), ColorIDSave_ToCom, "", "", "", "");
                     }
                     else
                     {
-                        players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
-                        players.setDefaultLook();
+                        if (Morphling.Role != null && Morphling.Morph != null && players.PlayerId == Morphling.Role.PlayerId && Morphling.Morphed)
+                        {
+                            players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                            players.setLook(Morphling.Morph.Data.PlayerName, Morphling.Morph.Data.DefaultOutfit.ColorId, Morphling.Morph.Data.DefaultOutfit.HatId, Morphling.Morph.Data.DefaultOutfit.VisorId, Morphling.Morph.Data.DefaultOutfit.SkinId, Morphling.Morph.Data.DefaultOutfit.PetId);
+                        }
+                        else
+                        {
+                            players.cosmetics.currentBodySprite.BodySprite.color = Palette.EnabledColor;
+                            players.setDefaultLook();
+                        }
                     }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] camoOff " + e.Message);
+                return;
+            }
+
         }
         //BARGHEST
 
-        
+
         public static void shadowOn()
         {
-            GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, "", "shadow_start");
-            if (!Timelord.TimeStopped)
+            try
             {
-                HudManager.Instance.FullScreen.gameObject.SetActive(true);
-                HudManager.Instance.FullScreen.enabled = true;
-                HudManager.Instance.FullScreen.color = new Color(0.2f, 0.2f, 0.4f, 0.3f);
-            }
-            
-            PlayerControl.LocalPlayer.MyPhysics.Speed = 1.85f;
-            SoundManager.Instance.PlaySound(Used, false, 100f);
-            SoundManager.Instance.PlaySound(Shadow, true, 100f);
-            Barghest.Shadow = true;
-
-            if (Barghest.Role != null && PlayerControl.LocalPlayer == Barghest.Role)
-            {
-
-            }
-            else
-            {
-                if (PlayerControl.LocalPlayer.Data.Role.IsImpostor)
+                GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, "", "shadow_start");
+                if (!Timelord.TimeStopped)
                 {
-                    if (BarghestAffectImpostor.getBool() == true || ImpostorsKnowEachother.getBool() == true)
-                    {
-                        Challenger.LobbyLightOff = true;
-                    }
-                    else
-                    {
-                        Challenger.LobbyLightOff = false;
-                    }
+                    HudManager.Instance.FullScreen.gameObject.SetActive(true);
+                    HudManager.Instance.FullScreen.enabled = true;
+                    HudManager.Instance.FullScreen.color = new Color(0.2f, 0.2f, 0.4f, 0.3f);
+                }
+
+                PlayerControl.LocalPlayer.MyPhysics.Speed = 1.85f;
+                SoundManager.Instance.PlaySound(Used, false, 100f);
+                SoundManager.Instance.PlaySound(Shadow, true, 100f);
+                Barghest.Shadow = true;
+
+                if (Barghest.Role != null && PlayerControl.LocalPlayer == Barghest.Role)
+                {
+
                 }
                 else
                 {
-                    Challenger.LobbyLightOff = true;
+                    if (PlayerControl.LocalPlayer.Data.Role.IsImpostor)
+                    {
+                        if (BarghestAffectImpostor.getBool() == true || ImpostorsKnowEachother.getBool() == true)
+                        {
+                            Challenger.LobbyLightOff = true;
+                        }
+                        else
+                        {
+                            Challenger.LobbyLightOff = false;
+                        }
+                    }
+                    else
+                    {
+                        Challenger.LobbyLightOff = true;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] shadowOn " + e.Message);
+                return;
+            }
 
-           
+
+
 
         }
         public static void shadowOff()
         {
-            if (Timelord.TimeStopped)
+            try
             {
-                HudManager.Instance.FullScreen.gameObject.SetActive(true);
-                HudManager.Instance.FullScreen.enabled = true;
-                HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0.8f, 0.3f);
+                if (Timelord.TimeStopped)
+                {
+                    HudManager.Instance.FullScreen.gameObject.SetActive(true);
+                    HudManager.Instance.FullScreen.enabled = true;
+                    HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0.8f, 0.3f);
+                }
+                else
+                {
+                    HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0f, 0f);
+                }
+
+                SoundManager.Instance.PlaySound(Used, false, 100f);
+                PlayerControl.LocalPlayer.MyPhysics.Speed = 2.5f;
+                Challenger.LobbyLightOff = false;
+                SoundManager.Instance.StopSound(Shadow);
+                Barghest.Shadow = false;
             }
-            else
+            catch (Exception e)
             {
-                HudManager.Instance.FullScreen.color = new Color(0f, 0f, 0f, 0f);
+                GLMod.GLMod.logError("[RPC] shadowOff " + e.Message);
+                return;
             }
 
-            SoundManager.Instance.PlaySound(Used, false, 100f);
-            PlayerControl.LocalPlayer.MyPhysics.Speed = 2.5f;
-            Challenger.LobbyLightOff = false;
-            SoundManager.Instance.StopSound(Shadow);
-            Barghest.Shadow = false;
 
         }
         //GHOST
         public static void ghostOn()
         {
-            Ghost.Hide = true;
-            Ghost.Role.Visible = false;
-            GLMod.GLMod.currentGame.addAction(Ghost.Role.Data.PlayerName, "", "invisibility_used");
+            try
+            {
+                Ghost.Hide = true;
+                Ghost.Role.Visible = false;
+                GLMod.GLMod.currentGame.addAction(Ghost.Role.Data.PlayerName, "", "invisibility_used");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] ghostOn " + e.Message);
+                return;
+            }
+
         }
         public static void ghostOff()
         {
-            Ghost.Hide = false;
-            Ghost.Role.Visible = true;
+            try
+            {
+                Ghost.Hide = false;
+                Ghost.Role.Visible = true;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] ghostOff " + e.Message);
+                return;
+            }
+
         }
         //SORCERER
         public static void war1()
         {
-            Sorcerer.TotalRuneLoot = 1;
-            GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune1");
+            try
+            {
+                Sorcerer.TotalRuneLoot = 1;
+                GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune1");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] war1 " + e.Message);
+                return;
+            }
+
         }
         public static void war2()
         {
-            Sorcerer.TotalRuneLoot = 2f;
-            GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune2");
+            try
+            {
+                Sorcerer.TotalRuneLoot = 2f;
+                GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune2");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] war2 " + e.Message);
+                return;
+            }
+
         }
         public static void war3()
         {
-            Sorcerer.TotalRuneLoot = 3f;
-            GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune3");
+            try
+            {
+                Sorcerer.TotalRuneLoot = 3f;
+                GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune3");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] war3 " + e.Message);
+                return;
+            }
+
         }
         public static void war4()
         {
-            Sorcerer.TotalRuneLoot = 4f;
-            GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune4");
+            try
+            {
+                Sorcerer.TotalRuneLoot = 4f;
+                GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "rune4");
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] war4 " + e.Message);
+                return;
+            }
+
         }
-        
+
 
         public static void setPetrifyPlayer(byte petrifyId)
         {
-            Basilisk.Used = true;
-            Basilisk.PetrifyCount -= Basilisk.CostParalize;
-            Basilisk.PetrifyAndShield = false;
-
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == petrifyId)
-                {
-                    Basilisk.Petrified = player;
-                    GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, player.Data.PlayerName, "Petrify");
-                    
-                    if (!Petrifiedplayers.Contains(player))
-                    {
-                        Petrifiedplayers.Add(player);
-                    }
+                Basilisk.Used = true;
+                Basilisk.PetrifyCount -= Basilisk.CostParalize;
+                Basilisk.PetrifyAndShield = false;
 
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                {
+                    if (player.PlayerId == petrifyId)
+                    {
+                        Basilisk.Petrified = player;
+                        GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, player.Data.PlayerName, "Petrify");
+
+                        if (!Petrifiedplayers.Contains(player))
+                        {
+                            Petrifiedplayers.Add(player);
+                        }
+
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setPetrifyPlayer " + e.Message);
+                return;
+            }
+
         }
         public static void setPetrifyAndShieldPlayer(byte petrifyId)
         {
-            Basilisk.Used = true;
-            Basilisk.PetrifyCount -= Basilisk.CostPetrify;
-            Basilisk.PetrifyAndShield = true;
-
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (player.PlayerId == petrifyId)
-                {
-                    Basilisk.Petrified = player;
-                    GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, player.Data.PlayerName, "Super_Petrify");
+                Basilisk.Used = true;
+                Basilisk.PetrifyCount -= Basilisk.CostPetrify;
+                Basilisk.PetrifyAndShield = true;
 
-                    if (!Petrifiedplayers.Contains(player))
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                {
+                    if (player.PlayerId == petrifyId)
                     {
-                        Petrifiedplayers.Add(player);
+                        Basilisk.Petrified = player;
+                        GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, player.Data.PlayerName, "Super_Petrify");
+
+                        if (!Petrifiedplayers.Contains(player))
+                        {
+                            Petrifiedplayers.Add(player);
+                        }
+
                     }
 
                 }
-                
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] setPetrifyAndShieldPlayer " + e.Message);
+                return;
+            }
+
         }
 
 
@@ -3294,356 +4019,525 @@ namespace ChallengerMod.RPC
 
         public static void vectorKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Vector.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, "", "suicide_byshield");
-                    Vector.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Vector.Role.MurderPlayer(player);
-                    Vector.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, player.Data.PlayerName, "kill");
-                    return;
+                    if (targetId == Vector.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, "", "suicide_byshield");
+                        Vector.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Vector.Role.MurderPlayer(player);
+                        Vector.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Vector.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] vectorKill " + e.Message);
+                return;
+            }
+
         }
         public static void impostor1Kill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Impostor1.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Impostor1.Role.Data.PlayerName, "", "suicide_byshield");
-                    Impostor1.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Impostor1.Role.MurderPlayer(player);
-                    Impostor1.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Impostor1.Role.Data.PlayerName, player.Data.PlayerName, "kill");
-                    return;
+                    if (targetId == Impostor1.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Impostor1.Role.Data.PlayerName, "", "suicide_byshield");
+                        Impostor1.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Impostor1.Role.MurderPlayer(player);
+                        Impostor1.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Impostor1.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] impostor1Kill " + e.Message);
+                return;
+            }
+
         }
         public static void impostor2Kill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Impostor2.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Impostor2.Role.Data.PlayerName, "", "suicide_byshield");
-                    Impostor2.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Impostor2.Role.MurderPlayer(player);
-                    Impostor2.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Impostor2.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Impostor2.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Impostor2.Role.Data.PlayerName, "", "suicide_byshield");
+                        Impostor2.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Impostor2.Role.MurderPlayer(player);
+                        Impostor2.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Impostor2.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] impostor2Kill " + e.Message);
+                return;
+            }
+
         }
         public static void impostor3Kill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Impostor3.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Impostor3.Role.Data.PlayerName, "", "suicide_byshield");
-                    Impostor3.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Impostor3.Role.MurderPlayer(player);
-                    Impostor3.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Impostor3.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Impostor3.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Impostor3.Role.Data.PlayerName, "", "suicide_byshield");
+                        Impostor3.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Impostor3.Role.MurderPlayer(player);
+                        Impostor3.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Impostor3.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] impostor3Kill " + e.Message);
+                return;
+            }
+
         }
         public static void morphlingKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Morphling.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, "", "suicide_byshield");
-                    Morphling.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Morphling.Role.MurderPlayer(player);
-                    Morphling.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Morphling.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, "", "suicide_byshield");
+                        Morphling.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Morphling.Role.MurderPlayer(player);
+                        Morphling.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Morphling.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] morphlingKill " + e.Message);
+                return;
+            }
+
         }
         public static void scramblerKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Scrambler.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Scrambler.Role.Data.PlayerName, "", "suicide_byshield");
-                    Scrambler.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Scrambler.Role.MurderPlayer(player);
-                    Scrambler.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Scrambler.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Scrambler.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Scrambler.Role.Data.PlayerName, "", "suicide_byshield");
+                        Scrambler.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Scrambler.Role.MurderPlayer(player);
+                        Scrambler.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Scrambler.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] scramblerKill " + e.Message);
+                return;
+            }
+
         }
         public static void barghestKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Barghest.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, "", "suicide_byshield");
-                    Barghest.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Barghest.Role.MurderPlayer(player);
-                    Barghest.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Barghest.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, "", "suicide_byshield");
+                        Barghest.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Barghest.Role.MurderPlayer(player);
+                        Barghest.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Barghest.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] barghestKill " + e.Message);
+                return;
+            }
+
         }
         public static void ghostKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Ghost.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Ghost.Role.Data.PlayerName, "", "suicide_byshield");
-                    Ghost.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Ghost.Role.MurderPlayer(player);
-                    Ghost.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Ghost.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Ghost.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Ghost.Role.Data.PlayerName, "", "suicide_byshield");
+                        Ghost.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Ghost.Role.MurderPlayer(player);
+                        Ghost.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Ghost.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] ghostKill " + e.Message);
+                return;
+            }
+
         }
         public static void sorcererKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Sorcerer.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "suicide_byshield");
-                    Sorcerer.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Sorcerer.Role.MurderPlayer(player);
-                    Sorcerer.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Sorcerer.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, "", "suicide_byshield");
+                        Sorcerer.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Sorcerer.Role.MurderPlayer(player);
+                        Sorcerer.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Sorcerer.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] sorcererKill " + e.Message);
+                return;
+            }
+
         }
         public static void guesserKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Guesser.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Guesser.Role.Data.PlayerName, "", "suicide_byshield");
-                    Guesser.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Guesser.Role.MurderPlayer(player);
-                    Guesser.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Guesser.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Guesser.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Guesser.Role.Data.PlayerName, "", "suicide_byshield");
+                        Guesser.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Guesser.Role.MurderPlayer(player);
+                        Guesser.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Guesser.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] guesserKill " + e.Message);
+                return;
+            }
+
         }
         public static void basiliskKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Basilisk.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, "", "suicide_byshield");
-                    Basilisk.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Basilisk.Role.MurderPlayer(player);
-                    Basilisk.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, player.Data.PlayerName, "kill");
-                    Basilisk.PetrifyCount += Basilisk.DoseKill;
+                    if (targetId == Basilisk.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, "", "suicide_byshield");
+                        Basilisk.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Basilisk.Role.MurderPlayer(player);
+                        Basilisk.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Basilisk.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                        Basilisk.PetrifyCount += Basilisk.DoseKill;
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] basiliskKill " + e.Message);
+                return;
+            }
+
         }
         public static void reaperKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Reaper.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Reaper.Role.Data.PlayerName, "", "suicide_byshield");
-                    Reaper.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Reaper.Role.MurderPlayer(player);
-                    Reaper.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Reaper.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Reaper.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Reaper.Role.Data.PlayerName, "", "suicide_byshield");
+                        Reaper.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Reaper.Role.MurderPlayer(player);
+                        Reaper.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Reaper.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] reaperKill " + e.Message);
+                return;
+            }
+
         }
         public static void saboteurKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Saboteur.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Saboteur.Role.Data.PlayerName, "", "suicide_byshield");
-                    Saboteur.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Saboteur.Role.MurderPlayer(player);
-                    Saboteur.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Saboteur.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Saboteur.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Saboteur.Role.Data.PlayerName, "", "suicide_byshield");
+                        Saboteur.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Saboteur.Role.MurderPlayer(player);
+                        Saboteur.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Saboteur.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] saboteurKill " + e.Message);
+                return;
+            }
+
         }
         public static void assassinKill(byte targetId)
         {
-            foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+            try
             {
-                if (targetId == Assassin.Role.PlayerId)
+                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
-                    GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, "", "suicide_byshield");
-                    Assassin.SuicideShield = true;
-                }
-                if (player.PlayerId == targetId)
-                {
-                    Assassin.Role.MurderPlayer(player);
-                    Assassin.Role.transform.position = player.transform.position;
-                    GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, player.Data.PlayerName, "kill");
+                    if (targetId == Assassin.Role.PlayerId)
+                    {
+                        GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, "", "suicide_byshield");
+                        Assassin.SuicideShield = true;
+                    }
+                    if (player.PlayerId == targetId)
+                    {
+                        Assassin.Role.MurderPlayer(player);
+                        Assassin.Role.transform.position = player.transform.position;
+                        GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, player.Data.PlayerName, "kill");
 
-                    return;
+                        return;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] assassinKill " + e.Message);
+                return;
+            }
+
         }
         public static void assassinShield()
         {
-            Assassin.Shielded = true;
-            Assassin.StealShield = false;
-            GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, "", "assassin_shielded");
+            try
+            {
+                Assassin.Shielded = true;
+                Assassin.StealShield = false;
+                GLMod.GLMod.currentGame.addAction(Assassin.Role.Data.PlayerName, "", "assassin_shielded");
 
-            return;
+                return;
+            }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] assassinShield " + e.Message);
+                return;
+            }
+
         }
         public static void baitbalise(byte[] buff)
         {
-            Vector3 position = Vector3.zero;
-            position.x = BitConverter.ToSingle(buff, 0 * sizeof(float));
-            position.y = BitConverter.ToSingle(buff, 1 * sizeof(float));
-            new Balise(position);
-            if (Bait.Role != null && !Bait.Role.Data.IsDead)
+            try
             {
-                GLMod.GLMod.currentGame.addAction(Bait.Role.Data.PlayerName, "", "create_bait_area");
-            }
-            else
-            {
-                if (CopyCat.Role != null)
+                Vector3 position = Vector3.zero;
+                position.x = BitConverter.ToSingle(buff, 0 * sizeof(float));
+                position.y = BitConverter.ToSingle(buff, 1 * sizeof(float));
+                new Balise(position);
+                if (Bait.Role != null && !Bait.Role.Data.IsDead)
                 {
-                    GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "create_bait_area");
+                    GLMod.GLMod.currentGame.addAction(Bait.Role.Data.PlayerName, "", "create_bait_area");
                 }
+                else
+                {
+                    if (CopyCat.Role != null)
+                    {
+                        GLMod.GLMod.currentGame.addAction(CopyCat.Role.Data.PlayerName, "", "create_bait_area");
+                    }
+                }
+                Bait.BaliseData = true;
             }
-            Bait.BaliseData = true;
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] baitbalise " + e.Message);
+                return;
+            }
+
 
 
         }
         public static void baitBaliseEnable(float posX, float posY)
         {
-            Bait.BaliseEnable = true;
-            GLMod.GLMod.currentGame.addAction("", "", "bait_area");
-            ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
-            SoundManager.Instance.PlaySound(BaitAlerte, false, 100f);
-            Bait.BaliseData = true;
-           
-            int arrowIndex = 0;
-
-            arrowIndex = Challenger.localArrows.Count;
-            Challenger.localArrows.Add(new Arrow(Color.red));
-            Vector3 pos = new Vector3(posX, posY, 1f);
-
-            if (Challenger.localArrows[arrowIndex] != null)
+            try
             {
-                Challenger.localArrows[arrowIndex].arrow.SetActive(true);
-                Challenger.localArrows[arrowIndex].Update(pos, Color.red);
+                Bait.BaliseEnable = true;
+                GLMod.GLMod.currentGame.addAction("", "", "bait_area");
+                ChallengerOS.Utils.Helpers.showFlash(new Color(255f / 255f, 0f / 255f, 0f / 255f), 2f);
+                SoundManager.Instance.PlaySound(BaitAlerte, false, 100f);
+                Bait.BaliseData = true;
+
+                int arrowIndex = 0;
+
+                arrowIndex = Challenger.localArrows.Count;
+                Challenger.localArrows.Add(new Arrow(Color.red));
+                Vector3 pos = new Vector3(posX, posY, 1f);
+
+                if (Challenger.localArrows[arrowIndex] != null)
+                {
+                    Challenger.localArrows[arrowIndex].arrow.SetActive(true);
+                    Challenger.localArrows[arrowIndex].Update(pos, Color.red);
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] baitBaliseEnable " + e.Message);
+                return;
+            }
+
 
         }
         public static void shareDronePosition(float posX, float posY, byte DroneControllerID)
         {
-
-            if (Challenger.DroneController == null)
+            try
             {
-                foreach (PlayerControl player in PlayerControl.AllPlayerControls)
+                if (Challenger.DroneController == null)
                 {
-                    if (player.PlayerId == DroneControllerID)
+                    foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                     {
-                        Challenger.DroneController = player;
+                        if (player.PlayerId == DroneControllerID)
+                        {
+                            Challenger.DroneController = player;
+                        }
+
                     }
-
                 }
-            }
 
-            Vector3 pos = new Vector3(posX, posY, -15f);
+                Vector3 pos = new Vector3(posX, posY, -15f);
 
-            if (Challenger.DroneController != null && PlayerControl.LocalPlayer != Challenger.DroneController)
-            {
-                if (GameObject.Find("Drone_SurvCamera"))
+                if (Challenger.DroneController != null && PlayerControl.LocalPlayer != Challenger.DroneController)
                 {
-                    GameObject SurvDrone = GameObject.Find("Drone_SurvCamera");
-                    if (SurvDrone.transform.position != pos)
-                    { SurvDrone.transform.position = pos; }
+                    if (GameObject.Find("Drone_SurvCamera"))
+                    {
+                        GameObject SurvDrone = GameObject.Find("Drone_SurvCamera");
+                        if (SurvDrone.transform.position != pos)
+                        { SurvDrone.transform.position = pos; }
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] shareDronePosition " + e.Message);
+                return;
+            }
 
-            
+
+
 
         }
         public static void stopDrone()
         {
-
-            if (Challenger.DroneController != null)
+            try
             {
-                Challenger.DroneController = null;
+                if (Challenger.DroneController != null)
+                {
+                    Challenger.DroneController = null;
+                }
             }
+            catch (Exception e)
+            {
+                GLMod.GLMod.logError("[RPC] stopDrone " + e.Message);
+                return;
+            }
+
         }
 
     }
@@ -3659,15 +4553,6 @@ namespace ChallengerMod.RPC
 
                 // Main Controls
                 
-        
-                
-                case (byte)CustomRPC.SetVisorColor:
-                    {
-                        byte PlayerID = reader.ReadByte();
-                        int ColorID = reader.ReadPackedInt32();
-                        RPCProcedure.setVisorColor(PlayerID, ColorID);
-                        break;
-                    }
                 case (byte)CustomRPC.ShareAllRoles:
                     {
                         RPCProcedure.shareAllRoles();
@@ -4089,6 +4974,12 @@ namespace ChallengerMod.RPC
                 case (byte)CustomRPC.CultistDie:
                     {
                         RPCProcedure.cultistDie();
+                        break;
+                    }
+                
+                case (byte)CustomRPC.CultistFail:
+                    {
+                        RPCProcedure.cultistFail();
                         break;
                     }
                 //Eater

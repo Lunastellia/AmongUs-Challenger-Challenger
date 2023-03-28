@@ -28,10 +28,11 @@ namespace ChallengerMod.Fix
 
                         ChallengerMod.Challenger.SetVitalTimeOn = true;
 
-                        if ((ChallengerMod.Challenger.SetVitalTime <= 0f))
+                        if ((ChallengerMod.Challenger.SetVitalTime <= 0f) || Challenger.ComSab)
                         {
                             ChallengerMod.Fix.BlockUtilitiesPatches.vitalsBool = true;
                         }
+                        
                     }
                     else
                     {
@@ -167,8 +168,9 @@ namespace ChallengerMod.Fix
                     //Disabled Close Outside
                     if (!Challenger.resetMiraCam)
                     {
-                        if (Challenger.DroneController != null && PlayerControl.LocalPlayer == Challenger.DroneController)
+                        if (Challenger.DroneController != null && PlayerControl.LocalPlayer == Challenger.DroneController && !PlayerControl.LocalPlayer.Data.IsDead)
                         {
+
                             if (GameObject.Find("Main Camera/SurvMinigame(Clone)/BackgroundCloseButton/OutsideCloseButton"))
                             {
                                 GameObject OutsideCloseButton = GameObject.Find("Main Camera/SurvMinigame(Clone)/BackgroundCloseButton/OutsideCloseButton");
@@ -206,7 +208,7 @@ namespace ChallengerMod.Fix
 
                                 if (Input.GetKey(Challenger.KeycodeDroneRight) || Input.GetKey(KeyCode.RightArrow))
                                 {
-                                    PosX += 0.03f;
+                                    PosX += Challenger.SurvDroneSpeed;
                                     SurvDrone.transform.position = new Vector3(PosX, PosY, 1f);
                                     MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareDronePosition, Hazel.SendOption.Reliable, -1);
                                     messageWriter.Write(PosX);
@@ -217,7 +219,7 @@ namespace ChallengerMod.Fix
                                 }
                                 if (Input.GetKey(Challenger.KeycodeDroneLeft) || Input.GetKey(KeyCode.LeftArrow))
                                 {
-                                    PosX -= 0.03f;
+                                    PosX -= Challenger.SurvDroneSpeed;
                                     SurvDrone.transform.position = new Vector3(PosX, PosY, 1f);
                                     MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareDronePosition, Hazel.SendOption.Reliable, -1);
                                     messageWriter.Write(PosX);
@@ -228,7 +230,7 @@ namespace ChallengerMod.Fix
                                 }
                                 if (Input.GetKey(Challenger.KeycodeDroneUp) || Input.GetKey(KeyCode.UpArrow))
                                 {
-                                    PosY += 0.03f;
+                                    PosY += Challenger.SurvDroneSpeed;
                                     SurvDrone.transform.position = new Vector3(PosX, PosY, 1f);
                                     MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareDronePosition, Hazel.SendOption.Reliable, -1);
                                     messageWriter.Write(PosX);
@@ -239,7 +241,7 @@ namespace ChallengerMod.Fix
                                 }
                                 if (Input.GetKey(Challenger.KeycodeDroneDown) || Input.GetKey(KeyCode.DownArrow))
                                 {
-                                    PosY -= 0.03f;
+                                    PosY -= Challenger.SurvDroneSpeed;
                                     SurvDrone.transform.position = new Vector3(PosX, PosY, 1f);
                                     MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ShareDronePosition, Hazel.SendOption.Reliable, -1);
                                     messageWriter.Write(PosX);
@@ -283,7 +285,7 @@ namespace ChallengerMod.Fix
             {
                 if (ShipStatus.Instance.Type == ShipStatus.MapType.Hq)
                 {
-                    if (Challenger.DroneController != null || Challenger.ComSab) { __instance.Close(); }
+                    if (Challenger.DroneController != null || Challenger.ComSab || PlayerControl.LocalPlayer.Data.IsDead) { __instance.Close(); }
                     else
                     {
                         if (GameObject.Find("Drone_SurvCamera"))

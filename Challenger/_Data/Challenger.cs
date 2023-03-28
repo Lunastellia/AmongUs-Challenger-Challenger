@@ -10,11 +10,6 @@ using static ChallengerOS.Arrow;
 namespace ChallengerMod
 {
 
-    
-
-   
-
-
     [HarmonyPatch]
     public static class Challenger
     {
@@ -40,10 +35,17 @@ namespace ChallengerMod
         public static bool IntroScreen = false;
         public static float CameraZoom = 3f;
         public static bool UICustom = true;
-
-        public static float LangGameSet = 0f;
+        public static string LangGameSTRSet = "AUTO";
+        public static string IntroSound = "1";
+        public static string Setting_TabGen = "1";
+        public static string Setting_TabGame = "1";
+        public static string Setting_TabSetCrew = "1";
+        public static string Setting_TabSetSpe = "1";
+        public static string Setting_TabSetHyb = "1";
+        public static string Setting_TabSetImp = "1";
+        public static float LangGameSet = 0;
         public static DateTime? EndgameTimer { get; set; }
-        public static float EndDelay = 0.3f;
+        public static float EndDelay = 1.3f;
         public static bool EndGameSab = false;
         public static float GameStarted = 5f;
         public static bool NuclearMap = false;
@@ -70,6 +72,7 @@ namespace ChallengerMod
         public static bool ResetIntroCD = false;
         public static bool IntroCD = false;
         public static bool IsMapPolusV2 = false;
+        public static float SurvDroneSpeed = 0.03f;
 
         public static int QTEmergency = 0;
 
@@ -92,6 +95,7 @@ namespace ChallengerMod
         public static bool LinkedAccount { get; set; }
 
         //RankedS2
+        public static int _DIF = 3;
 
         public static int _Players { get; set; }
         public static int _MapID { get; set; }
@@ -189,15 +193,19 @@ namespace ChallengerMod
         public static Dictionary<byte, PoolablePlayer> playerIcons = new Dictionary<byte, PoolablePlayer>();
 
         //LobbyData General event
+        public static bool LightSab = false;
         public static bool ComSab = false;
         public static bool OxySab = false;
         public static bool ReactorSab = false;
         public static bool StartComSabUnk = false;
         public static bool ResetAllPlayersSkin = false;
         public static bool ComIsSab = false;
+        public static bool ReactorIsSab = false;
         public static bool HMActive = false;
         public static bool LobbyTimeStop = false;
         public static bool InVent = false;
+        public static bool IMPVision = false;
+        public static bool IMPVisionSab = false;
         public static bool LobbyLightOff = false;
         public static bool LobbyCamOff = false;
         public static bool LobbyAdminOff = false;
@@ -216,6 +224,8 @@ namespace ChallengerMod
         public static bool SetCamTimeOn = false;
         public static bool SetNuclearTimeOn = false;
         public static bool SetNuclearSabTimeOn = false;
+
+        public static Vector3 LeafPPos = new Vector3(0f, 0f, 0f);
 
         public static Vector3 PetrifyPosition = new Vector3(99f, 99f, 1f);
         public static Vector3 PetrifyPositionIni = new Vector3(99f, 99f, 1f);
@@ -238,8 +248,58 @@ namespace ChallengerMod
             ChallengerMod.Challenger.EventActive = ChallengerMod.HarmonyMain.EventConfig.Value;
         }
 
-        
-
+        public static void UpdateLang()
+        {
+            ChallengerMod.HarmonyMain.LangConfig.Value = ChallengerMod.Challenger.LangGameSTRSet;
+        }
+        public static void LoadLang()
+        {
+            ChallengerMod.Challenger.LangGameSTRSet = ChallengerMod.HarmonyMain.LangConfig.Value;
+            if (ChallengerMod.HarmonyMain.LangConfig.Value == "ENG") { LangGameSet = 1; }
+            else if (ChallengerMod.HarmonyMain.LangConfig.Value == "FRA") { LangGameSet = 2; }
+            else if (ChallengerMod.HarmonyMain.LangConfig.Value == "SCH") { LangGameSet = 3; }
+            else { LangGameSet = 0; }
+        }
+        public static void UpdateSound()
+        {
+            ChallengerMod.HarmonyMain.SoundConfig.Value = ChallengerMod.Challenger.IntroSound;
+        }
+        public static void LoadSound()
+        {
+            ChallengerMod.Challenger.IntroSound = ChallengerMod.HarmonyMain.SoundConfig.Value;
+        }
+        public static void LoadTABS()
+        {
+            ChallengerMod.Challenger.Setting_TabGen = ChallengerMod.HarmonyMain.TBGen.Value;
+            ChallengerMod.Challenger.Setting_TabGame = ChallengerMod.HarmonyMain.TBGame.Value;
+            ChallengerMod.Challenger.Setting_TabSetCrew = ChallengerMod.HarmonyMain.TBCrew.Value;
+            ChallengerMod.Challenger.Setting_TabSetHyb = ChallengerMod.HarmonyMain.TBDuo.Value;
+            ChallengerMod.Challenger.Setting_TabSetSpe = ChallengerMod.HarmonyMain.TBSpe.Value;
+            ChallengerMod.Challenger.Setting_TabSetImp = ChallengerMod.HarmonyMain.TBImp.Value;
+        }
+        public static void UpdateTABGEN()
+        {
+             ChallengerMod.HarmonyMain.TBGen.Value = ChallengerMod.Challenger.Setting_TabGen;
+        }
+        public static void UpdateTABGAME()
+        {
+            ChallengerMod.HarmonyMain.TBGame.Value = ChallengerMod.Challenger.Setting_TabGame;
+        }
+        public static void UpdateTABCREW()
+        {
+            ChallengerMod.HarmonyMain.TBCrew.Value = ChallengerMod.Challenger.Setting_TabSetCrew;
+        }
+        public static void UpdateTABDUO()
+        {
+            ChallengerMod.HarmonyMain.TBDuo.Value = ChallengerMod.Challenger.Setting_TabSetHyb;
+        }
+        public static void UpdateTABSPE()
+        {
+            ChallengerMod.HarmonyMain.TBSpe.Value = ChallengerMod.Challenger.Setting_TabSetSpe;
+        }
+        public static void UpdateTABIMP()
+        {
+            ChallengerMod.HarmonyMain.TBImp.Value = ChallengerMod.Challenger.Setting_TabSetImp;
+        }
     }
-     
 }

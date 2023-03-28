@@ -28,72 +28,89 @@ namespace ChallengerMod.Cosmetiques
 
             //UPDATE UNLOCK
 
-            if (GLMod.GLMod.isUnlocked("AC-H1")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Demon = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H2")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angel = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H3")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Vampire = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H4")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Kawaii = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H5")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angry = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H6")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Cat = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H7")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Knight = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H8")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Crazy = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H9")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_FireFighter = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H10")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Ninja = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H11")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Alien = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H12")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Barghest = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H13")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Bomber = true; }
-            if (GLMod.GLMod.isUnlocked("AC-H14")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Dragon = true; }
+            if (GLMod.GLMod.isUnlocked("AC-IMPOSTORS")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Impostors = true; }
+            if (GLMod.GLMod.isUnlocked("AC-CREWMATES")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Crewmates = true; }
 
-            if (GLMod.GLMod.isUnlocked("AC-V1")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Gun = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V2")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Knifte = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V3")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Katana = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V4")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Orbe = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V5")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Cube = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V6")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_VampireTooth = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V7")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Axe = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V8")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_DNA = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V9")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Chain = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V10")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_MagicWand = true; }
-            if (GLMod.GLMod.isUnlocked("AC-V11")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_FireBall = true; }
+            if (GLMod.GLMod.isUnlocked("AC-ASSASSIN")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Assassin = true; }
+            if (GLMod.GLMod.isUnlocked("AC-VECTOR")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Vector = true; }
+            if (GLMod.GLMod.isUnlocked("AC-MORPHLING")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Morphling = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SCRAMBLER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Scrambler = true; }
+            if (GLMod.GLMod.isUnlocked("AC-BARGHEST")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Barghest = true; }
+            if (GLMod.GLMod.isUnlocked("AC-GHOST")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Ghost = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SORCERER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Sorcerer = true; }
+            if (GLMod.GLMod.isUnlocked("AC-GUESSER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Guesser = true; }
+            if (GLMod.GLMod.isUnlocked("AC-BASILISK")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Basilisk = true; }
+            if (GLMod.GLMod.isUnlocked("AC-REAPER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Reaper = true; }
+            if (GLMod.GLMod.isUnlocked("AC-MESMER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mesmer = true; }
 
-            if (GLMod.GLMod.isUnlocked("AC-C1")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Bloody = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C2")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Earth = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C3")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Chedard = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C4")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Sun = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C5")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Leef = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C6")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Radian = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C7")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Swamp = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C8")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ice = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C9")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Lagoon = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C10")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ocean = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C11")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Night = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C12")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Dawn = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C13")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Candy = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C14")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Galaxy = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C15")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Snow = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C16")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Cender = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C17")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Dark = true; }
-            if (GLMod.GLMod.isUnlocked("AC-C18")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Rainbow = true; }
+            if (GLMod.GLMod.isUnlocked("AC-CUPID")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Cupid = true; }
+            if (GLMod.GLMod.isUnlocked("AC-CULTIST")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Cultist = true; }
+            if (GLMod.GLMod.isUnlocked("AC-JESTER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Jester = true; }
+            if (GLMod.GLMod.isUnlocked("AC-EATER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Eater = true; }
+            if (GLMod.GLMod.isUnlocked("AC-OUTLAW")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Outlaw = true; }
+            if (GLMod.GLMod.isUnlocked("AC-ARSONIST")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Arsonist = true; }
+            if (GLMod.GLMod.isUnlocked("AC-CURSED")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Cursed = true; }
+
+            if (GLMod.GLMod.isUnlocked("AC-MERCENARY")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mercenary = true; }
+            if (GLMod.GLMod.isUnlocked("AC-COPYCAT")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Copycat = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SURVIVOR")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Survivor = true; }
+            if (GLMod.GLMod.isUnlocked("AC-REVENGER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Revenger = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SLAVE")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Slave = true; }
+
+
+            if (GLMod.GLMod.isUnlocked("AC-DICTATOR")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Bloody = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Dictator = true; }
+            if (GLMod.GLMod.isUnlocked("AC-MAYOR")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Earth = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mayor = true; }
+            if (GLMod.GLMod.isUnlocked("AC-ENGINEER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Chedard = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Engineer = true; }
+            if (GLMod.GLMod.isUnlocked("AC-MYSTIC")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Sun = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mystic = true; }
+            if (GLMod.GLMod.isUnlocked("AC-HUNTER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Leef = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Hunter = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SENTINEL")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Radian = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Sentinel = true; }
+            if (GLMod.GLMod.isUnlocked("AC-DETECTIVE")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Swamp = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Detective = true; }
+            if (GLMod.GLMod.isUnlocked("AC-GUARDIAN")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ice = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Guardian = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SPY")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Lagoon = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Spy = true; }
+            if (GLMod.GLMod.isUnlocked("AC-TIMELORD")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ocean = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Timelord = true; }
+            if (GLMod.GLMod.isUnlocked("AC-NIGHTWATCH")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Night = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Nightwatch = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SPIRIT")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Dawn = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Spirit = true; }
+            if (GLMod.GLMod.isUnlocked("AC-TEAMMATE")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Candy = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Teammate = true; }
+            if (GLMod.GLMod.isUnlocked("AC-MENTALIST")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Galaxy = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mentalist = true; }
+            if (GLMod.GLMod.isUnlocked("AC-LAWKEEPER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Snow = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Lawkeeper = true; }
+            if (GLMod.GLMod.isUnlocked("AC-BAIT")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Cender = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Bait = true; }
+            if (GLMod.GLMod.isUnlocked("AC-FAKE")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Dark = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Fake = true; }
+            if (GLMod.GLMod.isUnlocked("AC-ANGEL")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Rainbow = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Angel = true; }
+
+            if (GLMod.GLMod.isUnlocked("AC-BUILDER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Ruby = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Builder = true; }
+            if (GLMod.GLMod.isUnlocked("AC-SHERIFF")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Amber = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Sheriff = true; }
+            if (GLMod.GLMod.isUnlocked("AC-DOCTOR")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Emerald = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Doctor = true; }
+            if (GLMod.GLMod.isUnlocked("AC-INFORMANT")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Larimar = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Informant = true; }
+            if (GLMod.GLMod.isUnlocked("AC-LEADER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Sapphir = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Leader = true; }
+            if (GLMod.GLMod.isUnlocked("AC-TRAVELER")) { ChallengerMod.Cosmetiques.Cosmetics_Achievement.Color_Quartz = true; ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Traveler = true; }
+
+
 
             if (GLMod.GLMod.hasDlc(2171400)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Eater = true; }
             if (GLMod.GLMod.hasDlc(2240160)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Prime = true; }
             if (GLMod.GLMod.hasDlc(2294680)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Cupid = true; }
             if (GLMod.GLMod.hasDlc(2294683)) { ChallengerMod.Cosmetiques.Cosmetics_Shops.Bundle_Cultist = true; }
 
+
+
+
             
-
-
-
 
             ChallengerMod.Cosmetiques.PlayerCosmetics.CheckForUpdate();
 
         }
         public static void CheckForUpdate()
         {
+
+
+
+
             //UNLOCK CHECK
             if (ChallengerMod.Cosmetiques.Cosmetics_ContentCreator.Bundle_Stellia)
             {
                 foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "CC-00") { H.Free = true; } }
                 foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "CC-00") { V.Free = true; } }
+
             }
             else
             {
@@ -154,107 +171,256 @@ namespace ChallengerMod.Cosmetiques
 
 
             //ACHIEVEMENT & Shop
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Demon)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Impostors)
             {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H1") { H.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-IMPOSTORS") { H.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angel)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Crewmates)
             {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H2") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Vampire)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H3") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Kawaii)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H4") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Angry)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H5") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Cat)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H6") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Knight)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H7") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Crazy)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H8") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_FireFighter)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H9") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Ninja)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H10") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Alien)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H11") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Barghest)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H12") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Bomber)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H13") { H.Free = true; } }
-            }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Hat_Dragon)
-            {
-                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-H14") { H.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-CREWMATES") { H.Free = true; } }
             }
 
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Gun)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Assassin)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V1") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-ASSASSIN") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-ASSASSIN") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Knifte)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Vector)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V2") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-VECTOR") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-VECTOR") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Katana)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Morphling)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V3") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-MORPHLING") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-MORPHLING") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Orbe)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Scrambler)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V4") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SCRAMBLER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SCRAMBLER") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Cube)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Barghest)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V5") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-BARGHEST") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-BARGHEST") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_VampireTooth)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Ghost)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V6") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-GHOST") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-GHOST") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Axe)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Sorcerer)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V7") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SORCERER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SORCERER") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_DNA)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Guesser)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V8") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-GUESSER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-GUESSER") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_Chain)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Basilisk)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V9") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-BASILISK") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-BASILISK") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_MagicWand)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Reaper)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V10") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-REAPER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-REAPER") { V.Free = true; } }
             }
-            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.Visor_FireBall)
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mesmer)
             {
-                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-V11") { V.Free = true; } }
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-MESMER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-MESMER") { V.Free = true; } }
             }
+
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Cupid)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-CUPID") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-CUPID") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Cultist)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-CULTIST") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-CULTIST") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Jester)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-JESTER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-JESTER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Eater)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-EATER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-EATER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Outlaw)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-OUTLAW") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-OUTLAW") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Arsonist)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-ARSONIST") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-ARSONIST") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Cursed)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-CURSED") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-CURSED") { V.Free = true; } }
+            }
+
+
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mercenary)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-MERCENARY") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-MERCENARY") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Copycat)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-COPYCAT") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-COPYCAT") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Survivor)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SURVIVOR") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SURVIVOR") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Revenger)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-REVENGER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-REVENGER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Slave)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SLAVE") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SLAVE") { V.Free = true; } }
+            }
+
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Sheriff)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SHERIFF") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SHERIFF") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Guardian)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-GUARDIAN") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-GUARDIAN") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Engineer)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-ENGINEER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-ENGINEER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Timelord)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-TIMELORD") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-TIMELORD") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Hunter)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-HUNTER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-HUNTER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mystic)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-MYSTIC") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-MYSTIC") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Spirit)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SPIRIT") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SPIRIT") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mayor)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-MAYOR") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-MAYOR") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Detective)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-DETECTIVE") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-DETECTIVE") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Nightwatch)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-NIGHTWATCH") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-NIGHTWATCH") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Spy)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SPY") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SPY") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Informant)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-INFORMANT") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-INFORMANT") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Bait)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-BAIT") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-BAIT") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Mentalist)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-MENTALIST") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-MENTALIST") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Builder)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-BUILDER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-BUILDER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Dictator)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-DICTATOR") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-DICTATOR") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Sentinel)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-SENTINEL") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-SENTINEL") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Teammate)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-TEAMMATE") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-TEAMMATE") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Lawkeeper)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-LAWKEEPER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-LAWKEEPER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Fake)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-FAKE") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-FAKE") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Leader)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-LEADER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-LEADER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Angel)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-ANGEL") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-ANGEL") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Traveler)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-TRAVELER") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-TRAVELER") { V.Free = true; } }
+            }
+            if (ChallengerMod.Cosmetiques.Cosmetics_Achievement.__Doctor)
+            {
+                foreach (HatData H in HatManager.Instance.allHats) { if (H.BundleId == "AC-DOCTOR") { H.Free = true; } }
+                foreach (VisorData V in HatManager.Instance.allVisors) { if (V.BundleId == "AC-DOCTOR") { V.Free = true; } }
+            }
+
+
 
 
 
